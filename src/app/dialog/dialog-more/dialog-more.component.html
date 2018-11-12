@@ -1,0 +1,35 @@
+<div class='more-dialog'>
+    <div class='dialog-header'>
+        <h2 mat-dialog-title>{{data.data.dialogTitle}}</h2>
+        <button (click)='dialogRef.close()' class='dialog__close-btn'></button>
+    </div>
+    <hr>
+
+    <div mat-dialog-content class='dialog-content'>
+        <mat-form-field>
+            <input matInput [(ngModel)]='data.data.todoCost' placeholder='Costed todos'>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [(ngModel)]='data.data.estimatedTodos' placeholder='Estimated todos'>
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]='data.data.remind'>Remind me at: </mat-checkbox>
+        <mat-form-field class='datepicker'>
+            <input matInput [matDatepicker]='picker' placeholder='Choose a date' [disabled]='!data.data.remind' [(ngModel)]='data.data.remindTime'>
+            <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput [(ngModel)]='data.data.note' placeholder='Enter note for the todo'></textarea>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-raised-button color='warn' (click)='onConfirmDelete()' class='dialog__confirm-delete-btn'>Delete</button>
+        <!-- This fills the remaining space of the current row -->
+        <span class='fill-space'></span>
+        <button mat-raised-button (click)='onConfirmSave()' class='dialog__confirm-save-btn' cdkFocusRegionstart>Save</button>
+    </div>
+</div>

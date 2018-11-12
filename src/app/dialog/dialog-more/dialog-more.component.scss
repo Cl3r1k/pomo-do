@@ -1,0 +1,50 @@
+.more-dialog {
+    margin-top: -10px;
+    .dialog-header {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        h2 {
+            margin: 0px;
+            grid-column: span 11;
+        }
+        .dialog__close-btn {
+            grid-column: span 1;
+            justify-self: end;
+            color: #777;
+            font: 14px/100% arial, sans-serif;
+            text-decoration: none;
+            text-shadow: 0 1px 0 #fff;
+            cursor: pointer;
+            &:after {
+                content: '✖'; // UTF-8 symbol
+            }
+        }
+    }
+    hr {
+        margin: 0px auto 20px auto;
+    }
+    .dialog-content {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        mat-form-field {
+            grid-column: span 12;
+            textarea {
+                height: 70px;
+            }
+        }
+        mat-checkbox {
+            grid-column: 1/6;
+        }
+        .datepicker {
+            grid-column: 6/13;
+        }
+    }
+}
+
+.fill-space {
+    // This fills the remaining space, by using flexbox.
+    // Every toolbar row uses a flexbox row layout.
+    flex: 1 1 auto;
+}

@@ -1,0 +1,34 @@
+<section class='main' *ngIf='todosAllAmount > 0'>
+    <div class='pinned-list' *ngIf='todosToView[0].length' dnd-sortable-container [dropZones]="['todos-zone-pinned']" [sortableData]='todosToView[0]'>
+        <ul class='todo-list'>
+            <li *ngFor='let todo of todosToView[0]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+                <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
+            </li>
+        </ul>
+    </div>
+    <div class='unpinned-list' *ngIf='todosToView[1].length' dnd-sortable-container [dropZones]="['todos-zone-unpinned']" [sortableData]='todosToView[1]'>
+        <ul class='todo-list'>
+            <li *ngFor='let todo of todosToView[1]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+                <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
+            </li>
+        </ul>
+    </div>
+    <div class='completed-container' *ngIf='todosToView[2].length'>
+        <div class='collapse-container'>
+            <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' appTooltipDirective='Collapse recent completed todos' placement='top'>
+                <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
+                <span [class.completed-todos-hovered]='completedTodosHoverState || !collapseState'>Completed todos</span>
+            </div>
+            <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' appTooltipDirective='Clear recent completed todos' placement='top'>
+                <use xlink:href='#icon-broom'></use>
+            </svg>
+        </div>
+        <div class='completed-list' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]' [class.collapsed]='collapseState'>
+            <ul class='todo-list'>
+                <li *ngFor='let todo of todosToView[2]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='false' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+                    <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
