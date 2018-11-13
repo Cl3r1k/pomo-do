@@ -1,6 +1,6 @@
-# AngularToDoApp
+# PomoDoApp
 
-CRUD TODO app with Angular CLI
+POMODORO & TODO app with Angular CLI
 
 Demo: https://Cl3r1k.github.io/pomo-do/
 
