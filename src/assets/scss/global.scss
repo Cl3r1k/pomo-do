@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo');
 // CSS Grid site template with sticky footer (https://codepen.io/Cl3r1k/pen/WdbRER)
 $anchorColor: #0bb3b3;
+$gridConatinerColor: none;
 $gridHeaderColor: none;
 $gridContentColor: none;
 $gridFooterColor: none;
 // Debuging for grid
-// $gridHeaderColor: #19d5f7;
-// $gridContentColor: #fc8ff6;
-// $gridFooterColor: #7ae6a9;
+$gridConatinerColor: #52887a;
+$gridHeaderColor: #a8dee7;
+$gridContentColor: #d8bdd7;
+$gridFooterColor: #a7e4c1;
 body,
 html {
     // height: 100%;
@@ -55,6 +57,7 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
+    background-color: $gridConatinerColor;
     // grid-gap: 5px;
     margin: 0;
     .header-container {
@@ -76,6 +79,7 @@ body {
             display: grid;
             grid-template-columns: repeat(16, 1fr);
             margin-top: 50px;
+            background-color: #3cdada;
             .sign-out-button {
                 grid-column: 6/12;
                 // display: block;

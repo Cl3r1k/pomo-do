@@ -2,11 +2,12 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
+    background-color: #90bedf; // For Debug
     h1 {
         // position: absolute;
         // top: -130px;
         // width: 100%;
-        // background-color: #2276b2;
+        background-color: #c4e6ff; // For Debug
         grid-column: span 16;
         line-height: initial;
         margin: 10px auto;
