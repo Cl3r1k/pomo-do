@@ -3,21 +3,36 @@
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
     background-color: #90bedf; // For Debug
-    h1 {
+    .app-name {
         // position: absolute;
         // top: -130px;
         // width: 100%;
         background-color: #c4e6ff; // For Debug
-        grid-column: span 16;
+        grid-column: 1/5;
         line-height: initial;
         margin: 10px auto;
         word-break: break-all;
-        font-size: 80px;
-        font-weight: 100;
+        a {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            color: rgba(175, 47, 47, 0.3);
+            -webkit-text-rendering: optimizeLegibility;
+            -moz-text-rendering: optimizeLegibility;
+            text-rendering: optimizeLegibility;
+        }
+    }
+    .pro-status {
+        grid-column: 5/6;
+    }
+    .sync-status {
+        grid-column: 13/14;
+    }
+    .sync-icon {
+        grid-column: 14/15;
         text-align: center;
-        color: rgba(175, 47, 47, 0.3);
-        -webkit-text-rendering: optimizeLegibility;
-        -moz-text-rendering: optimizeLegibility;
-        text-rendering: optimizeLegibility;
+    }
+    .profile-menu {
+        grid-column: 15/17;
     }
 }

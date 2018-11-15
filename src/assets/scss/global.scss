@@ -59,13 +59,14 @@ body {
     grid-template-rows: auto 1fr auto;
     background-color: $gridConatinerColor;
     // grid-gap: 5px;
-    margin: 0;
+    max-width: 960px;
+    margin: 0 auto;
     .header-container {
         grid-column: span 12;
         padding: 0px 30px;
         color: #0bb3b3;
         background-color: $gridHeaderColor;
-        height: 20px;
+        height: 5px;
         // .header-title {
         //     display: inline-block;
         // }
@@ -96,8 +97,8 @@ body {
         text-align: center;
         background-color: $gridFooterColor;
         grid-column: span 12;
-        padding-top: 15px;
-        padding-bottom: 5px;
+        // padding-top: 15px;
+        // padding-bottom: 5px;
         p {
             font-weight: 600;
         }
