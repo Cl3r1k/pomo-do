@@ -1,8 +1,11 @@
 <div class='head'>
-    <h1 class='app-name'>
-        <a href='/todos'>PomoDo <small>(v_{{BUILD_VERSION}})</small></a>
+    <h1 class='app-name' appTooltipDirective='Build {{BUILD_VERSION}}' placement='left' showDelay='1000'>
+        <a href='/todos'>Pomodo</a>
     </h1>
-    <p class='pro-status'>Upgrade</p>
+
+    <div class='upgrade-pro-container'>
+        <a href='/pro?source=app'>Upgrade</a>
+    </div>
     <p class='sync-status'>Syncing...</p>
     <p class='sync-icon'>SI</p>
     <p class='profile-menu'>Profile_Menu</p>

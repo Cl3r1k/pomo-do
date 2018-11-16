@@ -15,13 +15,15 @@ Todos:
     New:
         Current:
 
-            ☐ Change UI to prototype view <========================================================= CURRENT TASK
-                ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu])
-                    ☐ 'Onhover' on 'AppName' should show current build
+            ☐ Change UI to prototype view
+                ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu]) <========================================================= CURRENT TASK
+                    ✔ 'Onhover' on 'AppName' should show current build @done(18-11-15 10:11)
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
                 ☐ Add component 'StatsComponent'
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
+            
+            ☐ Change urls (path/routes) from 'todos' to 'app'
 
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
@@ -186,6 +188,7 @@ Todos:
                 ☐ Use behavior and styles from 'Material 'DragDropModule''
             ☐ Change styles in '_sign-in.scss' to grids
 
+        ☐ In app for header use not simple text but styled text with logo (like example `https://pomotodo.com/pro` top left corner)
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
         ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
