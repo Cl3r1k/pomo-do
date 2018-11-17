@@ -31,14 +31,30 @@
             font-weight: 500;
         }
     }
-    .sync-status {
-        grid-column: 13/14;
-    }
-    .sync-icon {
-        grid-column: 14/15;
-        text-align: center;
-    }
-    .profile-menu {
-        grid-column: 15/17;
+    .header-right-container {
+        grid-column: 10/17;
+        justify-self: end;
+        background-color: #76a0be; // For Debug
+        padding: 0px;
+        li {
+            display: inline-block;
+            &.sync-message {
+                background-color: #6e6cc2; // For Debug
+                padding: 0 15px;
+            }
+            &.sync-status {
+                background-color: #9b76be; // For Debug
+                text-align: center;
+                padding: 0 5px;
+            }
+            &.profile-menu {
+                background-color: #63bea3; // For Debug
+                a {
+                    padding: 0 .9rem;
+                    color: inherit;
+                    font-weight: 500;
+                }
+            }
+        }
     }
 }
