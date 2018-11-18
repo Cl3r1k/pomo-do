@@ -3,6 +3,7 @@
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
     background-color: #90bedf; // For Debug
+    border-bottom: 1px solid #cccccc;
     .app-name {
         // position: absolute;
         // top: -130px;
@@ -10,11 +11,11 @@
         background-color: #c4e6ff; // For Debug
         grid-column: 1/3;
         line-height: initial;
-        margin: 10px auto 10px 3px;
+        margin: 10px auto 10px 0px;
         word-break: break-all;
         a {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 700;
             text-align: center;
             color: rgba(175, 47, 47, 0.3);
             -webkit-text-rendering: optimizeLegibility;
@@ -49,10 +50,15 @@
             }
             &.profile-menu {
                 background-color: #63bea3; // For Debug
+                padding: 0 0 0 .9rem;
                 a {
-                    padding: 0 .9rem;
+                    // padding: 0 .9rem;
+                    // padding: 0 3px 0 10px;
                     color: inherit;
                     font-weight: 500;
+                }
+                span {
+                    padding-left: 3px;
                 }
             }
         }

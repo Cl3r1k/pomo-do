@@ -4,7 +4,7 @@
     </h1>
 
     <div class='upgrade-pro-container'>
-        <a href='/pro?source=app'>Upgrade</a>
+        <a href='/pro?source=app' target='_blank'>Upgrade</a>
     </div>
 
     <ul class='header-right-container'>
@@ -12,10 +12,19 @@
             <span>Syncing...</span>
         </li>
         <li class='sync-status'>
-            <span>SI</span>
+            <div class='icon-offline-container'>
+                <span>[OF]</span>
+            </div>
+            <div class='icon-online-container'>
+                <span class='success-sync'>[SU]</span>
+                <span class='standby-sync'>[ST]</span>
+                <span class='syncing-sync'>[SY]</span>
+                <span class='failure-sync'>[FL]</span>
+            </div>
         </li>
         <li class='profile-menu'>
             <a>Profile_Menu</a>
+            <span>[>]</span>
         </li>
     </ul>
 </div>
