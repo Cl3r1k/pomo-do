@@ -9,20 +9,21 @@
 
     <ul class='header-right-container'>
         <li class='sync-message'>
-            <span>Syncing...</span>
+            <span *ngIf='syncMessage === "Syncing"'>Syncing...</span>
         </li>
-        <li class='sync-status'>
-            <div class='icon-offline-container'>
-                <span>[OF]</span>
+        <li class='sync-status '>
+            <div class='icon-offline-container' *ngIf='offlineState'>
+                <span (click)='changeSyncState()'>[OF]</span>
             </div>
-            <div class='icon-online-container'>
-                <span class='success-sync'>[SU]</span>
-                <span class='standby-sync'>[ST]</span>
-                <span class='syncing-sync'>[SY]</span>
-                <span class='failure-sync'>[FL]</span>
+            <div class='icon-online-container' *ngIf='!offlineState'>
+                <!-- Do not forget to reverse offlineState, and syncState values -->
+                <span class='success-sync' *ngIf='syncState === 0' (click)='changeSyncState()'>[SU]</span>
+                <span class='standby-sync' *ngIf='syncState === 1' (click)='changeSyncState()'>[ST]</span>
+                <span class='syncing-sync' *ngIf='syncState === 2' (click)='changeSyncState()'>[SY]</span>
+                <span class='failure-sync' *ngIf='syncState === 3' (click)='changeSyncState()'>[FL]</span>
             </div>
         </li>
-        <li class='profile-menu'>
+        <li class='profile-menu '>
             <a>Profile_Menu</a>
             <span>[>]</span>
         </li>

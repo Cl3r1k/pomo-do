@@ -11,9 +11,35 @@ export class TodoTitleComponent implements OnInit {
 
     BUILD_VERSION = environment.version;
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
+    syncMessage = 'Syncing';
+    syncState = 0;
+    offlineState = true;
+
     constructor() { }
 
     ngOnInit() {
+    }
+
+    changeSyncState() {
+        // console.log('changeSyncState() called');
+        if (this.syncState === 0) {
+            if (this.offlineState) {
+                this.offlineState = false;
+            } else {
+                this.syncState++;
+            }
+        } else {
+            if (this.syncState === 3) {
+                this.syncState = 0;
+                this.offlineState = true;
+            } else {
+                this.syncState++;
+            }
+        }
+
+        console.log('%csyncState: %d, offlineState: ', this.consoleTextColorComponent, this.syncState, this.offlineState);
     }
 
 }

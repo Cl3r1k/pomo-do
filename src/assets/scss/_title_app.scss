@@ -4,6 +4,7 @@
     align-items: center;
     background-color: #90bedf; // For Debug
     border-bottom: 1px solid #cccccc;
+    color: #777;
     .app-name {
         // position: absolute;
         // top: -130px;
@@ -51,6 +52,7 @@
             &.profile-menu {
                 background-color: #63bea3; // For Debug
                 padding: 0 0 0 .9rem;
+                cursor: pointer;
                 a {
                     // padding: 0 .9rem;
                     // padding: 0 3px 0 10px;
