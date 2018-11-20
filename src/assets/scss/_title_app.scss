@@ -52,15 +52,40 @@
             &.profile-menu {
                 background-color: #63bea3; // For Debug
                 padding: 0 0 0 .9rem;
+                position: relative;
+                line-height: 48px;
+                vertical-align: top;
                 cursor: pointer;
-                a {
-                    // padding: 0 .9rem;
-                    // padding: 0 3px 0 10px;
-                    color: inherit;
-                    font-weight: 500;
+                .profile-name {
+                    a {
+                        // padding: 0 .9rem;
+                        // padding: 0 3px 0 10px;
+                        color: inherit;
+                        font-weight: 500;
+                    }
+                    span {
+                        padding-left: 3px;
+                    }
                 }
-                span {
-                    padding-left: 3px;
+                .profile-submenu {
+                    position: absolute;
+                    left: auto;
+                    right: 0;
+                    min-width: 130px;
+                    text-align: left;
+                    padding: 5px 0;
+                    margin: 2px 0 0;
+                    background-color: #ffffff;
+                    border: 1px solid #dddddd;
+                    border-radius: 2px;
+                    -webkit-border-radius: 2px;
+                    -moz-border-radius: 2px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, .175);
+                    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .175);
+                    z-index: 99;
+                    li {
+                        display: block;
+                    }
                 }
             }
         }
