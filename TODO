@@ -18,6 +18,7 @@ Todos:
             ☐ Change UI to prototype view
                 ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu]) <========================================================= CURRENT TASK
                     ✔ 'Onhover' on 'AppName' should show current build @done(18-11-15 10:11)
+                    ☐ Submenu should be closed, if clicks outside it
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
                 ☐ Add component 'StatsComponent'
@@ -203,6 +204,7 @@ Todos:
         ☐ Use Reactive forms
         ☐ Notify if user blocked notification (look here example `https://codingthesmartway.com/angular-material-introduction/` - left bottom corner)
         ☐ Use UserGuide on first run like here `discordapp.com` or like in `feedly.com`
+        ☐ Add some kind of easter-egg
 
         ☐ Consider to cancel editing, if user clicks on other area ---> Delayed for some time (Back to this later)
             ☐ Probably should be used 'ViewChild'

@@ -16,6 +16,7 @@ export class TodoTitleComponent implements OnInit {
     syncMessage = 'Syncing';
     syncState = 0;
     offlineState = true;
+    showSubmenu = false;
 
     constructor() { }
 
@@ -40,6 +41,10 @@ export class TodoTitleComponent implements OnInit {
         }
 
         console.log('%csyncState: %d, offlineState: ', this.consoleTextColorComponent, this.syncState, this.offlineState);
+    }
+
+    toggleSubmenuState() {
+        this.showSubmenu = !this.showSubmenu;
     }
 
 }
