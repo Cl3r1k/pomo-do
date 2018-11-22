@@ -8,10 +8,10 @@
     </div>
 
     <ul class='header-right-container'>
-        <li class='sync-message'>
-            <span *ngIf='syncMessage === "Syncing"'>Syncing...</span>
+        <li class='sync-message' *ngIf='syncMessage === "Syncing..."'>
+            <span>{{syncMessage}}</span>
         </li>
-        <li class='sync-status '>
+        <li class='sync-status'>
             <div class='icon-offline-container' *ngIf='offlineState'>
                 <span (click)='changeSyncState()'>[OF]</span>
             </div>

@@ -13,7 +13,7 @@ export class TodoTitleComponent implements OnInit {
 
     consoleTextColorComponent = 'color: cadetblue;';
 
-    syncMessage = 'Syncing';
+    syncMessage = 'Syncing...';
     syncState = 0;
     offlineState = true;
     showSubmenu = false;
@@ -38,6 +38,13 @@ export class TodoTitleComponent implements OnInit {
             } else {
                 this.syncState++;
             }
+        }
+
+        // TODO: Do not forget to change this part and compare 'syncState' with 2, and btw change the definition of the variable
+        if (this.syncState === 0) {
+            this.syncMessage = 'Syncing...';
+        } else {
+            this.syncMessage = '';
         }
 
         console.log('%csyncState: %d, offlineState: ', this.consoleTextColorComponent, this.syncState, this.offlineState);
