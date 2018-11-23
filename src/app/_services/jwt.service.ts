@@ -7,25 +7,6 @@ export class JwtService {
 
     private TOKEN_KEY = 'session_data';
 
-    session_object: {
-        created_time: string,
-        expire_time: string,
-        last_used_time: string,
-        token: string,
-        account: {
-            avatar: string,
-            display_name: string,
-            email: string,
-            email_verified: boolean,
-            id: string,
-            jwToken: string,
-            name: string,
-            username: string,
-            register_time: string
-        }
-    };
-
-
     constructor() { }
 
     getToken() {
@@ -33,9 +14,10 @@ export class JwtService {
         return localStorage.getItem(this.TOKEN_KEY);
     }
 
-    saveToken(token: string) {
+    // Rename method to 'saveSession' and others
+    saveToken(session_object) {
         // window.localStorage['jwtToken'] = token;
-        localStorage.setItem(this.TOKEN_KEY, token);
+        localStorage.setItem(this.TOKEN_KEY, session_object);
     }
 
     destroyToken() {

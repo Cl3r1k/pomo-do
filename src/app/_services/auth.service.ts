@@ -13,7 +13,7 @@ export class AuthService {
     constructor(private _sessionStorageService: SessionStorageService, private _jwtService: JwtService, private _router: Router) { }
 
     public isSignedIn() {
-        return !!this._sessionStorageService.accessToken;
+        return !!this._sessionStorageService.session_object.account.jwToken;
     }
 
     public doSignOut() {
@@ -26,19 +26,21 @@ export class AuthService {
             return;
         }
 
-        this._sessionStorageService.accessToken = accessToken;
-        this._sessionStorageService.name = name;
+        this._sessionStorageService.session_object.account.jwToken = accessToken;
+        this._sessionStorageService.session_object.account.name = name;
+        this._sessionStorageService.session_object.account.display_name = name;
 
-        this.setAuth(this._sessionStorageService.accessToken);
+        this.setAuth(this._sessionStorageService.session_object);
     }
 
-    setAuth(accessToken) {
-        this._jwtService.saveToken(accessToken);
+    setAuth(session_object) {
+        this._jwtService.saveToken(session_object);
     }
 
     populate() {
-        if (this._jwtService.getToken()) {
-            this.doSignIn('demo', this._jwtService.getToken());
+        const session_data = this._jwtService.getToken();
+        if (session_data) {
+            this.doSignIn(session_data['account'['name']], session_data['account'['jwToken']]);
             this._router.navigate(['todos']);
         }
     }
