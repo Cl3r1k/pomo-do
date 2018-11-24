@@ -26,6 +26,8 @@ export class AuthService {
             return;
         }
 
+        this._sessionStorageService.init();
+
         this._sessionStorageService.session_object.account.jwToken = accessToken;
         this._sessionStorageService.session_object.account.name = name;
         this._sessionStorageService.session_object.account.display_name = name;
@@ -40,7 +42,7 @@ export class AuthService {
     populate() {
         const session_data = this._jwtService.getToken();
         if (session_data) {
-            this.doSignIn(session_data['account'['name']], session_data['account'['jwToken']]);
+            this.doSignIn(session_data['account']['jwToken'], session_data['account']['name']);
             this._router.navigate(['todos']);
         }
     }

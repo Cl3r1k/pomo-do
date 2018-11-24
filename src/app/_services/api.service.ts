@@ -160,7 +160,7 @@ export class ApiService {
     getRequestOptions() {
         const httpOptions =  {
             headers: new HttpHeaders({
-                'Authorization': 'Bearer ' + this._sessionStorage.accessToken
+                'Authorization': 'Bearer ' + this._sessionStorage.session_object.account.jwToken
             })
         };
 

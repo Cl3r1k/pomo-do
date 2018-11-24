@@ -25,10 +25,11 @@ export class SessionStorageService {
         }
     };
 
-    // public accessToken: string;
-    // public name: string;
-
     constructor() {
+        this.init();
+    }
+
+    public init(): void {
         this.session_object.created_time = new Date().toISOString();
         this.session_object.expire_time = '';
         this.session_object.last_used_time = new Date().toISOString();
@@ -47,9 +48,6 @@ export class SessionStorageService {
     }
 
     public destroy(): void {
-        // this.accessToken = null;
-        // this.name = null;
-
         // Clear all props
         this.session_object.created_time = null;
         this.session_object.expire_time = null;

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment.prod';
 
+// Services
+import { SessionStorageService } from '@app/_services/session-storage.service';
+
 @Component({
     selector: 'app-todo-title',
     templateUrl: './todo-title.component.html',
@@ -17,10 +20,12 @@ export class TodoTitleComponent implements OnInit {
     syncState = 0;
     offlineState = true;
     showSubmenu = false;
+    profileName = '';
 
-    constructor() { }
+    constructor(private _sessionStorageService: SessionStorageService) { }
 
     ngOnInit() {
+        this.profileName = this._sessionStorageService.session_object.account.display_name;
     }
 
     changeSyncState() {
@@ -40,7 +45,7 @@ export class TodoTitleComponent implements OnInit {
             }
         }
 
-        // TODO: Do not forget to change this part and compare 'syncState' with 2, and btw change the definition of the variable
+        // TODO: Do not forget to change this part and compare 'syncState' with 2, and btw change the init value of the variable
         if (this.syncState === 0) {
             this.syncMessage = 'Syncing...';
         } else {
