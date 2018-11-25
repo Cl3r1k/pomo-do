@@ -4,10 +4,9 @@ import { ToDo } from '@app/_models/to-do';
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
-import { AuthService } from '@app/_services/auth.service';
 
 // Routes
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 // Components
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
@@ -42,6 +41,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     clearHoverState = false;
     toggleAllHoverState = false;
     hashTagToFilter = '';
+    showSubmenuState = false;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -49,9 +49,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     constructor(private _todoService: TodoService,
         private _route: ActivatedRoute,
         public dialog: MatDialog,
-        private _todoOrderService: TodoOrderService,
-        private _authService: AuthService,
-        private _router: Router) { }
+        private _todoOrderService: TodoOrderService) { }
 
     public ngOnInit() {
         this._route.data.pipe(
@@ -363,16 +361,27 @@ export class TodosComponent implements OnInit, OnDestroy {
         return isPresent;
     }
 
-    doSignOut() {
-        this._authService.doSignOut();
-        this._router.navigate(['/sign-in']);
-    }
-
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
+        // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         if (event.target.className === 'content-container') {
             console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+        } else {
+            // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         }
+
+        if (event.target.parentNode.className !== 'profile-menu' && event.target.parentNode.className !== 'profile-name') {
+            // console.log('click on profile-menu/profile-name');
+            if (this.showSubmenuState) {
+                this.showSubmenuState = false;
+            }
+        }
+
+    }
+
+    onSubmenuAppCall(subMenuAppState) {
+        console.log('subMenuAppState is: ', subMenuAppState);
+        this.showSubmenuState = subMenuAppState;
     }
 
 }

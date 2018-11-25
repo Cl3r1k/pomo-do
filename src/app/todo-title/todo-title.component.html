@@ -28,10 +28,10 @@
                 <a>{{profileName}}</a>
                 <span>[>]</span>
             </div>
-            <ul class='profile-submenu' [class.hide]='!showSubmenu'>
+            <ul class='profile-submenu' [class.hide]='!showSubmenuState'>
                 <li class='account-item'>Account</li>
                 <li class='settings-item'>Settings</li>
-                <li class='sign-out-item'>Sign out</li>
+                <li class='sign-out-item' (click)='doSignOut()'>Sign out</li>
             </ul>
         </li>
     </ul>

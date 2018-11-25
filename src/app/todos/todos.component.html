@@ -4,7 +4,7 @@
     </div>
 
     <div class='content-container'>
-        <app-todo-title></app-todo-title>
+        <app-todo-title [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubmenuAppCall($event)'></app-todo-title>
 
         <!-- src/app/todos/todos.component.ts -->
         <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
@@ -34,11 +34,6 @@
             </app-modal> -->
 
         </section>
-
-        <!-- Sign out button -->
-        <div class='sign-out-container'>
-            <button class='sign-out-button' (click)='doSignOut()'>Sign out</button>
-        </div>
     </div>
 
     <div class='footer-container'>

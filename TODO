@@ -16,9 +16,15 @@ Todos:
         Current:
 
             ☐ Change UI to prototype view
-                ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu]) <========================================================= CURRENT TASK
+                ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu])
                     ✔ 'Onhover' on 'AppName' should show current build @done(18-11-15 10:11)
-                    ☐ Submenu should be closed, if clicks outside it
+                    ✔ Submenu should be closed, if clicks outside it @done(18-11-24 10:56)
+                        ☐ Add tests for submenu close in 'TodosComponent' and 'TodoTitleComponent'
+                    ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
+                        ☐ Update tests for 'TodosComponent' with changed 'Sign out' part
+                    ☐ Update style for 'profile-name' arrow <========================================================= CURRENT TASK
+                    ☐ Add dialog for 'account-item'
+                    ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
                 ☐ Add component 'StatsComponent'

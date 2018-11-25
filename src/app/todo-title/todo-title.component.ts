@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+// Environments
 import { environment } from '@env/environment.prod';
+
+// Routes
+import { Router } from '@angular/router';
 
 // Services
 import { SessionStorageService } from '@app/_services/session-storage.service';
+import { AuthService } from '@app/_services/auth.service';
+
+// TODO: Rename component from 'app-todo-title' to '...'
 
 @Component({
     selector: 'app-todo-title',
@@ -16,13 +23,16 @@ export class TodoTitleComponent implements OnInit {
 
     consoleTextColorComponent = 'color: cadetblue;';
 
+    @Input() showSubmenuState: boolean;
+    @Output() subMenuStateAppTitleEmitter: EventEmitter<boolean> = new EventEmitter();
+
     syncMessage = 'Syncing...';
     syncState = 0;
     offlineState = true;
-    showSubmenu = false;
+    // showSubmenu = false;
     profileName = '';
 
-    constructor(private _sessionStorageService: SessionStorageService) { }
+    constructor(private _sessionStorageService: SessionStorageService, private _authService: AuthService, private _router: Router) { }
 
     ngOnInit() {
         this.profileName = this._sessionStorageService.session_object.account.display_name;
@@ -56,7 +66,13 @@ export class TodoTitleComponent implements OnInit {
     }
 
     toggleSubmenuState() {
-        this.showSubmenu = !this.showSubmenu;
+        this.showSubmenuState = !this.showSubmenuState;
+        this.subMenuStateAppTitleEmitter.emit(this.showSubmenuState);
+    }
+
+    doSignOut() {
+        this._authService.doSignOut();
+        this._router.navigate(['/sign-in']);
     }
 
 }

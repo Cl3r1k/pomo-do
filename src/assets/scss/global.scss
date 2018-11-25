@@ -59,14 +59,14 @@ body {
     grid-template-rows: auto 1fr auto;
     background-color: $gridConatinerColor;
     // grid-gap: 5px;
-    max-width: 960px;
+    // max-width: 960px;    // Global value for app
     margin: 0 auto;
     .header-container {
         grid-column: span 12;
         padding: 0px 30px;
         color: #0bb3b3;
         background-color: $gridHeaderColor;
-        height: 5px;
+        height: 1px;
         // .header-title {
         //     display: inline-block;
         // }
@@ -76,22 +76,6 @@ body {
         grid-column: span 12;
         background-color: $gridContentColor;
         // padding: 10px 0;
-        .sign-out-container {
-            display: grid;
-            grid-template-columns: repeat(16, 1fr);
-            margin-top: 50px;
-            background-color: #3cdada;
-            .sign-out-button {
-                grid-column: 6/12;
-                // display: block;
-                background-color: rgba(175, 47, 47, 0.15);
-                width: 100%;
-                padding: 16px;
-                font-size: 20px;
-                cursor: pointer;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-            }
-        }
     }
     .footer-container {
         text-align: center;
@@ -99,11 +83,16 @@ body {
         grid-column: span 12;
         // padding-top: 15px;
         // padding-bottom: 5px;
-        p {
-            font-weight: 600;
-        }
-        img {
-            vertical-align: middle;
+        div {
+            max-width: 960px;
+            margin: 0 auto;
+            p {
+                font-weight: 600;
+                background-color: antiquewhite;
+            }
+            img {
+                vertical-align: middle;
+            }
         }
     }
 }
