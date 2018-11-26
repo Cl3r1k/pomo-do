@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #90bedf; // For Debug
     border-bottom: 1px solid #cccccc;
-    color: #777;
+    color: #777777;
     font-size: 14px;
     max-width: 960px;
     margin: 0 auto;
@@ -77,8 +77,26 @@
                         color: inherit;
                         font-weight: 500;
                     }
-                    span {
-                        padding-left: 3px;
+                    .collapse-button {
+                        // padding: 3px;
+                        height: 18px;
+                        width: 18px;
+                        margin: auto;
+                        text-align: center;
+                        border: none;
+                        cursor: pointer;
+                        color: #777777;
+                        -webkit-transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        -ms-transform: rotate(90deg);
+                        -o-transform: rotate(90deg);
+                        transform: rotate(90deg);
+                        /* Mobile Safari */
+                        &:before {
+                            content: '❯';
+                            // font-size: 22px;
+                            padding: 3px;
+                        }
                     }
                 }
                 .profile-submenu {
