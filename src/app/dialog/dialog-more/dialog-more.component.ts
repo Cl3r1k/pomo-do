@@ -9,8 +9,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogMoreComponent implements OnInit {
 
+    private consoleTextColorComponent = 'color: cadetblue;';
+
     dataFromDialog: Object;
-    consoleTextColorComponent = 'color: cadetblue;';
 
     constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 

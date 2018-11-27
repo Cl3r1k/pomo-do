@@ -10,6 +10,12 @@ import { Router } from '@angular/router';
 import { SessionStorageService } from '@app/_services/session-storage.service';
 import { AuthService } from '@app/_services/auth.service';
 
+// Components
+import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
+
+// Modules
+import { MatDialog } from '@angular/material';
+
 // TODO: Rename component from 'app-todo-title' to '...'
 
 @Component({
@@ -29,10 +35,12 @@ export class TodoTitleComponent implements OnInit {
     syncMessage = 'Syncing...';
     syncState = 0;
     offlineState = true;
-    // showSubmenu = false;
     profileName = '';
 
-    constructor(private _sessionStorageService: SessionStorageService, private _authService: AuthService, private _router: Router) { }
+    constructor(private _sessionStorageService: SessionStorageService,
+        private _authService: AuthService,
+        private _router: Router,
+        private  dialog: MatDialog) { }
 
     ngOnInit() {
         this.profileName = this._sessionStorageService.session_object.account.display_name;
@@ -73,6 +81,26 @@ export class TodoTitleComponent implements OnInit {
     doSignOut() {
         this._authService.doSignOut();
         this._router.navigate(['/sign-in']);
+    }
+
+    showAccountDialog() {
+        // Call dialog 'Account'
+
+        const dataForDialog = {
+            Name: 'User',
+            Email: 'some_kind@mail.com'
+        };
+
+        const dialogRef = this.dialog.open(DialogAccountComponent, {
+            width: '400px',
+            data: {
+                data: dataForDialog
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            // User clicked 'x' or clicked outside of the dialog
+        });
     }
 
 }

@@ -22,8 +22,8 @@ Todos:
                         ☐ Add tests for submenu close in 'TodosComponent' and 'TodoTitleComponent'
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
                         ☐ Update tests for 'TodosComponent' with changed 'Sign out' part
-                    ☐ Update style for 'profile-name' arrow <========================================================= CURRENT TASK
-                    ☐ Add dialog for 'account-item'
+                    ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
+                    ☐ Add dialog for 'account-item' <========================================================= CURRENT TASK
                     ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
@@ -195,6 +195,7 @@ Todos:
                 ☐ Use behavior and styles from 'Material 'DragDropModule''
             ☐ Change styles in '_sign-in.scss' to grids
 
+        ☐ Remove 'sweet-alert' styles
         ☐ In app for header use not simple text but styled text with logo (like example `https://pomotodo.com/pro` top left corner)
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
         ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)

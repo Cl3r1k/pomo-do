@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
+// Routes
+import { ActivatedRoute } from '@angular/router';
+
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
-
-// Routes
-import { ActivatedRoute } from '@angular/router';
 
 // Components
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
@@ -380,7 +380,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     onSubmenuAppCall(subMenuAppState) {
-        console.log('subMenuAppState is: ', subMenuAppState);
+        // console.log('subMenuAppState is: ', subMenuAppState);
         this.showSubmenuState = subMenuAppState;
     }
 

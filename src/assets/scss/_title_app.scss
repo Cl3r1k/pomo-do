@@ -78,7 +78,6 @@
                         font-weight: 500;
                     }
                     .collapse-button {
-                        // padding: 3px;
                         height: 18px;
                         width: 18px;
                         margin: auto;
@@ -91,10 +90,8 @@
                         -ms-transform: rotate(90deg);
                         -o-transform: rotate(90deg);
                         transform: rotate(90deg);
-                        /* Mobile Safari */
                         &:before {
                             content: '❯';
-                            // font-size: 22px;
                             padding: 3px;
                         }
                     }

@@ -17,7 +17,8 @@ import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInComponent } from '@app/sign-in/sign-in.component';
+import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -74,7 +75,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         SafePipe,
         FilterTagPipe,
         TooltipDirective,
-        SignInComponent
+        SignInComponent,
+        DialogAccountComponent
     ],
     imports: [
         AppRoutingModule,
@@ -107,6 +109,6 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         JwtService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [DialogDeleteComponent, DialogMoreComponent]
+    entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent]
 })
 export class AppModule { }

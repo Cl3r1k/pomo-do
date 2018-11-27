@@ -16,7 +16,6 @@
                 <span (click)='changeSyncState()'>[OF]</span>
             </div>
             <div class='icon-online-container' *ngIf='!offlineState'>
-                <!-- Do not forget to reverse offlineState, and syncState values -->
                 <span class='success-sync' *ngIf='syncState === 0' (click)='changeSyncState()'>[SU]</span>
                 <span class='standby-sync' *ngIf='syncState === 1' (click)='changeSyncState()'>[ST]</span>
                 <span class='syncing-sync' *ngIf='syncState === 2' (click)='changeSyncState()'>[SY]</span>
@@ -26,11 +25,10 @@
         <li class='profile-menu'>
             <div class='profile-name' (click)='toggleSubmenuState()'>
                 <a>{{profileName}}</a>
-                <!-- <span class='arrow'></span> -->
                 <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
             </div>
             <ul class='profile-submenu' [class.hide]='!showSubmenuState'>
-                <li class='account-item'>Account</li>
+                <li class='account-item' (click)='showAccountDialog()'>Account</li>
                 <li class='settings-item'>Settings</li>
                 <li class='sign-out-item' (click)='doSignOut()'>Sign out</li>
             </ul>
