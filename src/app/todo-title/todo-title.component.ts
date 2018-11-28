@@ -40,7 +40,7 @@ export class TodoTitleComponent implements OnInit {
     constructor(private _sessionStorageService: SessionStorageService,
         private _authService: AuthService,
         private _router: Router,
-        private  dialog: MatDialog) { }
+        private _dialog: MatDialog) { }
 
     ngOnInit() {
         this.profileName = this._sessionStorageService.session_object.account.display_name;
@@ -91,11 +91,9 @@ export class TodoTitleComponent implements OnInit {
             Email: 'some_kind@mail.com'
         };
 
-        const dialogRef = this.dialog.open(DialogAccountComponent, {
-            width: '400px',
-            data: {
-                data: dataForDialog
-            }
+        const dialogRef = this._dialog.open(DialogAccountComponent, {
+            width: '500px',
+            data: dataForDialog
         });
 
         dialogRef.afterClosed().subscribe(result => {
