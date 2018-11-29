@@ -1,15 +1,29 @@
 .more-dialog {
+    font-family: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
     margin-top: -10px;
     .dialog-header {
+        color: #0b81b4;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         align-items: center;
-        h2 {
-            margin: 0px;
-            grid-column: span 11;
+        .account-trigger {
+            grid-column: 1/2;
+            cursor: pointer;
+            padding: 5px 15px 10px 15px;
+            &.active {
+                cursor: default;
+            }
+        }
+        .security-trigger {
+            grid-column: 3/4;
+            cursor: pointer;
+            padding: 5px 15px 10px 15px;
+            &.active {
+                cursor: default;
+            }
         }
         .dialog__close-btn {
-            grid-column: span 1;
+            grid-column: 12/13;
             justify-self: end;
             color: #777;
             font: 14px/100% arial, sans-serif;
@@ -22,10 +36,7 @@
         }
     }
     hr {
-        margin: 0px auto 20px auto;
-        &.bottom-line {
-            margin-bottom: 0px;
-        }
+        margin: 0px auto 0px auto;
     }
     .dialog-content {
         display: grid;
@@ -33,17 +44,11 @@
         align-items: center;
         padding-top: 10px;
         padding-bottom: 10px;
-        mat-form-field {
+        .name-container {
             grid-column: span 12;
-            textarea {
-                height: 70px;
-            }
         }
-        mat-checkbox {
-            grid-column: 1/6;
-        }
-        .datepicker {
-            grid-column: 6/13;
+        .email-container {
+            grid-column: span 12;
         }
     }
     .dialog-actions {
@@ -56,4 +61,9 @@
             }
         }
     }
+}
+
+.active {
+    color: #797979;
+    border-bottom: 3px solid #b4b4b4;
 }

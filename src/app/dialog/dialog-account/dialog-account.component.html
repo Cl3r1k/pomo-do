@@ -1,15 +1,16 @@
 <div class='more-dialog'>
     <div class='dialog-header'>
-        <h2 mat-dialog-title></h2>
+        <div class='account-trigger' [class.active]='isFirstTab' (click)='changeCurrentTabAccount(true)'>Account</div>
+        <div class='security-trigger' [class.active]='!isFirstTab' (click)='changeCurrentTabAccount(false)'>Security</div>
         <button (click)='dialogRef.close()' class='dialog__close-btn'></button>
     </div>
     <hr>
 
     <div mat-dialog-content class='dialog-content'>
-        <div>
+        <div class='name-container'>
             <p>Name: {{data.Name}}</p>
         </div>
-        <div>
+        <div class='email-container'>
             <p>Email: {{data.Email}}</p>
         </div>
 

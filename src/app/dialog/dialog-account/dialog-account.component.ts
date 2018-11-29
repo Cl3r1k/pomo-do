@@ -9,10 +9,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogAccountComponent implements OnInit {
 
+    isFirstTab = true;
+
     constructor(public dialogRef: MatDialogRef<DialogAccountComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
     ngOnInit() {
         console.log('data: ', this.data);
+    }
+
+    changeCurrentTabAccount(state: boolean) {
+        this.isFirstTab = state;
     }
 
 }
