@@ -10,6 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DialogAccountComponent implements OnInit {
 
     isFirstTab = true;
+    editNameState = false;
+    editEmailState = false;
 
     constructor(public dialogRef: MatDialogRef<DialogAccountComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
@@ -19,6 +21,14 @@ export class DialogAccountComponent implements OnInit {
 
     changeCurrentTabAccount(state: boolean) {
         this.isFirstTab = state;
+    }
+
+    setEditNameState(state) {
+        this.editNameState = state;
+    }
+
+    setEditEmailState(state) {
+        this.editEmailState = state;
     }
 
 }

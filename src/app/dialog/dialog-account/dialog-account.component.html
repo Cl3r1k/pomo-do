@@ -8,10 +8,22 @@
 
     <div mat-dialog-content class='dialog-content'>
         <div class='name-container'>
-            <p>Name: {{data.Name}}</p>
+            <span class='name-label'>Name</span>
+            <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
+            <mat-form-field class='name-new-value' *ngIf='editNameState'>
+                <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
+            </mat-form-field>
+            <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
+            <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
         </div>
         <div class='email-container'>
-            <p>Email: {{data.Email}}</p>
+            <span class='email-label'>Email</span>
+            <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
+            <mat-form-field class='email-new-value' *ngIf='editEmailState'>
+                <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+            </mat-form-field>
+            <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
+            <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
         </div>
 
         <!-- <mat-form-field>
