@@ -7,23 +7,38 @@
     <hr>
 
     <div mat-dialog-content class='dialog-content'>
-        <div class='name-container'>
-            <span class='name-label'>Name</span>
-            <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
-            <mat-form-field class='name-new-value' *ngIf='editNameState'>
-                <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
-            </mat-form-field>
-            <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
-            <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
+        <div class='account-tab-container' *ngIf='isFirstTab'>
+            <div class='name-container'>
+                <span class='name-label'>Name</span>
+                <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
+                <mat-form-field class='name-new-value' *ngIf='editNameState'>
+                    <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
+                </mat-form-field>
+                <!-- <input class='name-new-value' [(ngModel)]='data.Name' placeholder='Account Name' *ngIf='editNameState'> -->
+                <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
+                <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
+            </div>
+            <div class='email-container extra-padding-bottom'>
+                <span class='email-label'>Email</span>
+                <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
+                <mat-form-field class='email-new-value' *ngIf='editEmailState'>
+                    <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+                </mat-form-field>
+                <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
+                <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
+            </div>
         </div>
-        <div class='email-container'>
-            <span class='email-label'>Email</span>
-            <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
-            <mat-form-field class='email-new-value' *ngIf='editEmailState'>
-                <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+
+        <div class='security-tab-container' *ngIf='!isFirstTab'>
+            <mat-form-field class='current-password'>
+                <input matInput [(ngModel)]='currentPassword' placeholder='Current password'>
             </mat-form-field>
-            <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
-            <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
+            <mat-form-field class='new-password'>
+                <input matInput [(ngModel)]='newPassword' placeholder='New password'>
+            </mat-form-field>
+            <mat-form-field class='new-password-confirm'>
+                <input matInput [(ngModel)]='newPasswordConfirm' placeholder='Confirm password'>
+            </mat-form-field>
         </div>
 
         <!-- <mat-form-field>

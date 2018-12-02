@@ -88,7 +88,7 @@ export class TodoTitleComponent implements OnInit {
 
         const dataForDialog = {
             Name: 'User',
-            Email: 'some_kind@mail.com'
+            Email: 'some_kind_of@mail.com'
         };
 
         const dialogRef = this._dialog.open(DialogAccountComponent, {

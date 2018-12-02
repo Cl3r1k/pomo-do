@@ -12,6 +12,9 @@ export class DialogAccountComponent implements OnInit {
     isFirstTab = true;
     editNameState = false;
     editEmailState = false;
+    currentPassword = '';
+    newPassword = '';
+    newPasswordConfirm = '';
 
     constructor(public dialogRef: MatDialogRef<DialogAccountComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 

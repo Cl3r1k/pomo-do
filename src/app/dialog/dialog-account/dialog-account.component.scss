@@ -44,40 +44,54 @@
         align-items: start;
         padding-top: 10px;
         padding-bottom: 10px;
-        .name-container,
-        .email-container {
+        .account-tab-container {
             grid-column: span 12;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            padding: 15px 0px 15px 0px;
-            align-items: center;
-            .name-label,
-            .email-label {
-                grid-column: 1/4;
-                // margin: auto;
-                background-color: #44a2ca; // For Debug
-            }
-            .name-value,
-            .email-value {
-                grid-column: 4/9;
-                // margin: auto;
-                background-color: #44ca87; // For Debug
-            }
-            .name-new-value,
-            .email-new-value {
-                grid-column: 4/9;
-                // margin: auto;
-                background-color: #44ca56; // For Debug
-            }
-            .change-button {
-                grid-column: 9/11;
-                margin: auto;
-                background-color: #5aca44; // For Debug
-            }
-            .save-button {
-                grid-column: 9/11;
-                margin: auto;
-                background-color: #9bca44; // For Debug
+            align-items: start;
+            .name-container,
+            .email-container {
+                grid-column: span 12;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                padding: 5px 0px 5px 0px;
+                align-items: center;
+                &.extra-padding-bottom {
+                    padding-bottom: 20px;
+                }
+                .name-label,
+                .email-label {
+                    grid-column: 1/4;
+                    // margin: auto;
+                    background-color: #44a2ca; // For Debug
+                    padding: 15px 0 15px 0;
+                }
+                .name-value,
+                .email-value {
+                    grid-column: 4/9;
+                    // margin: auto;
+                    background-color: #44ca87; // For Debug
+                    overflow: hidden;
+                }
+                .name-new-value,
+                .email-new-value {
+                    grid-column: 4/9;
+                    // margin: auto;
+                    background-color: #44ca56; // For Debug
+                    height: 50px;
+                }
+                .change-button {
+                    grid-column: 9/11;
+                    margin: auto;
+                    background-color: #5aca44; // For Debug
+                    color: #797979;
+                    cursor: pointer;
+                }
+                .save-button {
+                    grid-column: 9/11;
+                    margin: auto;
+                    background-color: #9bca44; // For Debug
+                }
             }
         }
     }
