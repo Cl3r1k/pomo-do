@@ -23,7 +23,11 @@ Todos:
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
                         ☐ Update tests for 'TodosComponent' with changed 'Sign out' part
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
-                    ☐ Add dialog for 'account-item' <========================================================= CURRENT TASK
+                    ☐ Add dialog for 'account-item'
+                        ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
+                            ☐ For 'Name' and 'Email' use reactive forms
+                        ✔ Add 'Security' tab and elements @done(18-12-02 09:37)
+                            ☐ For passwords fields and 'Save' button use reactive forms <========================================================= CURRENT TASK
                     ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
@@ -161,6 +165,8 @@ Todos:
                 ✔ Fix errors in tests for 'TodoListComponent' @done(18-11-03 11:07)
             
 
+            ☐ Consider 'Auto-resizing <textarea> elements' in material to replace current auto-resize (look here `https://material.angular.io/components/input/overview#auto-resizing-code-lt-textarea-gt-code-elements`)
+            
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
 
         ☐ Fix cursor type for contaners (example: hover mouse between 'pinned-list' and 'unpinned-list', or between 'pinned-list' and input field for new todo)

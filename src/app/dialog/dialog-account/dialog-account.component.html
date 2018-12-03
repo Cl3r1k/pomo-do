@@ -13,8 +13,8 @@
                 <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
                 <mat-form-field class='name-new-value' *ngIf='editNameState'>
                     <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
+                    <mat-hint>Errors appear instantly!</mat-hint>
                 </mat-form-field>
-                <!-- <input class='name-new-value' [(ngModel)]='data.Name' placeholder='Account Name' *ngIf='editNameState'> -->
                 <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
                 <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
             </div>
@@ -23,6 +23,7 @@
                 <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
                 <mat-form-field class='email-new-value' *ngIf='editEmailState'>
                     <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+                    <mat-hint>Errors appear instantly!</mat-hint>
                 </mat-form-field>
                 <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
                 <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
@@ -30,43 +31,26 @@
         </div>
 
         <div class='security-tab-container' *ngIf='!isFirstTab'>
-            <mat-form-field class='current-password'>
-                <input matInput [(ngModel)]='currentPassword' placeholder='Current password'>
-            </mat-form-field>
-            <mat-form-field class='new-password'>
-                <input matInput [(ngModel)]='newPassword' placeholder='New password'>
-            </mat-form-field>
-            <mat-form-field class='new-password-confirm'>
-                <input matInput [(ngModel)]='newPasswordConfirm' placeholder='Confirm password'>
-            </mat-form-field>
+            <form [formGroup]='formPassword' class='form-password-container'>
+                <mat-form-field class='current-password'>
+                    <input type='password' matInput [(ngModel)]='currentPassword' placeholder='Current password'>
+                    <mat-hint>Errors appear instantly!</mat-hint>
+                </mat-form-field>
+                <mat-form-field class='new-password'>
+                    <input type='password' matInput [(ngModel)]='newPassword' placeholder='New password'>
+                    <mat-hint>Errors appear instantly!</mat-hint>
+                </mat-form-field>
+                <mat-form-field class='new-password-confirm extra-padding-bottom'>
+                    <input type='password' matInput [(ngModel)]='newPasswordConfirm' placeholder='Confirm password'>
+                    <mat-hint>Errors appear instantly!</mat-hint>
+                </mat-form-field>
+            </form>
         </div>
-
-        <!-- <mat-form-field>
-            <input matInput [(ngModel)]='data.data.todoCost' placeholder='Costed todos'>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput [(ngModel)]='data.data.estimatedTodos' placeholder='Estimated todos'>
-        </mat-form-field> -->
-
-        <!-- <mat-checkbox [(ngModel)]='data.data.remind'>Remind me at: </mat-checkbox> -->
-        <!-- <mat-form-field class='datepicker'>
-            <input matInput [matDatepicker]='picker' placeholder='Choose a date' [disabled]='!data.data.remind' [(ngModel)]='data.data.remindTime'>
-            <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
-
-        <!-- <mat-form-field>
-            <textarea matInput [(ngModel)]='data.data.note' placeholder='Enter note for the todo'></textarea>
-        </mat-form-field> -->
     </div>
 
     <hr class='bottom-line'>
     <div mat-dialog-actions class='dialog-actions'>
-        <!-- <button mat-raised-button class='dialog__confirm-save-btn'>Upgrade</button> -->
-        <a href='/pro' target='_blank' mat-raised-button>Upgrade</a>
-        <!-- This fills the remaining space of the current row -->
-        <!-- <span class='fill-space'></span>
-        <button mat-raised-button (click)='onConfirmSave()' class='dialog__confirm-save-btn' cdkFocusRegionstart>Save</button> -->
+        <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
+        <button mat-raised-button (click)='onConfirmSave()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button>
     </div>
 </div>
