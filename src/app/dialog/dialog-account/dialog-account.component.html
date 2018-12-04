@@ -33,17 +33,19 @@
         <div class='security-tab-container' *ngIf='!isFirstTab'>
             <form [formGroup]='formPassword' class='form-password-container'>
                 <mat-form-field class='current-password'>
-                    <input type='password' matInput [(ngModel)]='currentPassword' placeholder='Current password'>
-                    <mat-hint>Errors appear instantly!</mat-hint>
+                    <input type='password' matInput formControlName='password' placeholder='Current password'>
+                    <mat-error *ngIf="formPassword.get('password').invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password'>
-                    <input type='password' matInput [(ngModel)]='newPassword' placeholder='New password'>
+                    <input type='password' matInput formControlName='passwordNew' placeholder='New password'>
                     <mat-hint>Errors appear instantly!</mat-hint>
                 </mat-form-field>
                 <mat-form-field class='new-password-confirm extra-padding-bottom'>
-                    <input type='password' matInput [(ngModel)]='newPasswordConfirm' placeholder='Confirm password'>
+                    <input type='password' matInput formControlName='passwordNewConfirm' placeholder='Confirm password'>
                     <mat-hint>Errors appear instantly!</mat-hint>
                 </mat-form-field>
+
+                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button>
             </form>
         </div>
     </div>
@@ -51,6 +53,6 @@
     <hr class='bottom-line'>
     <div mat-dialog-actions class='dialog-actions'>
         <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
-        <button mat-raised-button (click)='onConfirmSave()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button>
+        <!-- <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button> -->
     </div>
 </div>

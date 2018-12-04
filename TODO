@@ -28,6 +28,7 @@ Todos:
                             ☐ For 'Name' and 'Email' use reactive forms
                         ✔ Add 'Security' tab and elements @done(18-12-02 09:37)
                             ☐ For passwords fields and 'Save' button use reactive forms <========================================================= CURRENT TASK
+                                ☐ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`)
                     ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

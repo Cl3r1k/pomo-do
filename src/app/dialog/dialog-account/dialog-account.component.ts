@@ -10,15 +10,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogAccountComponent implements OnInit {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     public formPassword: FormGroup;
 
     isFirstTab = true;
     editNameState = false;
     editEmailState = false;
-    currentPassword = '';
-    newPassword = '';
-    newPasswordConfirm = '';
     formValid = false;
+    showPasswordsInputErrors = false;
 
     constructor(
         public dialogRef: MatDialogRef<DialogAccountComponent>,
@@ -48,6 +48,18 @@ export class DialogAccountComponent implements OnInit {
         this.editEmailState = state;
     }
 
-    // TODO: Use reactive forms for passwords fields
+    changePassword() {
+
+        if (this.formPassword.invalid) {
+            this.showPasswordsInputErrors = true;
+            return;
+        }
+
+        console.log('%cPassword changes!', this.consoleTextColorComponent);
+    }
+
+    getErrorMessage() {
+        return this.formPassword.get('password').hasError('required') ? 'You must enter a value' : '';
+    }
 
 }
