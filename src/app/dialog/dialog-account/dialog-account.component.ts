@@ -19,6 +19,9 @@ export class DialogAccountComponent implements OnInit {
     editEmailState = false;
     formValid = false;
     showPasswordsInputErrors = false;
+    passwordInputError = false;
+    passwordNewInputError = false;
+    passwordNewConfirmInputError = false;
 
     constructor(
         public dialogRef: MatDialogRef<DialogAccountComponent>,
@@ -38,6 +41,7 @@ export class DialogAccountComponent implements OnInit {
 
     changeCurrentTabAccount(state: boolean) {
         this.isFirstTab = state;
+        this.formValid = !this.formValid;
     }
 
     setEditNameState(state) {
@@ -58,8 +62,42 @@ export class DialogAccountComponent implements OnInit {
         console.log('%cPassword changes!', this.consoleTextColorComponent);
     }
 
-    getErrorMessage() {
-        return this.formPassword.get('password').hasError('required') ? 'You must enter a value' : '';
+    getErrorMessage(sender: string) {
+        let errorMessage = '';
+
+        if (sender === 'password') {
+            errorMessage = this.formPassword.get('password').hasError('required') ? 'You must enter a value' : '';
+            this.passwordInputError = true;
+        }
+
+        if (sender === 'passwordNew') {
+            errorMessage = this.formPassword.get('passwordNew').hasError('required') ? 'You must enter a value' : '';
+            this.passwordNewInputError = true;
+        }
+
+        if (sender === 'passwordNewConfirm') {
+            errorMessage = this.formPassword.get('passwordNewConfirm').hasError('required') ? 'You must enter a value' : '';
+            this.passwordNewConfirmInputError = true;
+        }
+
+        if (sender === 'passwordNew' || sender === 'passwordNewConfirm') {
+            if (this.formPassword.get('passwordNew').valid && this.formPassword.get('passwordNewConfirm').valid) {
+                if (this.formPassword.get('passwordNew').value !== this.formPassword.get('passwordNewConfirm').value) {
+                    errorMessage = 'Password and confirm not equal';
+                    this.passwordNewInputError = true;
+                    this.passwordNewConfirmInputError = true;
+                }
+            }
+        }
+
+        if (!this.passwordInputError && !this.passwordNewInputError && !this.passwordNewConfirmInputError) {
+            console.log('%cformValid is TRUE', this.consoleTextColorComponent);
+            this.formValid = true;
+        } else {
+            this.formValid = false;
+        }
+
+        return errorMessage;
     }
 
 }

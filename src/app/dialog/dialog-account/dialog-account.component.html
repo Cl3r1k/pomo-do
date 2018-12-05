@@ -34,18 +34,18 @@
             <form [formGroup]='formPassword' class='form-password-container'>
                 <mat-form-field class='current-password'>
                     <input type='password' matInput formControlName='password' placeholder='Current password'>
-                    <mat-error *ngIf="formPassword.get('password').invalid">{{getErrorMessage()}}</mat-error>
+                    <mat-error *ngIf="passwordInputError">{{getErrorMessage('password')}}</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password'>
                     <input type='password' matInput formControlName='passwordNew' placeholder='New password'>
-                    <mat-hint>Errors appear instantly!</mat-hint>
+                    <mat-error *ngIf="passwordNewInputError">{{getErrorMessage('passwordNew')}}</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password-confirm extra-padding-bottom'>
                     <input type='password' matInput formControlName='passwordNewConfirm' placeholder='Confirm password'>
-                    <mat-hint>Errors appear instantly!</mat-hint>
+                    <mat-error *ngIf="passwordNewConfirmInputError">{{getErrorMessage('passwordNewConfirm')}}</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button>
+                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formPassword.valid' *ngIf='!isFirstTab'>Save</button>
             </form>
         </div>
     </div>
