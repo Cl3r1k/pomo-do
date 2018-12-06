@@ -62,42 +62,43 @@ export class DialogAccountComponent implements OnInit {
         console.log('%cPassword changes!', this.consoleTextColorComponent);
     }
 
-    getErrorMessage(sender: string) {
-        let errorMessage = '';
+    // TODO: Write custom validation
+    // getErrorMessage(sender: string) {
+    //     let errorMessage = '';
 
-        if (sender === 'password') {
-            errorMessage = this.formPassword.get('password').hasError('required') ? 'You must enter a value' : '';
-            this.passwordInputError = true;
-        }
+    //     if (sender === 'password') {
+    //         errorMessage = this.formPassword.get('password').hasError('required') ? 'You must enter a value' : '';
+    //         this.passwordInputError = true;
+    //     }
 
-        if (sender === 'passwordNew') {
-            errorMessage = this.formPassword.get('passwordNew').hasError('required') ? 'You must enter a value' : '';
-            this.passwordNewInputError = true;
-        }
+    //     if (sender === 'passwordNew') {
+    //         errorMessage = this.formPassword.get('passwordNew').hasError('required') ? 'You must enter a value' : '';
+    //         this.passwordNewInputError = true;
+    //     }
 
-        if (sender === 'passwordNewConfirm') {
-            errorMessage = this.formPassword.get('passwordNewConfirm').hasError('required') ? 'You must enter a value' : '';
-            this.passwordNewConfirmInputError = true;
-        }
+    //     if (sender === 'passwordNewConfirm') {
+    //         errorMessage = this.formPassword.get('passwordNewConfirm').hasError('required') ? 'You must enter a value' : '';
+    //         this.passwordNewConfirmInputError = true;
+    //     }
 
-        if (sender === 'passwordNew' || sender === 'passwordNewConfirm') {
-            if (this.formPassword.get('passwordNew').valid && this.formPassword.get('passwordNewConfirm').valid) {
-                if (this.formPassword.get('passwordNew').value !== this.formPassword.get('passwordNewConfirm').value) {
-                    errorMessage = 'Password and confirm not equal';
-                    this.passwordNewInputError = true;
-                    this.passwordNewConfirmInputError = true;
-                }
-            }
-        }
+    //     if (sender === 'passwordNew' || sender === 'passwordNewConfirm') {
+    //         if (this.formPassword.get('passwordNew').valid && this.formPassword.get('passwordNewConfirm').valid) {
+    //             if (this.formPassword.get('passwordNew').value !== this.formPassword.get('passwordNewConfirm').value) {
+    //                 errorMessage = 'Password and confirm not equal';
+    //                 this.passwordNewInputError = true;
+    //                 this.passwordNewConfirmInputError = true;
+    //             }
+    //         }
+    //     }
 
-        if (!this.passwordInputError && !this.passwordNewInputError && !this.passwordNewConfirmInputError) {
-            console.log('%cformValid is TRUE', this.consoleTextColorComponent);
-            this.formValid = true;
-        } else {
-            this.formValid = false;
-        }
+    //     if (!this.passwordInputError && !this.passwordNewInputError && !this.passwordNewConfirmInputError) {
+    //         console.log('%cformValid is TRUE', this.consoleTextColorComponent);
+    //         this.formValid = true;
+    //     } else {
+    //         this.formValid = false;
+    //     }
 
-        return errorMessage;
-    }
+    //     return errorMessage;
+    // }
 
 }
