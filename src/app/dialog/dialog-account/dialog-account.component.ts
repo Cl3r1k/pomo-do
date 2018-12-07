@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// Utils
+import { PasswordValidation } from '@app/_common/password-validation';
+
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -29,9 +32,11 @@ export class DialogAccountComponent implements OnInit {
         private _formBuilder: FormBuilder
     ) {
         this.formPassword = _formBuilder.group({
+            passwordCurrent: ['', Validators.required],
             password: ['', Validators.required],
-            passwordNew: ['', Validators.required],
-            passwordNewConfirm: ['', Validators.required]
+            passwordConfirm: ['', Validators.required]
+        }, {
+            validator: PasswordValidation.validate.bind(this)
         });
     }
 
@@ -53,6 +58,8 @@ export class DialogAccountComponent implements OnInit {
     }
 
     changePassword() {
+
+        console.log('%cformPassword.errors: ', this.consoleTextColorComponent, this.formPassword.errors);
 
         if (this.formPassword.invalid) {
             this.showPasswordsInputErrors = true;

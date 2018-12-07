@@ -33,17 +33,17 @@
         <div class='security-tab-container' *ngIf='!isFirstTab'>
             <form [formGroup]='formPassword' class='form-password-container'>
                 <mat-form-field class='current-password'>
-                    <input type='password' matInput formControlName='password' placeholder='Current password'>
-                    <mat-error *ngIf="formPassword.get('password').invalid && formPassword.get('password').touched">You must enter a value</mat-error>
+                    <input type='password' matInput formControlName='passwordCurrent' placeholder='Current password' autocomplete='passwordCurrent'>
+                    <mat-error *ngIf="formPassword.get('passwordCurrent').invalid && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password'>
-                    <input type='password' matInput formControlName='passwordNew' placeholder='New password'>
-                    <mat-error *ngIf="formPassword.get('passwordNew').invalid && formPassword.get('passwordNew').touched">You must enter a value</mat-error>
+                    <input type='password' matInput formControlName='password' placeholder='New password' autocomplete='new-password'>
+                    <mat-error *ngIf="formPassword.get('password').invalid && formPassword.get('password').touched">You must enter a value</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password-confirm extra-padding-bottom'>
-                    <input type='password' matInput formControlName='passwordNewConfirm' placeholder='Confirm password'>
-                    <mat-error *ngIf="formPassword.get('passwordNewConfirm').invalid && formPassword.get('passwordNewConfirm').touched">You must enter a value</mat-error>
-                    <mat-error *ngIf="formPassword.get('passwordNewConfirm').invalid && formPassword.get('passwordNewConfirm').touched">Password not match</mat-error>
+                    <input type='password' matInput formControlName='passwordConfirm' placeholder='Confirm password' autocomplete='new-password'>
+                    <mat-error *ngIf="formPassword.get('passwordConfirm').invalid && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
+                    <mat-error *ngIf="formPassword.errors?.doesMatchPassword">Password does not match</mat-error>
                 </mat-form-field>
 
                 <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formPassword.valid' *ngIf='!isFirstTab'>Save</button>
