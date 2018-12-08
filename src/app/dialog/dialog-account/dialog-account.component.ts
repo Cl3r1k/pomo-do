@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Utils
-import { PasswordValidation } from '@app/_common/password-validation';
+import { MatchValidation } from '@app/_common/match-validation';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -36,7 +36,7 @@ export class DialogAccountComponent implements OnInit {
             password: ['', Validators.required],
             passwordConfirm: ['', Validators.required]
         }, {
-            validator: PasswordValidation.validate.bind(this)
+            validator: MatchValidation.validate('password', 'passwordConfirm')
         });
     }
 
