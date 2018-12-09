@@ -2,7 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Utils
-import { MatchValidation } from '@app/_common/match-validation';
+// import { MatchValidation } from '@app/_common/match-validation';
+import { MustMatch } from '@app/_common/match-validation';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -36,8 +37,9 @@ export class DialogAccountComponent implements OnInit {
             password: ['', Validators.required],
             passwordConfirm: ['', Validators.required]
         }, {
-            validator: MatchValidation.validate('password', 'passwordConfirm')
-        });
+                // validator: MatchValidation.validate('password', 'passwordConfirm')
+                validator: MustMatch('password', 'passwordConfirm')
+            });
     }
 
     ngOnInit() {
@@ -60,6 +62,8 @@ export class DialogAccountComponent implements OnInit {
     changePassword() {
 
         console.log('%cformPassword.errors: ', this.consoleTextColorComponent, this.formPassword.errors);
+
+        console.log('%cfrmPwd.ctls.passdConfirm.err: ', this.consoleTextColorComponent, this.formPassword.controls.passwordConfirm.errors);
 
         if (this.formPassword.invalid) {
             this.showPasswordsInputErrors = true;

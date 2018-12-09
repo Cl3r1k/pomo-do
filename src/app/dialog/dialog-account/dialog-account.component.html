@@ -38,15 +38,16 @@
                 </mat-form-field>
                 <mat-form-field class='new-password'>
                     <input type='password' matInput formControlName='password' placeholder='New password' autocomplete='new-password'>
-                    <mat-error *ngIf="formPassword.get('password').invalid && formPassword.get('password').touched">You must enter a value</mat-error>
+                    <mat-error *ngIf="formPassword.get('password').hasError('required') && formPassword.get('password').touched">You must enter a value</mat-error>
                 </mat-form-field>
                 <mat-form-field class='new-password-confirm extra-padding-bottom'>
                     <input type='password' matInput formControlName='passwordConfirm' placeholder='Confirm password' autocomplete='new-password'>
-                    <mat-error *ngIf="formPassword.get('passwordConfirm').invalid && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
-                    <mat-error *ngIf="formPassword.errors?.doesMatchPassword">Password does not match</mat-error>
+                    <mat-error *ngIf="formPassword.get('passwordConfirm').hasError('required') && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
+                    <!-- <mat-error *ngIf="formPassword.controls.passwordConfirm.errors.mustMatch">Password does not match</mat-error> -->
+                    <div *ngIf="formPassword.controls.passwordConfirm.errors.mustMatch">Passwords must match</div>
                 </mat-form-field>
 
-                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formPassword.valid' *ngIf='!isFirstTab'>Save</button>
+                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='false' *ngIf='!isFirstTab'>Save</button>
             </form>
         </div>
     </div>
