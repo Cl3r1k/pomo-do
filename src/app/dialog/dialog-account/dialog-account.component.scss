@@ -99,7 +99,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: start;
-            .form-password-container {
+            .password-container {
                 grid-column: span 12;
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);

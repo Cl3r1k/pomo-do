@@ -1,61 +1,60 @@
-<div class='more-dialog'>
-    <div class='dialog-header'>
-        <div class='account-trigger' [class.active]='isFirstTab' (click)='changeCurrentTabAccount(true)'>Account</div>
-        <div class='security-trigger' [class.active]='!isFirstTab' (click)='changeCurrentTabAccount(false)'>Security</div>
-        <button (click)='dialogRef.close()' class='dialog__close-btn'></button>
-    </div>
-    <hr>
+<form [formGroup]='formPassword'>
+    <div class='more-dialog'>
+        <div class='dialog-header'>
+            <div class='account-trigger' [class.active]='isFirstTab' (click)='changeCurrentTabAccount(true)'>Account</div>
+            <div class='security-trigger' [class.active]='!isFirstTab' (click)='changeCurrentTabAccount(false)'>Security</div>
+            <button (click)='dialogRef.close()' class='dialog__close-btn'></button>
+        </div>
+        <hr>
 
-    <div mat-dialog-content class='dialog-content'>
-        <div class='account-tab-container' *ngIf='isFirstTab'>
-            <div class='name-container'>
-                <span class='name-label'>Name</span>
-                <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
-                <mat-form-field class='name-new-value' *ngIf='editNameState'>
-                    <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
-                    <mat-hint>Errors appear instantly!</mat-hint>
-                </mat-form-field>
-                <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
-                <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
+        <div mat-dialog-content class='dialog-content'>
+            <div class='account-tab-container' *ngIf='isFirstTab'>
+                <div class='name-container'>
+                    <span class='name-label'>Name</span>
+                    <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
+                    <mat-form-field class='name-new-value' *ngIf='editNameState'>
+                        <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                    </mat-form-field>
+                    <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
+                    <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
+                </div>
+                <div class='email-container extra-padding-bottom'>
+                    <span class='email-label'>Email</span>
+                    <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
+                    <mat-form-field class='email-new-value' *ngIf='editEmailState'>
+                        <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+                        <mat-hint>Errors appear instantly!</mat-hint>
+                    </mat-form-field>
+                    <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
+                    <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
+                </div>
             </div>
-            <div class='email-container extra-padding-bottom'>
-                <span class='email-label'>Email</span>
-                <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
-                <mat-form-field class='email-new-value' *ngIf='editEmailState'>
-                    <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
-                    <mat-hint>Errors appear instantly!</mat-hint>
-                </mat-form-field>
-                <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
-                <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
+
+            <div class='security-tab-container' *ngIf='!isFirstTab'>
+                <div class='password-container'>
+                    <mat-form-field class='current-password'>
+                        <input type='password' matInput formControlName='passwordCurrent' placeholder='Current password' autocomplete='passwordCurrent'>
+                        <mat-error *ngIf="formPassword.get('passwordCurrent').invalid && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class='new-password'>
+                        <input type='password' matInput formControlName='password' placeholder='New password' autocomplete='new-password'>
+                        <mat-error *ngIf="formPassword.get('password').hasError('required') && formPassword.get('password').touched">You must enter a value</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class='new-password-confirm extra-padding-bottom'>
+                        <input type='password' matInput formControlName='passwordConfirm' placeholder='Confirm password' autocomplete='new-password'>
+                        <mat-error *ngIf="formPassword.get('passwordConfirm').hasError('required') && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
+                        <mat-error *ngIf="formPassword.controls.passwordConfirm.errors?.mustMatch && formPassword.get('passwordConfirm').touched">Password does not match</mat-error>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
 
-        <div class='security-tab-container' *ngIf='!isFirstTab'>
-            <form [formGroup]='formPassword' class='form-password-container'>
-                <mat-form-field class='current-password'>
-                    <input type='password' matInput formControlName='passwordCurrent' placeholder='Current password' autocomplete='passwordCurrent'>
-                    <mat-error *ngIf="formPassword.get('passwordCurrent').invalid && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
-                </mat-form-field>
-                <mat-form-field class='new-password'>
-                    <input type='password' matInput formControlName='password' placeholder='New password' autocomplete='new-password'>
-                    <mat-error *ngIf="formPassword.get('password').hasError('required') && formPassword.get('password').touched">You must enter a value</mat-error>
-                </mat-form-field>
-                <mat-form-field class='new-password-confirm extra-padding-bottom'>
-                    <input type='password' matInput formControlName='passwordConfirm' placeholder='Confirm password' autocomplete='new-password'>
-                    <mat-error *ngIf="formPassword.get('passwordConfirm').hasError('required') && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
-                    <!-- <mat-error *ngIf="formPassword.controls.passwordConfirm.errors.mustMatch">Password does not match</mat-error> -->
-                    <div *ngIf="formPassword.controls.passwordConfirm.errors.mustMatch">Passwords must match</div>
-                </mat-form-field>
-
-                <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='false' *ngIf='!isFirstTab'>Save</button>
-            </form>
+        <hr class='bottom-line'>
+        <div mat-dialog-actions class='dialog-actions'>
+            <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
+            <!-- for common form look example `www.codiodes.com/match-password-validation/` -->
+            <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formPassword.valid' *ngIf='!isFirstTab'>Save</button>
         </div>
     </div>
-
-    <hr class='bottom-line'>
-    <div mat-dialog-actions class='dialog-actions'>
-        <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
-        <!-- for common form look example `www.codiodes.com/match-password-validation/` -->
-        <!-- <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formValid' *ngIf='!isFirstTab'>Save</button> -->
-    </div>
-</div>
+</form>
