@@ -11,31 +11,32 @@
             <div class='account-tab-container' *ngIf='isFirstTab'>
                 <div class='name-container'>
                     <span class='name-label'>Name</span>
-                    <span class='name-value' *ngIf='!editNameState'>{{data.Name}}</span>
+                    <span class='name-value' *ngIf='!editNameState'>{{formPassword.get('name').value}}</span>
                     <mat-form-field class='name-new-value' *ngIf='editNameState'>
-                        <input matInput [(ngModel)]='data.Name' placeholder='Account Name'>
+                        <input type='text' matInput formControlName='name' placeholder='Account Name' autocomplete='name'>
                         <mat-hint>Errors appear instantly!</mat-hint>
                     </mat-form-field>
-                    <button class='change-button' (click)='setEditNameState(true)' *ngIf='!editNameState'>Change</button>
-                    <button mat-raised-button class='save-button' (click)='setEditNameState(false)' *ngIf='editNameState'>Save</button>
+                    <button class='change-button' (click)='changeName(true)' *ngIf='!editNameState'>Change</button>
+                    <button mat-raised-button class='save-button' (click)='changeName(false)' *ngIf='editNameState'>Save</button>
                 </div>
                 <div class='email-container extra-padding-bottom'>
                     <span class='email-label'>Email</span>
-                    <span class='email-value' *ngIf='!editEmailState'>{{data.Email}}</span>
+                    <span class='email-value' *ngIf='!editEmailState'>{{formPassword.get('email').value}}</span>
                     <mat-form-field class='email-new-value' *ngIf='editEmailState'>
-                        <input matInput [(ngModel)]='data.Email' placeholder='Account Email'>
+                        <input type='text' matInput formControlName='email' placeholder='Account Email' autocomplete='email'>
                         <mat-hint>Errors appear instantly!</mat-hint>
                     </mat-form-field>
-                    <button class='change-button' (click)='setEditEmailState(true)' *ngIf='!editEmailState'>Change</button>
-                    <button mat-raised-button class='save-button' (click)='setEditEmailState(false)' *ngIf='editEmailState'>Save</button>
+                    <button class='change-button' (click)='changeEmail(true)' *ngIf='!editEmailState'>Change</button>
+                    <button mat-raised-button class='save-button' (click)='changeEmail(false)' *ngIf='editEmailState'>Save</button>
                 </div>
             </div>
 
             <div class='security-tab-container' *ngIf='!isFirstTab'>
                 <div class='password-container'>
+                    <input type='text' formControlName='passwordCurrent' placeholder='Account Name' autocomplete='name' style='display: none;'>
                     <mat-form-field class='current-password'>
                         <input type='password' matInput formControlName='passwordCurrent' placeholder='Current password' autocomplete='passwordCurrent'>
-                        <mat-error *ngIf="formPassword.get('passwordCurrent').invalid && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
+                        <mat-error *ngIf="formPassword.get('passwordCurrent').hasError('required') && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
                     </mat-form-field>
                     <mat-form-field class='new-password'>
                         <input type='password' matInput formControlName='password' placeholder='New password' autocomplete='new-password'>

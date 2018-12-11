@@ -32,6 +32,8 @@ export class DialogAccountComponent implements OnInit {
         private _formBuilder: FormBuilder
     ) {
         this.formPassword = _formBuilder.group({
+            name: ['', Validators.required],
+            email: ['', Validators.required],
             passwordCurrent: ['', Validators.required],
             password: ['', Validators.required],
             passwordConfirm: ['', Validators.required]
@@ -41,7 +43,12 @@ export class DialogAccountComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('data: ', this.data);
+        console.log('%cdata: ', this.consoleTextColorComponent, this.data);
+
+        this.formPassword.controls['name'].setValue(this.data['Name']);
+        this.formPassword.controls['email'].setValue(this.data['Email']);
+
+        // console.log('%cthis.formPassword.controls: ', this.consoleTextColorComponent, this.formPassword.controls);
     }
 
     changeCurrentTabAccount(state: boolean) {
@@ -49,12 +56,16 @@ export class DialogAccountComponent implements OnInit {
         this.formValid = !this.formValid;
     }
 
-    setEditNameState(state) {
+    changeName(state) {
         this.editNameState = state;
+
+        // TODO: Perform request to backEnd and change 'name'
     }
 
-    setEditEmailState(state) {
+    changeEmail(state) {
         this.editEmailState = state;
+
+        // TODO: Perform request to backEnd and change 'email'
     }
 
     changePassword() {

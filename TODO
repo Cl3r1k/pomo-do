@@ -25,11 +25,14 @@ Todos:
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
                     ☐ Add dialog for 'account-item'
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
-                            ☐ For 'Name' and 'Email' use reactive forms
+                            ☐ For 'Name' and 'Email' use reactive forms <========================================================= CURRENT TASK
+                                ☐ Wrap 'name' and 'email' to subform (look example `http://www.codiodes.com/match-password-validation/`)
+                            ☐ Add validation for 'email'
                         ✔ Add 'Security' tab and elements @done(18-12-02 09:37)
-                            ☐ For passwords fields and 'Save' button use reactive forms <========================================================= CURRENT TASK
-                            ☐ Add tests for 'PasswordValidation'
+                            ✔ For passwords fields and 'Save' button use reactive forms @done(18-12-10 10:00)                                
+                                ☐ Add validation length for password
                                 ☐ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`)
+                            ☐ Add tests for 'MatchValidation'
                     ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
@@ -37,6 +40,9 @@ Todos:
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
             
             ☐ Change urls (path/routes) from 'todos' to 'app'
+
+            ☐ Take a look, why 'Created session_object:' shows twice on restart in console
+                ☐ And take a look, why 'Created session_object:' called even with clean start in incognito mode
 
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
