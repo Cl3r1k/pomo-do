@@ -25,14 +25,14 @@ Todos:
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
                     ☐ Add dialog for 'account-item'
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
-                            ☐ For 'Name' and 'Email' use reactive forms <========================================================= CURRENT TASK
-                                ☐ Wrap 'name' and 'email' to subform (look example `http://www.codiodes.com/match-password-validation/`)
-                            ☐ Add validation for 'email'
+                            ✔ For 'Name' and 'Email' fields use reactive forms @done(18-12-11 09:10)
+                            ✔ Add validation for 'email' field @done(18-12-11 09:23)
                         ✔ Add 'Security' tab and elements @done(18-12-02 09:37)
                             ✔ For passwords fields and 'Save' button use reactive forms @done(18-12-10 10:00)                                
-                                ☐ Add validation length for password
-                                ☐ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`)
-                            ☐ Add tests for 'MatchValidation'
+                                ✔ Add validation length for password field @done(18-12-11 09:27)
+                                ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
+                        ☐ Add tests for 'MatchValidation' <========================================================= CURRENT TASK
+
                     ☐ Add dialog for 'settings-item'
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

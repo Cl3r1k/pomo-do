@@ -25,6 +25,8 @@ export class DialogAccountComponent implements OnInit {
     passwordInputError = false;
     passwordNewInputError = false;
     passwordNewConfirmInputError = false;
+    hidePassword = true;
+    hidePasswordConfirm = true;
 
     constructor(
         public dialogRef: MatDialogRef<DialogAccountComponent>,
@@ -33,9 +35,9 @@ export class DialogAccountComponent implements OnInit {
     ) {
         this.formPassword = _formBuilder.group({
             name: ['', Validators.required],
-            email: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
             passwordCurrent: ['', Validators.required],
-            password: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]],
             passwordConfirm: ['', Validators.required]
         }, {
                 validator: MatchValidation.validate('password', 'passwordConfirm')

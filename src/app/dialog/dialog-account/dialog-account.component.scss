@@ -63,34 +63,34 @@
                 .email-label {
                     grid-column: 1/4;
                     // margin: auto;
-                    background-color: #44a2ca; // For Debug
+                    // background-color: #44a2ca; // For Debug
                     padding: 10px 0 10px 0;
                 }
                 .name-value,
                 .email-value {
                     grid-column: 4/9;
                     // margin: auto;
-                    background-color: #44ca87; // For Debug
+                    // background-color: #44ca87; // For Debug
                     overflow: hidden;
                 }
                 .name-new-value,
                 .email-new-value {
                     grid-column: 4/9;
                     // margin: auto;
-                    background-color: #44ca56; // For Debug
+                    // background-color: #44ca56; // For Debug
                     // height: 50px;
                 }
                 .change-button {
                     grid-column: 9/11;
                     margin: auto;
-                    background-color: #5aca44; // For Debug
+                    // background-color: #5aca44; // For Debug
                     color: #797979;
                     cursor: pointer;
                 }
                 .save-button {
                     grid-column: 9/11;
                     margin: auto;
-                    background-color: #9bca44; // For Debug
+                    // background-color: #9bca44; // For Debug
                 }
             }
         }
