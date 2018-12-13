@@ -87,8 +87,9 @@ describe('Service: AuthService', () => {
 
             // Assert
             expect(service.setAuth).toHaveBeenCalled();
-            expect(sessionStorageService.accessToken).toEqual('SignIn.Token');
-            expect(sessionStorageService.name).toEqual('SignIn.Name');
+            expect(sessionStorageService.session_object.account.jwToken).toEqual('SignIn.Token');
+            expect(sessionStorageService.session_object.account.name).toEqual('SignIn.Name');
+            expect(sessionStorageService.session_object.account.display_name).toEqual('SignIn.Name');
         });
     });
 
