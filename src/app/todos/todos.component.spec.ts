@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import {of as observableOf,  Observable } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { of as observableOf, Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // Models
@@ -46,6 +47,7 @@ import { MatDialogModule } from '@angular/material';
 describe(`Component: TodosComponent`, () => {
     let component: TodosComponent;
     let fixture: ComponentFixture<TodosComponent>;
+    let sectionEl;
     let expectedTodo;
 
     beforeEach(async(() => {
@@ -111,6 +113,8 @@ describe(`Component: TodosComponent`, () => {
         component = fixture.componentInstance;
 
         expectedTodo = new ToDo({ id: 1, title: 'Test 1', complete: false });
+        sectionEl = fixture.debugElement.query(By.css('section.app-grid-container'));        // Find section.app-grid-container element
+
         fixture.detectChanges();
     });
 
@@ -132,6 +136,28 @@ describe(`Component: TodosComponent`, () => {
         // Assert
         expect(component.activeRouteState).toBe(0, `incoming '_route.routeConfig.path': { path === 'todos' }`);
     }));
+
+    describe(`#view tests:`, () => {
+
+        describe(`section.app-grid-container:`, () => {
+            it(`'click' on 'section.app-grid-container' should call method 'containerClickHandler()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'containerClickHandler');
+                if (sectionEl instanceof HTMLElement) {
+                    sectionEl.click();
+                } else {
+                    sectionEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.containerClickHandler).toHaveBeenCalled();
+                });
+            }));
+        });
+    });
 
     // TODO: Rewrite test for 'TodosComponent' (currently not complete)
 });
