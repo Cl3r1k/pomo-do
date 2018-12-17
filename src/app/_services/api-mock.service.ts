@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 // Imports
-import {of as observableOf,  Observable } from 'rxjs';
+import { of as observableOf, Observable } from 'rxjs';
 
 @Injectable()
 export class ApiMockService {

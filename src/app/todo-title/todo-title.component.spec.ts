@@ -13,18 +13,21 @@ import { TooltipDirective } from '@app/_directives/tooltip.directive';
 import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
 
 // Modules
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatDialog } from '@angular/material';
+
+// Mocks
+import { MatDialogMock } from '@app/_testing/mat-dialog-mock';
 
 class MockRouter {
     navigate(path) { }
 }
 
-
 describe('Component: TodoTitleComponent', () => {
     let component: TodoTitleComponent;
     let fixture: ComponentFixture<TodoTitleComponent>;
-    let componentService: AuthService;
-    let componentRouter: Router;
+    let authService: AuthService;
+    let router: Router;
+    let dialog: MatDialogMock;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -38,29 +41,23 @@ describe('Component: TodoTitleComponent', () => {
                 {
                     provide: AuthService,
                     useClass: AuthMockService
+                },
+                {
+                    provide: MatDialog,
+                    useClass: MatDialogMock,
                 }]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        // Configure the component with another set of Providers
-        TestBed.overrideComponent(
-            TodoTitleComponent,
-            {
-                set: {
-                    providers: [{ provide: AuthService, useClass: AuthMockService },
-                    { provide: Router, useClass: MockRouter }]
-                }
-            }
-        );
-
         fixture = TestBed.createComponent(TodoTitleComponent);
         component = fixture.componentInstance;
 
-        // AuthService provided by Component, (should return AuthMockService)
-        componentService = fixture.debugElement.injector.get(AuthService);
-        componentRouter = fixture.debugElement.injector.get(Router);
+        // AuthService provided by TestBed, (should return AuthMockService)
+        authService = TestBed.get(AuthService);
+        router = TestBed.get(Router);
+        dialog = TestBed.get(MatDialog);
 
         fixture.detectChanges();
     });
@@ -90,7 +87,7 @@ describe('Component: TodoTitleComponent', () => {
         // Act
 
         // Assert
-        expect(componentService instanceof AuthMockService).toBeTruthy();
+        expect(authService instanceof AuthMockService).toBeTruthy();
     });
 
     it('Router injected via component should be and instance of MockRouter', () => {
@@ -99,7 +96,7 @@ describe('Component: TodoTitleComponent', () => {
         // Act
 
         // Assert
-        expect(componentRouter instanceof MockRouter).toBeTruthy();
+        expect(router instanceof MockRouter).toBeTruthy();
     });
 
     describe(`#changeSyncState()`, () => {
@@ -135,28 +132,37 @@ describe('Component: TodoTitleComponent', () => {
             // authService = { isSignedIn: () => true };
 
             // Act
-            spyOn(componentRouter, 'navigate');
+            spyOn(router, 'navigate').and.callThrough();
             component.doSignOut();
 
             // Assert
-            expect(componentRouter.navigate).toHaveBeenCalledWith(['/sign-in']);
+            expect(router.navigate).toHaveBeenCalledWith(['/sign-in']);
         });
 
         it(`should call method 'doSignOut()' of the 'AuthMockService'`, () => {
             // Arrange
 
             // Act
-            spyOn(componentService, 'doSignOut');
+            spyOn(authService, 'doSignOut').and.callThrough();
             component.doSignOut();
 
             // Assert
-            expect(componentService.doSignOut).toHaveBeenCalled();
+            expect(authService.doSignOut).toHaveBeenCalled();
         });
     });
 
+    // Test idea took from `https://medium.com/@aleixsuau/testing-angular-components-with-material-dialog-mddialog-1ae658b4e4b3`
+    // and from `https://github.com/vincent-cm/crazycard/blob/master/src/app/card/card.component.spec.ts`
     describe(`#showAccountDialog()`, () => {
-        it(``, () => {
-            //
+        it(`should call MatDialog and should be open and after MatDialog should be closed`, () => {
+            // Arrange
+
+            // Act
+            spyOn(dialog, 'open').and.callThrough();
+            component.showAccountDialog();
+
+            // Assert
+            expect(dialog.open).toHaveBeenCalled();
         });
     });
 });

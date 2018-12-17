@@ -9,7 +9,10 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
-
+✔ Updated tests for submenu in 'TodoTitleComponent' 
+Updated 'mat-dialog-mock.ts'
+Updates in 'DialogAccountComponent' (code, styles, template)
+Minor changes
 
 Todos:
     New:
@@ -20,9 +23,9 @@ Todos:
                     ✔ 'Onhover' on 'AppName' should show current build @done(18-11-15 10:11)
                     ✔ Submenu should be closed, if clicks outside it @done(18-11-24 10:56)
                         ✔ Add tests for submenu close in 'TodosComponent' @done(18-12-14 09:13)
-                        ☐ Add tests for submenu in 'TodoTitleComponent' <========================================================= CURRENT TASK
+                        ✔ Add tests for submenu in 'TodoTitleComponent' @done(18-12-16 10:19)
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
-                        ☐ Update tests for 'TodosComponent' with changed 'Sign out' part
+                        ☐ Update tests for 'TodosComponent' with changed 'Sign out' part <========================================================= CURRENT TASK
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
                     ☐ Add dialog for 'account-item'
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
