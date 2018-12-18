@@ -9,10 +9,7 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
-✔ Updated tests for submenu in 'TodoTitleComponent' 
-Updated 'mat-dialog-mock.ts'
-Updates in 'DialogAccountComponent' (code, styles, template)
-Minor changes
+
 
 Todos:
     New:
@@ -25,8 +22,8 @@ Todos:
                         ✔ Add tests for submenu close in 'TodosComponent' @done(18-12-14 09:13)
                         ✔ Add tests for submenu in 'TodoTitleComponent' @done(18-12-16 10:19)
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
-                        ☐ Update tests for 'TodosComponent' with changed 'Sign out' part <========================================================= CURRENT TASK
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
+
                     ☐ Add dialog for 'account-item'
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
                             ✔ For 'Name' and 'Email' fields use reactive forms @done(18-12-11 09:10)
@@ -36,10 +33,12 @@ Todos:
                                 ✔ Add validation length for password field @done(18-12-11 09:27)
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
-                        ☐ Add tests for 'DialogAccountComponent'
+                        ☐ Add tests for 'DialogAccountComponent' <========================================================= CURRENT TASK
+                    ✔ Update tests for 'SessionStorageService' @done(18-12-17 10:43)
                     ☐ Fix all tests with new code
 
                     ☐ Add dialog for 'settings-item'
+
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
                 ☐ Add component 'StatsComponent'
