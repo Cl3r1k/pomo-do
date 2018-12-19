@@ -20,13 +20,8 @@ export class DialogAccountComponent implements OnInit {
     isFirstTab = true;
     editNameState = false;
     editEmailState = false;
-    formValid = false;
-    showPasswordsInputErrors = false;
-    passwordInputError = false;
-    passwordNewInputError = false;
-    passwordNewConfirmInputError = false;
-    hidePassword = true;
-    hidePasswordConfirm = true;
+    hidePassword = true;           // Variable to show/hide password on form
+    hidePasswordConfirm = true;    // Variable to show/hide password on form
 
     constructor(
         public dialogRef: MatDialogRef<DialogAccountComponent>,
@@ -55,7 +50,6 @@ export class DialogAccountComponent implements OnInit {
 
     changeCurrentTabAccount(state: boolean) {
         this.isFirstTab = state;
-        this.formValid = !this.formValid;
     }
 
     changeName(state) {
@@ -76,7 +70,6 @@ export class DialogAccountComponent implements OnInit {
         // console.log('%cfrmPwd.ctls.pwdCnfrm.err: ', this.consoleTextColorComponent, this.formPassword.controls.passwordConfirm.errors);
 
         if (this.formPassword.invalid) {
-            this.showPasswordsInputErrors = true;
             return;
         }
 

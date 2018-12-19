@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Components
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
 
 // tslint:disable-next-line:max-line-length
