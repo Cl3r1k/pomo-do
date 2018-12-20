@@ -53,7 +53,7 @@ describe('Service: JwtService', () => {
             service.saveToken('Some.Token');
 
             // Assert
-            expect(localStorage.getItem('jwtToken')).toEqual('Some.Token');
+            expect(localStorage.getItem('session_data')).toEqual('"Some.Token"');
         });
     });
 
@@ -65,7 +65,7 @@ describe('Service: JwtService', () => {
             service.saveToken('Another.Token');
 
             // Assert
-            expect(localStorage.getItem('jwtToken')).toEqual('Another.Token');
+            expect(localStorage.getItem('session_data')).toEqual('"Another.Token"');
         });
 
         it(`should return 'null' from localStorage when there is no token`, () => {
@@ -75,7 +75,7 @@ describe('Service: JwtService', () => {
             service.destroyToken();
 
             // Assert
-            expect(localStorage.getItem('jwtToken')).toEqual(null);
+            expect(localStorage.getItem('session_data')).toEqual(null);
         });
     });
 
@@ -87,9 +87,9 @@ describe('Service: JwtService', () => {
             service.saveToken('ToDelete.Token');
 
             // Assert
-            expect(localStorage.getItem('jwtToken')).toEqual('ToDelete.Token');
+            expect(localStorage.getItem('session_data')).toEqual('"ToDelete.Token"');
             service.destroyToken();
-            expect(localStorage.getItem('jwtToken')).toEqual(null);
+            expect(localStorage.getItem('session_data')).toEqual(null);
         });
     });
 

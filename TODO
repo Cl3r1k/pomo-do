@@ -24,7 +24,7 @@ Todos:
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
 
-                    ☐ Add dialog for 'account-item'
+                    ✔ Add dialog for 'account-item' @done(18-12-19 10:02)
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
                             ✔ For 'Name' and 'Email' fields use reactive forms @done(18-12-11 09:10)
                             ✔ Add validation for 'email' field @done(18-12-11 09:23)
@@ -33,11 +33,12 @@ Todos:
                                 ✔ Add validation length for password field @done(18-12-11 09:27)
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
-                        ☐ Add tests for 'DialogAccountComponent' <========================================================= CURRENT TASK
+                        ✔ Add tests for 'DialogAccountComponent' @done(18-12-19 09:38)
+                        ☐ Consider to use 'mat-tab' for tabs in dialog
                     ✔ Update tests for 'SessionStorageService' @done(18-12-17 10:43)
-                    ☐ Fix all tests with new code
+                    ✔ Fix all tests with new code ('account-item' + change 'Header') @done(18-12-19 10:00)
 
-                    ☐ Add dialog for 'settings-item'
+                    ☐ Add dialog for 'settings-item' <========================================================= CURRENT TASK
 
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

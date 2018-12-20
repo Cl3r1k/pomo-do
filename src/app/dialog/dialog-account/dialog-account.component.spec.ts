@@ -122,7 +122,7 @@ describe('Component: DialogAccountComponent', () => {
             expect(email.valid).toBeFalsy();
         });
 
-        it(`'email' field 'required' and 'email' validity`, () => {
+        it(`'email' field 'required' validity`, () => {
             // Arrange
             let errors = {};
 
@@ -165,42 +165,169 @@ describe('Component: DialogAccountComponent', () => {
         });
     });
 
+    describe(`#'passwordCurrent' field tests: `, () => {
+        it(`'passwordCurrent' field validity`, () => {
+            // Arrange
 
-    // it(`'password' field validity`, () => {
-    //     // Arrange
+            // Act
+            const passwordCurrent = component.formPassword.controls['passwordCurrent'];
 
-    //     // Act
-    //     const password = component.frm.controls['password'];
+            // Assert
+            expect(passwordCurrent.valid).toBeFalsy();
+        });
 
-    //     // Assert
-    //     expect(password.valid).toBeFalsy();
-    // });
+        it(`'passwordCurrent' field 'required' validity`, () => {
+            // Arrange
+            let errors = {};
 
-    // it(`'password' field 'required' validity`, () => {
-    //     // Arrange
-    //     let errors = {};
+            // Act
+            const passwordCurrent = component.formPassword.controls['passwordCurrent'];
+            errors = passwordCurrent.errors || {};
 
-    //     // Act
-    //     const password = component.frm.controls['password'];
-    //     errors = password.errors || {};
+            // Assert
+            expect(errors['required']).toBeTruthy();
+        });
 
-    //     // Assert
-    //     expect(errors['required']).toBeTruthy();
-    // });
+        it(`'passwordCurrent' field with data should be valid and 'required' should be undefined`, () => {
+            // Arrange
+            let errors = {};
 
-    // it(`'password' field with data should be valid and 'required' should be undefined`, () => {
-    //     // Arrange
-    //     let errors = {};
+            // Act
+            const passwordCurrent = component.formPassword.controls['passwordCurrent'];
+            passwordCurrent.setValue('testPassword');
+            errors = passwordCurrent.errors || {};
 
-    //     // Act
-    //     const password = component.frm.controls['password'];
-    //     password.setValue('testPassword');
-    //     errors = password.errors || {};
+            // Assert
+            expect(passwordCurrent.valid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+        });
+    });
 
-    //     // Assert
-    //     expect(password.valid).toBeTruthy();
-    //     expect(errors['required']).toEqual(undefined);
-    // });
+    describe(`#'password' field tests: `, () => {
+        it(`'password' field validity`, () => {
+            // Arrange
+
+            // Act
+            const password = component.formPassword.controls['password'];
+
+            // Assert
+            expect(password.valid).toBeFalsy();
+        });
+
+        it(`'password' field 'required' validity`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const password = component.formPassword.controls['password'];
+            errors = password.errors || {};
+
+            // Assert
+            expect(errors['required']).toBeTruthy();
+        });
+
+        it(`'password' field with 'tPwd' should be invalid, 'required' - undefined, 'minlength' - toBeTruthy`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const password = component.formPassword.controls['password'];
+            password.setValue('tPwd');
+            errors = password.errors || {};
+
+            // Assert
+            expect(password.invalid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+            expect(errors['minlength']).toBeTruthy();
+        });
+
+        it(`'password' field with 'testPwd' should be valid, 'required' - undefined, 'minlength' - undefined`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const password = component.formPassword.controls['password'];
+            password.setValue('testPwd');
+            errors = password.errors || {};
+
+            // Assert
+            expect(password.valid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+            expect(errors['minlength']).toEqual(undefined);
+        });
+    });
+
+    describe(`#'passwordConfirm' field tests: `, () => {
+        it(`'passwordConfirm' field validity`, () => {
+            // Arrange
+
+            // Act
+            const passwordConfirm = component.formPassword.controls['passwordConfirm'];
+
+            // Assert
+            expect(passwordConfirm.valid).toBeFalsy();
+        });
+
+        it(`'passwordConfirm' field 'required' validity`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const passwordConfirm = component.formPassword.controls['passwordConfirm'];
+            errors = passwordConfirm.errors || {};
+
+            // Assert
+            expect(errors['required']).toBeTruthy();
+        });
+
+        it(`'passwordConfirm' field with 'tPwd' should be invalid, 'required' - undefined`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const passwordConfirm = component.formPassword.controls['passwordConfirm'];
+            passwordConfirm.setValue('tPwd');
+            errors = passwordConfirm.errors || {};
+
+            // Assert
+            expect(passwordConfirm.invalid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+        });
+
+        it(`'password' & 'passwordConfirm' with different data should be invalid, 'required' - undefined, 'mustMatch' - toBeTruthy`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const password = component.formPassword.controls['password'];
+            password.setValue('testPwd');
+            const passwordConfirm = component.formPassword.controls['passwordConfirm'];
+            passwordConfirm.setValue('testPwd2');
+            errors = passwordConfirm.errors || {};
+
+            // Assert
+            expect(passwordConfirm.invalid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+            expect(errors['mustMatch']).toBeTruthy();
+        });
+
+        it(`'password' & 'passwordConfirm' with same data should be valid, 'required' - undefined, 'mustMatch' - undefined`, () => {
+            // Arrange
+            let errors = {};
+
+            // Act
+            const password = component.formPassword.controls['password'];
+            password.setValue('testPwd');
+            const passwordConfirm = component.formPassword.controls['passwordConfirm'];
+            passwordConfirm.setValue('testPwd');
+            errors = passwordConfirm.errors || {};
+
+            // Assert
+            expect(passwordConfirm.valid).toBeTruthy();
+            expect(errors['required']).toEqual(undefined);
+            expect(errors['mustMatch']).toEqual(undefined);
+        });
+    });
 
     describe(`#view tests`, () => {
         // TODO: Improve this test for closing dialog
@@ -221,40 +348,6 @@ describe('Component: DialogAccountComponent', () => {
         //     // Assert
         //     fixture.whenStable().then(() => {
         //         expect(component.dialogRef.close).toHaveBeenCalled();
-        //     });
-        // });
-
-        // it(`clicking on button.dialog__confirm-delete-btn should call method 'onConfirmDelete()' (async)`, async () => {
-        //     // Arrange
-
-        //     // Act
-        //     spyOn(component, 'onConfirmDelete');
-        //     if (dialogConfirmDeleteBtnEl instanceof HTMLElement) {
-        //         dialogConfirmDeleteBtnEl.click();
-        //     } else {
-        //         dialogConfirmDeleteBtnEl.triggerEventHandler('click', { button: 0 });
-        //     }
-
-        //     // Assert
-        //     fixture.whenStable().then(() => {
-        //         expect(component.onConfirmDelete).toHaveBeenCalled();
-        //     });
-        // });
-
-        // it(`clicking on button.dialog__confirm-save-btn should call method 'onConfirmSave()' (async)`, async () => {
-        //     // Arrange
-
-        //     // Act
-        //     spyOn(component, 'onConfirmSave');
-        //     if (dialogConfirmSaveBtnEl instanceof HTMLElement) {
-        //         dialogConfirmSaveBtnEl.click();
-        //     } else {
-        //         dialogConfirmSaveBtnEl.triggerEventHandler('click', { button: 0 });
-        //     }
-
-        //     // Assert
-        //     fixture.whenStable().then(() => {
-        //         expect(component.onConfirmSave).toHaveBeenCalled();
         //     });
         // });
     });

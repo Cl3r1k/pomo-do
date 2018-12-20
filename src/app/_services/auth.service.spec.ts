@@ -23,8 +23,13 @@ describe('Service: AuthService', () => {
         jwtService = TestBed.get(JwtService);
 
         const mockJWTService = {
-            getToken: (): string => {
-                return 'JWT.Token';
+            getToken: () => {
+                return {
+                    account: {
+                        jwToken: 'jwTokenAcc',
+                        name: 'nameAcc'
+                    }
+                };
             }
         };
 
