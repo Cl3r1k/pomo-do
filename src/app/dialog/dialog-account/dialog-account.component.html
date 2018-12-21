@@ -1,5 +1,5 @@
 <form [formGroup]='formPassword'>
-    <div class='more-dialog'>
+    <div class='account-dialog'>
         <div class='dialog-header'>
             <div class='account-trigger' [class.active]='isFirstTab' (click)='changeCurrentTabAccount(true)'>Account</div>
             <div class='security-trigger' [class.active]='!isFirstTab' (click)='changeCurrentTabAccount(false)'>Security</div>
@@ -58,7 +58,6 @@
         <hr class='bottom-line'>
         <div mat-dialog-actions class='dialog-actions'>
             <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
-            <!-- for common form look example `www.codiodes.com/match-password-validation/` -->
             <button mat-raised-button (click)='changePassword()' class='save-password-btn' [disabled]='!formPassword.valid' *ngIf='!isFirstTab'>Save</button>
         </div>
     </div>

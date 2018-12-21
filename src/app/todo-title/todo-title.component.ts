@@ -12,6 +12,7 @@ import { AuthService } from '@app/_services/auth.service';
 
 // Components
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
+import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
 
 // Modules
 import { MatDialog } from '@angular/material';
@@ -86,12 +87,32 @@ export class TodoTitleComponent implements OnInit {
     showAccountDialog() {
         // Call dialog 'Account'
 
+        // TODO: Change fake_data to real_data
         const dataForDialog = {
             Name: 'User',
             Email: 'some_kind_of@mail.com'
         };
 
         const dialogRef = this._dialog.open(DialogAccountComponent, {
+            width: '500px',
+            data: dataForDialog
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            // User clicked 'x' or clicked outside of the dialog
+        });
+    }
+
+    showSettingsDialog() {
+        // Call dialog 'Settings'
+
+        // TODO: Change fake_data to real_data
+        const dataForDialog = {
+            Name: 'User',
+            Email: 'some_kind_of@mail.com'
+        };
+
+        const dialogRef = this._dialog.open(DialogSettingsComponent, {
             width: '500px',
             data: dataForDialog
         });

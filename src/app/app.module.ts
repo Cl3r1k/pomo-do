@@ -19,6 +19,7 @@ import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.c
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
 import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
+import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -76,7 +77,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         FilterTagPipe,
         TooltipDirective,
         SignInComponent,
-        DialogAccountComponent
+        DialogAccountComponent,
+        DialogSettingsComponent
     ],
     imports: [
         AppRoutingModule,
@@ -110,6 +112,6 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         JwtService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent]
+    entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent, DialogSettingsComponent]
 })
 export class AppModule { }
