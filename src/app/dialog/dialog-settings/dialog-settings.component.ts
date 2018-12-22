@@ -13,6 +13,10 @@ export class DialogSettingsComponent implements OnInit {
     consoleTextColorComponent = 'color: cadetblue;';
 
     currentTab = 0;
+    playSoundWorkState = false;
+    playSoundAlarmState = false;
+    notificationState = false;
+    timeTypeState = false;
 
     constructor(
         public dialogRef: MatDialogRef<DialogSettingsComponent>,
@@ -25,6 +29,22 @@ export class DialogSettingsComponent implements OnInit {
 
     changeCurrentTab(tabIndex: number) {
         this.currentTab = tabIndex;
+    }
+
+    savePlaySoundWorkState(state: boolean) {
+        //
+    }
+
+    savePlaySoundAlarmState(state: boolean) {
+        //
+    }
+
+    saveNotificationState(state: boolean) {
+        //
+    }
+
+    saveTimeTypeState(state: boolean) {
+        //
     }
 
 }

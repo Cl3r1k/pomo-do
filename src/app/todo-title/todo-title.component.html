@@ -25,7 +25,7 @@
         <li class='profile-menu'>
             <div class='profile-name' (click)='toggleSubmenuState()'>
                 <a>{{profileName}}</a>
-                <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
+                <input type='checkbox' class='collapse-button'>
             </div>
             <ul class='profile-submenu' [class.hide]='!showSubmenuState'>
                 <li class='account-item' (click)='showAccountDialog()'>Account</li>
