@@ -14,21 +14,20 @@
         <div class='settings-tab-container' *ngIf='currentTab === 0'>
             <div class='sound-work-container'>
                 <mat-checkbox [(ngModel)]='playSoundWorkState' (click)='savePlaySoundWorkState(playSoundWorkState)'>Play working sound</mat-checkbox>
-                <span>Saving</span>
+                <span *ngIf='playSoundWorkSaveState'>{{playSoundWorkSaveText}}</span>
             </div>
             <div class='sound-alarm-container'>
                 <mat-checkbox [(ngModel)]='playSoundAlarmState' (click)='savePlaySoundAlarmState(playSoundAlarmState)'>Play alarm sound</mat-checkbox>
-                <span>Saving</span>
+                <span *ngIf='playSoundAlarmSaveState'>{{playSoundAlarmSaveText}}</span>
             </div>
             <div class='notification-container'>
                 <mat-checkbox [(ngModel)]='notificationState' (click)='saveNotificationState(notificationState)'>Use notification</mat-checkbox>
-                <span>Saving</span>
+                <span *ngIf='notificationSaveState'>{{notificationSaveText}}</span>
             </div>
             <div class='time-type-container'>
                 <mat-checkbox [(ngModel)]='timeTypeState' (click)='saveTimeTypeState(timeTypeState)'>12-Hour time</mat-checkbox>
-                <span>Saving</span>
+                <span *ngIf='timeTypeSaveState'>{{timeTypeSaveText}}</span>
             </div>
-
 
 
             <!-- <div class='name-container'>

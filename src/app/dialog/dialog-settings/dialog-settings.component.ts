@@ -14,9 +14,17 @@ export class DialogSettingsComponent implements OnInit {
 
     currentTab = 0;
     playSoundWorkState = false;
+    playSoundWorkSaveState = false;
+    playSoundWorkSaveText = 'Saving';
     playSoundAlarmState = false;
+    playSoundAlarmSaveState = false;
+    playSoundAlarmSaveText = 'Saving';
     notificationState = false;
+    notificationSaveState = false;
+    notificationSaveText = 'Saving';
     timeTypeState = false;
+    timeTypeSaveState = false;
+    timeTypeSaveText = 'Saving';
 
     constructor(
         public dialogRef: MatDialogRef<DialogSettingsComponent>,
@@ -32,7 +40,14 @@ export class DialogSettingsComponent implements OnInit {
     }
 
     savePlaySoundWorkState(state: boolean) {
-        //
+        this.playSoundWorkSaveState = true;
+        setTimeout(() => {
+            this.playSoundWorkSaveText = 'Saved';
+            setTimeout(() => {
+                this.playSoundWorkSaveState = false;
+                this.playSoundWorkSaveText = 'Saving';
+            }, 2000);
+        }, 3000);
     }
 
     savePlaySoundAlarmState(state: boolean) {
