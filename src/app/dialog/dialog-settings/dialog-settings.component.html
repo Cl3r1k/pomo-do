@@ -53,6 +53,24 @@
             </div> -->
         </div>
 
+        <div class='goal-tab-container' *ngIf='currentTab === 1'>
+            <div>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Daily goal (pomos)" min="1">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Weekly goal (pomos)" min="1">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Monthly goal (pomos)" min="1">
+                </mat-form-field>
+            </div>
+        </div>
+
         <!-- <div class='security-tab-container' *ngIf='!isFirstTab'>
             <div class='password-container'>
                 <input type='text' formControlName='passwordCurrent' placeholder='Account Name' autocomplete='name' style='display: none;'>

@@ -116,25 +116,34 @@
                 // }
             }
         }
-        .security-tab-container {
+        .goal-tab-container {
             grid-column: span 12;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             align-items: start;
-            .password-container {
+            // padding-top: 10px;
+            // padding-bottom: 10px;
+            div {
                 grid-column: span 12;
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
-                .current-password,
-                .new-password,
-                .new-password-confirm {
-                    grid-column: span 8;
-                    // height: 50px;
-                    &.extra-padding-bottom {
-                        padding-bottom: 10px;
-                    }
-                }
+                padding: 0px;
+                align-items: center;
             }
+            // .password-container {
+            //     grid-column: span 12;
+            //     display: grid;
+            //     grid-template-columns: repeat(12, 1fr);
+            //     .current-password,
+            //     .new-password,
+            //     .new-password-confirm {
+            //         grid-column: span 8;
+            //         // height: 50px;
+            //         &.extra-padding-bottom {
+            //             padding-bottom: 10px;
+            //         }
+            //     }
+            // }
         }
     }
     .dialog-actions {

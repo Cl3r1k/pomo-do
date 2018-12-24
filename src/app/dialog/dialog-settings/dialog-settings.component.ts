@@ -51,15 +51,36 @@ export class DialogSettingsComponent implements OnInit {
     }
 
     savePlaySoundAlarmState(state: boolean) {
-        //
+        this.playSoundAlarmSaveState = true;
+        setTimeout(() => {
+            this.playSoundAlarmSaveText = 'Saved';
+            setTimeout(() => {
+                this.playSoundAlarmSaveState = false;
+                this.playSoundAlarmSaveText = 'Saving';
+            }, 2000);
+        }, 3000);
     }
 
     saveNotificationState(state: boolean) {
-        //
+        this.notificationSaveState = true;
+        setTimeout(() => {
+            this.notificationSaveText = 'Saved';
+            setTimeout(() => {
+                this.notificationSaveState = false;
+                this.notificationSaveText = 'Saving';
+            }, 2000);
+        }, 3000);
     }
 
     saveTimeTypeState(state: boolean) {
-        //
+        this.timeTypeSaveState = true;
+        setTimeout(() => {
+            this.timeTypeSaveText = 'Saved';
+            setTimeout(() => {
+                this.timeTypeSaveState = false;
+                this.timeTypeSaveText = 'Saving';
+            }, 2000);
+        }, 3000);
     }
 
 }
