@@ -54,21 +54,23 @@
         </div>
 
         <div class='goal-tab-container' *ngIf='currentTab === 1'>
-            <div>
-                <mat-form-field>
-                    <input matInput type="number" placeholder="Daily goal (pomos)" min="1">
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput type="number" placeholder="Weekly goal (pomos)" min="1">
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput type="number" placeholder="Monthly goal (pomos)" min="1">
-                </mat-form-field>
-            </div>
+            <form [formGroup]='formGoal'>
+                <div>
+                    <mat-form-field>
+                        <input matInput type='number' formControlName='dailyGoal' placeholder='Daily goal (pomos)' min='1'>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input matInput type='number' formControlName='weeklyGoal' placeholder='Weekly goal (pomos)' min='1'>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input matInput type='number' formControlName='monthlyGoal' placeholder='Monthly goal (pomos)' min='1'>
+                    </mat-form-field>
+                </div>
+            </form>
         </div>
 
         <!-- <div class='security-tab-container' *ngIf='!isFirstTab'>

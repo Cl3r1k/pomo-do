@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Imports
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'app-dialog-settings',
@@ -26,10 +28,27 @@ export class DialogSettingsComponent implements OnInit {
     timeTypeSaveState = false;
     timeTypeSaveText = 'Saving';
 
+    public formGoal: FormGroup;
+
     constructor(
         public dialogRef: MatDialogRef<DialogSettingsComponent>,
-        @Inject(MAT_DIALOG_DATA) public data
-    ) { }
+        @Inject(MAT_DIALOG_DATA) public data,
+        private _formBuilder: FormBuilder,
+    ) {
+
+        this.formGoal = _formBuilder.group({
+            dailyGoal: ['', Validators.required],
+            weeklyGoal: ['', Validators.required],
+            monthlyGoal: ['', Validators.required],
+        });
+
+        this.formGoal.valueChanges.pipe(
+            debounceTime(1000),
+            distinctUntilChanged(),
+        ).subscribe(value => {
+            console.log('%cform changed value: ', this.consoleTextColorComponent, value);
+        });
+    }
 
     ngOnInit() {
         console.log('%cdata: ', this.consoleTextColorComponent, this.data);
