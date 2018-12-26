@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Imports
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-dialog-settings',
@@ -27,6 +27,11 @@ export class DialogSettingsComponent implements OnInit {
     timeTypeState = false;
     timeTypeSaveState = false;
     timeTypeSaveText = 'Saving';
+    currentDailyGoal = 8;
+    dailyGoalSaveState = false;
+    dailyGoalSaveText = 'Saving';
+    currentWeeklyGoal = 40;
+    currentMonthlyGoal = 160;
 
     public formGoal: FormGroup;
 
@@ -42,11 +47,29 @@ export class DialogSettingsComponent implements OnInit {
             monthlyGoal: ['', Validators.required],
         });
 
+        // Set initial values
+        this.formGoal.controls['dailyGoal'].setValue(this.currentDailyGoal);
+        this.formGoal.controls['weeklyGoal'].setValue(this.currentWeeklyGoal);
+        this.formGoal.controls['monthlyGoal'].setValue(this.currentMonthlyGoal);
+
+        // Subscribe to changes
         this.formGoal.valueChanges.pipe(
             debounceTime(1000),
             distinctUntilChanged(),
         ).subscribe(value => {
             console.log('%cform changed value: ', this.consoleTextColorComponent, value);
+
+            if (value['dailyGoal'] !== this.currentDailyGoal) {
+                this.dailyGoalSaveState = true;
+                setTimeout(() => {
+                    this.currentDailyGoal = value['dailyGoal'];
+                    this.dailyGoalSaveText = 'Saved';
+                    setTimeout(() => {
+                        this.dailyGoalSaveState = false;
+                        this.dailyGoalSaveText = 'Saving';
+                    }, 2000);
+                }, 3000);
+            }
         });
     }
 

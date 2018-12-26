@@ -59,6 +59,7 @@
                     <mat-form-field>
                         <input matInput type='number' formControlName='dailyGoal' placeholder='Daily goal (pomos)' min='1'>
                     </mat-form-field>
+                    <span *ngIf='dailyGoalSaveState'>{{dailyGoalSaveText}}</span>
                 </div>
                 <div>
                     <mat-form-field>

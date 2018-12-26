@@ -129,6 +129,10 @@
                 grid-template-columns: repeat(12, 1fr);
                 padding: 0px;
                 align-items: center;
+                span {
+                    margin-left: 5px;
+                    color: #00d169;
+                }
             }
             // .password-container {
             //     grid-column: span 12;
