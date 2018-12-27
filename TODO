@@ -39,11 +39,12 @@ Todos:
                     ✔ Fix all tests with new code ('account-item' + change 'Header') @done(18-12-19 10:00)
 
                     ☐ Add dialog for 'settings-item' <========================================================= CURRENT TASK
-                        ☐ Add tab 'Settings'
-                        ☐ Add tab 'Goal'
-                            ☐ For inputs use reactive forms and update state on change
-                        ☐ Add tab 'Pomo'
-                        ☐ Add tab 'Subscribe'
+                        ✔ Add tab 'Settings' @done(18-12-26 10:35)
+                        ✔ Add tab 'Goal' @done(18-12-26 10:35)
+                            ✔ For inputs use reactive forms and update state on change @done(18-12-26 10:35)
+                        ✔ Add tab 'Pomo' @done(18-12-26 10:35)
+                        ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
+                            ☐ Add tests for 'DialogSettingsComponent'
 
                 ☐ Add component 'CurrentTodoComponent'
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

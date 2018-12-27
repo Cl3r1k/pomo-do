@@ -31,7 +31,11 @@ export class DialogSettingsComponent implements OnInit {
     dailyGoalSaveState = false;
     dailyGoalSaveText = 'Saving';
     currentWeeklyGoal = 40;
+    weeklyGoalSaveState = false;
+    weeklyGoalSaveText = 'Saving';
     currentMonthlyGoal = 160;
+    monthlyGoalSaveState = false;
+    monthlyGoalSaveText = 'Saving';
 
     public formGoal: FormGroup;
 
@@ -59,7 +63,8 @@ export class DialogSettingsComponent implements OnInit {
         ).subscribe(value => {
             console.log('%cform changed value: ', this.consoleTextColorComponent, value);
 
-            if (value['dailyGoal'] !== this.currentDailyGoal) {
+            // TODO: Perform request to backEnd and change values
+            if (value['dailyGoal'] && value['dailyGoal'] !== this.currentDailyGoal) {
                 this.dailyGoalSaveState = true;
                 setTimeout(() => {
                     this.currentDailyGoal = value['dailyGoal'];
@@ -67,6 +72,30 @@ export class DialogSettingsComponent implements OnInit {
                     setTimeout(() => {
                         this.dailyGoalSaveState = false;
                         this.dailyGoalSaveText = 'Saving';
+                    }, 2000);
+                }, 3000);
+            }
+
+            if (value['weeklyGoal'] && value['weeklyGoal'] !== this.currentWeeklyGoal) {
+                this.weeklyGoalSaveState = true;
+                setTimeout(() => {
+                    this.currentWeeklyGoal = value['dailyGoal'];
+                    this.weeklyGoalSaveText = 'Saved';
+                    setTimeout(() => {
+                        this.weeklyGoalSaveState = false;
+                        this.weeklyGoalSaveText = 'Saving';
+                    }, 2000);
+                }, 3000);
+            }
+
+            if (value['monthlyGoal'] && value['monthlyGoal'] !== this.currentMonthlyGoal) {
+                this.monthlyGoalSaveState = true;
+                setTimeout(() => {
+                    this.currentMonthlyGoal = value['dailyGoal'];
+                    this.monthlyGoalSaveText = 'Saved';
+                    setTimeout(() => {
+                        this.monthlyGoalSaveState = false;
+                        this.monthlyGoalSaveText = 'Saving';
                     }, 2000);
                 }, 3000);
             }

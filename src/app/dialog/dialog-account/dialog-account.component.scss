@@ -118,11 +118,8 @@
     .dialog-actions {
         padding-top: 0px;
         a {
-            &:focus,
-            &:hover {
-                color: initial;
-                font-weight: initial;
-            }
+            font-weight: 700;
+            color: #4e4e4e;
         }
     }
 }

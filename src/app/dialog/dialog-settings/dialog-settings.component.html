@@ -65,13 +65,24 @@
                     <mat-form-field>
                         <input matInput type='number' formControlName='weeklyGoal' placeholder='Weekly goal (pomos)' min='1'>
                     </mat-form-field>
+                    <span *ngIf='weeklyGoalSaveState'>{{weeklyGoalSaveText}}</span>
                 </div>
                 <div>
                     <mat-form-field>
                         <input matInput type='number' formControlName='monthlyGoal' placeholder='Monthly goal (pomos)' min='1'>
                     </mat-form-field>
+                    <span *ngIf='monthlyGoalSaveState'>{{monthlyGoalSaveText}}</span>
                 </div>
             </form>
+        </div>
+
+        <div class='pro-upgrade-container' *ngIf='currentTab === 2 || currentTab === 3'>
+            <div>
+                <p>This is a Pro feature</p>
+            </div>
+            <div>
+                <a href='/pro' target='_blank' mat-raised-button>Upgrade</a>
+            </div>
         </div>
 
         <!-- <div class='security-tab-container' *ngIf='!isFirstTab'>

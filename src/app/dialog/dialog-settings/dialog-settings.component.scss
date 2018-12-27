@@ -149,20 +149,36 @@
             //     }
             // }
         }
-    }
-    .dialog-actions {
-        padding-top: 0px;
-        a {
-            &:focus,
-            &:hover {
-                color: initial;
-                font-weight: initial;
+        .pro-upgrade-container {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            div {
+                grid-column: span 12;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                padding: 0px;
+                align-items: center;
+                p {
+                    grid-column: span 12;
+                    margin: auto;
+                    padding: 10px;
+                }
+                a {
+                    grid-column: span 12;
+                    margin: auto;
+                    font-weight: 700;
+                    color: #4e4e4e;
+                }
             }
         }
     }
 }
 
 .active {
-    color: #797979;
+    color: #7e7e7e;
     border-bottom: 3px solid #b4b4b4;
 }
