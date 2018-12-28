@@ -36,6 +36,7 @@ export class DialogSettingsComponent implements OnInit {
     currentMonthlyGoal = 160;
     monthlyGoalSaveState = false;
     monthlyGoalSaveText = 'Saving';
+    proStatus = false;
 
     public formGoal: FormGroup;
 
@@ -54,7 +55,9 @@ export class DialogSettingsComponent implements OnInit {
         // Set initial values
         this.formGoal.controls['dailyGoal'].setValue(this.currentDailyGoal);
         this.formGoal.controls['weeklyGoal'].setValue(this.currentWeeklyGoal);
+        this.proStatus ? this.formGoal.controls['weeklyGoal'].enable() : this.formGoal.controls['weeklyGoal'].disable();
         this.formGoal.controls['monthlyGoal'].setValue(this.currentMonthlyGoal);
+        this.proStatus ? this.formGoal.controls['monthlyGoal'].enable() : this.formGoal.controls['monthlyGoal'].disable();
 
         // Subscribe to changes
         this.formGoal.valueChanges.pipe(

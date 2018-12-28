@@ -10,7 +10,6 @@
 
     <div mat-dialog-content class='dialog-content'>
 
-
         <div class='settings-tab-container' *ngIf='currentTab === 0'>
             <div class='sound-work-container'>
                 <mat-checkbox [(ngModel)]='playSoundWorkState' (click)='savePlaySoundWorkState(playSoundWorkState)'>Play working sound</mat-checkbox>
@@ -28,29 +27,6 @@
                 <mat-checkbox [(ngModel)]='timeTypeState' (click)='saveTimeTypeState(timeTypeState)'>12-Hour time</mat-checkbox>
                 <span *ngIf='timeTypeSaveState'>{{timeTypeSaveText}}</span>
             </div>
-
-
-            <!-- <div class='name-container'>
-                <span class='name-label'>Name</span>
-                <span class='name-value' *ngIf='!editNameState'>{{formPassword.get('name').value}}</span>
-                <mat-form-field class='name-new-value' *ngIf='editNameState'>
-                    <input type='text' matInput formControlName='name' placeholder='Account Name' autocomplete='name'>
-                    <mat-error *ngIf="formPassword.get('name').hasError('required') && formPassword.get('name').touched">You must enter a value</mat-error>
-                </mat-form-field>
-                <button class='change-button' (click)='changeName(true)' *ngIf='!editNameState'>Change</button>
-                <button mat-raised-button class='save-button' (click)='changeName(false)' *ngIf='editNameState' [disabled]="formPassword.get('name').invalid">Save</button>
-            </div>
-            <div class='email-container extra-padding-bottom'>
-                <span class='email-label'>Email</span>
-                <span class='email-value' *ngIf='!editEmailState'>{{formPassword.get('email').value}}</span>
-                <mat-form-field class='email-new-value' *ngIf='editEmailState'>
-                    <input type='text' matInput formControlName='email' placeholder='Account Email' autocomplete='email'>
-                    <mat-error *ngIf="formPassword.get('email').hasError('required') && formPassword.get('email').touched">You must enter a value</mat-error>
-                    <mat-error *ngIf="formPassword.get('email').hasError('email') && formPassword.get('email').touched">Must be a valid email address</mat-error>
-                </mat-form-field>
-                <button class='change-button' (click)='changeEmail(true)' *ngIf='!editEmailState'>Change</button>
-                <button mat-raised-button class='save-button' (click)='changeEmail(false)' *ngIf='editEmailState' [disabled]="formPassword.get('email').invalid">Save</button>
-            </div> -->
         </div>
 
         <div class='goal-tab-container' *ngIf='currentTab === 1'>
@@ -84,32 +60,5 @@
                 <a href='/pro' target='_blank' mat-raised-button>Upgrade</a>
             </div>
         </div>
-
-        <!-- <div class='security-tab-container' *ngIf='!isFirstTab'>
-            <div class='password-container'>
-                <input type='text' formControlName='passwordCurrent' placeholder='Account Name' autocomplete='name' style='display: none;'>
-                <mat-form-field class='current-password'>
-                    <input type='password' matInput formControlName='passwordCurrent' placeholder='Current password' autocomplete='passwordCurrent'>
-                    <mat-error *ngIf="formPassword.get('passwordCurrent').hasError('required') && formPassword.get('passwordCurrent').touched">You must enter a value</mat-error>
-                </mat-form-field>
-                <mat-form-field class='new-password'>
-                    <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName='password' placeholder='New password' autocomplete='new-password'>
-                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error *ngIf="formPassword.get('password').hasError('required') && formPassword.get('password').touched">You must enter a value</mat-error>
-                    <mat-error *ngIf="formPassword.get('password').hasError('minlength') && formPassword.get('password').touched">Password must be at least 6 characters</mat-error>
-                </mat-form-field>
-                <mat-form-field class='new-password-confirm extra-padding-bottom'>
-                    <input [type]="hidePasswordConfirm ? 'password' : 'text'" matInput formControlName='passwordConfirm' placeholder='Confirm password' autocomplete='new-password'>
-                    <mat-icon matSuffix (click)="hidePasswordConfirm = !hidePasswordConfirm">{{hidePasswordConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-error *ngIf="formPassword.get('passwordConfirm').hasError('required') && formPassword.get('passwordConfirm').touched">You must enter a value</mat-error>
-                    <mat-error *ngIf="formPassword.controls.passwordConfirm.errors?.mustMatch && formPassword.get('passwordConfirm').touched">Password does not match</mat-error>
-                </mat-form-field>
-            </div>
-        </div> -->
     </div>
-
-    <!-- <hr class='bottom-line'> -->
-    <!-- <div mat-dialog-actions class='dialog-actions'>
-        <a href='/pro' target='_blank' mat-raised-button *ngIf='isFirstTab'>Upgrade</a>
-    </div> -->
 </div>
