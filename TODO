@@ -34,21 +34,24 @@ Todos:
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
                         ✔ Add tests for 'DialogAccountComponent' @done(18-12-19 09:38)
-                        ☐ Consider to use 'mat-tab' for tabs in dialog
+                        ☐ Consider to use 'mat-tab' for tabs in dialog (Some time delay)
                     ✔ Update tests for 'SessionStorageService' @done(18-12-17 10:43)
                     ✔ Fix all tests with new code ('account-item' + change 'Header') @done(18-12-19 10:00)
 
-                    ☐ Add dialog for 'settings-item' <========================================================= CURRENT TASK
+                    ✔ Add dialog for 'settings-item' @done(18-12-28 10:00)
                         ✔ Add tab 'Settings' @done(18-12-26 10:35)
                         ✔ Add tab 'Goal' @done(18-12-26 10:35)
                             ✔ For inputs use reactive forms and update state on change @done(18-12-26 10:35)
                         ✔ Add tab 'Pomo' @done(18-12-26 10:35)
                         ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
-                            ☐ Add tests for 'DialogSettingsComponent'
+                            ✔ Add tests for 'DialogSettingsComponent' @done(18-12-28 09:59)
 
-                ☐ Add component 'CurrentTodoComponent'
+                ☐ Add component 'CurrentTodoComponent' <========================================================= CURRENT TASK
+
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
+                
                 ☐ Add component 'StatsComponent'
+
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
             
             ☐ Change urls (path/routes) from 'todos' to 'app'
