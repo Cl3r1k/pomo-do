@@ -20,6 +20,7 @@ import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.compone
 import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
 import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
+import { TodoCurrentComponent } from '@app/todo-current/todo-current.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -78,7 +79,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         TooltipDirective,
         SignInComponent,
         DialogAccountComponent,
-        DialogSettingsComponent
+        DialogSettingsComponent,
+        TodoCurrentComponent
     ],
     imports: [
         AppRoutingModule,

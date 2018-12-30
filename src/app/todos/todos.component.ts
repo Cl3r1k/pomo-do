@@ -42,6 +42,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     toggleAllHoverState = false;
     hashTagToFilter = '';
     showSubmenuState = false;
+    currentTodo = 'Some kind of todo';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -342,6 +343,18 @@ export class TodosComponent implements OnInit, OnDestroy {
         console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
         console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
         console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
+
+        this.getTopMostTodo(pinnedTodos, unpinnedTodos);
+    }
+
+    getTopMostTodo(pinnedTodos: ToDo[], unpinnedTodos: ToDo[]) {
+        if (pinnedTodos.length > 0) {
+            this.currentTodo = pinnedTodos[0].title;
+        } else if (unpinnedTodos.length > 0) {
+            this.currentTodo = unpinnedTodos[0].title;
+        } else {
+            this.currentTodo = 'All things is done';
+        }
     }
 
     private hashtagIsPresent(title: string, hashTagToFilter: string): boolean {

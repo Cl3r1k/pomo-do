@@ -46,7 +46,12 @@ Todos:
                         ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
                             ✔ Add tests for 'DialogSettingsComponent' @done(18-12-28 09:59)
 
-                ☐ Add component 'CurrentTodoComponent' <========================================================= CURRENT TASK
+                ☐ Add component 'TodoCurrentComponent' <========================================================= CURRENT TASK
+                    ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
+                        ☐ Fix bug, when todo dragged upper
+                        ☐ Check behaviour when todo pinned/unpinned
+                    ☐ Complete UI for 'TodoCurrentComponent'
+                    ☐ Add tests for 'TodoCurrentComponent'
 
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
                 

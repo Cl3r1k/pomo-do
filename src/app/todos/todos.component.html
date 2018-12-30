@@ -6,6 +6,8 @@
     <div class='content-container'>
         <app-todo-title [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubmenuAppCall($event)'></app-todo-title>
 
+        <app-todo-current [currentTodo]='currentTodo'></app-todo-current>
+
         <!-- src/app/todos/todos.component.ts -->
         <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
