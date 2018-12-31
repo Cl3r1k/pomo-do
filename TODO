@@ -48,9 +48,10 @@ Todos:
 
                 ☐ Add component 'TodoCurrentComponent' <========================================================= CURRENT TASK
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
-                        ☐ Fix bug, when todo dragged upper
-                        ☐ Check behaviour when todo pinned/unpinned
+                        ✔ Fix bug, when todo dragged upper @done(18-12-30 09:20)
+                        ✔ Check behaviour when todo pinned/unpinned @done(18-12-30 09:20)
                     ☐ Complete UI for 'TodoCurrentComponent'
+                        ☐ Improve and check view for todo with priority/tag/link
                     ☐ Add tests for 'TodoCurrentComponent'
 
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

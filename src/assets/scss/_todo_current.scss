@@ -1,0 +1,27 @@
+.current-todo-container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    background-color: #90dfd5; // For Debug
+    margin: 20px auto 0 auto;
+    max-width: 960px;
+    .current-todo-content {
+        grid-column: span 16;
+        background-color: #dfda90; // For Debug
+        margin: auto;
+        padding: 10px;
+        border-radius: 3px;
+        .todo-name {
+            background-color: #93df90; // For Debug
+            font-size: 21px;
+            font-weight: 700;
+        }
+        .icon-pin {
+            background-color: #c290df; // For Debug
+            font-size: 24px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

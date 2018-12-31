@@ -1,3 +1,8 @@
-<p>
-    {{currentTodo}}
-</p>
+<div class='current-todo-container' *ngIf='currentTodoId !== -1'>
+    <div class='current-todo-content'>
+        <span class='todo-name'>{{currentTodo}}</span>
+        <svg class='icon icon-pin' (click)='toggleComplete(currentTodoId)'>
+            <use xlink:href='#icon-pin'></use>
+        </svg>
+    </div>
+</div>

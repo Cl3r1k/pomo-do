@@ -8,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TodoCurrentComponent implements OnInit {
 
     @Input() currentTodo: string;
+    @Input() currentTodoId: number;
 
     constructor() { }
 
     ngOnInit() {
+    }
+
+    toggleComplete(currentTodoId: number) {
+        //
     }
 
 }

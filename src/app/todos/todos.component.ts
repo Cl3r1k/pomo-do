@@ -30,7 +30,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
-    todosToView: [ToDo[]] = [[]];
+    todosToView: [ToDo[], ToDo[], ToDo[]] = [[], [], []];
     allTodosAmount: number;
     activeTodosAmount: number;
     completedTodosAmount: number;
@@ -43,6 +43,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     hashTagToFilter = '';
     showSubmenuState = false;
     currentTodo = 'Some kind of todo';
+    currentTodoId = -1;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -289,6 +290,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         this.todos = todosUpdated;
         this.updateOrder();
+        this.getTopMostTodo();
     }
 
     updateOrder() {
@@ -334,26 +336,29 @@ export class TodosComponent implements OnInit, OnDestroy {
             }
         });
 
-        this.todosToView = [[]];
+        this.todosToView = [[], [], []];
 
         this.todosToView[0] = pinnedTodos;
-        this.todosToView.push(unpinnedTodos);
-        this.todosToView.push(completedTodos);
+        this.todosToView[1] = unpinnedTodos;
+        this.todosToView[2] = completedTodos;
 
         console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
         console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
         console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
 
-        this.getTopMostTodo(pinnedTodos, unpinnedTodos);
+        this.getTopMostTodo();
     }
 
-    getTopMostTodo(pinnedTodos: ToDo[], unpinnedTodos: ToDo[]) {
-        if (pinnedTodos.length > 0) {
-            this.currentTodo = pinnedTodos[0].title;
-        } else if (unpinnedTodos.length > 0) {
-            this.currentTodo = unpinnedTodos[0].title;
+    getTopMostTodo() {
+        if (this.todosToView[0].length > 0) {
+            this.currentTodo = this.todosToView[0][0].title;
+            this.currentTodoId = this.todosToView[0][0].id;
+        } else if (this.todosToView[1].length > 0) {
+            this.currentTodo = this.todosToView[1][0].title;
+            this.currentTodoId = this.todosToView[1][0].id;
         } else {
-            this.currentTodo = 'All things is done';
+            this.currentTodo = '';
+            this.currentTodoId = -1;
         }
     }
 
