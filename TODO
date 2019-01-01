@@ -46,11 +46,14 @@ Todos:
                         ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
                             ✔ Add tests for 'DialogSettingsComponent' @done(18-12-28 09:59)
 
-                ☐ Add component 'TodoCurrentComponent' <========================================================= CURRENT TASK
+                ☐ Add component 'TodoCurrentComponent'
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
                         ✔ Fix bug, when todo dragged upper @done(18-12-30 09:20)
                         ✔ Check behaviour when todo pinned/unpinned @done(18-12-30 09:20)
-                    ☐ Complete UI for 'TodoCurrentComponent'
+                    ☐ Complete UI for 'TodoCurrentComponent' <========================================================= CURRENT TASK
+                        ☐ Onhove 'icon-checkmark' shoud be changed color
+                        ☐ Change title color
+                        ☐ With large text title should be showed only part of it
                         ☐ Improve and check view for todo with priority/tag/link
                     ☐ Add tests for 'TodoCurrentComponent'
 
@@ -73,6 +76,7 @@ Todos:
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
                     ✔ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color) @done(18-07-22 09:48)
                         ☐ Add possibility to change #hashtag  color (by right click on tag)
+                        ☐ Add behaviour autosuggest #hashtag when typing
                     ✔ Rewrite part with tag list @done(18-07-21 09:51)
                         ✔ Fill tags array in 'TagService' when list of todo is loaded @done(18-06-04 10:19)
                         ✔ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed @done(18-06-05 09:39)

@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+// Models
+import { ToDo } from '@app/_models/to-do';
 
 @Component({
     selector: 'app-todo-current',
@@ -7,15 +10,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TodoCurrentComponent implements OnInit {
 
-    @Input() currentTodo: string;
-    @Input() currentTodoId: number;
+    consoleTextColorComponent = 'color: cadetblue;';
+
+    @Input() todo: ToDo;
+
+    @Output() toggleTodoCurrentComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
     ngOnInit() {
+        console.log('%cin TodoCurrentComponent todo: ', this.consoleTextColorComponent, this.todo);
     }
 
-    toggleComplete(currentTodoId: number) {
+    toggleComplete(todo: ToDo) {
         //
     }
 

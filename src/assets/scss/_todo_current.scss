@@ -7,7 +7,7 @@
     max-width: 960px;
     .current-todo-content {
         grid-column: span 16;
-        background-color: #dfda90; // For Debug
+        background-color: #dfda90;
         margin: auto;
         padding: 10px;
         border-radius: 3px;
@@ -15,10 +15,13 @@
             background-color: #93df90; // For Debug
             font-size: 21px;
             font-weight: 700;
+            vertical-align: middle;
         }
-        .icon-pin {
+        .icon-checkmark {
             background-color: #c290df; // For Debug
-            font-size: 24px;
+            font-size: 23px;
+            vertical-align: middle;
+            margin: 0 0 0 9px;
             &:hover {
                 cursor: pointer;
             }

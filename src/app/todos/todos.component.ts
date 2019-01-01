@@ -42,8 +42,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     toggleAllHoverState = false;
     hashTagToFilter = '';
     showSubmenuState = false;
-    currentTodo = 'Some kind of todo';
-    currentTodoId = -1;
+    currentTodo: ToDo = null;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -351,14 +350,11 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     getTopMostTodo() {
         if (this.todosToView[0].length > 0) {
-            this.currentTodo = this.todosToView[0][0].title;
-            this.currentTodoId = this.todosToView[0][0].id;
+            this.currentTodo = this.todosToView[0][0];
         } else if (this.todosToView[1].length > 0) {
-            this.currentTodo = this.todosToView[1][0].title;
-            this.currentTodoId = this.todosToView[1][0].id;
+            this.currentTodo = this.todosToView[1][0];
         } else {
-            this.currentTodo = '';
-            this.currentTodoId = -1;
+            this.currentTodo = null;
         }
     }
 
