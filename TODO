@@ -50,9 +50,9 @@ Todos:
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
                         ✔ Fix bug, when todo dragged upper @done(18-12-30 09:20)
                         ✔ Check behaviour when todo pinned/unpinned @done(18-12-30 09:20)
-                    ☐ Complete UI for 'TodoCurrentComponent' <========================================================= CURRENT TASK
-                        ☐ Onhove 'icon-checkmark' shoud be changed color
-                        ☐ Change title color
+                    ☐ Complete UI for 'TodoCurrentComponent'
+                        ✔ Onhover 'icon-checkmark' shoud be changed color @done(19-01-02 09:39)
+                        ☐ Change title color <========================================================= CURRENT TASK
                         ☐ With large text title should be showed only part of it
                         ☐ Improve and check view for todo with priority/tag/link
                     ☐ Add tests for 'TodoCurrentComponent'

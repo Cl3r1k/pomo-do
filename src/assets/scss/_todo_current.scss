@@ -22,8 +22,11 @@
             font-size: 23px;
             vertical-align: middle;
             margin: 0 0 0 9px;
+            color: #777777;
+            transition: 0.3s ease-out;
             &:hover {
                 cursor: pointer;
+                color: #4d4d4d;
             }
         }
     }
