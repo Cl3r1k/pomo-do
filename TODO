@@ -52,9 +52,9 @@ Todos:
                         ✔ Check behaviour when todo pinned/unpinned @done(18-12-30 09:20)
                     ☐ Complete UI for 'TodoCurrentComponent'
                         ✔ Onhover 'icon-checkmark' shoud be changed color @done(19-01-02 09:39)
-                        ☐ Change title color <========================================================= CURRENT TASK
-                        ☐ With large text title should be showed only part of it
-                        ☐ Improve and check view for todo with priority/tag/link
+                        ✔ Change title color @done(19-01-02 09:51)
+                        ✔ With large text title should be showed only part of it @done(19-01-02 10:13)
+                        ☐ Improve and check view for todo with priority/tag/link <========================================================= CURRENT TASK
                     ☐ Add tests for 'TodoCurrentComponent'
 
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]

@@ -14,7 +14,7 @@ export class TodoCurrentComponent implements OnInit {
 
     @Input() todo: ToDo;
 
-    @Output() toggleTodoCurrentComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() toggleCompleteTodoCurrentComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
@@ -23,7 +23,7 @@ export class TodoCurrentComponent implements OnInit {
     }
 
     toggleComplete(todo: ToDo) {
-        //
+        this.toggleCompleteTodoCurrentComponentEmitter.emit(todo);
     }
 
 }

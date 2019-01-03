@@ -7,15 +7,23 @@
     max-width: 960px;
     .current-todo-content {
         grid-column: span 16;
-        background-color: #dfda90;
+        background-color: #bdde7b;
         margin: auto;
         padding: 10px;
         border-radius: 3px;
+        max-width: 95%;
         .todo-name {
             background-color: #93df90; // For Debug
             font-size: 21px;
             font-weight: 700;
             vertical-align: middle;
+            color: #716666;
+            max-width: 95%;
+            white-space: nowrap;
+            margin: 0;
+            overflow: hidden;
+            display: inline-block;
+            padding: 1px 0 1px 0;
         }
         .icon-checkmark {
             background-color: #c290df; // For Debug

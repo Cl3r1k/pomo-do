@@ -47,6 +47,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     hoverState = false;
     withCtrlHoverState = false;
 
+    // TODO: Delete sanitizer declaration ???
     constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
