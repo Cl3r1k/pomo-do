@@ -43,6 +43,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     hashTagToFilter = '';
     showSubmenuState = false;
     currentTodo: ToDo = null;
+    currentTodoTitle = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -156,6 +157,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     onUpdateTodo(todo: ToDo) {
         this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
             // todo = updatedTodo;        // We even do not need to update inner todo
+            this.getTopMostTodo();
         });
     }
 
@@ -356,6 +358,10 @@ export class TodosComponent implements OnInit, OnDestroy {
         } else {
             this.currentTodo = null;
         }
+
+        if (this.currentTodo !== null) {
+            this.currentTodoTitle = this.parseTitle(this.currentTodo);
+        }
     }
 
     private hashtagIsPresent(title: string, hashTagToFilter: string): boolean {
@@ -396,6 +402,57 @@ export class TodosComponent implements OnInit, OnDestroy {
     onSubmenuAppCall(subMenuAppState) {
         // console.log('subMenuAppState is: ', subMenuAppState);
         this.showSubmenuState = subMenuAppState;
+    }
+
+    parseTitle(todo: ToDo) {
+
+        let tmpTitle = todo.title;
+
+        let foundPriority = false;
+        let lastIndex: number;
+        let counter = 0;
+
+        for (let mainInd = tmpTitle.length - 1; mainInd >= 0; mainInd--) {
+            lastIndex = tmpTitle.lastIndexOf('!', mainInd);
+
+            if (lastIndex < 0) {
+                break;    // '!' not found, skip parsing
+            }
+
+            if (lastIndex === tmpTitle.length - 1 || tmpTitle[lastIndex + 1] === ' ') {
+                counter = 0;
+                let notPriority = false;
+                for (let i = lastIndex; i >= 0; i--) {
+                    if (tmpTitle[i] === '!') {
+                        counter++;
+                        continue;
+                    }
+                    if (tmpTitle[i] === ' ') {
+                        foundPriority = true;
+                        break;
+                    } else {
+                        notPriority = true;
+                        break;
+                    }
+                }
+
+                if (foundPriority) {
+                    break;
+                }
+            } else {
+                continue;
+            }
+        }
+
+        if (foundPriority) {
+            let tmpTitleParsed = tmpTitle.slice(0, lastIndex - counter);
+            if (lastIndex < tmpTitle.length - 1) {
+                tmpTitleParsed += tmpTitle.slice(lastIndex + 1, tmpTitle.length);
+            }
+            tmpTitle = tmpTitleParsed;
+        }
+
+        return tmpTitle;
     }
 
 }

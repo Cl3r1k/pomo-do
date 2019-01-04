@@ -13,6 +13,7 @@ export class TodoCurrentComponent implements OnInit {
     consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todo: ToDo;
+    @Input() currentTodoTitle: string;
 
     @Output() toggleCompleteTodoCurrentComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
 
