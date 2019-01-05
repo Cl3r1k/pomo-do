@@ -47,18 +47,18 @@ Todos:
                         ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
                             ✔ Add tests for 'DialogSettingsComponent' @done(18-12-28 09:59)
 
-                ☐ Add component 'TodoCurrentComponent'
+                ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
                         ✔ Fix bug, when todo dragged upper @done(18-12-30 09:20)
                         ✔ Check behaviour when todo pinned/unpinned @done(18-12-30 09:20)
-                    ☐ Complete UI for 'TodoCurrentComponent'
+                    ✔ Complete UI for 'TodoCurrentComponent' @done(19-01-04 09:58)
                         ✔ Onhover 'icon-checkmark' shoud be changed color @done(19-01-02 09:39)
                         ✔ Change title color @done(19-01-02 09:51)
                         ✔ With large text title should be showed only part of it @done(19-01-02 10:13)
                         ✔ Improve and check view for 'currentTodo' with priority/tag/link @done(19-01-03 09:58)
-                    ☐ Add tests for 'TodoCurrentComponent' <========================================================= CURRENT TASK
+                    ✔ Add tests for 'TodoCurrentComponent' @done(19-01-04 09:58)
 
-                ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
+                ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList] <========================================================= CURRENT TASK
                 
                 ☐ Add component 'StatsComponent'
 

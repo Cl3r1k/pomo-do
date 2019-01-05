@@ -20,6 +20,7 @@ import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-i
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
+import { TodoCurrentComponent } from '@app/todo-current/todo-current.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';
@@ -70,7 +71,8 @@ describe(`Component: TodosComponent`, () => {
                 SafePipe,
                 FilterTagPipe,
                 ParseTagPipe,
-                TooltipDirective
+                TooltipDirective,
+                TodoCurrentComponent
             ],
             providers: [TodoService,
                 {

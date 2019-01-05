@@ -43,7 +43,7 @@ describe('Component: TodoListItemViewComponent', () => {
         component = fixture.componentInstance;
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
-        component.todo = expectedTodo;                    // Lets count that we todo with 'complete' = false
+        component.todo = expectedTodo;                    // Lets count that we have todo with 'complete' = false
         fixture.detectChanges();
 
         // console.log(`%c'beforeEach()' in 'TodoListItemViewComponent' component.todo:`, 'color: teal;', component.todo);
@@ -355,7 +355,7 @@ describe('Component: TodoListItemViewComponent', () => {
             });
         });
 
-        // TODO: Add test for mouseenter/mouseleave events for elemnts
+        // TODO: Add test for mouseenter/mouseleave events for elements
         describe(`svg.icon-more_horiz:`, () => {
             it(`clicking on 'svg.icon-more_horiz' should call method 'showMore()' (async)`, async () => {
                 // Arrange
