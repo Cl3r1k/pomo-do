@@ -1,3 +1,19 @@
+.pomodo-app {
+    max-width: 960px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    .pomo-app {
+        grid-column: 1/7;
+        padding: 0 5px;
+    }
+    .todo-app {
+        grid-column: 7/13;
+        padding: 0 5px;
+    }
+}
+
+
 /* Todo section */
 
 .todoapp {

@@ -8,7 +8,15 @@
 
         <app-todo-current [todo]='currentTodo' [currentTodoTitle]='currentTodoTitle' (toggleCompleteTodoCurrentComponentEmitter)='onToggleTodoComplete($event)'></app-todo-current>
 
-        <!-- src/app/todos/todos.component.ts -->
+        <div class='pomodo-app'>
+            <section class='pomo-app'>
+                <app-pomos></app-pomos>
+            </section>
+            <section class='todo-app'>
+                <app-pomos></app-pomos>
+            </section>
+        </div>
+
         <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
             <!-- header is now replaced with app-todoo-list-header -->
