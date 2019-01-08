@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    // position: relative;
+    position: relative;
     // z-index: 0;
     &.filter-state {
         background-color: #eeeeee;

@@ -27,7 +27,7 @@
             display: grid;
             grid-template-columns: repeat(16, 1fr);
             .completed-todos {
-                grid-column: 1/5;
+                grid-column: 1/7;
                 background-color: #08b2eb; // For Debug
                 margin: 5px;
                 margin-left: 15px;
@@ -115,7 +115,7 @@
     list-style: none;
     li {
         // position: relative;
-        font-size: 24px;
+        font-size: 15px;
         border-bottom: 1px solid #ededed;
         transition: background-color 0.3s ease-out;
         cursor: default !important; // Styles to prevent ng2-dnd styles for element

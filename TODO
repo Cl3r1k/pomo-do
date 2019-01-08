@@ -72,6 +72,8 @@ Todos:
             ☐ Move 'MockRouter' from test files to separate file and use it proper
 
             ☐ Move colors for files (components, tests, etc) to environment file and use like constants
+
+            ☐ Reorganize #hashtag-filter part (click on #hashtag should only filter view, and don't change data(resolver) and current-todo shouldn't be changes)
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)

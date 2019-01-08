@@ -6,7 +6,7 @@ $bgColorRed: rgb(209, 121, 121);
     position: relative;
     margin: 0;
     width: 100%;
-    font-size: 24px;
+    font-size: 15px;
     font-family: inherit;
     font-weight: inherit;
     line-height: 1.4em;
@@ -17,5 +17,5 @@ $bgColorRed: rgb(209, 121, 121);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 }
