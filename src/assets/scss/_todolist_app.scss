@@ -136,7 +136,7 @@
                 }
             }
             .toggle:not(:checked) {
-                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/></svg>');
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/></svg>');
             }
             .buttons-block {
                 .icon-more_horiz, // .icon-pencil-edit,
@@ -271,7 +271,9 @@
                 // top: 0;
                 // bottom: 0;
                 text-align: center;
-                width: 40px;
+                width: 30px;
+                height: 30px;
+                background-color: #c457c4; // For debug
                 /* auto-height, since non-Webkit browsers doesn't support input styling */
                 // height: auto;    // Check this point in other browsers
                 margin: auto;
@@ -282,10 +284,11 @@
                 appearance: none;
                 cursor: pointer;
                 &:after {
-                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(237, 237, 237)" stroke-width="3"/></svg>');
+                    background-color: #57c4a3; // For debug
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(237, 237, 237)" stroke-width="3"/></svg>');
                 }
                 &:checked:after {
-                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
                 }
             }
         }
@@ -294,7 +297,7 @@
             // margin-right: 94px;
             // display: block;
             word-break: break-all;
-            padding: 15px 15px 15px 15px;
+            padding: 5px;
             line-height: 1.2;
             transition: color 0.4s;
             grid-column: span 14;
@@ -381,18 +384,19 @@
             }
         }
     }
-    .todoapp.clearAll-hovered & li.completed {
+    .todo-app.clearAll-hovered & li.completed {
         background-color: #f7e8e8;
         .icon-destroy {
             opacity: 1;
         }
     }
-    .todoapp.toggleAll-hovered & li {
+    .todo-app.toggleAll-hovered & li {
         color: #d9d9d9;
         text-decoration: line-through;
         .toggle {
             &:not(:checked) {
-                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                // M62 35L42 71 27 56l-4 4 20 20 24-42z
             }
         }
     }
