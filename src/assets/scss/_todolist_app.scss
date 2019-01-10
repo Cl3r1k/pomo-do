@@ -25,12 +25,13 @@
             // border-bottom: 1px solid #e6e6e6;
             grid-column: span 16;
             display: grid;
-            grid-template-columns: repeat(16, 1fr);
+            grid-template-columns: repeat(18, 1fr);
             .completed-todos {
                 grid-column: 1/7;
                 background-color: #08b2eb; // For Debug
                 margin: 5px;
                 margin-left: 15px;
+                padding-left: 3px;
                 // margin: 5px, 0px, 5px, 15px;
                 border: 1px solid #d9d9d9;
                 border-radius: 3px;
@@ -42,9 +43,9 @@
                     border-color: #737373;
                 }
                 .collapse-button {
-                    grid-column: span 3;
-                    height: 32px;
-                    width: 32px;
+                    grid-column: span 2;
+                    // height: 32px;
+                    // width: 32px;
                     margin: auto;
                     text-align: center;
                     border: none;
@@ -58,7 +59,7 @@
                     /* Mobile Safari */
                     &:before {
                         content: '❯';
-                        font-size: 22px;
+                        font-size: 14px;
                         // padding: 10px 27px 10px 27px;
                     }
                     &:checked {
@@ -73,14 +74,15 @@
                     }
                 }
                 span {
-                    grid-column: span 13;
+                    grid-column: span 14;
+                    font-size: 14px;
                     &.completed-todos-hovered {
                         color: #737373;
                     }
                 }
             }
             .icon-broom {
-                grid-column: 16/17;
+                grid-column: 18/18;
                 font-size: 18px;
                 color: #a8a8a8;
                 background-color: #50f550; // For debuging
@@ -136,7 +138,7 @@
                 }
             }
             .toggle:not(:checked) {
-                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/></svg>');
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/></svg>');
             }
             .buttons-block {
                 .icon-more_horiz, // .icon-pencil-edit,
@@ -273,7 +275,7 @@
                 text-align: center;
                 width: 30px;
                 height: 30px;
-                background-color: #c457c4; // For debug
+                // background-color: #c457c4; // For debug
                 /* auto-height, since non-Webkit browsers doesn't support input styling */
                 // height: auto;    // Check this point in other browsers
                 margin: auto;
@@ -284,11 +286,11 @@
                 appearance: none;
                 cursor: pointer;
                 &:after {
-                    background-color: #57c4a3; // For debug
-                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(237, 237, 237)" stroke-width="3"/></svg>');
+                    // background-color: #57c4a3; // For debug
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(204, 204, 204)" stroke-width="3"/></svg>');
                 }
                 &:checked:after {
-                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M65 36L46 62 31 47l-4 4 20 20 23-32z"/></svg>');
                 }
             }
         }
@@ -395,8 +397,9 @@
         text-decoration: line-through;
         .toggle {
             &:not(:checked) {
-                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
-                // M62 35L42 71 27 56l-4 4 20 20 24-42z
+                // Old checkmark SVG
+                // content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M65 36L46 62 31 47l-4 4 20 20 23-32z"/></svg>');
             }
         }
     }

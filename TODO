@@ -58,7 +58,14 @@ Todos:
                         ✔ Improve and check view for 'currentTodo' with priority/tag/link @done(19-01-03 09:58)
                     ✔ Add tests for 'TodoCurrentComponent' @done(19-01-04 09:58)
 
-                ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList] <========================================================= CURRENT TASK
+                ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
+                    ☐ Update view for TodoList with new updates
+                        ✔ Update view for todo-view @done(19-01-09 09:52)
+                        ✔ Update view for completed-todos @done(19-01-09 10:26)
+                        ☐ Update view for todo-header <========================================================= CURRENT TASK
+                        ☐ Update view for todo-footer
+                            ☐ Reorganize footer part, and consider to remove it
+                    ☐ Move all part for Todo-App in separate component
                 
                 ☐ Add component 'StatsComponent'
 
