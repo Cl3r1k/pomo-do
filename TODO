@@ -62,7 +62,8 @@ Todos:
                     ☐ Update view for TodoList with new updates
                         ✔ Update view for todo-view @done(19-01-09 09:52)
                         ✔ Update view for completed-todos @done(19-01-09 10:26)
-                        ☐ Update view for todo-header <========================================================= CURRENT TASK
+                        ✔ Update view for todo-header @done(19-01-10 10:28)
+                            ☐ Reorganize part for 'new-todo' and 'icon-keyboard_return' (instead position: absolute; for icon use grid) <========================================================= CURRENT TASK
                         ☐ Update view for todo-footer
                             ☐ Reorganize footer part, and consider to remove it
                     ☐ Move all part for Todo-App in separate component
@@ -70,6 +71,8 @@ Todos:
                 ☐ Add component 'StatsComponent'
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
+
+            ☐ Update CLI to latest version (7.2.0)
             
             ☐ Change urls (path/routes) from 'todos' to 'app'
 
@@ -81,6 +84,9 @@ Todos:
             ☐ Move colors for files (components, tests, etc) to environment file and use like constants
 
             ☐ Reorganize #hashtag-filter part (click on #hashtag should only filter view, and don't change data(resolver) and current-todo shouldn't be changes)
+
+            ☐ Add OAuth authorization for VK, G+, FB, TWitter, GH
+            ☐ Add posibility to save list as CSV on local PC, GDrive, Yandex.Disk (with OAuth), DropBox
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
