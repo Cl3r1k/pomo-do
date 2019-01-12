@@ -11,6 +11,7 @@
 Commit message:
 
 
+
 Todos:
     New:
         Current:
@@ -63,9 +64,10 @@ Todos:
                         ✔ Update view for todo-view @done(19-01-09 09:52)
                         ✔ Update view for completed-todos @done(19-01-09 10:26)
                         ✔ Update view for todo-header @done(19-01-10 10:28)
-                            ☐ Reorganize part for 'new-todo' and 'icon-keyboard_return' (instead position: absolute; for icon use grid) <========================================================= CURRENT TASK
-                        ☐ Update view for todo-footer
-                            ☐ Reorganize footer part, and consider to remove it
+                            ✔ Reorganize part for 'new-todo' and 'icon-keyboard_return' (instead position: absolute; for icon use grid) @done(19-01-11 09:50)
+                        ✔ Update view for todo-footer @done(19-01-11 10:10)
+                            ✔ Fix '.footer:before' style @done(19-01-11 10:25)
+                            ☐ Reorganize footer part, and consider to remove it <========================================================= CURRENT TASK
                     ☐ Move all part for Todo-App in separate component
                 
                 ☐ Add component 'StatsComponent'
