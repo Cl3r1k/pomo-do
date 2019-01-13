@@ -12,7 +12,7 @@
             <section class='pomo-app'>
                 <app-pomos></app-pomos>
             </section>
-            <section class='todo-app' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
+            <section class='todo-app' [class.not-empty-todo-list]='todos.length !== 0' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
                 <!-- header is now replaced with app-todoo-list-header -->
                 <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' [hashTagToFilter]='hashTagToFilter' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
