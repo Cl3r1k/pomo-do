@@ -67,7 +67,8 @@ Todos:
                             ☐ Fix header, when there is no any todo in list (width collapse)
                         ✔ Update view for todo-footer @done(19-01-11 10:10)
                             ✔ Fix '.footer:before' style @done(19-01-11 10:25)
-                            ☐ Reorganize footer part, and consider to remove it <========================================================= CURRENT TASK
+                            ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)
+                                ☐ Update tests for app with removed todo-footer <========================================================= CURRENT TASK
                     ☐ Move all part for Todo-App in separate component
                 
                 ☐ Add component 'StatsComponent'

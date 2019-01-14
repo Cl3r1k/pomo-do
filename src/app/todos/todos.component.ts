@@ -31,9 +31,6 @@ export class TodosComponent implements OnInit, OnDestroy {
     todos: ToDo[] = [];
     todo: ToDo = null;
     todosToView: [ToDo[], ToDo[], ToDo[]] = [[], [], []];
-    allTodosAmount: number;
-    activeTodosAmount: number;
-    completedTodosAmount: number;
     allCompleted: boolean;                    // The variable is for toggleAll checkbox
     modalId = 'todoModal';
     titleModal = '';
@@ -68,7 +65,6 @@ export class TodosComponent implements OnInit, OnDestroy {
                 this.todos = resolverData.todos;
 
                 this.transformView();
-                this.updateFooterAndToggleAllInfo();
             }
         );
     }
@@ -85,7 +81,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             console.log('%cin onAddTodo() updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
-            this.updateFooterAndToggleAllInfo();
         });
     }
 
@@ -110,7 +105,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             console.log('%cin onToggleTodoComplete updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
-            this.updateFooterAndToggleAllInfo();
         });
     }
 
@@ -150,7 +144,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             this.todos = this.todos.filter((val) => val.id !== todo.id);
             this.updateOrder();
             this.transformView();
-            this.updateFooterAndToggleAllInfo();
         });
     }
 
@@ -218,17 +211,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             console.log('%cin onToggleAll incoming todos:', this.consoleTextColorComponent, todos);
             this.todos = todos;
             this.transformView();
-            this.updateFooterAndToggleAllInfo();
-        });
-    }
-
-    updateFooterAndToggleAllInfo() {
-        console.log('%cupdateFooterAndToggleAllInfo() called', this.consoleTextColorComponent);
-        this._todoService.getTodosAmountObject().subscribe((todosAmountObject) => {
-            this.allTodosAmount = todosAmountObject['all'];
-            this.activeTodosAmount = todosAmountObject['active'];
-            this.completedTodosAmount = todosAmountObject['complete'];
-            this.allCompleted = this.allTodosAmount === this.completedTodosAmount;
         });
     }
 
@@ -264,7 +246,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service
             this.transformView();
-            this.updateFooterAndToggleAllInfo();
             this.onClearHoverSetState(false);
         });
     }

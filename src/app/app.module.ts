@@ -13,7 +13,6 @@ import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
-import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
@@ -64,7 +63,6 @@ import { AppMainComponent } from './app-main/app-main.component';
         TodoListHeaderComponent,
         TodoListComponent,
         TodoListItemComponent,
-        TodoListFooterComponent,
         TodosComponent,
         PageNotFoundComponent,
         TodoListItemViewComponent,
