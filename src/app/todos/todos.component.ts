@@ -214,7 +214,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Method to handle event emitted by TodoListFooterComponent and call Dialog
+    // Method to handle event 'clearTodoListEmitter' and call Dialog
     onClearCompleted(clearState: boolean) {
         const dataForDialog = {
             dialogTitle: 'Delete Todos',
@@ -241,7 +241,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     clearCompleted(clearState: boolean) {
         // tslint:disable-next-line:max-line-length
-        console.log('%conClearCompleted (remove %s in TodoListFooterComponent and in current method): ', this.consoleTextColorComponent, clearState);
+        console.log('%conClearCompleted (remove %s in TodosComponent): ', this.consoleTextColorComponent, clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service

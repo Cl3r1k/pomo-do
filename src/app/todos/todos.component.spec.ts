@@ -19,8 +19,8 @@ import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { TodoCurrentComponent } from '@app/todo-current/todo-current.component';
+import { PomosComponent } from '@app/pomos/pomos.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';
@@ -64,7 +64,6 @@ describe(`Component: TodosComponent`, () => {
                 TodoTitleComponent,
                 TodoListHeaderComponent,
                 TodoListComponent,
-                TodoListFooterComponent,
                 TodoListItemComponent,
                 TodoListItemViewComponent,
                 TodoListItemEditComponent,
@@ -72,7 +71,8 @@ describe(`Component: TodosComponent`, () => {
                 FilterTagPipe,
                 ParseTagPipe,
                 TooltipDirective,
-                TodoCurrentComponent
+                TodoCurrentComponent,
+                PomosComponent
             ],
             providers: [TodoService,
                 {
@@ -121,7 +121,7 @@ describe(`Component: TodosComponent`, () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used:  Components(TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
+    it(`Should create the app, used:  Components(TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, TodoCurrentComponent, PomosComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
         // Arrange
 
         // Act

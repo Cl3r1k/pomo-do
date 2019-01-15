@@ -9,8 +9,9 @@ import { TodosFilterHashtagResolver } from '@app/_resolvers/todos-filter-hashtag
 
 // Components
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { TodosComponent } from '@app/todos/todos.component';
+// import { TodosComponent } from '@app/todos/todos.component';
 import { SignInComponent } from '@app/sign-in/sign-in.component';
+import { MainComponent } from '@app/main/main.component';
 
 // Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
@@ -26,8 +27,8 @@ const routes: Routes = [
         component: SignInComponent
     },
     {
-        path: 'todos',
-        component: TodosComponent,
+        path: 'app',
+        component: MainComponent,
         canActivate: [
             CanActivateTodosGuard
         ],
@@ -36,8 +37,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'todos/active',
-        component: TodosComponent,
+        path: 'app/todos/active',
+        component: MainComponent,
         canActivate: [
             CanActivateTodosGuard
         ],
@@ -46,8 +47,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'todos/completed',
-        component: TodosComponent,
+        path: 'app/todos/completed',
+        component: MainComponent,
         canActivate: [
             CanActivateTodosGuard
         ],
@@ -56,8 +57,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'todos/filter/hashtag/:hashtag',
-        component: TodosComponent,
+        path: 'app/todos/filter/hashtag/:hashtag',
+        component: MainComponent,
         canActivate: [
             CanActivateTodosGuard
         ],

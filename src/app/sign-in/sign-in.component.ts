@@ -62,14 +62,14 @@ export class SignInComponent implements OnInit {
 
         if (username === 'tst' && password === 'tst') {
             this._authService.doSignIn('tst.Token', 'tst.name');
-            this._router.navigate(['todos']);
+            this._router.navigate(['app']);
             return;
         }
 
         // Submit request to API
         this._apiService.signIn(username, password).subscribe((response) => {
             this._authService.doSignIn(response['token'], response['name']);
-            this._router.navigate(['todos']);
+            this._router.navigate(['app']);
         },
             (error) => {
                 this.isBusy = false;

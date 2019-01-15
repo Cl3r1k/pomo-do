@@ -56,6 +56,7 @@ import { Utils } from '@app/_common/utils';
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
 import { PomosComponent } from './pomos/pomos.component';
 import { AppMainComponent } from './app-main/app-main.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
     declarations: [
@@ -82,7 +83,8 @@ import { AppMainComponent } from './app-main/app-main.component';
         DialogSettingsComponent,
         TodoCurrentComponent,
         PomosComponent,
-        AppMainComponent
+        AppMainComponent,
+        MainComponent
     ],
     imports: [
         AppRoutingModule,

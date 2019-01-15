@@ -43,7 +43,7 @@ export class AuthService {
         const session_data = this._jwtService.getToken();
         if (session_data) {
             this.doSignIn(session_data['account']['jwToken'], session_data['account']['name']);
-            this._router.navigate(['todos']);
+            this._router.navigate(['app']);
         }
     }
 

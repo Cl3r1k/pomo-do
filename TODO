@@ -68,8 +68,13 @@ Todos:
                         ✔ Update view for todo-footer @done(19-01-11 10:10)
                             ✔ Fix '.footer:before' style @done(19-01-11 10:25)
                             ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)
-                                ☐ Update tests for app with removed todo-footer <========================================================= CURRENT TASK
+                                ✔ Update tests for app with removed todo-footer @done(19-01-14 09:59)
                     ☐ Move all part for Todo-App in separate component
+                        ☐ Move all part from 'TodosComponent' to 'MainComponent' <========================================================= CURRENT TASK
+                        ☐ Update app with changed default path from 'todos' to 'app'
+                            ☐ Update all routes with new path 'app'
+                            ☐ Update all tests with new  path 'app'
+                        ☐ Fix issues with new path 'app'
                 
                 ☐ Add component 'StatsComponent'
 
