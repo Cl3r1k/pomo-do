@@ -14,27 +14,13 @@
             </section>
             <section class='todo-app' [class.not-empty-todo-list-footer]='todos.length !== 0' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
+                <!-- <app-todos></app-todos> -->
+
                 <!-- header is now replaced with app-todoo-list-header -->
                 <app-todo-list-header [todosAllAmount]='todos.length' [todosAllCompleted]='allCompleted' [hashTagToFilter]='hashTagToFilter' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
 
                 <app-todo-list [todos]='todos' [todosToView]='todosToView' [todosAllAmount]='todos.length' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (moreTodoTodoListEmitter)='onMoreTodo($event)'
                     (pinTodoTodoListEmitter)='onPinTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)' (clearTodoListEmitter)='onClearCompleted($event)' (clearHoverStateTodoListEmitter)='onClearHoverSetState($event)'></app-todo-list>
-
-                <!-- <app-modal [modalTitle]='titleModal' [blocking]='false' [modalId]='modalId'>
-                    <div class='sweet-alert'>
-                        <div class='icon warning'>
-                            <div class='icon-warning'>!</div>
-                        </div>
-    
-                        <h2 class='alert-title'>Are you sure?</h2>
-                        <div class='alert-content'>You won't be able to revert this!</div>
-    
-                        <div class='buttons-wrapper'>
-                            <button (click)='removeTodo(todo)' class='btn-styled button-delete'>Yes, delete it!</button>
-                            <button (click)='_modalService.close(modalId, true)' class='btn-styled button-cancel'>Cancel</button>
-                        </div>
-                    </div>
-                </app-modal> -->
 
             </section>
         </div>

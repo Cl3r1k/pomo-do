@@ -70,7 +70,12 @@ Todos:
                             ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)
                                 ✔ Update tests for app with removed todo-footer @done(19-01-14 09:59)
                     ☐ Move all part for Todo-App in separate component
-                        ☐ Move all part from 'TodosComponent' to 'MainComponent' <========================================================= CURRENT TASK
+                        ✔ Move all parts from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
+                            ✔ Move styles from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
+                            ✔ Move template from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
+                            ✔ Move code from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
+                            ✔ Move tests from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
+                        ☐ Move part for 'todo' from 'MainComponent' to 'TodosComponent' <========================================================= CURRENT TASK
                         ☐ Update app with changed default path from 'todos' to 'app'
                             ☐ Update all routes with new path 'app'
                             ☐ Update all tests with new  path 'app'

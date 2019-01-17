@@ -32,8 +32,6 @@ export class MainComponent implements OnInit, OnDestroy {
     todo: ToDo = null;
     todosToView: [ToDo[], ToDo[], ToDo[]] = [[], [], []];
     allCompleted: boolean;                    // The variable is for toggleAll checkbox
-    modalId = 'todoModal';
-    titleModal = '';
     activeRouteState = 0;
     clearHoverState = false;
     toggleAllHoverState = false;
