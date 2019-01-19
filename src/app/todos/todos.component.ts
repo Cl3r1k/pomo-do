@@ -41,11 +41,11 @@ export class TodosComponent implements OnInit {
         this.addTodosComponentEmitter.emit(todo);    // Emit the addTodo event to 'MainComponent'
     }
 
-    toggleAllTodos(toggleState: boolean) {
+    onToggleAllTodos(toggleState: boolean) {
         this.toggleAllTodosComponentEmitter.emit(toggleState);    // Emit the toggleAll event to 'MainComponent'
     }
 
-    setToggleAllHoverState(toggleAllHoverState: boolean) {
+    onSetToggleAllHoverState(toggleAllHoverState: boolean) {
         this.toggleAllHoverStateTodosComponentEmitter.emit(toggleAllHoverState);    // Emit the toggleAllHoverState event to 'MainComponent'
     }
 
