@@ -49,4 +49,36 @@ export class TodosComponent implements OnInit {
         this.toggleAllHoverStateTodosComponentEmitter.emit(toggleAllHoverState);    // Emit the toggleAllHoverState event to 'MainComponent'
     }
 
+    onToggleTodoComplete(todo: ToDo) {
+        this.toggleCompleteTodosComponentEmitter.emit(todo);    // Emit the 'toggle' event to 'MainComponent'
+    }
+
+    onUpdateTodo(todo: ToDo) {
+        this.updateTodosComponentEmitter.emit(todo);    // Emit the 'update' event to 'MainComponent'
+    }
+
+    onMoreTodo(todo: ToDo) {
+        this.moreTodosComponentEmitter.emit(todo);    // Emit the 'more' event to 'MainComponent'
+    }
+
+    onPinTodo(todo: ToDo) {
+        this.pinTodosComponentEmitter.emit(todo);    // Emit the 'pin' event to 'MainComponent'
+    }
+
+    onRemoveTodo(todo: ToDo) {
+        this.removeTodosComponentEmitter.emit(todo);    // Emit the 'remove' event to 'MainComponent'
+    }
+
+    onMoveTodo(todosUpdated: ToDo[]) {
+        this.moveTodosComponentEmitter.emit(todosUpdated);    // Emit the 'move' event to 'MainComponent'
+    }
+
+    onClearCompleted(clearState: boolean) {
+        this.clearTodosComponentEmitter.emit(clearState);    // Emit the 'clear' event to 'MainComponent'
+    }
+
+    onClearHoverSetState(clearCompletetHoverState: boolean) {
+        this.clearHoverStateTodosComponentEmitter.emit(clearCompletetHoverState);    // Emit the 'clearHover' event to 'MainComponent'
+    }
+
 }

@@ -75,7 +75,18 @@ Todos:
                             ✔ Move template from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move code from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move tests from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
-                        ☐ Move part for 'todo' from 'MainComponent' to 'TodosComponent' <========================================================= CURRENT TASK
+                        ☐ Move part for 'todo' from 'MainComponent' to 'TodosComponent'
+                            ✔ Moved code and template for 'todo' part from 'MainComponent' to 'TodosComponent' @done(19-01-19 10:32)                                                        
+                            ☐ Fix issue with 'update-todo' <========================================================= CURRENT TASK
+                            ☐ Fix issue with 'onMoreTodo'
+                            ☐ Fix issue with 'onPinTodo'
+                            ☐ Fix issue with 'onRemoveTodo'
+                            ☐ Fix issue with 'onMoveTodo'
+                            ☐ Fix issue for 'onClearCompleted'
+                            ☐ Fix issue with 'onClearHoverSetState'
+                            ☐ Fix issue for 'checkbox.toggle-all' when the list is all completed (toggle-all and update page for test case)
+                            ☐ Fix issue with filtering by #hashtag
+                            ☐ Check all moved methods                            
                         ☐ Update app with changed default path from 'todos' to 'app'
                             ☐ Update all routes with new path 'app'
                             ☐ Update all tests with new  path 'app'
