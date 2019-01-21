@@ -327,9 +327,10 @@ export class MainComponent implements OnInit, OnDestroy {
         console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
 
         this.getTopMostTodo();
+        this.setAllCompletedState();
     }
 
-    getTopMostTodo() {
+    private getTopMostTodo() {
         if (this.todosToView[0].length > 0) {
             this.currentTodo = this.todosToView[0][0];
         } else if (this.todosToView[1].length > 0) {
@@ -341,6 +342,10 @@ export class MainComponent implements OnInit, OnDestroy {
         if (this.currentTodo !== null) {
             this.currentTodoTitle = this.parseTitle(this.currentTodo);
         }
+    }
+
+    private setAllCompletedState() {
+        this.allCompleted = this.todos.length === this.todos.filter(todo => todo.complete).length;
     }
 
     private hashtagIsPresent(title: string, hashTagToFilter: string): boolean {

@@ -77,15 +77,15 @@ Todos:
                             ✔ Move tests from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
                         ☐ Move part for 'todo' from 'MainComponent' to 'TodosComponent'
                             ✔ Moved code and template for 'todo' part from 'MainComponent' to 'TodosComponent' @done(19-01-19 10:32)                                                        
-                            ☐ Fix issue with 'update-todo' <========================================================= CURRENT TASK
-                            ☐ Fix issue with 'onMoreTodo'
-                            ☐ Fix issue with 'onPinTodo'
-                            ☐ Fix issue with 'onRemoveTodo'
-                            ☐ Fix issue with 'onMoveTodo'
-                            ☐ Fix issue for 'onClearCompleted'
-                            ☐ Fix issue with 'onClearHoverSetState'
-                            ☐ Fix issue for 'checkbox.toggle-all' when the list is all completed (toggle-all and update page for test case)
-                            ☐ Fix issue with filtering by #hashtag
+                            ✔ Fix issue with 'update-todo' @done(19-01-20 09:37)
+                            ✔ Fix issue with 'onMoreTodo' @done(19-01-20 09:38)
+                            ✔ Fix issue with 'onPinTodo' @done(19-01-20 09:38)
+                            ✔ Fix issue with 'onRemoveTodo' @done(19-01-20 09:38)
+                            ✔ Fix issue with 'onMoveTodo' @done(19-01-20 09:39)
+                            ✔ Fix issue for 'onClearCompleted' @done(19-01-20 09:39)
+                            ✔ Fix issue with 'onClearHoverSetState' @done(19-01-20 09:40)
+                            ✔ Fix issue for 'checkbox.toggle-all' when the list is all completed (toggle-all and update page for test case) @done(19-01-20 10:12)
+                            ☐ Fix issue with filtering by #hashtag <========================================================= CURRENT TASK
                             ☐ Check all moved methods                            
                         ☐ Update app with changed default path from 'todos' to 'app'
                             ☐ Update all routes with new path 'app'

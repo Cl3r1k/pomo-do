@@ -18,8 +18,8 @@
             <section class='todo-app' [class.not-empty-todo-list-footer]='todos.length !== 0' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
                 <app-todos [todosAllAmount]='todos.length' [todosAllCompleted]='allCompleted' [hashTagToFilter]='hashTagToFilter' (addTodosComponentEmitter)='onAddTodo($event)' (toggleAllTodosComponentEmitter)='onToggleAll($event)' (toggleAllHoverStateTodosComponentEmitter)='onToggleAllHoverSetState($event)'
-                    [todos]='todos' [todosToView]='todosToView' (toggleCompleteTodosComponentEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (moreTodoTodoListEmitter)='onMoreTodo($event)' (pinTodoTodoListEmitter)='onPinTodo($event)'
-                    (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)' (clearTodoListEmitter)='onClearCompleted($event)' (clearHoverStateTodoListEmitter)='onClearHoverSetState($event)'>
+                    [todos]='todos' [todosToView]='todosToView' (toggleCompleteTodosComponentEmitter)='onToggleTodoComplete($event)' (updateTodosComponentEmitter)='onUpdateTodo($event)' (moreTodosComponentEmitter)='onMoreTodo($event)' (pinTodosComponentEmitter)='onPinTodo($event)'
+                    (removeTodosComponentEmitter)='onRemoveTodo($event)' (moveTodosComponentEmitter)='onMoveTodo($event)' (clearTodosComponentEmitter)='onClearCompleted($event)' (clearHoverStateTodosComponentEmitter)='onClearHoverSetState($event)'>
                 </app-todos>
 
             </section>
