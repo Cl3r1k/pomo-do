@@ -55,7 +55,7 @@ export class TodoListHeaderComponent implements OnInit {
     }
 
     resetFilter() {
-        this.router.navigate(['/todos']);
+        this.router.navigate(['/app']);
     }
 
 }

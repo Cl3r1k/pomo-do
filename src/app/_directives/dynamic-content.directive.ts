@@ -44,7 +44,7 @@ export class DynamicContentDirective implements OnDestroy {
             event.preventDefault();
             event.stopPropagation();
 
-            this.router.navigate(['/todos/filter/hashtag/', link.trim()], { skipLocationChange: true });
+            this.router.navigate(['app/todos/filter/hashtag/', link.trim()], { skipLocationChange: true });
         }
 
         if (e.target.classList.contains('url-class')) {
