@@ -87,9 +87,9 @@ Todos:
                             ✔ Fix issue for 'checkbox.toggle-all' when the list is all completed (toggle-all and update page for test case) @done(19-01-20 10:12)
                             ✔ Fix issue with filtering by #hashtag @done(19-01-21 09:30)
                             ✔ Check all moved methods @done(19-01-21 09:43)
-                            ☐ Add tests for 'TodosComponent' <========================================================= CURRENT TASK
-                            ☐ Fix tests related refactored part
-                        ☐ Update app with changed default path from 'todos' to 'app'
+                            ✔ Add tests for 'TodosComponent' @done(19-01-22 10:24)
+                            ✔ Fix tests related refactored part @done(19-01-22 10:24)
+                        ☐ Update app with changed default path from 'todos' to 'app' <========================================================= CURRENT TASK
                             ☐ Update all routes with new path 'app'
                             ☐ Update all tests with new  path 'app'
                         ☐ Fix issues with new path 'app'

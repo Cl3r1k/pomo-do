@@ -129,7 +129,7 @@ describe('Component: TodoListHeaderComponent', () => {
     });
 
     describe(`#resetFilter`, () => {
-        it(`should be able to navigate to '/todos' (async)`, async(() => {
+        it(`should be able to navigate to '/app' (async)`, async(() => {
             // Arrange
 
             // Act
@@ -138,7 +138,7 @@ describe('Component: TodoListHeaderComponent', () => {
             component.resetFilter();
 
             // Assert
-            expect(component.router.navigate).toHaveBeenCalledWith(['/todos']);
+            expect(component.router.navigate).toHaveBeenCalledWith(['/app']);
         }));
     });
 
