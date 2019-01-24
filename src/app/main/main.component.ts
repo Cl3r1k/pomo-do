@@ -38,7 +38,7 @@ export class MainComponent implements OnInit, OnDestroy {
     hashTagToFilter = '';
     showSubmenuState = false;
     currentTodo: ToDo = null;
-    currentTodoTitle = '';
+    currentActiveTaskName = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -340,7 +340,7 @@ export class MainComponent implements OnInit, OnDestroy {
         }
 
         if (this.currentTodo !== null) {
-            this.currentTodoTitle = this.parseTitle(this.currentTodo);
+            this.currentActiveTaskName = this.parseTitle(this.currentTodo);
         }
     }
 

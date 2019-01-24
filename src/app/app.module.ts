@@ -19,7 +19,7 @@ import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.compone
 import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
 import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
-import { TodoCurrentComponent } from '@app/todo-current/todo-current.component';
+import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -81,7 +81,7 @@ import { MainComponent } from './main/main.component';
         SignInComponent,
         DialogAccountComponent,
         DialogSettingsComponent,
-        TodoCurrentComponent,
+        ActiveTaskComponent,
         PomosComponent,
         AppMainComponent,
         MainComponent

@@ -20,7 +20,7 @@ import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoCurrentComponent } from '@app/todo-current/todo-current.component';
+import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { PomosComponent } from '@app/pomos/pomos.component';
 
 // Pipes
@@ -73,7 +73,7 @@ describe('Component: MainComponent', () => {
                 FilterTagPipe,
                 ParseTagPipe,
                 TooltipDirective,
-                TodoCurrentComponent,
+                ActiveTaskComponent,
                 PomosComponent
             ],
             providers: [TodoService,
@@ -123,7 +123,7 @@ describe('Component: MainComponent', () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used:  Components(TodosComponent, TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, TodoCurrentComponent, PomosComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
+    it(`Should create the app, used:  Components(TodosComponent, TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, ActiveTaskComponent, PomosComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
         // Arrange
 
         // Act
@@ -138,7 +138,7 @@ describe('Component: MainComponent', () => {
         // Act
 
         // Assert
-        expect(component.activeRouteState).toBe(0, `incoming '_route.routeConfig.path': { path === 'todos' }`);
+        expect(component.activeRouteState).toBe(0, `incoming '_route.routeConfig.path': { path === 'app' }`);
     }));
 
     describe(`#view tests:`, () => {

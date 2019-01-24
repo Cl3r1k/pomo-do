@@ -8,7 +8,7 @@ import { AppModule } from '@app/app.module';
 // Components
 import { Component } from '@angular/core';
 import { AppComponent } from '@app/app.component';
-import { TodosComponent } from '@app/todos/todos.component';
+import { MainComponent } from '@app/main/main.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
 class MockRouter {
@@ -21,8 +21,8 @@ describe('Component: AppComponent', () => {
             imports: [
                 RouterTestingModule.withRoutes([
                     {
-                        path: 'todos',
-                        component: TodosComponent
+                        path: 'app',
+                        component: MainComponent
                     },
                     {
                         path: '**',
@@ -48,7 +48,7 @@ describe('Component: AppComponent', () => {
             // // Assert
             // router.navigate(['/'])
             //     .then(() => {
-            //         expect(location.pathname.endsWith('/todos')).toBe(true);
+            //         expect(location.pathname.endsWith('/app')).toBe(true);
             //     });
 
             // Arrange
@@ -62,7 +62,7 @@ describe('Component: AppComponent', () => {
             expect(router.navigate).toHaveBeenCalledWith(['/']);
         }));
 
-        it('should be able to navigate to `/todos` (async)', async(() => {
+        it('should be able to navigate to `/app` (async)', async(() => {
             // // Arrange
             // const injector = getTestBed();
             // const router = injector.get(Router);
@@ -72,9 +72,9 @@ describe('Component: AppComponent', () => {
             // // Act
 
             // // Assert
-            // router.navigate(['/todos'])
+            // router.navigate(['/app'])
             //     .then(() => {
-            //         expect(location.pathname.endsWith('/todos')).toBe(true);
+            //         expect(location.pathname.endsWith('/app')).toBe(true);
             //     });
 
             // Arrange
@@ -82,10 +82,10 @@ describe('Component: AppComponent', () => {
             spyOn(router, 'navigate');
 
             // Act
-            router.navigate(['/todos']);
+            router.navigate(['/app']);
 
             // Assert
-            expect(router.navigate).toHaveBeenCalledWith(['/todos']);
+            expect(router.navigate).toHaveBeenCalledWith(['/app']);
         }));
 
         it('should be able to navigate to `/somepath` (async)', async(() => {

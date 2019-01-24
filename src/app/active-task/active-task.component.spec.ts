@@ -5,23 +5,23 @@ import { By } from '@angular/platform-browser';
 import { ToDo } from '@app/_models/to-do';
 
 // Components
-import { TodoCurrentComponent } from './todo-current.component';
+import { ActiveTaskComponent } from './active-task.component';
 
-describe('Component: TodoCurrentComponent', () => {
-    let component: TodoCurrentComponent;
-    let fixture: ComponentFixture<TodoCurrentComponent>;
+describe('Component: ActiveTaskComponent', () => {
+    let component: ActiveTaskComponent;
+    let fixture: ComponentFixture<ActiveTaskComponent>;
     let expectedTodo: ToDo;
     let svgCheckEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoCurrentComponent]
+            declarations: [ActiveTaskComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TodoCurrentComponent);
+        fixture = TestBed.createComponent(ActiveTaskComponent);
         component = fixture.componentInstance;
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
@@ -33,7 +33,7 @@ describe('Component: TodoCurrentComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'TodoCurrentComponent'`, () => {
+    it(`should create an instance of 'ActiveTaskComponent'`, () => {
         // Arrange
 
         // Act
@@ -57,7 +57,7 @@ describe('Component: TodoCurrentComponent', () => {
             let todo: ToDo;
 
             // Act
-            component.toggleCompleteTodoCurrentComponentEmitter.subscribe((value) => todo = value);    // Subscribe to 'toggle' event
+            component.toggleCompleteActiveTaskComponentEmitter.subscribe((value) => todo = value);    // Subscribe to 'toggle' event
             component.toggleComplete(expectedTodo);
 
             // Assert

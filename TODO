@@ -89,10 +89,14 @@ Todos:
                             ✔ Check all moved methods @done(19-01-21 09:43)
                             ✔ Add tests for 'TodosComponent' @done(19-01-22 10:24)
                             ✔ Fix tests related refactored part @done(19-01-22 10:24)
-                        ☐ Update app with changed default path from 'todos' to 'app' <========================================================= CURRENT TASK
-                            ☐ Update all routes with new path 'app'
-                            ☐ Update all tests with new  path 'app'
-                        ☐ Fix issues with new path 'app'
+                        ✔ Update app with changed default path from 'todos' to 'app' @done(19-01-23 09:46)
+                            ✔ Update all routes with new path 'app' @done(19-01-23 09:46)
+                            ✔ Update all tests with new  path 'app' @done(19-01-23 09:46)
+                        ✔ Fix issues with new path 'app' @done(19-01-23 09:46)
+                        ✔ Rename 'todo-current' to 'active-task' @done(19-01-23 10:07)
+                        ☐ Remove 'AppMainComponent'
+                        ☐ Rename 'MainComponent' to 'AppMainComponent'
+                        ☐ Combine part 'todos' related to 'todos' folder <========================================================= CURRENT TASK
                 
                 ☐ Add component 'StatsComponent'
 
@@ -113,6 +117,8 @@ Todos:
 
             ☐ Add OAuth authorization for VK, G+, FB, TWitter, GH
             ☐ Add posibility to save list as CSV on local PC, GDrive, Yandex.Disk (with OAuth), DropBox
+
+            ☐ Remove part related to 'todos/active' and 'todos/completed' (Routes, resolvers, etc)
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)

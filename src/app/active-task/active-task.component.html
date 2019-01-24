@@ -1,6 +1,6 @@
 <div class='current-todo-container' *ngIf='todo !== null'>
     <div class='current-todo-content'>
-        <p class='todo-name'>{{currentTodoTitle}}</p>
+        <p class='todo-name'>{{currentActiveTaskName}}</p>
         <svg class='icon icon-checkmark' (click)='toggleComplete(todo)'>
             <use xlink:href='#icon-checkmark'></use>
         </svg>

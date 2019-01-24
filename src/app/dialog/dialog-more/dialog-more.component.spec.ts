@@ -19,10 +19,12 @@ describe('Component: DialogMoreComponent', () => {
 
     // Mock MAT_DIALOG_DATA with the Object
     const dataForDialog = {
-        dialogTitle: 'Delete Todos',
-        contentTitle: 'Are you sure want to delete todos amount: ',
-        contentData: 5,
-        isClearCompleted: true
+        dialogTitle: 'Advanced settings',
+        todoCost: 1,
+        estimatedTodos: 3,
+        remind: false,
+        remindTime: null,
+        note: 'todo.note'
     };
 
     beforeEach(async(() => {

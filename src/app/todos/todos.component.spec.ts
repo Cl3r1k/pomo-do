@@ -190,7 +190,7 @@ describe(`Component: TodosComponent`, () => {
 
     it(`should emit 'move' event (async)`, async(() => {
         // Arrange
-        let resultTodos: ToDo;
+        let resultTodos: ToDo[];
 
         // Act
         component.moveTodosComponentEmitter.subscribe(todos => { resultTodos = todos; });    // Subscribe to 'move' event

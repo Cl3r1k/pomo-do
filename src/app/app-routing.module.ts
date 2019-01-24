@@ -9,7 +9,6 @@ import { TodosFilterHashtagResolver } from '@app/_resolvers/todos-filter-hashtag
 
 // Components
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-// import { TodosComponent } from '@app/todos/todos.component';
 import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { MainComponent } from '@app/main/main.component';
 
