@@ -14,7 +14,7 @@ import { TooltipDirective } from '@app/_directives/tooltip.directive';
 // Components
 import { MainComponent } from '@app/main/main.component';
 import { TodosComponent } from '@app/todos/todos.component';
-import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
+import { AppHeaderComponent } from '@app/app-header/app-header.component';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
@@ -63,7 +63,7 @@ describe('Component: MainComponent', () => {
             declarations: [
                 MainComponent,
                 TodosComponent,
-                TodoTitleComponent,
+                AppHeaderComponent,
                 TodoListHeaderComponent,
                 TodoListComponent,
                 TodoListItemComponent,
@@ -123,7 +123,7 @@ describe('Component: MainComponent', () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used:  Components(TodosComponent, TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, ActiveTaskComponent, PomosComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
+    it(`Should create the app, used:  Components(TodosComponent, AppHeaderComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, ActiveTaskComponent, PomosComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
         // Arrange
 
         // Act

@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
-import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
+import { AppHeaderComponent } from '@app/app-header/app-header.component';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
@@ -20,6 +20,7 @@ import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
 import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
+import { MainComponent } from '@app/main/main.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -54,9 +55,7 @@ import { Utils } from '@app/_common/utils';
 
 // Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
-import { PomosComponent } from './pomos/pomos.component';
-import { AppMainComponent } from './app-main/app-main.component';
-import { MainComponent } from './main/main.component';
+import { PomosComponent } from '@app/pomos/pomos.component';
 
 @NgModule({
     declarations: [
@@ -70,7 +69,7 @@ import { MainComponent } from './main/main.component';
         TodoListItemEditComponent,
         RouterLinkActiveStubsDirective,
         Autosize,
-        TodoTitleComponent,
+        AppHeaderComponent,
         DialogDeleteComponent,
         DialogMoreComponent,
         ParseTagPipe,
@@ -83,7 +82,6 @@ import { MainComponent } from './main/main.component';
         DialogSettingsComponent,
         ActiveTaskComponent,
         PomosComponent,
-        AppMainComponent,
         MainComponent
     ],
     imports: [

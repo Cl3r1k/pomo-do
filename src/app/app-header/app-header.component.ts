@@ -17,14 +17,12 @@ import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-sett
 // Modules
 import { MatDialog } from '@angular/material';
 
-// TODO: Rename component from 'app-todo-title' to '...'
-
 @Component({
-    selector: 'app-todo-title',
-    templateUrl: './todo-title.component.html',
-    styleUrls: ['./todo-title.component.scss']
+    selector: 'app-header',
+    templateUrl: './app-header.component.html',
+    styleUrls: ['./app-header.component.scss']
 })
-export class TodoTitleComponent implements OnInit {
+export class AppHeaderComponent implements OnInit {
 
     BUILD_VERSION = environment.version;
 

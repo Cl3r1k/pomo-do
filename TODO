@@ -94,9 +94,11 @@ Todos:
                             ✔ Update all tests with new  path 'app' @done(19-01-23 09:46)
                         ✔ Fix issues with new path 'app' @done(19-01-23 09:46)
                         ✔ Rename 'todo-current' to 'active-task' @done(19-01-23 10:07)
-                        ☐ Remove 'AppMainComponent'
-                        ☐ Rename 'MainComponent' to 'AppMainComponent'
-                        ☐ Combine part 'todos' related to 'todos' folder <========================================================= CURRENT TASK
+                        ✔ Rename 'TodoTitleComponent' to 'AppHeaderComponent' @done(19-01-24 10:26)
+                        ✔ Remove 'AppMainComponent' @done(19-01-24 10:30)
+                        ☐ Rename 'MainComponent'('app-main') to 'AppMainComponent'('app-main') <========================================================= CURRENT TASK
+                        ☐ Combine part 'todos' related to 'todos' folder
+                        
                 
                 ☐ Add component 'StatsComponent'
 

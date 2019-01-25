@@ -10,7 +10,7 @@ import { AuthMockService } from '@app/_services/auth-mock.service';
 import { TooltipDirective } from '@app/_directives/tooltip.directive';
 
 // Components
-import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
+import { AppHeaderComponent } from '@app/app-header/app-header.component';
 
 // Modules
 import { MatDialogModule, MatDialog } from '@angular/material';
@@ -22,9 +22,9 @@ class MockRouter {
     navigate(path) { }
 }
 
-describe('Component: TodoTitleComponent', () => {
-    let component: TodoTitleComponent;
-    let fixture: ComponentFixture<TodoTitleComponent>;
+describe('Component: AppHeaderComponent', () => {
+    let component: AppHeaderComponent;
+    let fixture: ComponentFixture<AppHeaderComponent>;
     let authService: AuthService;
     let router: Router;
     let dialog: MatDialogMock;
@@ -32,7 +32,7 @@ describe('Component: TodoTitleComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, MatDialogModule],
-            declarations: [TodoTitleComponent, TooltipDirective],
+            declarations: [AppHeaderComponent, TooltipDirective],
             providers: [
                 {
                     provide: Router,
@@ -51,7 +51,7 @@ describe('Component: TodoTitleComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(TodoTitleComponent);
+        fixture = TestBed.createComponent(AppHeaderComponent);
         component = fixture.componentInstance;
 
         // AuthService provided by TestBed, (should return AuthMockService)
