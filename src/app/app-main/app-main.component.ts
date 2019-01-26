@@ -21,10 +21,10 @@ import 'hammerjs';
 
 @Component({
     selector: 'app-main',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss']
+    templateUrl: './app-main.component.html',
+    styleUrls: ['./app-main.component.scss']
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class AppMainComponent implements OnInit, OnDestroy {
 
     consoleTextColorComponent = 'color: cadetblue;';
 

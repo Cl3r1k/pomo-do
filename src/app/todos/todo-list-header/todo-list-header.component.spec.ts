@@ -10,7 +10,7 @@ import { ToDo } from '@app/_models/to-do';
 import { TooltipDirective } from '@app/_directives/tooltip.directive';
 
 // Components
-import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
+import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';

@@ -35,7 +35,7 @@ export class TodoListHeaderComponent implements OnInit {
     addTodo() {
         if (this.newTodo.title) {
             this.newTodo.title = this.newTodo.title.trim();
-            this.addTodoListHeaderEmitter.emit(this.newTodo);
+            this.addTodoListHeaderEmitter.emit(this.newTodo);    // Emit the 'addTodo' event to 'TodosComponent'
             this.newTodo = new ToDo();
 
             // console.log('%c Added new Todo, created_time: ', this.consoleTextColorComponent, this.newTodo.created_time);
@@ -43,11 +43,11 @@ export class TodoListHeaderComponent implements OnInit {
     }
 
     toggleAllTodos(toggleState: boolean) {
-        this.toggleAllTodoListHeaderEmitter.emit(toggleState);    // Emit the toggleAll event to TodosComponent
+        this.toggleAllTodoListHeaderEmitter.emit(toggleState);    // Emit the 'toggleAll' event to TodosComponent
     }
 
     setToggleAllHoverState(toggleAllHoverState: boolean) {
-        this.toggleAllHoverStateTodoListHeaderEmitter.emit(toggleAllHoverState);
+        this.toggleAllHoverStateTodoListHeaderEmitter.emit(toggleAllHoverState); // Emit the 'toggleAllHoverState' event to 'TodosComponent'
     }
 
     setNewTodoFocus(newTodoFocusState: boolean) {

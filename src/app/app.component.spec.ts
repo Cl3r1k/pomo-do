@@ -8,7 +8,7 @@ import { AppModule } from '@app/app.module';
 // Components
 import { Component } from '@angular/core';
 import { AppComponent } from '@app/app.component';
-import { MainComponent } from '@app/main/main.component';
+import { AppMainComponent } from '@app/app-main/app-main.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
 class MockRouter {
@@ -22,7 +22,7 @@ describe('Component: AppComponent', () => {
                 RouterTestingModule.withRoutes([
                     {
                         path: 'app',
-                        component: MainComponent
+                        component: AppMainComponent
                     },
                     {
                         path: '**',

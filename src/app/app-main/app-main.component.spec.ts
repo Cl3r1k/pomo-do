@@ -12,10 +12,10 @@ import { ResolverData } from '@app/_models/resolver-data';
 import { TooltipDirective } from '@app/_directives/tooltip.directive';
 
 // Components
-import { MainComponent } from '@app/main/main.component';
+import { AppMainComponent } from '@app/app-main/app-main.component';
 import { TodosComponent } from '@app/todos/todos.component';
 import { AppHeaderComponent } from '@app/app-header/app-header.component';
-import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
+import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
@@ -46,9 +46,9 @@ import { ActivatedRoute } from '@angular/router';
 import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from '@beyerleinf/ngx-dnd';
 import { MatDialogModule } from '@angular/material';
 
-describe('Component: MainComponent', () => {
-    let component: MainComponent;
-    let fixture: ComponentFixture<MainComponent>;
+describe('Component: AppMainComponent', () => {
+    let component: AppMainComponent;
+    let fixture: ComponentFixture<AppMainComponent>;
     let sectionEl;
     let expectedTodo;
 
@@ -61,7 +61,7 @@ describe('Component: MainComponent', () => {
                 MatDialogModule
             ],
             declarations: [
-                MainComponent,
+                AppMainComponent,
                 TodosComponent,
                 AppHeaderComponent,
                 TodoListHeaderComponent,
@@ -113,7 +113,7 @@ describe('Component: MainComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(MainComponent);
+        fixture = TestBed.createComponent(AppMainComponent);
         component = fixture.componentInstance;
 
         expectedTodo = new ToDo({ id: 1, title: 'Test 1', complete: false });
@@ -163,5 +163,5 @@ describe('Component: MainComponent', () => {
         });
     });
 
-    // TODO: Rewrite test for 'MainComponent' (currently not complete)
+    // TODO: Rewrite test for 'AppMainComponent' (currently not complete)
 });

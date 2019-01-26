@@ -75,7 +75,7 @@ Todos:
                             ✔ Move template from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move code from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move tests from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
-                        ☐ Move part for 'todo' from 'MainComponent' to 'TodosComponent'
+                        ✔ Move part for 'todo' from 'MainComponent' to 'TodosComponent' @done(19-01-25 09:34)
                             ✔ Moved code and template for 'todo' part from 'MainComponent' to 'TodosComponent' @done(19-01-19 10:32)                                                        
                             ✔ Fix issue with 'update-todo' @done(19-01-20 09:37)
                             ✔ Fix issue with 'onMoreTodo' @done(19-01-20 09:38)
@@ -96,18 +96,26 @@ Todos:
                         ✔ Rename 'todo-current' to 'active-task' @done(19-01-23 10:07)
                         ✔ Rename 'TodoTitleComponent' to 'AppHeaderComponent' @done(19-01-24 10:26)
                         ✔ Remove 'AppMainComponent' @done(19-01-24 10:30)
-                        ☐ Rename 'MainComponent'('app-main') to 'AppMainComponent'('app-main') <========================================================= CURRENT TASK
+                        ✔ Rename 'MainComponent'('app-main') to 'AppMainComponent'('app-main') @done(19-01-25 09:33)
                         ☐ Combine part 'todos' related to 'todos' folder
+                            ✔ Move 'todo-list-header' to 'todos' folder @done(19-01-25 09:59)
+                            ☐ Move 'todo-list' to 'todos' folder <========================================================= CURRENT TASK
+                    
+                    ☐ Create component for 'pomos'
+
+                    ☐ After 'pomos' part completed bump patch version
                         
                 
                 ☐ Add component 'StatsComponent'
+                    ☐ Add separate component for 'stats'
+                        ☐ For each 'stat' should be separate component
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
 
             ☐ Update CLI to latest version (7.2.0)
-            
-            ☐ Change urls (path/routes) from 'todos' to 'app'
 
+            ☐ Rename 'dialog' folder to 'dialogs'
+            
             ☐ Take a look, why 'Created session_object:' shows twice on restart in console
                 ☐ And take a look, why 'Created session_object:' called even with clean start in incognito mode
 

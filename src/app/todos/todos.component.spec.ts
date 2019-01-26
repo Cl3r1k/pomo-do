@@ -7,7 +7,7 @@ import { ToDo } from '@app/_models/to-do';
 
 // Components
 import { TodosComponent } from '@app/todos/todos.component';
-import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
+import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';

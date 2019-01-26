@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
 import { AppHeaderComponent } from '@app/app-header/app-header.component';
-import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
+import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
@@ -20,7 +20,7 @@ import { SignInComponent } from '@app/sign-in/sign-in.component';
 import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
 import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
-import { MainComponent } from '@app/main/main.component';
+import { AppMainComponent } from '@app/app-main/app-main.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -82,7 +82,7 @@ import { PomosComponent } from '@app/pomos/pomos.component';
         DialogSettingsComponent,
         ActiveTaskComponent,
         PomosComponent,
-        MainComponent
+        AppMainComponent
     ],
     imports: [
         AppRoutingModule,
