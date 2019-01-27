@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 import { ToDo } from '@app/_models/to-do';
 
 // Components
-import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';

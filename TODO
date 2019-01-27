@@ -97,11 +97,14 @@ Todos:
                         ✔ Rename 'TodoTitleComponent' to 'AppHeaderComponent' @done(19-01-24 10:26)
                         ✔ Remove 'AppMainComponent' @done(19-01-24 10:30)
                         ✔ Rename 'MainComponent'('app-main') to 'AppMainComponent'('app-main') @done(19-01-25 09:33)
-                        ☐ Combine part 'todos' related to 'todos' folder
+                        ✔ Combine part 'todos' related to 'todos' folder @done(19-01-26 09:30)
                             ✔ Move 'todo-list-header' to 'todos' folder @done(19-01-25 09:59)
-                            ☐ Move 'todo-list' to 'todos' folder <========================================================= CURRENT TASK
+                            ✔ Move 'todo-list' to 'todos' folder @done(19-01-26 09:30)
                     
                     ☐ Create component for 'pomos'
+                        ✔ Add 'pomo-header' component @done(19-01-26 09:54)
+                            ☐ Complete UI for 'PomoHeaderComponent' <========================================================= CURRENT TASK
+                            ☐ Complete code for 'PomoHeaderComponent'
 
                     ☐ After 'pomos' part completed bump patch version
                         

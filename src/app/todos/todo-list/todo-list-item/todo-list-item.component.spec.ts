@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { ToDo } from '@app/_models/to-do';
 
 // Components
-import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
-import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';

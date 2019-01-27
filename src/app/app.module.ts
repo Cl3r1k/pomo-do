@@ -9,10 +9,10 @@ import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
 import { AppHeaderComponent } from '@app/app-header/app-header.component';
 import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
-import { TodoListComponent } from '@app/todo-list/todo-list.component';
-import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
-import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListComponent } from '@app/todos/todo-list/todo-list.component';
+import { TodoListItemComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
@@ -21,6 +21,8 @@ import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-accoun
 import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { AppMainComponent } from '@app/app-main/app-main.component';
+import { PomosComponent } from '@app/pomos/pomos.component';
+import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -55,7 +57,6 @@ import { Utils } from '@app/_common/utils';
 
 // Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
-import { PomosComponent } from '@app/pomos/pomos.component';
 
 @NgModule({
     declarations: [
@@ -82,7 +83,8 @@ import { PomosComponent } from '@app/pomos/pomos.component';
         DialogSettingsComponent,
         ActiveTaskComponent,
         PomosComponent,
-        AppMainComponent
+        AppMainComponent,
+        PomoHeaderComponent
     ],
     imports: [
         AppRoutingModule,

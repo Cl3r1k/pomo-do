@@ -16,10 +16,10 @@ import { AppMainComponent } from '@app/app-main/app-main.component';
 import { TodosComponent } from '@app/todos/todos.component';
 import { AppHeaderComponent } from '@app/app-header/app-header.component';
 import { TodoListHeaderComponent } from '@app/todos/todo-list-header/todo-list-header.component';
-import { TodoListComponent } from '@app/todo-list/todo-list.component';
-import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
-import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
-import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListComponent } from '@app/todos/todo-list/todo-list.component';
+import { TodoListItemComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { PomosComponent } from '@app/pomos/pomos.component';
 
