@@ -117,6 +117,9 @@ Todos:
 
             ☐ Update CLI to latest version (7.2.0)
 
+            ☐ Fix App-title on SignIn page
+            ☐ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo)
+
             ☐ Rename 'dialog' folder to 'dialogs'
             
             ☐ Take a look, why 'Created session_object:' shows twice on restart in console

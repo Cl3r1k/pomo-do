@@ -1,4 +1,4 @@
-<header class='header' [class.filter-state]='hashTagToFilter'>
+<header class='header-todo' [class.filter-state]='hashTagToFilter'>
     <div class='new-container' *ngIf='!hashTagToFilter'>
         <div class='toggleAll-container'>
             <input type='checkbox' class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted' (mouseenter)='setToggleAllHoverState(true)' (mouseleave)='setToggleAllHoverState(false)' appTooltipDirective='Toggle all todos'
