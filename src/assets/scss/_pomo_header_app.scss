@@ -1,0 +1,20 @@
+/* Styles for 'PomoHeaderComponent' */
+
+.header-pomo {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-bottom: 10px;
+    background-color: #eeeeb8; // For Debug
+    .pomo-start-container {
+        grid-column: span 12;
+        .button-start-pomo {
+            width: 100%;
+            font-weight: bold;
+            height: 41px;
+        }
+    }
+    .pomo-progress-container {
+        grid-column: span 12;
+    }
+}

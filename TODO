@@ -120,6 +120,8 @@ Todos:
             ☐ Fix App-title on SignIn page
             ☐ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo)
 
+            ☐ Fix 'todo-header' last container border-bottom styles (after grid changes)
+
             ☐ Rename 'dialog' folder to 'dialogs'
             
             ☐ Take a look, why 'Created session_object:' shows twice on restart in console

@@ -16,21 +16,6 @@
             background-color: #bad2cf; // For Debug
             .pomo-header-container {
                 grid-column: span 12;
-                // TODO: Move header-pomo styles to separate file
-                .header-pomo {
-                    grid-column: span 12;
-                    display: grid;
-                    grid-template-columns: repeat(12, 1fr);
-                    .pomo-start-container {
-                        grid-column: span 12;
-                        .button-start-pomo {
-                            width: 100%;
-                        }
-                    }
-                    .pomo-progress-container {
-                        grid-column: span 12;
-                    }
-                }
             }
         }
     }
