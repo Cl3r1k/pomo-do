@@ -1,5 +1,5 @@
 <div class='pomo-container'>
-    <app-pomo-header class='pomo-header-container'></app-pomo-header>
+    <app-pomo-header class='pomo-header-container' [pomoStartedStatusPomoHeader]='pomoStartedStatusPomos' (startPomoHeaderComponentEmitter)='onStartPomo($event)'></app-pomo-header>
 
     <div>
         pomos-list

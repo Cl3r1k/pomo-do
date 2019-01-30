@@ -39,6 +39,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     showSubmenuState = false;
     currentTodo: ToDo = null;
     currentActiveTaskName = '';
+    pomoStartedStatusAppMain = false;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -437,6 +438,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
         }
 
         return tmpTitle;
+    }
+
+    onStartPomo(state: boolean) {
+        this.pomoStartedStatusAppMain = state;
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
     selector: 'app-pomo-header',
@@ -7,9 +7,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PomoHeaderComponent implements OnInit {
 
-    @Output() startPomoPomoHeaderComponentEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Input() pomoStartedStatusPomoHeader: boolean;
 
-    pomoStarted = false;
+    @Output() startPomoHeaderComponentEmitter: EventEmitter<boolean> = new EventEmitter();
+
+    timerId: number;
 
     constructor() { }
 
@@ -17,7 +19,12 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     startPomo() {
-        this.startPomoPomoHeaderComponentEmitter.emit(true);    // Emit the 'startPomo' event to 'PomosComponent'
+        this.startPomoHeaderComponentEmitter.emit(true);    // Emit the 'startPomo' event to 'PomosComponent'
+        this.startTimer();
+    }
+
+    startTimer() {
+        //
     }
 
 }
