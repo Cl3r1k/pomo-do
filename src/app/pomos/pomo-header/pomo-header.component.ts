@@ -11,7 +11,8 @@ export class PomoHeaderComponent implements OnInit {
 
     @Output() startPomoHeaderComponentEmitter: EventEmitter<boolean> = new EventEmitter();
 
-    timerId: number;
+    timerId;
+    counter = 0;
 
     constructor() { }
 
@@ -20,11 +21,45 @@ export class PomoHeaderComponent implements OnInit {
 
     startPomo() {
         this.startPomoHeaderComponentEmitter.emit(true);    // Emit the 'startPomo' event to 'PomosComponent'
+        this.resetCounter();
         this.startTimer();
     }
 
     startTimer() {
-        //
+        this.printNumbersInterval();
+        // this.timerId = setInterval(() => {
+        //     this.counter--;
+
+        //     if (this.counter <= 0) {
+        //         clearInterval(this.timerId);
+        //     }
+        // }, 1000);
+    }
+
+    resetCounter() {
+        this.counter = 10;    // Default value for 'Pomo'
+    }
+
+    printNumbersInterval() {
+        let tmpVal = 0;
+
+        // this.timerId = setInterval(() => {
+        //     tmpVal++;
+        //     console.log(tmpVal);
+
+        //     if (tmpVal >= 20) {
+        //         clearInterval(this.timerId);
+        //     }
+        // }, 100);
+
+        this.timerId = setTimeout(function timer() {
+            tmpVal++;
+            console.log(tmpVal);
+
+            if (tmpVal < 20) {
+                setTimeout(timer, 100);
+            }
+        }, 100);
     }
 
 }
