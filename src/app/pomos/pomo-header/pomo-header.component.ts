@@ -27,13 +27,13 @@ export class PomoHeaderComponent implements OnInit {
 
     startTimer() {
         this.printNumbersInterval();
-        // this.timerId = setInterval(() => {
-        //     this.counter--;
+        this.timerId = setInterval(() => {
+            this.counter--;
 
-        //     if (this.counter <= 0) {
-        //         clearInterval(this.timerId);
-        //     }
-        // }, 1000);
+            if (this.counter <= 0) {
+                clearInterval(this.timerId);
+            }
+        }, 1000);
     }
 
     resetCounter() {
@@ -41,7 +41,7 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     printNumbersInterval() {
-        let tmpVal = 0;
+        // let tmpVal = 0;
 
         // this.timerId = setInterval(() => {
         //     tmpVal++;
@@ -52,14 +52,14 @@ export class PomoHeaderComponent implements OnInit {
         //     }
         // }, 100);
 
-        this.timerId = setTimeout(function timer() {
-            tmpVal++;
-            console.log(tmpVal);
+        // this.timerId = setTimeout(function timer() {
+        //     tmpVal++;
+        //     console.log(tmpVal);
 
-            if (tmpVal < 20) {
-                setTimeout(timer, 100);
-            }
-        }, 100);
+        //     if (tmpVal < 20) {
+        //         setTimeout(timer, 100);
+        //     }
+        // }, 100);
     }
 
 }
