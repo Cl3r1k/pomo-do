@@ -3,9 +3,10 @@
     margin: auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
     .pomo-app {
         grid-column: 1/7;
-        padding: 0 5px 0 0;
+        // padding: 0 5px 0 0;
         min-width: 230px;
         margin: 20px auto;
         background-color: #f7e9d8; // For Debug
