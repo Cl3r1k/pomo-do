@@ -34,7 +34,7 @@ import { TagLayerService } from '@app/_services/tag-layer.service';
 import { SessionStorageService } from '@app/_services/session-storage.service';
 import { AuthService } from '@app/_services/auth.service';
 import { JwtService } from '@app/_services/jwt.service';
-import { PomoStatusService } from '@app/_services/pomo-status.service';
+import { PomoStateService } from '@app/_services/pomo-state.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -117,7 +117,7 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         AuthService,
         CanActivateTodosGuard,
         JwtService,
-        PomoStatusService
+        PomoStateService
     ],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent, DialogSettingsComponent]

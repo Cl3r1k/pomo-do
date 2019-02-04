@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PomoStatusService } from './pomo-status.service';
+import { PomoStateService } from './pomo-state.service';
 
-describe('PomoStatusService', () => {
+describe('PomoStateService', () => {
     beforeEach(() => TestBed.configureTestingModule({}));
 
     it('should be created', () => {
-        const service: PomoStatusService = TestBed.get(PomoStatusService);
+        const service: PomoStateService = TestBed.get(PomoStateService);
         expect(service).toBeTruthy();
     });
 });

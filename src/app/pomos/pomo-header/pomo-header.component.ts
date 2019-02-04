@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 // Services
-import { PomoStatusService } from '@app/_services/pomo-status.service';
+import { PomoStateService } from '@app/_services/pomo-state.service';
 
 @Component({
     selector: 'app-pomo-header',
@@ -17,7 +17,7 @@ export class PomoHeaderComponent implements OnInit {
     timerId;
     counter = 0;
 
-    constructor(private _pomoStatusService: PomoStatusService) { }
+    constructor(private _pomoStateService: PomoStateService) { }
 
     ngOnInit() {
     }
@@ -29,6 +29,8 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     startTimer() {
+        this._pomoStateService.initPomoState();
+
         this.timerId = setInterval(() => {
             this.counter--;
             document.title = this.counter + ' - Pomodo';

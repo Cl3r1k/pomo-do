@@ -16,8 +16,9 @@ import { map, switchMap } from 'rxjs/operators';
 @Injectable()
 export class TodoService {
 
-    serviceState = 1;    // Switcher for service 0 - ApiService, 1 - _indexedDbService
     consoleTextColorService = 'color: salmon;';
+
+    serviceState = 1;    // Switcher for service 0 - ApiService, 1 - _indexedDbService
 
     // TODO: Use only IndexedDbService, and sync data with backend
     constructor(private _api: ApiService, private _indexedDbService: IndexedDbService, private _todoOrderService: TodoOrderService) {
