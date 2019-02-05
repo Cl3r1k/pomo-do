@@ -23,20 +23,16 @@ export class PomoStateService {
         this.pomoState = new PomoState();
 
         const startTime = new Date();
+        const endTime = new Date();
+        endTime.setMinutes(startTime.getMinutes() + this.pomoLength);
         this.pomoState.start_time = startTime.toISOString();
-
-        // this.pomoState.end_time = new Date();
-        // const end_time = new Date();
-        // end_time.setMinutes(start_time.getMinutes() + this.pomoLength);
-
-        // this.pomoState['start_time'] = start_time;
-        // this.pomoState['end_time'] = end_time;
-        // this.pomoState['status'] = 'started';
-        // this.pomoState['uuid'] = uuidv4();            // Generate new UUID
+        this.pomoState.end_time = endTime.toISOString();
+        this.pomoState.status = 'started';
+        this.pomoState.uuid = uuidv4();            // Generate new UUID
 
         console.log('%cPomoStatusService - pomoState: ', this.consoleTextColorService, this.pomoState);
 
-        // this.savePomoState();
+        this.savePomoState();
     }
 
     savePomoState() {
