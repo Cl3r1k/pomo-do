@@ -10,6 +10,8 @@ import { PomoStateService } from '@app/_services/pomo-state.service';
 })
 export class PomoHeaderComponent implements OnInit {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     @Input() pomoStartedStatusPomoHeader: boolean;
 
     @Output() startPomoHeaderComponentEmitter: EventEmitter<boolean> = new EventEmitter();
@@ -20,6 +22,20 @@ export class PomoHeaderComponent implements OnInit {
     constructor(private _pomoStateService: PomoStateService) { }
 
     ngOnInit() {
+        this._pomoStateService.loadPomoState();
+
+        if (this._pomoStateService.pomoState) {
+            console.log('%cpomoState: ', this.consoleTextColorComponent, this._pomoStateService.pomoState);
+
+            const currentTime = new Date();
+            // console.log('%ccurrentTime: ', this.consoleTextColorComponent, currentTime);
+            // console.log('%cend_time: ', this.consoleTextColorComponent, new Date(this._pomoStateService.pomoState.end_time));
+            if (this._pomoStateService.pomoState.status === 'started') {
+                if (new Date(this._pomoStateService.pomoState.end_time) > currentTime) {
+                    this.pomoStartedStatusPomoHeader = true;    // TODO: Change this part to new type (number - 2)
+                }
+            }
+        }
     }
 
     startPomo() {

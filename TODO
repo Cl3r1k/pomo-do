@@ -103,8 +103,17 @@ Todos:
                     
                     ☐ Create component for 'pomos'
                         ✔ Add 'pomo-header' component @done(19-01-26 09:54)
-                            ☐ Complete UI for 'PomoHeaderComponent' <========================================================= CURRENT TASK
-                            ☐ Complete code for 'PomoHeaderComponent'
+                            ☐ Complete code and UI for 'PomoHeaderComponent'
+                                ✔ Add service for 'PomoState' @done(19-02-05 10:36)
+                                    ☐ Add tests for 'PomoStateService'
+                                ☐ Process states for 'PomoState' ('started', 'idle', 'finished') <========================================================= CURRENT TASK
+                                    ☐ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component
+                                    ☐ In case if pomoState.status === 'finished' and 'end_time' passed, show 'save-pomo' view in the component
+                                    ☐ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component
+                                    ☐ After saving 'pomoState' status should be changed to 'rest'
+                                    ☐ After 'rest' finished new 'pomoState' should be generated
+                                ☐ Add tests for 'PomoHeaderComponent'
+
 
                     ☐ After 'pomos' part completed bump patch version
                         

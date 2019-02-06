@@ -37,13 +37,19 @@ export class PomoStateService {
 
     savePomoState() {
         localStorage.setItem('app_pomo_state', JSON.stringify(this.pomoState));
+        this.pomoState.status = 'idle';
     }
 
     loadPomoState() {
         const data = JSON.parse(localStorage.getItem('app_pomo_state'));
 
         if (data) {
-            // Parse data...
+            this.pomoState = null;
+            this.pomoState = new PomoState();
+            this.pomoState.start_time = data['start_time'];
+            this.pomoState.end_time = data['end_time'];
+            this.pomoState.status = data['status'];
+            this.pomoState.uuid = data['uuid'];
         }
     }
 }
