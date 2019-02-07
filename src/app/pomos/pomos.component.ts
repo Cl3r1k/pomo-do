@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class PomosComponent implements OnInit {
 
-    @Input() pomoStartedStatusPomos: boolean;
+    @Input() pomoStatusPomos: boolean;
 
     @Output() startPomosComponentEmitter: EventEmitter<boolean> = new EventEmitter();
 

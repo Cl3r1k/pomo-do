@@ -12,12 +12,13 @@ export class PomoHeaderComponent implements OnInit {
 
     consoleTextColorComponent = 'color: cadetblue;';
 
-    @Input() pomoStartedStatusPomoHeader: boolean;
+    @Input() pomoStatusPomoHeader: number;
 
     @Output() startPomoHeaderComponentEmitter: EventEmitter<boolean> = new EventEmitter();
 
+    pomoLength = 10;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     timerId;
-    counter = 0;
+    counter = this.pomoLength;
 
     constructor(private _pomoStateService: PomoStateService) { }
 
@@ -32,7 +33,12 @@ export class PomoHeaderComponent implements OnInit {
             // console.log('%cend_time: ', this.consoleTextColorComponent, new Date(this._pomoStateService.pomoState.end_time));
             if (this._pomoStateService.pomoState.status === 'started') {
                 if (new Date(this._pomoStateService.pomoState.end_time) > currentTime) {
-                    this.pomoStartedStatusPomoHeader = true;    // TODO: Change this part to new type (number - 2)
+                    this.pomoStatusPomoHeader = 1;    // TODO: Change this part to new type (number - 2)
+
+                    const endTime = new Date(this._pomoStateService.pomoState.end_time);
+                    // const timeLeft = Math.abs(endTime - currentTime);
+                } else {
+                    this.pomoStatusPomoHeader = 2;
                 }
             }
         }
@@ -41,12 +47,11 @@ export class PomoHeaderComponent implements OnInit {
     startPomo() {
         this.startPomoHeaderComponentEmitter.emit(true);    // Emit the 'startPomo' event to 'PomosComponent'
         this.resetCounter();
+        this._pomoStateService.initPomoState();
         this.startTimer();
     }
 
     startTimer() {
-        this._pomoStateService.initPomoState();
-
         this.timerId = setInterval(() => {
             this.counter--;
             document.title = this.counter + ' - Pomodo';
@@ -60,7 +65,7 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     resetCounter() {
-        this.counter = 10;    // Default value for 'Pomo'
+        this.counter = this.pomoLength;    // Default value for 'Pomo'
     }
 
 }

@@ -1,9 +1,13 @@
 <header class='header-pomo'>
-    <div class='pomo-start-container' *ngIf='!pomoStartedStatusPomoHeader'>
+    <div class='pomo-start-container' *ngIf='pomoStatusPomoHeader === 0'>
         <button mat-raised-button class='button-start-pomo' (click)='startPomo()'>Start Pomo</button>
     </div>
 
-    <div class='pomo-progress-container' *ngIf='pomoStartedStatusPomoHeader'>
+    <div class='pomo-progress-container' *ngIf='pomoStatusPomoHeader === 1'>
         progress bar timerId {{timerId}} and counter {{counter}}
+    </div>
+
+    <div class='pomo-save-container' *ngIf='pomoStatusPomoHeader === 2'>
+        Choose pomo to save
     </div>
 </header>

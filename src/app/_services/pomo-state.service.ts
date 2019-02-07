@@ -13,7 +13,7 @@ export class PomoStateService {
 
     consoleTextColorService = 'color: salmon;';
 
-    pomoLength = 25;    // Constant value from prefs TODO: change for real value from prefs
+    pomoLength = 1;    // Constant value from prefs TODO: change for real value from prefs
     pomoState: PomoState;
 
     constructor() { }
