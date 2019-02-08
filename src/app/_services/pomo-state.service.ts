@@ -52,4 +52,10 @@ export class PomoStateService {
             this.pomoState.uuid = data['uuid'];
         }
     }
+
+    interruptPomo() {
+        this.pomoState.status = 'idle';
+        this.pomoState.end_time = new Date().toISOString();
+        this.savePomoState();
+    }
 }
