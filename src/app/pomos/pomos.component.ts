@@ -7,17 +7,17 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class PomosComponent implements OnInit {
 
-    @Input() pomoStatusPomos: boolean;
+    @Input() pomoStatePomos: number;
 
-    @Output() startPomosComponentEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Output() statePomosComponentEmitter: EventEmitter<number> = new EventEmitter();
 
     constructor() { }
 
     ngOnInit() {
     }
 
-    onStartPomo(state: boolean) {
-        this.startPomosComponentEmitter.emit(state);
+    onStatePomoChange(state: number) {
+        this.statePomosComponentEmitter.emit(state);
     }
 
 }
