@@ -16,9 +16,10 @@ export class PomoHeaderComponent implements OnInit {
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
-    pomoLength = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
+    pomoLength = 10;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     timerId;
     counter = this.pomoLength;
+    counterView = '';
 
     constructor(private _pomoStateService: PomoStateService) { }
 
@@ -70,14 +71,15 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     startTimer() {
-        this.counter--;
+        // this.counter--;
         this.timerId = setInterval(() => {
             this.counter--;
-            document.title = this.counter + ' - Pomodo';
+            this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
+            document.title = this.counterView + ' - Pomodo';
 
             if (this.counter <= 0) {
                 clearInterval(this.timerId);
-                document.title = 'Pomodo';
+                // document.title = 'Pomodo';
                 this.statePomoHeaderComponentEmitter.emit(2);    // Emit the 'statePomo' event to 'PomosComponent'
             }
         }, 1000);
@@ -85,6 +87,8 @@ export class PomoHeaderComponent implements OnInit {
 
     resetCounter() {
         this.counter = this.pomoLength;    // Default value for 'Pomo'
+        this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
+        document.title = 'Pomodo';
     }
 
     cancelPomo() {
@@ -93,6 +97,11 @@ export class PomoHeaderComponent implements OnInit {
         this.statePomoHeaderComponentEmitter.emit(0);    // Emit the 'statePomo' event to 'PomosComponent'
         this.resetCounter();
         this._pomoStateService.interruptPomo();
+    }
+
+    savePomo() {
+        this._pomoStateService.saveCompletedPomo('1. Add more todos!');
+        // this.statePomoHeaderComponentEmitter.emit(3);    // Emit the 'statePomo' event to 'PomosComponent'
     }
 
 }

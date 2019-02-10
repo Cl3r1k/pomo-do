@@ -16,6 +16,8 @@ export class PomoStateService {
     pomoLength = 1;    // Constant value from prefs TODO: change for real value from prefs
     pomoState: PomoState;
 
+    pomos: [] = [];
+
     constructor() { }
 
     initPomoState() {
@@ -57,5 +59,9 @@ export class PomoStateService {
         this.pomoState.status = 'idle';
         this.pomoState.end_time = new Date().toISOString();
         this.savePomoState();
+    }
+
+    saveCompletedPomo(pomoName: string) {
+        console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
     }
 }
