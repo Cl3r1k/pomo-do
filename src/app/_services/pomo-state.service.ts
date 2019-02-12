@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 // Models
 import { PomoState } from '@app/_models/pomo-state';
+import { Pomo } from '@app/_models/pomo';
 
 // Imports
 import { v4 as uuidv4 } from 'uuid';
@@ -16,7 +17,7 @@ export class PomoStateService {
     pomoLength = 1;    // Constant value from prefs TODO: change for real value from prefs
     pomoState: PomoState;
 
-    pomos: [] = [];
+    recentPomos: Pomo[] = [];
 
     constructor() { }
 
@@ -63,5 +64,10 @@ export class PomoStateService {
 
     saveCompletedPomo(pomoName: string) {
         console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
+        const recentPomo = new Pomo(pomoName);
+        console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
+
+        this.recentPomos.push(recentPomo);
+        console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
     }
 }
