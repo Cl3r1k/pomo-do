@@ -64,7 +64,7 @@ export class PomoStateService {
 
     saveCompletedPomo(pomoName: string) {
         console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
-        const recentPomo = new Pomo(pomoName);
+        const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, false);
         console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
         this.recentPomos.push(recentPomo);
