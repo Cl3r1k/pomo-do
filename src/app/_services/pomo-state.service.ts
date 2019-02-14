@@ -15,6 +15,7 @@ export class PomoStateService {
     consoleTextColorService = 'color: salmon;';
 
     pomoLength = 1;    // Constant value from prefs TODO: change for real value from prefs
+    restLength = 1;    // Constant value from prefs TODO: change for real value from prefs
     pomoState: PomoState;
 
     recentPomos: Pomo[] = [];
@@ -27,6 +28,8 @@ export class PomoStateService {
 
         const startTime = new Date();
         const endTime = new Date();
+        startTime.setMilliseconds(0);
+        endTime.setMilliseconds(0);
         endTime.setMinutes(startTime.getMinutes() + this.pomoLength);
         this.pomoState.start_time = startTime.toISOString();
         this.pomoState.end_time = endTime.toISOString();
@@ -40,7 +43,6 @@ export class PomoStateService {
 
     savePomoState() {
         localStorage.setItem('app_pomo_state', JSON.stringify(this.pomoState));
-        this.pomoState.status = 'idle';
     }
 
     loadPomoState() {
@@ -63,11 +65,38 @@ export class PomoStateService {
     }
 
     saveCompletedPomo(pomoName: string) {
-        console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
+        // console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
         const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, false);
-        console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
+        // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
         this.recentPomos.push(recentPomo);
-        console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+        this.savePomoList();
+        // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+
+        // TODO:
+        // We shouldn't change 'startTime' and 'endTime', just start timer from original 'endTime'
+        // After timer finished change 'status' to 'idle'
+        this.pomoState.status = 'resting';
+        const startTime = new Date();
+        const endTime = new Date();
+        startTime.setMilliseconds(0);
+        endTime.setMilliseconds(0);
+        endTime.setMinutes(startTime.getMinutes() + this.restLength);
+        this.pomoState.start_time = startTime.toISOString();
+        this.pomoState.end_time = endTime.toISOString();
+        this.savePomoState();
+
+        // TODO: Save pomo in IndexedDb
+    }
+
+    savePomoList() {
+        let data = Object();
+
+        data = {
+            account_id: '123456',
+            pomos: this.recentPomos
+        };
+
+        localStorage.setItem('recentPomoList', JSON.stringify(data));
     }
 }

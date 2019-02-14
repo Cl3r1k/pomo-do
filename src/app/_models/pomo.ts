@@ -30,6 +30,8 @@ export class Pomo {
         this.start_time = start_time;
         this.title = title;
         this.updated_time = this.created_time;
+        this.__accound_id = '123456';
+        this.__dirty = false;
         this._local_created_time = new Date(this.created_time).getTime();
         this._local_updated_time = new Date(this.created_time).getTime();
         this._local_end_time = new Date(this.created_time).getTime();
