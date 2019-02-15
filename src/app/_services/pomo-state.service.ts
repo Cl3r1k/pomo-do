@@ -73,17 +73,7 @@ export class PomoStateService {
         this.savePomoList();
         // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
-        // TODO:
-        // We shouldn't change 'startTime' and 'endTime', just start timer from original 'endTime'
-        // After timer finished change 'status' to 'idle'
         this.pomoState.status = 'resting';
-        const startTime = new Date();
-        const endTime = new Date();
-        startTime.setMilliseconds(0);
-        endTime.setMilliseconds(0);
-        endTime.setMinutes(startTime.getMinutes() + this.restLength);
-        this.pomoState.start_time = startTime.toISOString();
-        this.pomoState.end_time = endTime.toISOString();
         this.savePomoState();
 
         // TODO: Save pomo in IndexedDb

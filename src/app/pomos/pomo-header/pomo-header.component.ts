@@ -16,11 +16,12 @@ export class PomoHeaderComponent implements OnInit {
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
-    pomoLength = 10;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
-    restLength = 10;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
+    pomoLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
+    restLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     timerId;
-    counter = this.pomoLength;
+    counter = this.pomoLengthSeconds;
     counterView = '';
+    currentState = 'pomo';
 
     constructor(private _pomoStateService: PomoStateService) { }
 
@@ -30,20 +31,27 @@ export class PomoHeaderComponent implements OnInit {
         if (this._pomoStateService.pomoState) {
             console.log('%cpomoState: ', this.consoleTextColorComponent, this._pomoStateService.pomoState);
 
-            const currentTime = new Date();
-            currentTime.setMilliseconds(0);
             // console.log('%ccurrentTime: ', this.consoleTextColorComponent, currentTime);
             // console.log('%cend_time: ', this.consoleTextColorComponent, new Date(this._pomoStateService.pomoState.end_time));
-            if (this._pomoStateService.pomoState.status === 'started') {
-                if (new Date(this._pomoStateService.pomoState.end_time) > currentTime) {
+            if (this._pomoStateService.pomoState.status === 'started' || this._pomoStateService.pomoState.status === 'resting') {
+
+                const currentTime = new Date();
+                currentTime.setMilliseconds(0);
+                const endTime = new Date(this._pomoStateService.pomoState.end_time);
+
+                if (this._pomoStateService.pomoState.status === 'resting') {
+                    endTime.setSeconds(endTime.getSeconds() + this.restLengthSeconds);
+                    this.currentState = 'rest';
+                }
+
+                if (endTime > currentTime) {
                     this.pomoStatePomoHeader = 1;
                     // As far OnInit takes some time, to handle issues we delay emit event
                     setTimeout(() => {
                         this.statePomoHeaderComponentEmitter.emit(1);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
                     }, 100);
 
-                    const end_time = new Date(this._pomoStateService.pomoState.end_time);
-                    const timeLeft = end_time.getTime() - currentTime.getTime();
+                    const timeLeft = endTime.getTime() - currentTime.getTime();
                     console.log('%cend_time: ', this.consoleTextColorComponent, this._pomoStateService.pomoState.end_time);
                     console.log('%ccurrentTime: ', this.consoleTextColorComponent, currentTime.toISOString());
                     console.log('%ctimeLeft: ', this.consoleTextColorComponent, timeLeft);
@@ -60,6 +68,11 @@ export class PomoHeaderComponent implements OnInit {
                     setTimeout(() => {
                         this.statePomoHeaderComponentEmitter.emit(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
                     }, 100);
+
+                    // TODO: Handle part, when page reloaded, status 'resting' and time expired
+
+                    this.currentState = 'pomo';
+                    // TODO: Improve part, when page reloaded, status 'started' and time expired, show in title current state
                 }
             }
         }
@@ -90,6 +103,8 @@ export class PomoHeaderComponent implements OnInit {
                 // document.title = 'Pomodo';
                 if (this._pomoStateService.pomoState.status === 'resting') {
                     this.resetCounter(false);
+                    this._pomoStateService.pomoState.status = 'idle';
+                    this._pomoStateService.savePomoState();
                     this.statePomoHeaderComponentEmitter.emit(0);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
                 } else {
                     this.statePomoHeaderComponentEmitter.emit(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
@@ -99,7 +114,7 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     resetCounter(restState: boolean) {
-        this.counter = restState ? this.restLength : this.pomoLength;    // Default value for 'Pomo' - pomo/rest
+        this.counter = restState ? this.restLengthSeconds : this.pomoLengthSeconds;    // Default value for 'Pomo' - pomo/rest
         this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
         document.title = 'Pomodo';
     }
@@ -114,6 +129,7 @@ export class PomoHeaderComponent implements OnInit {
 
     savePomo() {
         this._pomoStateService.saveCompletedPomo('1. Add more todos!');
+        this.currentState = 'rest';
 
         this.startRest();
     }

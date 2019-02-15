@@ -5,7 +5,7 @@
 
     <div class='pomo-progress-container' *ngIf='pomoStatePomoHeader === 1'>
         progress bar timerId {{timerId}} and counter {{counterView}}
-        <button mat-raised-button (click)='cancelPomo()'>Interrupt pomo</button>
+        <button mat-raised-button (click)='cancelPomo()'>Interrupt {{currentState}}</button>
     </div>
 
     <div class='pomo-save-container' *ngIf='pomoStatePomoHeader === 2'>

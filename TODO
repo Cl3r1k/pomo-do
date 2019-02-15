@@ -35,7 +35,7 @@ Todos:
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
                         ✔ Add tests for 'DialogAccountComponent' @done(18-12-19 09:38)
-                        ☐ Consider to use 'mat-tab' for tabs in dialog (Some time delay)
+                        ☐ Consider to use 'mat-tab' for tabs in 'account-item' dialog (Some time delay)
                     ✔ Update tests for 'SessionStorageService' @done(18-12-17 10:43)
                     ✔ Fix all tests with new code ('account-item' + change 'Header') @done(18-12-19 10:00)
 
@@ -111,7 +111,9 @@ Todos:
                                     ☐ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component
                                     ☐ After saving 'pomoState' status should be changed to 'rest'
                                     ☐ After 'rest' finished new 'pomoState' should be generated
+                                    ☐ Improve OnInit part, when page reloaded, status 'started' and time expired, show in title current state
                                     ☐ For progress-bar use material and own progress, should looks like gray progress with blue progress at bottom
+                                        ☐ For progress-bar 'pomo' and 'rest' should be used different 'progress-color'
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'
