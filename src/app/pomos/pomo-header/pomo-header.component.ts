@@ -63,13 +63,24 @@ export class PomoHeaderComponent implements OnInit {
                     this.counter = secondsLeft;
                     this.startTimer();
                 } else {
-                    this.pomoStatePomoHeader = 2;
+                    const isRestFinished = this._pomoStateService.pomoState.status === 'resting';
+
+                    if (isRestFinished) {
+                        this._pomoStateService.setIdlePomoState();
+                        this._pomoStateService.savePomoState();
+                        this.pomoStatePomoHeader = 0;    // 0 - Show 'standby' view
+                    } else {
+                        this.pomoStatePomoHeader = 2;    // 2 - show 'save' view
+                    }
+
                     // As far OnInit takes some time, to handle issues we delay emit event
                     setTimeout(() => {
-                        this.statePomoHeaderComponentEmitter.emit(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
+                        if (isRestFinished) {
+                            this.statePomoHeaderComponentEmitter.emit(0);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
+                        } else {
+                            this.statePomoHeaderComponentEmitter.emit(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
+                        }
                     }, 100);
-
-                    // TODO: Handle part, when page reloaded, status 'resting' and time expired
 
                     this.currentState = 'pomo';
                     // TODO: Improve part, when page reloaded, status 'started' and time expired, show in title current state
@@ -103,7 +114,7 @@ export class PomoHeaderComponent implements OnInit {
                 // document.title = 'Pomodo';
                 if (this._pomoStateService.pomoState.status === 'resting') {
                     this.resetCounter(false);
-                    this._pomoStateService.pomoState.status = 'idle';
+                    this._pomoStateService.setIdlePomoState();
                     this._pomoStateService.savePomoState();
                     this.statePomoHeaderComponentEmitter.emit(0);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
                 } else {
@@ -117,6 +128,7 @@ export class PomoHeaderComponent implements OnInit {
         this.counter = restState ? this.restLengthSeconds : this.pomoLengthSeconds;    // Default value for 'Pomo' - pomo/rest
         this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
         document.title = 'Pomodo';
+        this.currentState = 'pomo';
     }
 
     cancelPomo() {

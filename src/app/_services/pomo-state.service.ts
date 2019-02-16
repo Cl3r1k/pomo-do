@@ -59,9 +59,13 @@ export class PomoStateService {
     }
 
     interruptPomo() {
-        this.pomoState.status = 'idle';
+        this.setIdlePomoState();
         this.pomoState.end_time = new Date().toISOString();
         this.savePomoState();
+    }
+
+    setIdlePomoState() {
+        this.pomoState.status = 'idle';
     }
 
     saveCompletedPomo(pomoName: string) {
