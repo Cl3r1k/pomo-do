@@ -16,7 +16,7 @@ export class PomoHeaderComponent implements OnInit {
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
-    pomoLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
+    pomoLengthSeconds = 120;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     restLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     timerId;
     counter = this.pomoLengthSeconds;
@@ -71,6 +71,7 @@ export class PomoHeaderComponent implements OnInit {
                         this.pomoStatePomoHeader = 0;    // 0 - Show 'standby' view
                     } else {
                         this.pomoStatePomoHeader = 2;    // 2 - show 'save' view
+                        document.title = '00:00 - Pomodo';
                     }
 
                     // As far OnInit takes some time, to handle issues we delay emit event
@@ -83,7 +84,6 @@ export class PomoHeaderComponent implements OnInit {
                     }, 100);
 
                     this.currentState = 'pomo';
-                    // TODO: Improve part, when page reloaded, status 'started' and time expired, show in title current state
                 }
             }
         }
@@ -104,9 +104,14 @@ export class PomoHeaderComponent implements OnInit {
 
     startTimer() {
         // this.counter--;
+        console.log('%cthis.counter', this.consoleTextColorComponent, this.counter);
+        console.log('%cthis.counterView', this.consoleTextColorComponent, this.counterView);
         this.timerId = setInterval(() => {
             this.counter--;
-            this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
+            // const minutes = Math.floor(this.counter / 60);
+            // const seconds = this.counter % 60;
+            // console.log('%cminutes: %d seconds: %d', this.consoleTextColorComponent, minutes, seconds);
+            this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + (this.counter % 60)).slice(-2);
             document.title = this.counterView + ' - Pomodo';
 
             if (this.counter <= 0) {
@@ -126,7 +131,8 @@ export class PomoHeaderComponent implements OnInit {
 
     resetCounter(restState: boolean) {
         this.counter = restState ? this.restLengthSeconds : this.pomoLengthSeconds;    // Default value for 'Pomo' - pomo/rest
-        this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + this.counter.toString()).slice(-2);
+        // this.counter--;    // Optional, if time should be started from **:59 or **+1:00
+        this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + (this.counter % 60)).slice(-2);
         document.title = 'Pomodo';
         this.currentState = 'pomo';
     }
