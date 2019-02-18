@@ -33,6 +33,7 @@ export class PomoStateService {
         endTime.setMinutes(startTime.getMinutes() + this.pomoLength);
         this.pomoState.start_time = startTime.toISOString();
         this.pomoState.end_time = endTime.toISOString();
+        this.pomoState.rest_time = null;
         this.pomoState.status = 'started';
         this.pomoState.uuid = uuidv4();            // Generate new UUID
 
@@ -53,6 +54,7 @@ export class PomoStateService {
             this.pomoState = new PomoState();
             this.pomoState.start_time = data['start_time'];
             this.pomoState.end_time = data['end_time'];
+            this.pomoState.rest_time = data['rest_time'];
             this.pomoState.status = data['status'];
             this.pomoState.uuid = data['uuid'];
         }
@@ -78,6 +80,7 @@ export class PomoStateService {
         // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
         this.pomoState.status = 'resting';
+        this.pomoState.rest_time = new Date().toISOString();
         this.savePomoState();
 
         // TODO: Save pomo in IndexedDb
@@ -87,10 +90,26 @@ export class PomoStateService {
         let data = Object();
 
         data = {
-            account_id: '123456',
+            account_id: '123456',    // TODO: Use real value for 'account_id'
             pomos: this.recentPomos
         };
 
         localStorage.setItem('recentPomoList', JSON.stringify(data));
+    }
+
+    loadPomoList() {
+        const data = JSON.parse(localStorage.getItem('recentPomoList'));
+
+        if (data) {
+            this.recentPomos = [];
+            console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
+
+            // this.pomoState = new PomoState();
+            // this.pomoState.start_time = data['start_time'];
+            // this.pomoState.end_time = data['end_time'];
+            // this.pomoState.rest_time = data['rest_time'];
+            // this.pomoState.status = data['status'];
+            // this.pomoState.uuid = data['uuid'];
+        }
     }
 }

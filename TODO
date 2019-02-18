@@ -106,14 +106,15 @@ Todos:
                             ☐ Complete code and UI for 'PomoHeaderComponent'
                                 ✔ Add service for 'PomoState' @done(19-02-05 10:36)                                    
                                 ☐ Process states for 'PomoState' ('started', 'idle', 'finished')
-                                    ☐ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component
-                                    ☐ In case if pomoState.status === 'finished' and 'end_time' passed, show 'save-pomo' view in the component
-                                    ☐ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component
-                                    ☐ After saving 'pomoState' status should be changed to 'rest'
-                                    ☐ After 'rest' finished new 'pomoState' should be generated
+                                    ✔ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component @done(19-02-17 09:40)
+                                    ✔ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component @done(19-02-17 09:41)
+                                    ✔ After saving 'pomoState' status should be changed to 'rest' @done(19-02-17 09:41)
+                                    ✔ After 'rest' finished new 'pomoState' should be reinitialised @done(19-02-17 09:41)
                                     ✔ Improve OnInit part, when page reloaded, status 'started' and time expired, show in title current state @done(19-02-16 09:23)
                                     ✔ Fix timer for new 'pomo' (starts from 01:60 and next value 00:59) @done(19-02-16 10:21)
-                                    ☐ Add 'rest_time' member to pomo_state class and check it when app reloaded <========================================================= CURRENT TASK
+                                    ✔ Add 'rest_time' member to pomo_state class and check it when app reloaded @done(19-02-17 09:12)
+                                    ✔ Update code for 'rest_time' member @done(19-02-17 09:40)
+                                    ☐ 'OnLoad' read 'PomoList' from localStorage <========================================================= CURRENT TASK
                                     ☐ For progress-bar use material and own progress, should looks like gray progress with blue progress at bottom
                                         ☐ For progress-bar 'pomo' and 'rest' should be used different 'progress-color'
                                 ☐ Add tests for 'PomoHeaderComponent'

@@ -16,7 +16,7 @@ export class PomoHeaderComponent implements OnInit {
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
-    pomoLengthSeconds = 120;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
+    pomoLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     restLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     timerId;
     counter = this.pomoLengthSeconds;
@@ -27,6 +27,7 @@ export class PomoHeaderComponent implements OnInit {
 
     ngOnInit() {
         this._pomoStateService.loadPomoState();
+        this._pomoStateService.loadPomoList();
 
         if (this._pomoStateService.pomoState) {
             console.log('%cpomoState: ', this.consoleTextColorComponent, this._pomoStateService.pomoState);
@@ -37,11 +38,14 @@ export class PomoHeaderComponent implements OnInit {
 
                 const currentTime = new Date();
                 currentTime.setMilliseconds(0);
-                const endTime = new Date(this._pomoStateService.pomoState.end_time);
+                let endTime: Date;
 
                 if (this._pomoStateService.pomoState.status === 'resting') {
+                    endTime = new Date(this._pomoStateService.pomoState.rest_time);
                     endTime.setSeconds(endTime.getSeconds() + this.restLengthSeconds);
                     this.currentState = 'rest';
+                } else {
+                    endTime = new Date(this._pomoStateService.pomoState.end_time);
                 }
 
                 if (endTime > currentTime) {

@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
         const password = this.frm.get('password').value;
 
         if (username === 'tst' && password === 'tst') {
-            this._authService.doSignIn('tst.Token', 'tst.name');
+            this._authService.doSignIn('tst.Token.12345', 'tst.name'); // TODO: Use real value for 'Token' and 'name' ? or delete this part
             this._router.navigate(['app']);
             return;
         }
