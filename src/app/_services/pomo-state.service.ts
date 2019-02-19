@@ -104,12 +104,31 @@ export class PomoStateService {
             this.recentPomos = [];
             console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
 
-            // this.pomoState = new PomoState();
-            // this.pomoState.start_time = data['start_time'];
-            // this.pomoState.end_time = data['end_time'];
-            // this.pomoState.rest_time = data['rest_time'];
-            // this.pomoState.status = data['status'];
-            // this.pomoState.uuid = data['uuid'];
+            // TODO: Return to this part and improve, after object will be learned more
+            Object.keys(data['pomos']).forEach(key => {
+                const item = data['pomos'][key];
+
+                const tmpPomo = new Pomo(item['title'], item['start_time'], item['uuid'], item['canceled']);
+                tmpPomo.created_time = item['created_time'];
+                tmpPomo.deleted = item['deleted'];
+                tmpPomo.deleted_time = item['deleted_time'];
+                tmpPomo.duration = item['duration'];
+                tmpPomo.end_time = item['end_time'];
+                tmpPomo.manual = item['manual'];
+                tmpPomo.title = item['title'];
+                tmpPomo.updated_time = item['updated_time'];
+                tmpPomo.__accound_id = item['__accound_id'];
+                tmpPomo.__dirty = item['__dirty'];
+                tmpPomo._local_created_time = item['_local_created_time'];
+                tmpPomo._local_updated_time = item['_local_updated_time'];
+                tmpPomo._local_end_time = item['_local_end_time'];
+                tmpPomo._local_start_time = item['_local_start_time'];
+                tmpPomo._local_deleted_time = item['_local_deleted_time'];
+
+                this.recentPomos.push(tmpPomo);
+            });
+
+            console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', this.consoleTextColorService, this.recentPomos);
         }
     }
 }
