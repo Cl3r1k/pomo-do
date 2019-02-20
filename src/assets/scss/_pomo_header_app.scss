@@ -16,5 +16,21 @@
     }
     .pomo-progress-container {
         grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        p {
+            grid-column: span 12;
+        }
+        progress {
+            grid-column: span 12;
+            background-color: #f3f3f3;
+            border: 0;
+            height: 18px;
+            border-radius: 9px;
+            margin-bottom: 5px;
+        }
+        mat-progress-bar {
+            grid-column: span 12;
+        }
     }
 }

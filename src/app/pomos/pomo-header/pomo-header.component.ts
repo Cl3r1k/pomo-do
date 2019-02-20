@@ -118,11 +118,12 @@ export class PomoHeaderComponent implements OnInit {
             // console.log('%cminutes: %d seconds: %d', this.consoleTextColorComponent, minutes, seconds);
             this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + (this.counter % 60)).slice(-2);
             document.title = this.counterView + ' - Pomodo';
-            this.progressBarPercent = Math.round(this.pomoLengthSeconds / this.counter);
-            console.log('%cprogressBarPercent', this.consoleTextColorComponent, this.progressBarPercent);
+            this.progressBarPercent = 100 - Math.round(this.counter / (this.pomoLengthSeconds / 100));
+            // console.log('%cprogressBarPercent', this.consoleTextColorComponent, this.progressBarPercent);
 
             if (this.counter <= 0) {
                 clearInterval(this.timerId);
+                this.progressBarPercent = 0;
                 // document.title = 'Pomodo';
                 if (this._pomoStateService.pomoState.status === 'resting') {
                     this.resetCounter(false);

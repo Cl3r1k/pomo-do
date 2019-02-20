@@ -117,6 +117,7 @@ Todos:
                                     ✔ 'OnLoad' read 'PomoList' from localStorage @done(19-02-18 10:15)
                                     ☐ For progress-bar use material and own progress, should looks like gray progress with blue progress at bottom <========================================================= CURRENT TASK
                                         ☐ For progress-bar 'pomo' and 'rest' should be used different 'progress-color'
+                                        ☐ Consider to use 'mat-progress-bar' for app header, and own progress for 'PomoHeaderComponent' (Bad idea - 'mat-progress-bar' should be used as preloader, when app reloaded and data in sync, so remove 'mat-progress-bar' from 'PomoHeaderComponent' after own 'progress-bar' completed)
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'
