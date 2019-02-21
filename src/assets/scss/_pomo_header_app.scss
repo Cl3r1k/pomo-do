@@ -29,8 +29,12 @@
             border-radius: 9px;
             margin-bottom: 5px;
         }
-        mat-progress-bar {
+        // mat-progress-bar {
+        //     grid-column: span 12;
+        // }
+        button {
             grid-column: span 12;
+            margin: auto;
         }
     }
 }
