@@ -5,7 +5,21 @@
 
     <div class='pomo-progress-container' *ngIf='pomoStatePomoHeader === 1'>
         <p>progress bar timerId {{timerId}} and counter {{counterView}}</p>
-        <progress value='{{progressBarPercent}}' min='0' max='100'></progress>
+
+        <!-- progress V1 -->
+        <!-- <progress value='{{progressBarPercent}}' min='0' max='100'></progress> -->
+        <!-- End progress V1 -->
+
+        <!-- progress V2 -->
+        <div class='progress'>
+            <progress value='{{progressBarPercent}}' min='0' max='100'></progress>
+            <div class='progress-value'>10%</div>
+            <div class='progress-bg'>
+                <div class='progress-bar'></div>
+            </div>
+        </div>
+        <!-- End progress V2 -->
+
         <!-- <mat-progress-bar mode='determinate' value='{{progressBarPercent}}'></mat-progress-bar> -->
         <button mat-raised-button (click)='cancelPomo()'>Interrupt {{currentState}}</button>
     </div>
