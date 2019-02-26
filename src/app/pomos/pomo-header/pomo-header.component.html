@@ -11,7 +11,7 @@
         <!-- End progress V1 -->
 
         <!-- progress V2 -->
-        <div class='progress'>
+        <div class='progress2'>
             <progress value='{{progressBarPercent}}' min='0' max='100'></progress>
             <div class='progress-value'></div>
             <div class='progress-bg'>
@@ -23,6 +23,14 @@
         <!-- progress V3 -->
         <progress class='progress-3' value='{{progressBarPercent}}' min='0' max='100'></progress>
         <!-- End progress V3 -->
+
+        <!-- progress V4 -->
+        <div class='progress-container'>
+            <progress class='progress-4' value='{{progressBarPercent}}' min='0' max='100'>
+                <span>Info</span>
+            </progress>
+        </div>
+        <!-- End progress V4 -->
 
         <!-- <mat-progress-bar mode='determinate' value='{{progressBarPercent}}'></mat-progress-bar> -->
         <button mat-raised-button (click)='cancelPomo()'>Interrupt {{currentState}}</button>

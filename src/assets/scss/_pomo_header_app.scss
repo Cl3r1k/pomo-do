@@ -29,7 +29,7 @@
             border-radius: 9px;
             margin-bottom: 5px;
         }
-        .progress {
+        .progress2 {
             grid-column: span 12;
             font: 12px Arial, Tahoma, sans-serif;
             position: relative;
@@ -50,8 +50,8 @@
             .progress-bg {
                 background: #e6e9ed;
                 position: relative;
-                height: 8px;
-                border-radius: 5px;
+                height: 20px;
+                border-radius: 2px;
                 overflow: hidden;
                 .progress-bar {
                     position: absolute;
@@ -101,6 +101,21 @@
                 }
             }
         }
+        .progress-container {
+            grid-column: span 12;
+            width: auto;
+            padding: 4px;
+            background-color: rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            .progress-4 {
+                height: 16px;
+                border-radius: 3px;
+            }
+            // .cssProgress-label {
+            //   line-height: 16px;
+            // }
+        }
         // mat-progress-bar {
         //     grid-column: span 12;
         // }
@@ -121,7 +136,7 @@
 }
 
 @for $i from 0 through 100 {
-    .progress progress[value="#{$i}"] {
+    .progress2 progress[value="#{$i}"] {
         &+.progress-value::before {
             content: '#{$i}%';
         }
