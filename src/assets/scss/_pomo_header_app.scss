@@ -48,19 +48,20 @@
                 text-align: center;
             }
             .progress-bg {
-                background: #e6e9ed;
+                // background: #e6e9ed;
                 position: relative;
                 height: 20px;
-                border-radius: 2px;
+                border-radius: 3px;
                 overflow: hidden;
                 .progress-bar {
                     position: absolute;
                     top: 0;
                     left: 0;
                     overflow: hidden;
-                    background: #ac92ec;
+                    background: #92ecd5;
                     // width: 0%;
                     height: 100%;
+                    border-radius: 3px;
                     transition: width 1s linear;
                     &::after {
                         background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -74,7 +75,7 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        animation: progress_bar 0.8s linear infinite;
+                        animation: progress_bar 1.8s linear infinite;
                     }
                 }
             }
@@ -128,10 +129,10 @@
 
 @keyframes progress_bar {
     0% {
-        background-position: 0 0;
+        background-position: -40px 0;
     }
     100% {
-        background-position: -40px 0;
+        background-position: 0 0;
     }
 }
 
