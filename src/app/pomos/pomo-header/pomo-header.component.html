@@ -34,6 +34,16 @@
         </div>
         <!-- End progress V4 -->
 
+        <!-- progress V5 -->
+        <div class="cssProgress">
+            <div class="progress3">
+                <div class="cssProgress-bar cssProgress-warning cssProgress-active" data-percent="55" [style.width.%]="progressBarPercent">
+                    <span class="cssProgress-label">{{progressBarPercent}}%</span>
+                </div>
+            </div>
+        </div>
+        <!-- End progress V5 -->
+
         <!-- <mat-progress-bar mode='determinate' value='{{progressBarPercent}}'></mat-progress-bar> -->
         <button mat-raised-button (click)='cancelPomo()'>Interrupt {{currentState}}</button>
     </div>
