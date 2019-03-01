@@ -1,168 +1,8 @@
 /* Styles for 'PomoHeaderComponent' */
 
-.header-pomo {
-    grid-column: span 12;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    padding-bottom: 10px;
-    background-color: #eeeeb8; // For Debug
-    .pomo-start-container {
-        grid-column: span 12;
-        .button-start-pomo {
-            width: 100%;
-            font-weight: bold;
-            height: 41px;
-        }
-    }
-    .pomo-progress-container {
-        grid-column: span 12;
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        p {
-            grid-column: span 12;
-        }
-        progress {
-            grid-column: span 12;
-            background-color: #f3f3f3;
-            border: 0;
-            height: 18px;
-            border-radius: 9px;
-            margin-bottom: 5px;
-        }
-        .progress2 {
-            grid-column: span 12;
-            font: 12px Arial, Tahoma, sans-serif;
-            position: relative;
-            overflow: hidden;
-            progress {
-                position: absolute;
-                width: 0;
-                height: 0;
-                overflow: hidden;
-                left: -777px;
-            }
-            .progress-value {
-                color: #333333;
-                display: block;
-                line-height: 21px;
-                text-align: center;
-            }
-            .progress-bg {
-                // background: #e6e9ed;
-                position: relative;
-                height: 20px;
-                border-radius: 3px;
-                overflow: hidden;
-                .progress-bar {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    overflow: hidden;
-                    background: #92ecd5;
-                    // width: 0%;
-                    height: 100%;
-                    border-radius: 3px;
-                    transition: width 1s linear;
-                    &::after {
-                        background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-                        background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-                        background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-                        -webkit-background-size: 40px 40px;
-                        background-size: 40px 40px;
-                        position: absolute;
-                        content: '';
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        animation: progress_bar 1.8s linear infinite;
-                    }
-                }
-            }
-        }
-        .progress-3[value] {
-            grid-column: span 12;
-            width: 100%;
-            &::-webkit-progress-bar {
-                background-color: #eeeeee;
-                border-radius: 2px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, .25) inset;
-            }
-            &::-webkit-progress-value {
-                background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44);
-                border-radius: 2px;
-                background-size: 35px 20px, 100% 100%, 100% 100%;
-                -webkit-animation: animate-stripes 5s linear infinite;
-                animation: animate-stripes 5s linear infinite;
-                &::before {
-                    content: '80%';
-                    position: absolute;
-                    right: 0;
-                    top: -125%;
-                }
-            }
-        }
-        .progress-container {
-            grid-column: span 12;
-            width: auto;
-            padding: 4px;
-            background-color: rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
-            .progress-4 {
-                height: 16px;
-                border-radius: 3px;
-            }
-            // .cssProgress-label {
-            //   line-height: 16px;
-            // }
-        }
-        // mat-progress-bar {
-        //     grid-column: span 12;
-        // }
-        button {
-            grid-column: span 12;
-            margin: auto;
-        }
-    }
-}
-
-@keyframes progress_bar {
-    0% {
-        background-position: -40px 0;
-    }
-    100% {
-        background-position: 0 0;
-    }
-}
-
-@for $i from 0 through 100 {
-    .progress2 progress[value="#{$i}"] {
-        &+.progress-value::before {
-            content: '#{$i}%';
-        }
-        &~.progress-bg .progress-bar {
-            width: $i * 1%;
-        }
-    }
-}
-
-@-webkit-keyframes animate-stripes {
-    100% {
-        background-position: -100px 0px;
-    }
-}
-
-@keyframes animate-stripes {
-    100% {
-        background-position: -100px 0px;
-    }
-}
-
 // Progress bar bg colours
-$bar-default-bg: #3798d9;
-$bar-success-bg: #66bb6a;
-$bar-warning-bg: #ffb74d;
+$bar-default-bg: rgba(255, 0, 0, 0.2);
+$bar-rest-bg: rgba(0, 255, 0, 0.2);
 // ADDS A BROWSER PREFIX TO THE PROPERTY
 @mixin browser_prefix($property, $value) {
     -webkit-#{$property}: #{$value};
@@ -196,15 +36,60 @@ $bar-warning-bg: #ffb74d;
     @include browser_prefix('animation', $str);
 }
 
+@include keyframes('cssProgressActive') {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 35px 35px;
+    }
+}
+
+.header-pomo {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-bottom: 10px;
+    background-color: #eeeeb8; // For Debug
+    .pomo-start-container {
+        grid-column: span 12;
+        .button-start-pomo {
+            width: 100%;
+            font-weight: bold;
+            height: 41px;
+        }
+    }
+    .pomo-progress-container {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        p {
+            grid-column: span 12;
+        }
+        // mat-progress-bar {
+        //     grid-column: span 12;
+        // }
+        button {
+            grid-column: span 12;
+            margin: auto;
+        }
+    }
+}
+
 .cssProgress {
     grid-column: span 12;
     width: 100%;
     margin-bottom: 20px;
-    .progress3 {
+    .progress {
         position: relative;
         overflow: hidden;
         width: 100%;
         font-family: "Roboto", sans-serif;
+        width: auto !important;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
     }
     .cssProgress-bar {
         display: block;
@@ -214,6 +99,11 @@ $bar-warning-bg: #ffb74d;
         background: $bar-default-bg;
         box-shadow: inset 0px -1px 2px rgba(0, 0, 0, 0.1);
         transition: width 0.8s ease-in-out;
+        height: 34px;
+        border-radius: 3px;
+        &.cssProgress-rest {
+            background-color: $bar-rest-bg;
+        }
     }
     .cssProgress-label {
         position: absolute;
@@ -224,46 +114,12 @@ $bar-warning-bg: #ffb74d;
         font-size: 0.7em;
         text-align: center;
         text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
-    }
-    .cssProgress-info {
-        background-color: $bar-success-bg !important;
-    }
-    .cssProgress-warning {
-        background-color: $bar-warning-bg !important;
+        line-height: 34px;
+        font-size: 18px;
     }
     .cssProgress-active {
         background-image: linear-gradient( -45deg, rgba(255, 255, 255, .125) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .125) 50%, rgba(255, 255, 255, .125) 75%, transparent 75%, transparent);
         background-size: 35px 35px;
-    }
-    .cssProgress-active {
         @include animation('cssProgressActive 2s linear infinite');
-    }
-    @include keyframes('cssProgressActive') {
-        0% {
-            background-position: 0 0;
-        }
-        100% {
-            background-position: 35px 35px;
-        }
-    }
-}
-
-
-/* -----------------------------------------------------
-	Progress Bar 3
--------------------------------------------------------- */
-
-.progress3 {
-    width: auto !important;
-    padding: 4px;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    .cssProgress-bar {
-        height: 16px;
-        border-radius: 3px;
-    }
-    .cssProgress-label {
-        line-height: 16px;
     }
 }

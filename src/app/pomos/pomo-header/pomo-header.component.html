@@ -4,41 +4,12 @@
     </div>
 
     <div class='pomo-progress-container' *ngIf='pomoStatePomoHeader === 1'>
-        <p>progress bar timerId {{timerId}} and counter {{counterView}}</p>
-
-        <!-- progress V1 -->
-        <!-- <progress value='{{progressBarPercent}}' min='0' max='100'></progress> -->
-        <!-- End progress V1 -->
-
-        <!-- progress V2 -->
-        <div class='progress-container'>
-            <div class='progress2'>
-                <progress value='{{progressBarPercent}}' min='0' max='100'></progress>
-                <div class='progress-value'></div>
-                <div class='progress-bg'>
-                    <div class='progress-bar'></div>
-                </div>
-            </div>
-        </div>
-        <!-- End progress V2 -->
-
-        <!-- progress V3 -->
-        <progress class='progress-3' value='{{progressBarPercent}}' min='0' max='100'></progress>
-        <!-- End progress V3 -->
-
-        <!-- progress V4 -->
-        <div class='progress-container'>
-            <progress class='progress-4' value='{{progressBarPercent}}' min='0' max='100'>
-                <span>Info</span>
-            </progress>
-        </div>
-        <!-- End progress V4 -->
 
         <!-- progress V5 -->
         <div class="cssProgress">
-            <div class="progress3">
-                <div class="cssProgress-bar cssProgress-warning cssProgress-active" data-percent="55" [style.width.%]="progressBarPercent">
-                    <span class="cssProgress-label">{{progressBarPercent}}%</span>
+            <div class="progress">
+                <div class="cssProgress-bar cssProgress-active" [class.cssProgress-rest]="currentState === 'rest'" data-percent="55" [style.width.%]="progressBarPercent">
+                    <span class="cssProgress-label">{{counterView}}</span>
                 </div>
             </div>
         </div>
