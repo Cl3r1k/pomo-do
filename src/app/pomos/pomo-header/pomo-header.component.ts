@@ -142,7 +142,7 @@ export class PomoHeaderComponent implements OnInit {
         // this.counter--;    // Optional, if time should be started from **:59 or **+1:00
         this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + (this.counter % 60)).slice(-2);
         document.title = 'Pomodo';
-        this.currentState = 'pomo';
+        this.currentState = restState ? 'rest' : 'pomo';
     }
 
     cancelPomo() {
