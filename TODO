@@ -120,7 +120,9 @@ Todos:
                                         ✔ Consider to use 'mat-progress-bar' for app header, and own progress for 'PomoHeaderComponent' (Bad idea - 'mat-progress-bar' should be used as preloader, when app reloaded and data in sync, so remove 'mat-progress-bar' from 'PomoHeaderComponent' after own 'progress-bar' completed) @done(19-03-01 09:14)
                                         ✔ Complete UI for 'progress-bar' @done(19-03-01 09:15)
                                         ✔ Complete label for 'progress-bar' @done(19-03-01 09:34)
-                                        ☐ Complete UI and functionality to 'cancel/interrupt' button <========================================================= CURRENT TASK
+                                        ☐ Complete UI and functionality to 'cancel/interrupt' button
+                                            ✔ Add 'cross-icon' for 'progress-bar' @done(19-03-02 09:48)
+                                            ☐ On 'cross-icon' should be showed dialog (if current pomo in progress) <========================================================= CURRENT TASK
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'

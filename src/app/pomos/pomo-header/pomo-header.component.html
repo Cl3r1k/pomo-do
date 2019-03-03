@@ -6,22 +6,22 @@
     <div class='pomo-progress-container' *ngIf='pomoStatePomoHeader === 1'>
 
         <!-- progress V5 -->
-        <div class="cssProgress">
-            <div class="progress">
-                <div class="cssProgress-bar cssProgress-active" [class.cssProgress-rest]="currentState === 'rest'" [style.width.%]="progressBarPercent">
-                    <span class="cssProgress-label noselect">{{counterView}}</span>
+        <div class='cssProgress'>
+            <div class='progress'>
+                <div class='cssProgress-bar cssProgress-active' [class.cssProgress-rest]="currentState === 'rest'" [style.width.%]='progressBarPercent'>
+                    <span class='cssProgress-label noselect'>{{counterView}}</span>
                 </div>
             </div>
         </div>
         <!-- End progress V5 -->
-
-        <!-- <mat-progress-bar mode='determinate' value='{{progressBarPercent}}'></mat-progress-bar> -->
-        <button mat-raised-button (click)='cancelPomo()'>Interrupt {{currentState}}</button>
+        <svg class='icon icon-cross' (click)='cancelPomoClick()'>
+            <use xlink:href='#icon-cross'></use>
+        </svg>
     </div>
 
     <div class='pomo-save-container' *ngIf='pomoStatePomoHeader === 2'>
         <span>Choose pomo to save</span>
         <button mat-raised-button (click)='savePomo()'>Save pomo</button>
-        <button mat-raised-button (click)='cancelPomo()'>Cancel pomo</button>
+        <button mat-raised-button (click)='cancelPomoClick()'>Cancel pomo</button>
     </div>
 </header>

@@ -145,6 +145,17 @@ export class PomoHeaderComponent implements OnInit {
         this.currentState = restState ? 'rest' : 'pomo';
     }
 
+    cancelPomoClick() {
+
+        console.log('%ccancelPomoClick() called', this.consoleTextColorComponent);
+
+        if (this.currentState === 'pomo') {
+            // Call dialog
+        } else {
+            this.cancelPomo();
+        }
+    }
+
     cancelPomo() {
         console.log('%ccancelPomo() called', this.consoleTextColorComponent);
         clearInterval(this.timerId);

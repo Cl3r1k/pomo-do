@@ -63,15 +63,18 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
         grid-column: span 12;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        p {
-            grid-column: span 12;
-        }
-        // mat-progress-bar {
-        //     grid-column: span 12;
-        // }
-        button {
-            grid-column: span 12;
-            margin: auto;
+        position: relative;
+        .icon-cross {
+            cursor: pointer;
+            font-size: 10px;
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            padding: 3px;
+            border: 1px solid #8c8c8c;
+            color: #656565;
+            border-radius: 50%;
+            background-color: #dedede;
         }
     }
 }
@@ -79,7 +82,7 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
 .cssProgress {
     grid-column: span 12;
     width: 100%;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     .progress {
         position: relative;
         overflow: hidden;
