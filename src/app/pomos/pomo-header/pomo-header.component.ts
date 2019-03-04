@@ -3,6 +3,12 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 // Services
 import { PomoStateService } from '@app/_services/pomo-state.service';
 
+// Components
+import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.component';
+
+// Modules
+import { MatDialog } from '@angular/material';
+
 @Component({
     selector: 'app-pomo-header',
     templateUrl: './pomo-header.component.html',
@@ -24,7 +30,7 @@ export class PomoHeaderComponent implements OnInit {
     currentState = 'pomo';
     progressBarPercent = 0;
 
-    constructor(private _pomoStateService: PomoStateService) { }
+    constructor(private _pomoStateService: PomoStateService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this._pomoStateService.loadPomoState();
@@ -150,7 +156,27 @@ export class PomoHeaderComponent implements OnInit {
         console.log('%ccancelPomoClick() called', this.consoleTextColorComponent);
 
         if (this.currentState === 'pomo') {
-            // Call dialog
+            const dataForDialog = {
+                dialogTitle: 'You are currently in a pomo, do you really want to interrupt it?',
+                // contentTitle: 'Are you sure want to delete todo with name:',
+                // contentData: todo.title,
+                isClearCompleted: false
+            };
+
+            const dialogRef = this.dialog.open(DialogCancelComponent, {
+                width: '600px',
+                data: {
+                    data: dataForDialog
+                }
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result === 'Confirm') {
+                    this.cancelPomo();    // User confirmed action, call 'cancelPomo()'
+                } else {
+                    // User clicked 'Cancel' or clicked outside of the dialog
+                }
+            });
         } else {
             this.cancelPomo();
         }

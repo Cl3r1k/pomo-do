@@ -23,6 +23,7 @@ import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { AppMainComponent } from '@app/app-main/app-main.component';
 import { PomosComponent } from '@app/pomos/pomos.component';
 import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
+import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -85,7 +86,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         ActiveTaskComponent,
         PomosComponent,
         AppMainComponent,
-        PomoHeaderComponent
+        PomoHeaderComponent,
+        DialogCancelComponent
     ],
     imports: [
         AppRoutingModule,
@@ -121,6 +123,6 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         PomoStateService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent, DialogSettingsComponent]
+    entryComponents: [DialogDeleteComponent, DialogMoreComponent, DialogAccountComponent, DialogSettingsComponent, DialogCancelComponent]
 })
 export class AppModule { }

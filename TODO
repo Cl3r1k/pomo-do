@@ -123,6 +123,7 @@ Todos:
                                         ☐ Complete UI and functionality to 'cancel/interrupt' button
                                             ✔ Add 'cross-icon' for 'progress-bar' @done(19-03-02 09:48)
                                             ☐ On 'cross-icon' should be showed dialog (if current pomo in progress) <========================================================= CURRENT TASK
+                                                ✔ Add 'DialogCancelComponent' @done(19-03-03 10:07)
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'
