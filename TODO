@@ -105,7 +105,7 @@ Todos:
                         ✔ Add 'pomo-header' component @done(19-01-26 09:54)
                             ☐ Complete code and UI for 'PomoHeaderComponent'
                                 ✔ Add service for 'PomoState' @done(19-02-05 10:36)                                    
-                                ☐ Process states for 'PomoState' ('started', 'idle', 'finished')
+                                ✔ Process states for 'PomoState' ('started', 'idle', 'finished') @done(19-03-04 09:52)
                                     ✔ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component @done(19-02-17 09:40)
                                     ✔ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component @done(19-02-17 09:41)
                                     ✔ After saving 'pomoState' status should be changed to 'rest' @done(19-02-17 09:41)
@@ -115,15 +115,25 @@ Todos:
                                     ✔ Add 'rest_time' member to pomo_state class and check it when app reloaded @done(19-02-17 09:12)
                                     ✔ Update code for 'rest_time' member @done(19-02-17 09:40)
                                     ✔ 'OnLoad' read 'PomoList' from localStorage @done(19-02-18 10:15)
-                                    ☐ For progress-bar use material and own progress, should looks like gray progress with blue progress at bottom
+                                    ✔ For progress-bar use material and own progress, should looks like gray progress with blue progress at bottom @done(19-03-04 09:53)
                                         ✔ For progress-bar 'pomo' and 'rest' should be used different 'progress-color' @done(19-03-01 09:14)
                                         ✔ Consider to use 'mat-progress-bar' for app header, and own progress for 'PomoHeaderComponent' (Bad idea - 'mat-progress-bar' should be used as preloader, when app reloaded and data in sync, so remove 'mat-progress-bar' from 'PomoHeaderComponent' after own 'progress-bar' completed) @done(19-03-01 09:14)
                                         ✔ Complete UI for 'progress-bar' @done(19-03-01 09:15)
                                         ✔ Complete label for 'progress-bar' @done(19-03-01 09:34)
-                                        ☐ Complete UI and functionality to 'cancel/interrupt' button
+                                        ✔ Complete UI and functionality for 'cancel/interrupt' button @done(19-03-04 09:52)
                                             ✔ Add 'cross-icon' for 'progress-bar' @done(19-03-02 09:48)
-                                            ☐ On 'cross-icon' should be showed dialog (if current pomo in progress) <========================================================= CURRENT TASK
-                                                ✔ Add 'DialogCancelComponent' @done(19-03-03 10:07)
+                                            ✔ On 'cross-icon' should be showed dialog (if current pomo in progress) @done(19-03-04 09:52)
+                                                ✔ Added 'DialogCancelComponent' @done(19-03-03 10:07)
+                                                    ✔ Add tests for 'DialogCancelComponent' @done(19-03-04 09:32)
+                                    ☐ Complete UI and functionality for 'save-pomo' part
+                                        ☐ Add styled 'textarea' <========================================================= CURRENT TASK
+                                            ☐ The 'textarea' size shouldn't be changed manually
+                                            ☐ The 'textarea' size should be changed according to it's text
+                                            ☐ The 'textarea' should have 'icon-enter' icon and save pomo 'onClick'
+                                            ☐ The 'textarea' should have 'icon-enter' icon and save pomo 'onClick'
+                                            ☐ The 'textarea' should have 'icon-cancel' icon and cancel/interrupt pomo
+                                            ☐ Inner 'pomo' name in 'textarea' should be changed according selected 'todo'
+                                                ☐ Should be saved selected 'todos' and 'textarea' content in the localStorage ???
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'

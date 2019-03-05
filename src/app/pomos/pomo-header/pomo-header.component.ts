@@ -157,17 +157,12 @@ export class PomoHeaderComponent implements OnInit {
 
         if (this.currentState === 'pomo') {
             const dataForDialog = {
-                dialogTitle: 'You are currently in a pomo, do you really want to interrupt it?',
-                // contentTitle: 'Are you sure want to delete todo with name:',
-                // contentData: todo.title,
-                isClearCompleted: false
+                dialogTitle: 'You are currently in a pomo, do you really want to interrupt it?'
             };
 
             const dialogRef = this.dialog.open(DialogCancelComponent, {
                 width: '600px',
-                data: {
-                    data: dataForDialog
-                }
+                data: dataForDialog
             });
 
             dialogRef.afterClosed().subscribe(result => {

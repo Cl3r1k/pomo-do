@@ -5,7 +5,6 @@
 
     <div class='pomo-progress-container' *ngIf='pomoStatePomoHeader === 1'>
 
-        <!-- progress V5 -->
         <div class='cssProgress'>
             <div class='progress'>
                 <div class='cssProgress-bar cssProgress-active' [class.cssProgress-rest]="currentState === 'rest'" [style.width.%]='progressBarPercent'>
@@ -13,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <!-- End progress V5 -->
+
         <svg class='icon icon-cross' (click)='cancelPomoClick()'>
             <use xlink:href='#icon-cross'></use>
         </svg>
