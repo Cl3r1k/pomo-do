@@ -77,6 +77,14 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
             background-color: #dedede;
         }
     }
+    .pomo-save-container {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        .pomo-save-field {
+            grid-column: span 12;
+        }
+    }
 }
 
 .cssProgress {

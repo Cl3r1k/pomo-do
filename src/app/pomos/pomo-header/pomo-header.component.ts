@@ -19,6 +19,7 @@ export class PomoHeaderComponent implements OnInit {
     consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() pomoStatePomoHeader: number;
+    @Input() completedPomoName: string;
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
@@ -186,10 +187,21 @@ export class PomoHeaderComponent implements OnInit {
     }
 
     savePomo() {
-        this._pomoStateService.saveCompletedPomo('1. Add more todos!');
-        this.currentState = 'rest';
+        if (this.completedPomoName) {
+            this._pomoStateService.saveCompletedPomo(this.completedPomoName);
+            this.currentState = 'rest';
+            this.completedPomoName = '';
 
-        this.startRest();
+            this.startRest();
+        }
+    }
+
+    additionalCheck(event) {
+        console.log('%cadditionalCheck() event:', this.consoleTextColorComponent, event);
+
+        if (this.completedPomoName === '') {
+            console.log('%ccompletedPomoName: emtpy???', this.consoleTextColorComponent);
+        }
     }
 
 }
