@@ -186,21 +186,16 @@ export class PomoHeaderComponent implements OnInit {
         this._pomoStateService.interruptPomo();
     }
 
-    savePomo() {
+    savePomo(event: KeyboardEvent) {
         if (this.completedPomoName) {
             this._pomoStateService.saveCompletedPomo(this.completedPomoName);
             this.currentState = 'rest';
             this.completedPomoName = '';
 
             this.startRest();
-        }
-    }
-
-    additionalCheck(event) {
-        console.log('%cadditionalCheck() event:', this.consoleTextColorComponent, event);
-
-        if (this.completedPomoName === '') {
+        } else {
             console.log('%ccompletedPomoName: emtpy???', this.consoleTextColorComponent);
+            event.preventDefault();
         }
     }
 

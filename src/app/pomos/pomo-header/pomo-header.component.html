@@ -19,7 +19,7 @@
     </div>
 
     <div class='pomo-save-container' *ngIf='pomoStatePomoHeader === 2'>
-        <textarea class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='completedPomoName' (keydown.enter)='savePomo()' (keyup.enter)='additionalCheck($event)'></textarea>
+        <textarea autosize class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='completedPomoName' (keydown.enter)='savePomo($event)' #textAreaElement></textarea>
         <button mat-raised-button (click)='savePomo()'>Save pomo</button>
         <button mat-raised-button (click)='cancelPomoClick()'>Cancel pomo</button>
     </div>
