@@ -128,15 +128,15 @@ Todos:
                                     ☐ Complete UI and functionality for 'save-pomo' part
                                         ☐ Add styled 'textarea'
                                             ✔ Improve check when on epmty 'save-pomo' field 'Enter' pressed (shouldn't write enter key in field) @done(19-03-06 09:25)
-                                            ☐ The 'textarea' vertical size shouldn't be changed manually  <========================================================= CURRENT TASK
-                                            ☐ The 'textarea' size should be changed according to it's text
+                                            ✔ The 'textarea' vertical size shouldn't be changed manually @done(19-03-07 09:54)
+                                            ☐ The 'textarea' size should be changed according to it's text  <========================================================= CURRENT TASK
                                             ☐ The 'textarea' should have 'icon-enter' icon and save pomo 'onClick'
-                                            ☐ The 'textarea' should have 'icon-enter' icon and save pomo 'onClick'
+                                                ☐ Fix error for 'icon-enter' click (when 'save-pomo' field is empty)
                                             ☐ The 'textarea' should have 'icon-cancel' icon and cancel/interrupt pomo
                                             ☐ Inner 'pomo' name in 'textarea' should be changed according selected 'todo'
                                                 ☐ Should be saved selected 'todos' and 'textarea' content in the localStorage ???
                                             ☐ After page reload should be selected first todo
-                                            ☐ Consider to 'trim' 'pomo-title'
+                                            ☐ Consider to 'trim' 'pomo-title'                                            
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'
