@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 
 // Services
 import { PomoStateService } from '@app/_services/pomo-state.service';
@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material';
     templateUrl: './pomo-header.component.html',
     styleUrls: ['./pomo-header.component.scss']
 })
-export class PomoHeaderComponent implements OnInit {
+export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
     consoleTextColorComponent = 'color: cadetblue;';
 
@@ -30,6 +30,10 @@ export class PomoHeaderComponent implements OnInit {
     counterView = '';
     currentState = 'pomo';
     progressBarPercent = 0;
+    afterViewCheckedCount = 0;
+    updatedTextHeight = false;
+
+    @ViewChild('textAreaElement') private texareaPomoNameElementRef: ElementRef;
 
     constructor(private _pomoStateService: PomoStateService, public dialog: MatDialog) { }
 
@@ -98,6 +102,22 @@ export class PomoHeaderComponent implements OnInit {
                     this.currentState = 'pomo';
                 }
             }
+        }
+    }
+
+    ngAfterViewChecked() {
+        // Workaround for autosize Textarea initial height
+
+        if (this.afterViewCheckedCount >= 1) {
+            if (!this.updatedTextHeight) {
+                let el: HTMLElement;
+                el = this.texareaPomoNameElementRef.nativeElement;
+                el.style.height = '42px';
+
+                this.updatedTextHeight = true;
+            }
+        } else {
+            this.afterViewCheckedCount++;
         }
     }
 
