@@ -20,7 +20,9 @@
 
     <div class='pomo-save-container' *ngIf='pomoStatePomoHeader === 2'>
         <textarea autosize class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='completedPomoName' (keydown.enter)='savePomo($event)' #textAreaElement></textarea>
-        <button mat-raised-button (click)='savePomo()'>Save pomo</button>
+        <svg class='icon icon-keyboard_return' [class.save-pomo-focused]='savePomoFocusState' (click)='savePomo()'>
+            <use xlink:href='#icon-keyboard_return'></use>
+        </svg>
         <button mat-raised-button (click)='cancelPomoClick()'>Cancel pomo</button>
     </div>
 </header>
