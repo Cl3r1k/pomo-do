@@ -32,6 +32,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     progressBarPercent = 0;
     afterViewCheckedCount = 0;
     updatedTextHeight = false;
+    savePomoFocusState = false;
 
     @ViewChild('textAreaElement') private texareaPomoNameElementRef: ElementRef;
 
@@ -217,6 +218,10 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
             console.log('%ccompletedPomoName: emtpy???', this.consoleTextColorComponent);
             event.preventDefault();
         }
+    }
+
+    setSavePomoFocus(state: boolean) {
+        this.savePomoFocusState = state;
     }
 
 }
