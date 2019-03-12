@@ -23,6 +23,9 @@
         <svg class='icon icon-keyboard_return' [class.save-pomo-focused]='savePomoFocusState' (click)='savePomo()'>
             <use xlink:href='#icon-keyboard_return'></use>
         </svg>
-        <button mat-raised-button (click)='cancelPomoClick()'>Cancel pomo</button>
+
+        <svg class='icon icon-cross' (click)='cancelPomoClick()'>
+            <use xlink:href='#icon-cross'></use>
+        </svg>
     </div>
 </header>

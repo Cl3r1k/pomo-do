@@ -216,7 +216,9 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
             this.startRest();
         } else {
             console.log('%ccompletedPomoName: emtpy???', this.consoleTextColorComponent);
-            event.preventDefault();
+            if (event !== undefined) {
+                event.preventDefault();
+            }
         }
     }
 
