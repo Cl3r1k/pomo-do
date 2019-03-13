@@ -23,6 +23,8 @@ export class TodosComponent implements OnInit {
     @Input() todos: ToDo[];
     @Input() todosToView = [[]];
 
+    @Input() pomoStateTodos: number;
+
     @Output() toggleCompleteTodosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
     @Output() updateTodosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
     @Output() moreTodosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
@@ -35,6 +37,7 @@ export class TodosComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        console.log('%cpomoStateTodos: ', this.consoleTextColorComponent, this.pomoStateTodos);
     }
 
     onAddTodo(todo: ToDo) {

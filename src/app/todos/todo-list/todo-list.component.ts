@@ -15,6 +15,8 @@ export class TodoListComponent implements OnInit {
 
     @Input() todosAllAmount: number;
 
+    @Input() pomoStateTodoList: number;
+
     @Output()
     toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
@@ -44,6 +46,7 @@ export class TodoListComponent implements OnInit {
 
     ngOnInit() {
         // console.log('%cin ngOnInit -> todosToView: ', this.consoleTextColorComponent, this.todosToView);
+        console.log('%cpomoStateTodoList: ', this.consoleTextColorComponent, this.pomoStateTodoList);
     }
 
     onToggleTodoComplete(todo: ToDo) {

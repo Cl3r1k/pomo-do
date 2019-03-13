@@ -1,4 +1,4 @@
 <app-todo-list-header [todosAllAmount]='todosAllAmount' [todosAllCompleted]='todosAllCompleted' [hashTagToFilter]='hashTagToFilter' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAllTodos($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onSetToggleAllHoverState($event)'></app-todo-list-header>
 
-<app-todo-list [todos]='todos' [todosToView]='todosToView' [todosAllAmount]='todosAllAmount' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (moreTodoTodoListEmitter)='onMoreTodo($event)'
+<app-todo-list [todos]='todos' [todosToView]='todosToView' [todosAllAmount]='todosAllAmount' [pomoStateTodoList]='pomoStateTodos' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (moreTodoTodoListEmitter)='onMoreTodo($event)'
     (pinTodoTodoListEmitter)='onPinTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)' (clearTodoListEmitter)='onClearCompleted($event)' (clearHoverStateTodoListEmitter)='onClearHoverSetState($event)'></app-todo-list>
