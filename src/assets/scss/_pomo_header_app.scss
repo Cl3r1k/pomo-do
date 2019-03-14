@@ -87,7 +87,7 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
             @extend .input-field-style;
             box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.03);
             // background-color: transparent;
-            padding: 9px 30px 11px 14px !important;
+            padding: 9px 30px 11px 10px !important;
             resize: horizontal; // Disable vertical resizing for pomo
             word-break: break-all;
             max-width: 100%;

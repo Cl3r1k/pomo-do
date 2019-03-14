@@ -134,7 +134,12 @@ Todos:
                                             ✔ The 'textarea.pomo-save-field' should have 'icon-enter' icon and save pomo 'onClick' @done(19-03-11 10:40)
                                                 ✔ Fix error for 'icon-enter' click (when 'save-pomo' field is empty) @done(19-03-11 10:45)
                                             ✔ The 'textarea.pomo-save-field' should have 'icon-cancel' icon and cancel/interrupt pomo @done(19-03-11 11:05)
-                                            ☐ Inner 'pomo' name in 'textarea.pomo-save-field' should be changed according selected 'todo' <========================================================= CURRENT TASK
+                                            ☐ Inner 'pomo' name in 'textarea.pomo-save-field' should be changed according selected 'todo'
+                                                ✔ Add 'PomoTitleService' for 'textarea.pomo-save-field' value @done(19-03-13 10:05)
+                                                ☐ The 'PomoTitleService' should store own current 'pomo-state' for 'pomo-title' <========================================================= CURRENT TASK
+                                                ☐ The 'PomoTitleService' should store list of selected 'todos'
+                                                ☐ The 'PomoTitleService' should be used in 'view-todo' component
+                                                ☐ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded
                                                 ☐ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage ???
                                             ☐ After page reload should be selected first todo
                                             ☐ Consider to 'trim' 'pomo-title' 

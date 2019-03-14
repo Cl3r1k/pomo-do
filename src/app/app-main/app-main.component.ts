@@ -66,8 +66,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
                 this.transformView();
             }
         );
-
-        console.log('%cpomoStateAppMain: ', this.consoleTextColorComponent, this.pomoStateAppMain);
     }
 
     ngOnDestroy() {
@@ -444,7 +442,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onStatePomoChange(state: number) {
         this.pomoStateAppMain = state;
-        console.log('%cpomoStateAppMain: ', this.consoleTextColorComponent, this.pomoStateAppMain);
+        // console.log('%cpomoStateAppMain: ', this.consoleTextColorComponent, this.pomoStateAppMain);
     }
 
 }
