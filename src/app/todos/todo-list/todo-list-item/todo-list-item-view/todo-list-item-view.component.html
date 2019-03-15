@@ -1,4 +1,4 @@
-<div class='viewContainer' [class.complete-hovered]='completeHoverState'>
+<div class='viewContainer' [class.complete-hovered]='completeHoverState' [class.selected-for-pomo-title]='isSelectedForPomoTitle'>
     <div class='buttons-before-block'>
         <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle [class.completed]='todo.complete'>
             <use xlink:href='#icon-ellipsis-v'></use>
@@ -7,7 +7,8 @@
         <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)' appTooltipDirective='Toggle complete' placement='top' delay='500'>
     </div>
     <!-- <label (dblclick)='editTodo(todo)'>{{titleToView}}</label> -->
-    <div class='todoTitle' [class.ctrl-hover]='withCtrlHoverState' (mouseenter)='setHoverState(true)' (mouseleave)='setHoverState(false)' (dblclick)='editTodo(todo)' [innerHTML]='titleToView | parseTagPipe | safePipe: "html"' appDynamicContentDirective appDynamicTootipDirective></div>
+    <div class='todoTitle' [class.ctrl-hover]='withCtrlHoverState' (mouseenter)='setHoverState(true)' (mouseleave)='setHoverState(false)' (click)='changePomoTitle(todo)' (dblclick)='editTodo(todo)' [innerHTML]='titleToView | parseTagPipe | safePipe: "html"'
+        appDynamicContentDirective appDynamicTootipDirective></div>
     <div class='buttons-block' *ngIf='!todo.complete'>
         <svg class='icon icon-more_horiz' (click)='showMore(todo)' appTooltipDirective='Edit advanced settings' placement='top'>
             <use xlink:href='#icon-more_horiz'></use>

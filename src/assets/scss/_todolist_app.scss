@@ -164,6 +164,9 @@
             &.edit-hovered {
                 background-color: #dfebe0;
             }
+            &.selected-for-pomo-title {
+                background-color: #c9f1c6;
+            }
         }
         .editContainer {
             display: grid;

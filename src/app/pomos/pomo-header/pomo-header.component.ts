@@ -175,7 +175,6 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     cancelPomoClick() {
-
         console.log('%ccancelPomoClick() called', this.consoleTextColorComponent);
 
         if (this.currentState === 'pomo') {

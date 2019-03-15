@@ -1,9 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
+// Models
 import { ToDo } from '@app/_models/to-do';
 
+// Interfaces
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
+
+// Services
+import { PomoTitleService } from '@app/_services/pomo-title.service';
 
 @Component({
     selector: 'app-todo-list-item-view',
@@ -46,9 +51,10 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     titleToView = '';
     hoverState = false;
     withCtrlHoverState = false;
+    isSelectedForPomoTitle = false;
 
     // TODO: Delete sanitizer declaration ???
-    constructor(private sanitizer: DomSanitizer) { }
+    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) { }
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
@@ -232,6 +238,15 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
         if (!hoverState) {
             this.withCtrlHoverState = hoverState;
+        }
+    }
+
+    changePomoTitle(todo: ToDo) {
+        if (this._pomoTitleService.currentPomoState === 2) {
+            // console.log('%cpomoTitle: ', this.consoleTextColorComponent, this._pomoTitleService.pomoTitle);
+            this._pomoTitleService.updatePomoTitleWithTodo(todo);
+            // Swith on/off class for the todo
+            this.isSelectedForPomoTitle = !this.isSelectedForPomoTitle;
         }
     }
 
