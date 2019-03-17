@@ -137,12 +137,17 @@ Todos:
                                             ☐ Inner 'pomo' name in 'textarea.pomo-save-field' should be changed according selected 'todo'
                                                 ✔ Add 'PomoTitleService' for 'textarea.pomo-save-field' value @done(19-03-13 10:05)
                                                 ✔ The 'PomoTitleService' should store own current 'pomo-state' for 'pomo-title' @done(19-03-14 10:55)
-                                                ☐ The 'PomoTitleService' should store list of selected 'todos' <========================================================= CURRENT TASK
+                                                ✔ The 'PomoTitleService' should store list of selected 'todos' @done(19-03-16 09:59)
+                                                ☐ The selected 'todo' should change 'pomo-title' <========================================================= CURRENT TASK
+                                                ☐ The 'prioirity' simbol shouldn't be used in 'pomoTitle'
+                                                ☐ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay
                                                 ☐ The 'PomoTitleService' should be used in 'view-todo' component
                                                 ☐ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded
                                                 ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
                                                     ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
                                                 ☐ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage ???
+                                                ☐ Todo selected state should be canceled selection, if 'pomoState' changed
+                                                ☐ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???)
                                             ☐ After page reload should be selected first todo
                                             ☐ Consider to 'trim' 'pomo-title' 
                                         ☐ Fix behavior in incognito -> start pomo - should be error on dialogs
