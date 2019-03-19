@@ -138,7 +138,9 @@ Todos:
                                                 ✔ Add 'PomoTitleService' for 'textarea.pomo-save-field' value @done(19-03-13 10:05)
                                                 ✔ The 'PomoTitleService' should store own current 'pomo-state' for 'pomo-title' @done(19-03-14 10:55)
                                                 ✔ The 'PomoTitleService' should store list of selected 'todos' @done(19-03-16 09:59)
-                                                ☐ The selected 'todo' should change 'pomo-title' <========================================================= CURRENT TASK
+                                                ☐ The selected 'todo' should change 'pomo-title'
+                                                    ✔ Selected 'todo' should follow order in 'todo-list' @done(19-03-18 10:47)
+                                                    ☐ Selected 'todo' should be used in 'pomo-title' according to 'todo-list' <========================================================= CURRENT TASK
                                                 ☐ The 'prioirity' simbol shouldn't be used in 'pomoTitle'
                                                 ☐ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay
                                                 ☐ The 'PomoTitleService' should be used in 'view-todo' component

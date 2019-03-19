@@ -51,59 +51,96 @@ export class PomoTitleService {
         });
 
         if (todoTitleState === 0) {
-            this.listOfUsedTodos.push({ innerId: todo.inner_id, todoTitleState: 1 });
             const orderList = this._todoOrderService.getOrder();
 
             console.log('%cPomoTitleService - inner_id: ', this.consoleTextColorService, todo.inner_id);
-            orderList.filter(item => {
+            const orderListFiltered = orderList.filter(item => {
 
-                const isPresentInnerId = item === todo.inner_id;
+                let isPresentInnerId = false;
 
-                console.log('%cPomoTitleService - isPresentInnerId: ', this.consoleTextColorService, isPresentInnerId);
-                return item !== todo.inner_id;
+                isPresentInnerId = item === todo.inner_id;
+
+                if (!isPresentInnerId) {
+                    this.listOfUsedTodos.map(usedTodo => {
+                        if (usedTodo['innerId'] === item) {
+                            isPresentInnerId = true;
+                        }
+                    });
+                }
+
+                return isPresentInnerId;
             });
 
-            console.log('%cPomoTitleService - orderList: ', this.consoleTextColorService, orderList);
+            console.log('%cPomoTitleService - orderListFiltered: ', this.consoleTextColorService, orderListFiltered);
+
+            if (orderListFiltered.length === 1) {
+                this.listOfUsedTodos.push({ innerId: todo.inner_id, todoTitleState: 1 });
+            } else {
+                const usedTodoIndex = orderListFiltered.indexOf(todo.inner_id);
+
+                if (usedTodoIndex !== -1) {
+                    this.listOfUsedTodos.splice(usedTodoIndex, 0, { innerId: todo.inner_id, todoTitleState: 1 });
+                }
+            }
+
+            console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
         }
 
         if (todoTitleState === 1) {
             this.listOfUsedTodos.splice(todoTitleIndex, 1);
-            // this.processTodoTitle(todo.title, false);
+
+            console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
         }
 
         // if todoTitleState = 2 -> do nothing in the service
 
+        tmpPomoTitleWithTodos = this.processTodoTitle();
+
         return tmpPomoTitleWithTodos;
     }
 
-    processTodoTitle(todoTitle: string, state: boolean) {
-        console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
-        if (state) {
-            if (this.pomoTitle) {
-                this.pomoTitle = todoTitle + ' + ' + this.pomoTitle;
+    processTodoTitle(): string {
+        const i = 0;
+        let splittedStringOfTodos = '';
+
+        this.listOfUsedTodos.map(item => {
+            if (i !== this.listOfUsedTodos.length - 1) {
+                splittedStringOfTodos += item['innerId'] + ' + ';
             } else {
-                this.pomoTitle = todoTitle;
+                splittedStringOfTodos += item['innerId'];
             }
-        } else {
-            // Test variant when single todo selected
-            // Test variant when multiple todos selected, and unselected in defferent sequence
-            // Test -> todo1 sel -> todo2 sel -> unsel todo2 - case (in the end shouldn't be +)
-            // Selected todo should be added to title according to his position in the 'todo-list'
-            const substrIndex = this.pomoTitle.indexOf(todoTitle);
-            console.log('%cPomoTitleService - substrIndex: ', this.consoleTextColorService, substrIndex);
-            if (substrIndex !== -1) {
+        });
 
-                if (substrIndex === 0) {
-                    this.pomoTitle = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
-                }
+        console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
 
-                if (substrIndex > 0) {
-                    const newStringPart1 = this.pomoTitle.substr(0, substrIndex);
-                    const newStringPart2 = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
-                    this.pomoTitle = newStringPart1 + newStringPart2;
-                }
-            }
-        }
+        return '';
+        // console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
+        // if (state) {
+        //     if (this.pomoTitle) {
+        //         this.pomoTitle = todoTitle + ' + ' + this.pomoTitle;
+        //     } else {
+        //         this.pomoTitle = todoTitle;
+        //     }
+        // } else {
+        //     // Test variant when single todo selected
+        //     // Test variant when multiple todos selected, and unselected in defferent sequence
+        //     // Test -> todo1 sel -> todo2 sel -> unsel todo2 - case (in the end shouldn't be +)
+        //     // Selected todo should be added to title according to his position in the 'todo-list'
+        //     const substrIndex = this.pomoTitle.indexOf(todoTitle);
+        //     console.log('%cPomoTitleService - substrIndex: ', this.consoleTextColorService, substrIndex);
+        //     if (substrIndex !== -1) {
+
+        //         if (substrIndex === 0) {
+        //             this.pomoTitle = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
+        //         }
+
+        //         if (substrIndex > 0) {
+        //             const newStringPart1 = this.pomoTitle.substr(0, substrIndex);
+        //             const newStringPart2 = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
+        //             this.pomoTitle = newStringPart1 + newStringPart2;
+        //         }
+        //     }
+        // }
     }
 
     // Change todoTitleState for every object if 'pomoTitle' was changed in component manually
