@@ -16,8 +16,9 @@ export class PomoTitleService {
     listOfUsedTodos: Object[] = [];
 
     currentPomoState = 0;
-    pomoTitle = 'Some kind of title';
+    pomoTitle = '';
     pomoTitleTodosPart = '';
+    pomoTitleManualPart = 'Some kind of title';
 
     constructor(private _todoOrderService: TodoOrderService) { }
 
@@ -31,7 +32,17 @@ export class PomoTitleService {
         this.pomoTitleTodosPart = this.parseTodosTitle(todo);
 
         if (this.pomoTitleTodosPart) {
-            // this.pomoTitle = this.pomoTitleTodosPart + this.pomoTitle;
+            if (this.pomoTitleManualPart) {
+                this.pomoTitle = this.pomoTitleTodosPart + ' + ' + this.pomoTitleManualPart;
+            } else {
+                this.pomoTitle = this.pomoTitleTodosPart;
+            }
+        } else {
+            if (this.pomoTitleManualPart) {
+                this.pomoTitle = this.pomoTitleManualPart;
+            } else {
+                this.pomoTitle = '';
+            }
         }
     }
 
@@ -74,12 +85,12 @@ export class PomoTitleService {
             console.log('%cPomoTitleService - orderListFiltered: ', this.consoleTextColorService, orderListFiltered);
 
             if (orderListFiltered.length === 1) {
-                this.listOfUsedTodos.push({ innerId: todo.inner_id, todoTitleState: 1 });
+                this.listOfUsedTodos.push({ innerId: todo.inner_id, todoTitle: todo.title, todoTitleState: 1 });
             } else {
                 const usedTodoIndex = orderListFiltered.indexOf(todo.inner_id);
 
                 if (usedTodoIndex !== -1) {
-                    this.listOfUsedTodos.splice(usedTodoIndex, 0, { innerId: todo.inner_id, todoTitleState: 1 });
+                    this.listOfUsedTodos.splice(usedTodoIndex, 0, { innerId: todo.inner_id, todoTitle: todo.title, todoTitleState: 1 });
                 }
             }
 
@@ -100,47 +111,21 @@ export class PomoTitleService {
     }
 
     processTodoTitle(): string {
-        const i = 0;
+        let i = 0;
         let splittedStringOfTodos = '';
 
         this.listOfUsedTodos.map(item => {
             if (i !== this.listOfUsedTodos.length - 1) {
-                splittedStringOfTodos += item['innerId'] + ' + ';
+                splittedStringOfTodos += item['todoTitle'] + ' + ';
             } else {
-                splittedStringOfTodos += item['innerId'];
+                splittedStringOfTodos += item['todoTitle'];
             }
+            i++;
         });
 
-        console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
+        // console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
 
-        return '';
-        // console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
-        // if (state) {
-        //     if (this.pomoTitle) {
-        //         this.pomoTitle = todoTitle + ' + ' + this.pomoTitle;
-        //     } else {
-        //         this.pomoTitle = todoTitle;
-        //     }
-        // } else {
-        //     // Test variant when single todo selected
-        //     // Test variant when multiple todos selected, and unselected in defferent sequence
-        //     // Test -> todo1 sel -> todo2 sel -> unsel todo2 - case (in the end shouldn't be +)
-        //     // Selected todo should be added to title according to his position in the 'todo-list'
-        //     const substrIndex = this.pomoTitle.indexOf(todoTitle);
-        //     console.log('%cPomoTitleService - substrIndex: ', this.consoleTextColorService, substrIndex);
-        //     if (substrIndex !== -1) {
-
-        //         if (substrIndex === 0) {
-        //             this.pomoTitle = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
-        //         }
-
-        //         if (substrIndex > 0) {
-        //             const newStringPart1 = this.pomoTitle.substr(0, substrIndex);
-        //             const newStringPart2 = this.pomoTitle.substr(substrIndex + todoTitle.length + 3);
-        //             this.pomoTitle = newStringPart1 + newStringPart2;
-        //         }
-        //     }
-        // }
+        return splittedStringOfTodos;
     }
 
     // Change todoTitleState for every object if 'pomoTitle' was changed in component manually
