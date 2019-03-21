@@ -141,8 +141,8 @@ Todos:
                                                 ✔ The selected 'todo' should change 'pomo-title' @done(19-03-19 09:21)
                                                     ✔ Selected 'todo' should follow order in 'todo-list' @done(19-03-18 10:47)
                                                     ✔ Selected 'todo' should be used in 'pomo-title' according to 'todo-list' @done(19-03-19 09:11)
-                                                ☐ The 'prioirity' symbol shouldn't be used in 'pomoTitle' <========================================================= CURRENT TASK
-                                                ☐ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay
+                                                ✔ The 'prioirity' symbol shouldn't be used in 'pomoTitle' @done(19-03-21 10:15)
+                                                ☐ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay <========================================================= CURRENT TASK
                                                 ☐ The 'PomoTitleService' should be used in 'view-todo' component
                                                 ☐ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded
                                                 ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)

@@ -115,10 +115,11 @@ export class PomoTitleService {
         let splittedStringOfTodos = '';
 
         this.listOfUsedTodos.map(item => {
+            const todoTitle = this.parseTitlePriority(item['todoTitle']);
             if (i !== this.listOfUsedTodos.length - 1) {
-                splittedStringOfTodos += item['todoTitle'] + ' + ';
+                splittedStringOfTodos += todoTitle + ' + ';
             } else {
-                splittedStringOfTodos += item['todoTitle'];
+                splittedStringOfTodos += todoTitle;
             }
             i++;
         });
@@ -126,6 +127,58 @@ export class PomoTitleService {
         // console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
 
         return splittedStringOfTodos;
+    }
+
+    // TODO: Refactor this part and extraxt this  and from 'TodoListItemViewComponent' methods to 'Utils' class
+    parseTitlePriority(todoTitle: string) {
+
+        let tmpTitle = todoTitle;
+
+        let foundPriority = false;
+        let lastIndex: number;
+        let counter = 0;
+
+        for (let mainInd = tmpTitle.length - 1; mainInd >= 0; mainInd--) {
+            lastIndex = tmpTitle.lastIndexOf('!', mainInd);
+
+            if (lastIndex < 0) {
+                break;    // '!' not found, skip parsing
+            }
+
+            if (lastIndex === tmpTitle.length - 1 || tmpTitle[lastIndex + 1] === ' ') {
+                counter = 0;
+                let notPriority = false;
+                for (let i = lastIndex; i >= 0; i--) {
+                    if (tmpTitle[i] === '!') {
+                        counter++;
+                        continue;
+                    }
+                    if (tmpTitle[i] === ' ') {
+                        foundPriority = true;
+                        break;
+                    } else {
+                        notPriority = true;
+                        break;
+                    }
+                }
+
+                if (foundPriority) {
+                    break;
+                }
+            } else {
+                continue;
+            }
+        }
+
+        if (foundPriority) {
+            let tmpTitleParsed = tmpTitle.slice(0, lastIndex - counter);
+            if (lastIndex < tmpTitle.length - 1) {
+                tmpTitleParsed += tmpTitle.slice(lastIndex + 1, tmpTitle.length);
+            }
+            tmpTitle = tmpTitleParsed;
+        }
+
+        return tmpTitle;
     }
 
     // Change todoTitleState for every object if 'pomoTitle' was changed in component manually
