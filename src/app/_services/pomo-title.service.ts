@@ -188,5 +188,8 @@ export class PomoTitleService {
                 item['todoTitleState'] = 2;
             }
         });
+
+        this.pomoTitleManualPart = this.pomoTitle;
+        this.pomoTitleTodosPart = '';
     }
 }
