@@ -116,11 +116,15 @@ export class PomoTitleService {
 
         this.listOfUsedTodos.map(item => {
             const todoTitle = this.parseTitlePriority(item['todoTitle']);
-            if (i !== this.listOfUsedTodos.length - 1) {
-                splittedStringOfTodos += todoTitle + ' + ';
-            } else {
-                splittedStringOfTodos += todoTitle;
+
+            if (item['todoTitleState'] !== 2) {
+                if (i !== this.listOfUsedTodos.length - 1) {
+                    splittedStringOfTodos += todoTitle + ' + ';
+                } else {
+                    splittedStringOfTodos += todoTitle;
+                }
             }
+
             i++;
         });
 

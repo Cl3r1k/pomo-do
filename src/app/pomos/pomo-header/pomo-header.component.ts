@@ -208,13 +208,11 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
     savePomo(event: KeyboardEvent) {
         if (this._pomoTitleService.pomoTitle) {
-            // this._pomoStateService.saveCompletedPomo(this._pomoTitleService.pomoTitle);
-            // this.currentState = 'rest';
-            // this._pomoTitleService.pomoTitle = '';
+            this._pomoStateService.saveCompletedPomo(this._pomoTitleService.pomoTitle);
+            this.currentState = 'rest';
+            this._pomoTitleService.pomoTitle = '';
 
-            // this.startRest();
-
-            this._pomoTitleService.lockUsedTodos();
+            this.startRest();
         } else {
             console.log('%cpomoTitle: emtpy???', this.consoleTextColorComponent, this._pomoTitleService.pomoTitle);
             if (event !== undefined) {
