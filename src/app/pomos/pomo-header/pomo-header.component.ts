@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, Input, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // Services
 import { PomoStateService } from '@app/_services/pomo-state.service';
@@ -10,9 +9,6 @@ import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.c
 
 // Modules
 import { MatDialog } from '@angular/material';
-
-// Imports
-import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'app-pomo-header',
@@ -38,28 +34,9 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     updatedTextHeight = false;
     savePomoFocusState = false;
 
-    public formPomo: FormGroup;
-
     @ViewChild('textAreaElement') private texareaPomoNameElementRef: ElementRef;
 
-    constructor(private _pomoStateService: PomoStateService, private _pomoTitleService: PomoTitleService, public dialog: MatDialog,
-        private _formBuilder: FormBuilder) {
-            this.formPomo = _formBuilder.group({
-                pomoTitleField: ['', Validators.required]
-            });
-
-            // Subscribe to changes
-        this.formPomo.valueChanges.pipe(
-            debounceTime(500),
-            distinctUntilChanged(),
-        ).subscribe(value => {
-            console.log('%cform changed value: ', this.consoleTextColorComponent, value);
-
-            if (value['pomoTitleField']) {
-                //
-            }
-        });
-        }
+    constructor(private _pomoStateService: PomoStateService, private _pomoTitleService: PomoTitleService, public dialog: MatDialog) { }
 
     ngOnInit() {
         this._pomoStateService.loadPomoState();
@@ -254,6 +231,11 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
         // State === 2 --- save
         this.statePomoHeaderComponentEmitter.emit(state);
         this._pomoTitleService.setPomoState(state);
+    }
+
+    pomoTitleManualChange(event) {
+        // console.log('%cpomoTitle changed manually!', this.consoleTextColorComponent);
+        this._pomoTitleService.lockUsedTodos();
     }
 
 }
