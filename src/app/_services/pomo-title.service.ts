@@ -18,12 +18,17 @@ export class PomoTitleService {
     currentPomoState = 0;
     pomoTitle = '';
     pomoTitleTodosPart = '';
-    pomoTitleManualPart = 'Some kind of title';
+    pomoTitleManualPart = '';
 
     constructor(private _todoOrderService: TodoOrderService) { }
 
-    setPomoState(state: number) {
+    setPomoState(state: number, isInitialStart: boolean, todo: ToDo = null) {
         this.currentPomoState = state;
+        if (isInitialStart) {
+            console.log('%cPomoTitleService - isInitialStart: ', this.consoleTextColorService, isInitialStart);
+            console.log('%cPomoTitleService - todo: ', this.consoleTextColorService, todo);
+            this.updatePomoTitleWithTodo(todo);
+        }
     }
 
     updatePomoTitleWithTodo(todo: ToDo) {

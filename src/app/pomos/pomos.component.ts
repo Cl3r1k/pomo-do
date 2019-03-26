@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
+// Models
+import { ToDo } from '@app/_models/to-do';
+
 @Component({
     selector: 'app-pomos',
     templateUrl: './pomos.component.html',
@@ -8,6 +11,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class PomosComponent implements OnInit {
 
     @Input() pomoStatePomos: number;
+    @Input() currentTodoPomos: ToDo;
 
     @Output() statePomosComponentEmitter: EventEmitter<number> = new EventEmitter();
 

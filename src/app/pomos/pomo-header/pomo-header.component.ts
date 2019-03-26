@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 
+// Models
+import { ToDo } from '@app/_models/to-do';
+
 // Services
 import { PomoStateService } from '@app/_services/pomo-state.service';
 import { PomoTitleService } from '@app/_services/pomo-title.service';
@@ -20,6 +23,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() pomoStatePomoHeader: number;
+    @Input() currentTodoPomoHeader: ToDo;
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
 
@@ -39,6 +43,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     constructor(private _pomoStateService: PomoStateService, private _pomoTitleService: PomoTitleService, public dialog: MatDialog) { }
 
     ngOnInit() {
+        // console.log('%ccurrentTodoPomoHeader: ', this.consoleTextColorComponent, this.currentTodoPomoHeader);
         this._pomoStateService.loadPomoState();
         this._pomoStateService.loadPomoList();
 
@@ -65,7 +70,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     this.pomoStatePomoHeader = 1;
                     // As far OnInit takes some time, to handle issues we delay emit event
                     setTimeout(() => {
-                        this.emitPomoState(1);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
+                        this.emitPomoState(1, false);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
                     }, 100);
 
                     const timeLeft = endTime.getTime() - currentTime.getTime();
@@ -92,11 +97,12 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     }
 
                     // As far OnInit takes some time, to handle issues we delay emit event
+                    // TODO: Solve the issue 'ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked.'
                     setTimeout(() => {
                         if (isRestFinished) {
-                            this.emitPomoState(0);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
+                            this.emitPomoState(0, false);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
                         } else {
-                            this.emitPomoState(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
+                            this.emitPomoState(2, true, this.currentTodoPomoHeader); // Emit 'statePomo' event to 'PomosComponent' (save)
                         }
                     }, 100);
 
@@ -123,14 +129,14 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     startPomo() {
-        this.emitPomoState(1);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
+        this.emitPomoState(1, false);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
         this.resetCounter(false);
         this._pomoStateService.initPomoState();
         this.startTimer();
     }
 
     startRest() {
-        this.emitPomoState(1);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
+        this.emitPomoState(1, false);    // Emit the 'statePomo' event to 'PomosComponent' (progress)
         this.resetCounter(true);
         this.startTimer();
     }
@@ -157,9 +163,9 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     this.resetCounter(false);
                     this._pomoStateService.setIdlePomoState();
                     this._pomoStateService.savePomoState();
-                    this.emitPomoState(0);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
+                    this.emitPomoState(0, false);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
                 } else {
-                    this.emitPomoState(2);    // Emit the 'statePomo' event to 'PomosComponent' (save)
+                    this.emitPomoState(2, false);    // Emit the 'statePomo' event to 'PomosComponent' (save)
                 }
             }
         }, 1000);
@@ -201,7 +207,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     cancelPomo() {
         console.log('%ccancelPomo() called', this.consoleTextColorComponent);
         clearInterval(this.timerId);
-        this.emitPomoState(0);            // Emit the 'statePomo' event to 'PomosComponent' (standby)
+        this.emitPomoState(0, false);            // Emit the 'statePomo' event to 'PomosComponent' (standby)
         this.resetCounter(false);
         this._pomoStateService.interruptPomo();
     }
@@ -225,12 +231,12 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
         this.savePomoFocusState = state;
     }
 
-    emitPomoState(state: number) {
+    emitPomoState(state: number, isInitialStart: boolean, todo: ToDo = null) {
         // State === 0 --- standby
         // State === 1 --- progress
         // State === 2 --- save
         this.statePomoHeaderComponentEmitter.emit(state);
-        this._pomoTitleService.setPomoState(state);
+        this._pomoTitleService.setPomoState(state, isInitialStart, todo);
     }
 
     pomoTitleManualChange(event) {
