@@ -19,6 +19,7 @@ export class PomoTitleService {
     pomoTitle = '';
     pomoTitleTodosPart = '';
     pomoTitleManualPart = '';
+    isInitialState = true;
 
     constructor(private _todoOrderService: TodoOrderService) { }
 

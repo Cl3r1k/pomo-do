@@ -96,6 +96,11 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                         document.title = '00:00 - Pomodo';
                     }
 
+                    // Change status in service immediately
+                    if (!isRestFinished) {
+                        this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
+                    }
+
                     // As far OnInit takes some time, to handle issues we delay emit event
                     // TODO: Solve the issue 'ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked.'
                     setTimeout(() => {

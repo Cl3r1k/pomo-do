@@ -53,8 +53,19 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     withCtrlHoverState = false;
     isSelectedForPomoTitle = false;
 
+    isTodoPresent = false;
+    isFirstTodoToSelectForPomo = false;
+
     // TODO: Delete sanitizer declaration ???
-    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) { }
+    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) {
+        console.log('%c isTodoPresent: ', this.consoleTextColorComponent, this.isTodoPresent);
+        console.log('%c isFirstTodoToSelectForPomo: ', this.consoleTextColorComponent, this.isFirstTodoToSelectForPomo);
+
+        // TODO: Look at this crutch 👇 😱 ))) Fix it!
+        // tslint:disable-next-line:max-line-length
+        // isTodoPresent = this._pomoTitleService.listOfUsedTodos.length > 0 && this._pomoTitleService.listOfUsedTodos[0]['innerId'] === this.todo.inner_id ? true : false;
+        // isFirstTodoToSelectForPomo = this._pomoTitleService.isInitialState && this.isTodoPresent;
+    }
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);

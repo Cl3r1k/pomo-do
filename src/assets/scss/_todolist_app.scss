@@ -412,12 +412,13 @@
         }
     }
     
-    .save-Pomo-Active section.main div ul.todo-list li:first-of-type {
-        // background-color: red !important;
-        background-color: #c9f1c6;
-        border-top: 1px solid #d7d7d7;
-        .toggle:not(:checked) {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/></svg>');
-        }
-    }
+    // TODO: Clean this code and related code in components
+    // .save-Pomo-Active section.main div ul.todo-list li:first-of-type {
+    //     // background-color: red !important;
+    //     background-color: #c9f1c6;
+    //     border-top: 1px solid #d7d7d7;
+    //     .toggle:not(:checked) {
+    //         content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/></svg>');
+    //     }
+    // }
     /* End TodoList section */
