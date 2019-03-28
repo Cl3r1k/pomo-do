@@ -53,24 +53,22 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     withCtrlHoverState = false;
     isSelectedForPomoTitle = false;
 
-    isTodoPresent = false;
-    isFirstTodoToSelectForPomo = false;
-
     // TODO: Delete sanitizer declaration ???
-    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) {
-        console.log('%c isTodoPresent: ', this.consoleTextColorComponent, this.isTodoPresent);
-        console.log('%c isFirstTodoToSelectForPomo: ', this.consoleTextColorComponent, this.isFirstTodoToSelectForPomo);
-
-        // TODO: Look at this crutch 👇 😱 ))) Fix it!
-        // tslint:disable-next-line:max-line-length
-        // isTodoPresent = this._pomoTitleService.listOfUsedTodos.length > 0 && this._pomoTitleService.listOfUsedTodos[0]['innerId'] === this.todo.inner_id ? true : false;
-        // isFirstTodoToSelectForPomo = this._pomoTitleService.isInitialState && this.isTodoPresent;
-    }
+    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) { }
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
         // tslint:disable-next-line:max-line-length
         // console.log('%cparse in ngOnInit -> title: %s and priorityColor: ', this.consoleTextColorComponent, this.priorityColor);
+
+        // tslint:disable-next-line:max-line-length
+        const isTodoPresent = this._pomoTitleService.listOfUsedTodos.length > 0 && this._pomoTitleService.listOfUsedTodos[0]['innerId'] === this.todo.inner_id ? true : false;
+        const isFirstTodoToSelectForPomo = this._pomoTitleService.isInitialState && isTodoPresent;
+
+        this.isSelectedForPomoTitle = isTodoPresent && isFirstTodoToSelectForPomo;
+
+        console.log('%c isTodoPresent: ', this.consoleTextColorComponent, isTodoPresent);
+        console.log('%c isFirstTodoToSelectForPomo: ', this.consoleTextColorComponent, isFirstTodoToSelectForPomo);
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent) {

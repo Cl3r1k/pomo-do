@@ -27,13 +27,13 @@ export class PomoTitleService {
         this.currentPomoState = state;
         if (isInitialStart) {
             console.log('%cPomoTitleService - isInitialStart: ', this.consoleTextColorService, isInitialStart);
-            console.log('%cPomoTitleService - todo: ', this.consoleTextColorService, todo);
+            console.log('%cPomoTitleService setPomoState() - todo: ', this.consoleTextColorService, todo);
             this.updatePomoTitleWithTodo(todo);
         }
     }
 
     updatePomoTitleWithTodo(todo: ToDo) {
-        console.log('%cPomoTitleService - todo: ', this.consoleTextColorService, todo);
+        console.log('%cPomoTitleService updatePomoTitleWithTodo() - todo: ', this.consoleTextColorService, todo);
 
         this.pomoTitleTodosPart = this.parseTodosTitle(todo);
 
