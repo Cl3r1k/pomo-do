@@ -58,7 +58,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
-        // tslint:disable-next-line:max-line-length
         // console.log('%cparse in ngOnInit -> title: %s and priorityColor: ', this.consoleTextColorComponent, this.priorityColor);
 
         // tslint:disable-next-line:max-line-length
@@ -67,8 +66,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
         this.isSelectedForPomoTitle = isTodoPresent && isFirstTodoToSelectForPomo;
 
-        console.log('%c isTodoPresent: ', this.consoleTextColorComponent, isTodoPresent);
-        console.log('%c isFirstTodoToSelectForPomo: ', this.consoleTextColorComponent, isFirstTodoToSelectForPomo);
+        // console.log('%c isTodoPresent: ', this.consoleTextColorComponent, isTodoPresent);
+        // console.log('%c isFirstTodoToSelectForPomo: ', this.consoleTextColorComponent, isFirstTodoToSelectForPomo);
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent) {

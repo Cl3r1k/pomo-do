@@ -1,4 +1,4 @@
-<div class='viewContainer' [class.complete-hovered]='completeHoverState' [class.selected-for-pomo-title]='isSelectedForPomoTitle || isFirstTodoToSelectForPomo'>
+<div class='viewContainer' [class.complete-hovered]='completeHoverState' [class.selected-for-pomo-title]='isSelectedForPomoTitle && _pomoTitleService.currentPomoState === 2'>
     <div class='buttons-before-block'>
         <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle [class.completed]='todo.complete'>
             <use xlink:href='#icon-ellipsis-v'></use>

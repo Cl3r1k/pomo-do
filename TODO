@@ -147,9 +147,13 @@ Todos:
                                                 ✘ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay (insted used template-driven approach <- the final data should be stored in service, not in component) @cancelled(19-03-24 09:43)
                                                 ☐ After 'pomo' saved in 'view-todo' component all selected 'todos' should be unselected (Delayed for some time)
                                                 ✔ The 'PomoTitleService' should be used in 'view-todo' component @done(19-03-24 09:42)
-                                                ☐ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded <========================================================= CURRENT TASK
+                                                ✔ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded @done(19-03-28 09:26)
                                                 ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
                                                     ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
+                                                ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
+                                                ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected .............
+                                                    ☐ Check case - pomo started -> page reloaded -> in this case should be selected firs todo
+                                                ☐ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' <========================================================= CURRENT TASK
                                                 ☐ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage ???
                                                 ☐ Todo selected state should be canceled selection, if 'pomoState' changed
                                                 ☐ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???)
