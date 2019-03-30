@@ -122,11 +122,13 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
         if (this.afterViewCheckedCount >= 1) {
             if (!this.updatedTextHeight) {
-                let el: HTMLElement;
-                el = this.texareaPomoNameElementRef.nativeElement;
-                el.style.height = '42px';
+                if (this.texareaPomoNameElementRef !== undefined) {
+                    let el: HTMLElement;
+                    el = this.texareaPomoNameElementRef.nativeElement;
+                    el.style.height = '42px';
 
-                this.updatedTextHeight = true;
+                    this.updatedTextHeight = true;
+                }
             }
         } else {
             this.afterViewCheckedCount++;
