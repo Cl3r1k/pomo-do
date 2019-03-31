@@ -159,9 +159,9 @@ Todos:
                                                 ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)
                                                 ✔ Fix issue, when 'pomo' started and page reloaded -> a lot errors in console @done(19-03-29 10:08)
                                                     ✔ Fix behavior in incognito -> start pomo - should be error on dialogs @done(19-03-29 10:11)
-                                            ☐ Consider to 'trim' 'pomo-title' <========================================================= CURRENT TASK
+                                            ✔ Consider to 'trim' 'pomo-title' @done(19-03-30 09:16)
                                             
-                                    ☐ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct
+                                    ☐ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct <========================================================= CURRENT TASK
                                     
                                 ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
