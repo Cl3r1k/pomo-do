@@ -20,7 +20,9 @@ export class Pomo {
 
     constructor(title: string, start_time: string, uuid: string, canceled: boolean) {
         this.canceled = canceled;
-        this.created_time = new Date().toISOString();
+        const tmpCreatedTime = new Date();
+        tmpCreatedTime.setMilliseconds(0);
+        this.created_time = tmpCreatedTime.toISOString();
         this.deleted = false;
         this.deleted_time = null;
         this.duration = 1500;

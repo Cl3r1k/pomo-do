@@ -161,17 +161,19 @@ Todos:
                                                     ✔ Fix behavior in incognito -> start pomo - should be error on dialogs @done(19-03-29 10:11)
                                             ✔ Consider to 'trim' 'pomo-title' @done(19-03-30 09:16)
                                             
-                                    ☐ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct <========================================================= CURRENT TASK
+                                    ✔ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct @done(19-03-31 10:24)
                                     
-                                ☐ Add tests for 'PomoHeaderComponent'
+                                ☐ Add tests for 'PomoHeaderComponent' <========================================================= CURRENT TASK
                                 ☐ Add tests for 'PomoStateService'
                                 ☐ Add tests for 'PomoState'
                                 ☐ Add tests for 'Pomo'
+                                ☐ After 'pomo-header' part completed bump 'patch' version
 
                         ☐ Add 'pomo-list' component
+                            ☐ After 'pomo-list' part completed bump 'patch' version
 
 
-                    ☐ After 'pomos' part completed bump patch version
+                    ☐ After 'pomos' part completed bump 'minor' version
                         
                 
                 ☐ Add component 'StatsComponent'
