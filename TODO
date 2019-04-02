@@ -163,8 +163,10 @@ Todos:
                                             
                                     ✔ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct @done(19-03-31 10:24)
                                     
-                                ☐ Add tests for 'PomoHeaderComponent' <========================================================= CURRENT TASK
+                                ☐ Fix broken tests according to new 'Pomo' code
+                                ☐ Add tests for 'PomoHeaderComponent'
                                 ☐ Add tests for 'PomoStateService'
+                                ☐ Add tests for 'PomoTitleService' <========================================================= CURRENT TASK
                                 ☐ Add tests for 'PomoState'
                                 ☐ Add tests for 'Pomo'
                                 ☐ After 'pomo-header' part completed bump 'patch' version
@@ -184,7 +186,7 @@ Todos:
 
             ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if filed not focused
 
-            ☐ Update CLI to latest version (7.2.0)
+            ☐ Update CLI to latest version (7.*.*)
 
             ☐ Fix App-title on SignIn page
             ☐ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo)
