@@ -11,7 +11,9 @@ import { ToDo } from '@app/_models/to-do';
 describe('Service: PomoTitleService', () => {
 
     let service: PomoTitleService;
-    let expectedTodo: ToDo;
+    let expectedTodo1: ToDo;
+    let expectedTodo2: ToDo;
+    let expectedTodo3: ToDo;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -24,7 +26,18 @@ describe('Service: PomoTitleService', () => {
         });
 
         service = TestBed.get(PomoTitleService);
-        expectedTodo = new ToDo({ id: 1, title: 'Test title in PomoTitleService', complete: false });
+        expectedTodo1 = new ToDo({ id: 1, title: 'Test title in PomoTitleService', complete: false });
+        expectedTodo1.inner_id = 'asdf123';
+        expectedTodo2 = new ToDo({ id: 2, title: 'Test title in PomoTitleService 2 !!!', complete: false });
+        expectedTodo2.inner_id = 'qwer456';
+        expectedTodo3 = new ToDo({ id: 3, title: 'Test title in PomoTitleService 3 #tagName', complete: false });
+        expectedTodo3.inner_id = 'zxcv789';
+
+        service.listOfUsedTodos = [
+            { innerId: expectedTodo1.inner_id, todoTitle: expectedTodo1.title, todoTitleState: 1 },
+            { innerId: expectedTodo2.inner_id, todoTitle: expectedTodo2.title, todoTitleState: 1 },
+            { innerId: expectedTodo3.inner_id, todoTitle: expectedTodo3.title, todoTitleState: 1 }
+        ];
     });
 
     it('Should be created', () => {
@@ -81,21 +94,63 @@ describe('Service: PomoTitleService', () => {
 
             // Act
             spyOn(service, 'updatePomoTitleWithTodo');
-            service.updatePomoTitleWithTodo(expectedTodo);
+            service.updatePomoTitleWithTodo(expectedTodo1);
 
             // Assert
             expect(service.updatePomoTitleWithTodo).toHaveBeenCalled();
         });
 
-        it(`should set 'pomoTitle' to 'pomoTitleManualPart' (in test todo does not affect on it)`, () => {
+        it(`should exclude 'expectedTodo1.title' in 'pomoTitle' as far 'todoTitleState' === 1 `, () => {
             // Arrange
             service.pomoTitleManualPart = 'Test pomo';
 
             // Act
-            service.updatePomoTitleWithTodo(expectedTodo);
+            service.updatePomoTitleWithTodo(expectedTodo1);
 
             // Assert
-            expect(service.pomoTitle).toEqual('Test pomo');
+            expect(service.pomoTitle).toEqual('Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName + Test pomo');
+        });
+
+        it(`should include 'expectedTodo1.title' in 'pomoTitle' as far 'expectedTodo1' is not in list `, () => {
+            // Arrange
+            // service.listOfUsedTodos = [
+            //     { innerId: expectedTodo1.inner_id, todoTitle: expectedTodo1.title, todoTitleState: 1 },
+            //     { innerId: expectedTodo2.inner_id, todoTitle: expectedTodo2.title, todoTitleState: 1 },
+            //     { innerId: expectedTodo3.inner_id, todoTitle: expectedTodo3.title, todoTitleState: 1 }
+            // ];
+            console.log('%c listOfUsedTodos', 'color: red;', service.listOfUsedTodos);
+            service.pomoTitleManualPart = 'Test pomo';
+            service.listOfUsedTodos[0]['todoTitleState'] = 2;
+
+            // Act
+            service.updatePomoTitleWithTodo(expectedTodo1);
+
+            // Assert
+            expect(service.pomoTitle).toEqual('Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName + Test pomo');
+        });
+    });
+
+    describe(`#parseTodosTitle()`, () => {
+        it(`should return '' as far 'TodoOrderService' mocked`, () => {
+            // Arrange
+
+            // Act
+            const resultTitle = service.parseTodosTitle(expectedTodo1);
+
+            // Assert
+            expect(resultTitle).toEqual('');
+        });
+    });
+
+    describe(`#processTodoTitle()`, () => {
+        it(`should return '' as far 'TodoOrderService' mocked`, () => {
+            // Arrange
+
+            // Act
+            const resultTitle = service.parseTodosTitle(expectedTodo1);
+
+            // Assert
+            expect(resultTitle).toEqual('');
         });
     });
 });
