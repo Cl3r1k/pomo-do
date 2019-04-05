@@ -110,24 +110,6 @@ describe('Service: PomoTitleService', () => {
             // Assert
             expect(service.pomoTitle).toEqual('Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName + Test pomo');
         });
-
-        it(`should include 'expectedTodo1.title' in 'pomoTitle' as far 'expectedTodo1' is not in list `, () => {
-            // Arrange
-            // service.listOfUsedTodos = [
-            //     { innerId: expectedTodo1.inner_id, todoTitle: expectedTodo1.title, todoTitleState: 1 },
-            //     { innerId: expectedTodo2.inner_id, todoTitle: expectedTodo2.title, todoTitleState: 1 },
-            //     { innerId: expectedTodo3.inner_id, todoTitle: expectedTodo3.title, todoTitleState: 1 }
-            // ];
-            console.log('%c listOfUsedTodos', 'color: red;', service.listOfUsedTodos);
-            service.pomoTitleManualPart = 'Test pomo';
-            service.listOfUsedTodos[0]['todoTitleState'] = 2;
-
-            // Act
-            service.updatePomoTitleWithTodo(expectedTodo1);
-
-            // Assert
-            expect(service.pomoTitle).toEqual('Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName + Test pomo');
-        });
     });
 
     describe(`#parseTodosTitle()`, () => {
