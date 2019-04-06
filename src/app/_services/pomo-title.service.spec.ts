@@ -113,26 +113,51 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#parseTodosTitle()`, () => {
-        it(`should return '' as far 'TodoOrderService' mocked`, () => {
+        it(`should return string with excluded 'expectedTodo1.title'`, () => {
             // Arrange
 
             // Act
             const resultTitle = service.parseTodosTitle(expectedTodo1);
 
             // Assert
-            expect(resultTitle).toEqual('');
+            expect(resultTitle).toEqual('Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName');
         });
     });
 
     describe(`#processTodoTitle()`, () => {
-        it(`should return '' as far 'TodoOrderService' mocked`, () => {
+        it(`should return combined title of from 'listOfUsedTodos'`, () => {
             // Arrange
 
             // Act
-            const resultTitle = service.parseTodosTitle(expectedTodo1);
+            const resultTitle = service.processTodoTitle();
 
             // Assert
-            expect(resultTitle).toEqual('');
+            // tslint:disable-next-line:max-line-length
+            expect(resultTitle).toEqual('Test title in PomoTitleService + Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName');
         });
+
+        it(`should call 'parseTitlePriority()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(service, 'parseTitlePriority');
+            const resultTitle = service.processTodoTitle();
+
+            // Assert
+            expect(service.parseTitlePriority).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#parseTitlePriority()`, () => {
+        // it(`should return combined title of from 'listOfUsedTodos'`, () => {
+        //     // Arrange
+
+        //     // Act
+        //     const resultTitle = service.processTodoTitle();
+
+        //     // Assert
+        //     // tslint:disable-next-line:max-line-length
+        //     expect(resultTitle).toEqual('Test title in PomoTitleService + Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName');
+        // });
     });
 });
