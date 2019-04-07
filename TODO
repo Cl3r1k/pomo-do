@@ -165,8 +165,8 @@ Todos:
                                     
                                 ☐ Fix broken tests according to new 'Pomo' code
                                 ☐ Add tests for 'PomoHeaderComponent'
-                                ☐ Add tests for 'PomoStateService'
-                                ☐ Add tests for 'PomoTitleService' <========================================================= CURRENT TASK
+                                ☐ Add tests for 'PomoStateService' <========================================================= CURRENT TASK
+                                ✔ Add tests for 'PomoTitleService' @done(19-04-06 10:15)
                                 ☐ Add tests for 'PomoState'
                                 ☐ Add tests for 'Pomo'
                                 ☐ After 'pomo-header' part completed bump 'patch' version
