@@ -9,7 +9,7 @@ import { PomoState } from '@app/_models/pomo-state';
 describe('Service: PomoStateService', () => {
 
     let service: PomoStateService;
-    let store = {};
+    const store = {};
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -90,11 +90,131 @@ describe('Service: PomoStateService', () => {
             // Assert
             expect(localStorage.getItem('app_pomo_state')).toEqual(JSON.stringify(service.pomoState));
         });
+
+        it(`Should call 'setItem()' of localStorage`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+            service.pomoState.start_time = new Date().toISOString();
+
+            // Act
+            service.savePomoState();
+
+            // Assert
+            expect(localStorage.setItem).toHaveBeenCalled();
+        });
     });
 
     describe(`#loadPomoState()`, () => {
-        it(``, () => {
-            //
+        it(`Should set 'pomoState' saved in localStorage`, () => {
+            // Arrange
+            const tmpPomoState = new PomoState();
+            tmpPomoState.start_time = new Date().toISOString();
+            service.pomoState = tmpPomoState;
+            service.savePomoState();
+            service.pomoState = null;
+
+            // Act
+            service.loadPomoState();
+
+            // Assert
+            expect(service.pomoState.start_time).toEqual(tmpPomoState.start_time);
+        });
+
+        it(`Should call 'getItem()' of localStorage`, () => {
+            // Arrange
+
+            // Act
+            service.loadPomoState();
+
+            // Assert
+            expect(localStorage.getItem).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#interruptPomo()`, () => {
+        it(`Should call 'setIdlePomoState()'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            spyOn(service, 'setIdlePomoState');
+            service.interruptPomo();
+
+            // Assert
+            expect(service.setIdlePomoState).toHaveBeenCalled();
+        });
+
+        it(`Should set 'end_time' for 'pomoState'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            service.interruptPomo();
+
+            // Assert
+            expect(service.pomoState.end_time).toBeTruthy();
+        });
+
+        it(`Should call 'savePomoState()'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            spyOn(service, 'savePomoState');
+            service.interruptPomo();
+
+            // Assert
+            expect(service.savePomoState).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#setIdlePomoState()`, () => {
+        it(`Should set 'pomoState.status' to 'idle' `, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            service.setIdlePomoState();
+
+            // Assert
+            expect(service.pomoState.status).toEqual('idle');
+        });
+    });
+
+    describe(`#saveCompletedPomo()`, () => {
+        it(`Should push new 'Pomo' in 'recentPomos' list`, () => {
+            // Arrange
+            // service.pomoState = new PomoState();
+
+            // // Act
+            // service.saveCompletedPomo('Test pomoName 1');
+
+            // // Assert
+            // expect(service.savePomoList).toHaveBeenCalled();
+        });
+
+        it(`Should call 'savePomoList()'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            spyOn(service, 'savePomoList');
+            service.saveCompletedPomo('Test pomoName (savePomoList)');
+
+            // Assert
+            expect(service.savePomoList).toHaveBeenCalled();
+        });
+
+        it(`Should call 'savePomoState()'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            spyOn(service, 'savePomoState');
+            service.saveCompletedPomo('Test pomoName (savePomoState)');
+
+            // Assert
+            expect(service.savePomoState).toHaveBeenCalled();
         });
     });
 
