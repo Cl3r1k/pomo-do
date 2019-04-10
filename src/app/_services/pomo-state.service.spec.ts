@@ -184,13 +184,15 @@ describe('Service: PomoStateService', () => {
     describe(`#saveCompletedPomo()`, () => {
         it(`Should push new 'Pomo' in 'recentPomos' list`, () => {
             // Arrange
-            // service.pomoState = new PomoState();
+            service.pomoState = new PomoState();
+            service.pomoState.start_time = new Date().toISOString();
 
-            // // Act
-            // service.saveCompletedPomo('Test pomoName 1');
+            // Act
+            service.saveCompletedPomo('Test pomoName 1');
 
-            // // Assert
-            // expect(service.savePomoList).toHaveBeenCalled();
+            // Assert
+            expect(service.recentPomos.length).toEqual(1);
+            expect(service.recentPomos[0].start_time).toEqual(service.pomoState.start_time);
         });
 
         it(`Should call 'savePomoList()'`, () => {
@@ -215,6 +217,74 @@ describe('Service: PomoStateService', () => {
 
             // Assert
             expect(service.savePomoState).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#savePomoList()`, () => {
+
+        it(`Should save empty 'recentPomos' list and 'account_id' in localStorage`, () => {
+            // Arrange
+            let data = Object();
+
+            // Act
+            service.savePomoList();
+            data = JSON.parse(localStorage.getItem('recentPomoList'));
+
+            // Assert
+            expect(data['account_id']).toEqual('123456');
+            expect(data['pomos'].length).toEqual(0);
+        });
+
+        it(`Should save 'recentPomos' list and 'account_id' in localStorage`, () => {
+            // Arrange
+            let data = Object();
+            service.pomoState = new PomoState();
+
+            // Act
+            service.saveCompletedPomo('Test pomoName 1');
+            service.savePomoList();
+            data = JSON.parse(localStorage.getItem('recentPomoList'));
+
+            // Assert
+            expect(data['account_id']).toEqual('123456');
+            expect(data['pomos'].length).toEqual(1);
+            expect(data['pomos'][0]['title']).toEqual('Test pomoName 1');
+        });
+
+        it(`Should call 'setItem()' of localStorage`, () => {
+            // Arrange
+
+            // Act
+            service.savePomoList();
+
+            // Assert
+            expect(localStorage.setItem).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#loadPomoList()`, () => {
+        it(`Should load 'recentPomos' list from localStorage`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            service.saveCompletedPomo('Test pomoName 123');
+            service.savePomoList();
+            service.loadPomoList();
+
+            // Assert
+            expect(service.recentPomos.length).toEqual(1);
+            expect(service.recentPomos[0].title).toEqual('Test pomoName 123');
+        });
+
+        it(`Should call 'getItem()' of localStorage`, () => {
+            // Arrange
+
+            // Act
+            service.loadPomoList();
+
+            // Assert
+            expect(localStorage.getItem).toHaveBeenCalled();
         });
     });
 
