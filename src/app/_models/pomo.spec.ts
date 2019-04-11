@@ -10,43 +10,55 @@ describe(`Model: Pomo`, () => {
         // Act
 
         // Assert
-        // expect(new Tag('testTagName')).toBeTruthy();
+        expect(new Pomo('title', new Date().toISOString(), 'uuid', false)).toBeTruthy();
     }));
 
-    // it(`Should accept values in the constructor (async)`, async(() => {
-    //     // Arrange
-    //     let hashTag: Tag;
+    it(`Should accept values in the constructor (async)`, async(() => {
+        // Arrange
+        let pomoTest: Pomo;
 
-    //     // Act
-    //     hashTag = new Tag('testTagName1');
+        // Act
+        pomoTest = new Pomo('title test', new Date().toISOString(), 'uuid test', false);
 
-    //     // Assert
-    //     expect(hashTag.tagName).toEqual('testTagName1');
-    // }));
+        // Assert
+        expect(pomoTest.title).toEqual('title test');
+        expect(pomoTest.start_time).toBeTruthy();
+        expect(pomoTest.id).toEqual('uuid test');
+    }));
 
-    // it(`Should have initial vaules after init (async)`, async(() => {
-    //     // Arrange
-    //     let hashTag: Tag;
+    it(`Should have initial vaules after init (async)`, async(() => {
+        // Arrange
+        let pomoTest: Pomo;
 
-    //     // Act
-    //     hashTag = new Tag('testTagName2');
+        // Act
+        pomoTest = new Pomo('title test', new Date().toISOString(), 'uuid test', false);
 
-    //     // Assert
-    //     expect(hashTag.id).toEqual(undefined);
-    //     expect(hashTag.tagName).toEqual('testTagName2');
-    //     expect(hashTag.color).toEqual('red');
-    //     expect(hashTag.readyToDelete).toEqual(false);
-    // }));
+        // Assert
+        expect(pomoTest.canceled).toEqual(false);
+        expect(pomoTest.created_time).toBeTruthy();
+        expect(pomoTest.deleted).toEqual(false);
+        expect(pomoTest.duration).toEqual(1500);
+        expect(pomoTest.end_time).toBeTruthy();
+        expect(pomoTest.manual).toEqual(false);
+        expect(pomoTest.updated_time).toBeTruthy();
+        expect(pomoTest.__accound_id).toEqual('123456');
+        expect(pomoTest.__dirty).toEqual(false);
+        expect(pomoTest._local_created_time).toBeTruthy();
+        expect(pomoTest._local_updated_time).toBeTruthy();
+        expect(pomoTest._local_end_time).toBeTruthy();
+        expect(pomoTest._local_start_time).toBeTruthy();
+        expect(pomoTest._local_deleted_time).toBeNull();
+    }));
 
-    // it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {
-    //     // Arrange
-    //     let hashTag: Tag;
+    it(`Should have not null 'created_time' and 'deleted_time' to be null after init (async)`, async(() => {
+        // Arrange
+        let pomoTest: Pomo;
 
-    //     // Act
-    //     hashTag = new Tag('testTagName3');
+        // Act
+        pomoTest = new Pomo('title', new Date().toISOString(), 'uuid', false);
 
-    //     // Assert
-    //     expect(hashTag.created_time).toBeTruthy();
-    //     expect(hashTag.updated_time).toBeNull();
-    // }));
+        // Assert
+        expect(pomoTest.created_time).toBeTruthy();
+        expect(pomoTest.deleted_time).toBeNull();
+    }));
 });
