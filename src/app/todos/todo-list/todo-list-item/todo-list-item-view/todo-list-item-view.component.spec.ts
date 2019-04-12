@@ -57,7 +57,7 @@ describe('Component: TodoListItemViewComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'TodoListItemViewComponent'`, () => {
+    it(`Should create an instance of 'TodoListItemViewComponent'`, () => {
         // Arrange
 
         // Act
@@ -66,7 +66,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should be equal to expectedTodo', () => {
+    it('Should be equal to expectedTodo', () => {
         // Arrange
 
         // Act
@@ -75,7 +75,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(component.todo).toEqual(expectedTodo);
     });
 
-    it(`should emit 'toggleComplete' event (async)`, async(() => {
+    it(`Should emit 'toggleComplete' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -87,7 +87,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'edit' event (async)`, async(() => {
+    it(`Should emit 'edit' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -99,7 +99,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'more' event (async)`, async(() => {
+    it(`Should emit 'more' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -111,7 +111,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'pin' event (async)`, async(() => {
+    it(`Should emit 'pin' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -123,7 +123,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'remove' event (async)`, async(() => {
+    it(`Should emit 'remove' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 

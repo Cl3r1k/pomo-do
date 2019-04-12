@@ -165,4 +165,6 @@ describe('Component: AppHeaderComponent', () => {
             expect(dialog.open).toHaveBeenCalled();
         });
     });
+
+    // TODO: Add test for 'showSettingsDialog()'
 });
