@@ -172,6 +172,18 @@ describe('Component: PomoHeaderComponent', () => {
         });
     });
 
+    describe(`#startTimer()`, () => {
+        it(`Should start timer and decrease 'counter'`, () => {
+            // Arrange
+
+            // Act
+            component.startTimer();
+
+            // Assert
+            expect(component.counter).toBeLessThanOrEqual(component.pomoLengthSeconds);
+        });
+    });
+
 
     ////
     //// -----------------
