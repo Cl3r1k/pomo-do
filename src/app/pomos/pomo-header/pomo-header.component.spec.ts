@@ -184,15 +184,44 @@ describe('Component: PomoHeaderComponent', () => {
         });
     });
 
+    describe(`#resetCounter()`, () => {
+        it(`Should set 'counter' to 'restLengthSeconds' and 'currentState' to 'pomo' if 'restState' = false`, () => {
+            // Arrange
 
-    ////
-    //// -----------------
-    ////
+            // Act
+            component.resetCounter(false);
 
+            // Assert
+            expect(component.counter).toEqual(component.pomoLengthSeconds);
+            expect(component.currentState).toEqual('pomo');
+        });
 
+        it(`Should set 'counter' to 'pomoLengthSeconds' and 'currentState' to 'rest' if 'restState' = true`, () => {
+            // Arrange
+
+            // Act
+            component.resetCounter(true);
+
+            // Assert
+            expect(component.counter).toEqual(component.restLengthSeconds);
+            expect(component.currentState).toEqual('rest');
+        });
+
+        it(`Should set initital values for 'counterView' and document.title`, () => {
+            // Arrange
+
+            // Act
+            component.resetCounter(false);
+
+            // Assert
+            // tslint:disable-next-line:max-line-length
+            expect(component.counterView).toEqual(('00' + Math.floor(component.counter / 60)).slice(-2) + ':' + ('00' + (component.counter % 60)).slice(-2));
+            expect(document.title).toEqual('Pomodo');
+        });
+    });
 
     describe(`#cancelPomoClick()`, () => {
-        it(`should call MatDialog and should be open - and after MatDialog should be closed`, () => {
+        it(`Should call MatDialog and should be open - and after MatDialog should be closed`, () => {
             // Arrange
 
             // Act
@@ -201,6 +230,18 @@ describe('Component: PomoHeaderComponent', () => {
 
             // Assert
             expect(dialog.open).toHaveBeenCalled();
+        });
+
+        it(`Should call 'cancelPomo()' if 'currentState' not equal 'pomo'`, () => {
+            // Arrange
+            component.currentState = 'rest';
+
+            // Act
+            spyOn(component, 'cancelPomo');
+            component.cancelPomoClick();
+
+            // Assert
+            expect(component.cancelPomo).toHaveBeenCalled();
         });
     });
 });
