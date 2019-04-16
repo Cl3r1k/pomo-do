@@ -11,6 +11,7 @@ import { PomoHeaderComponent } from './pomo-header.component';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
 import { PomoStateService } from '@app/_services/pomo-state.service';
+import { PomoTitleService } from '@app/_services/pomo-title.service';
 
 // Modules
 import { MatDialogModule, MatDialog } from '@angular/material';
@@ -23,6 +24,7 @@ describe('Component: PomoHeaderComponent', () => {
     let fixture: ComponentFixture<PomoHeaderComponent>;
     let dialog: MatDialogMock;
     let pomoStateService: PomoStateService;
+    let pomoTitleService: PomoTitleService;
     let expectedTodo: ToDo;
 
     beforeEach(async(() => {
@@ -48,6 +50,7 @@ describe('Component: PomoHeaderComponent', () => {
         component = fixture.componentInstance;
 
         pomoStateService = TestBed.get(PomoStateService);
+        pomoTitleService = TestBed.get(PomoTitleService);
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         expectedTodo.inner_id = '123456789';
         component.currentTodoPomoHeader = expectedTodo;                    // Lets count that we have todo with 'complete' = false
@@ -242,6 +245,178 @@ describe('Component: PomoHeaderComponent', () => {
 
             // Assert
             expect(component.cancelPomo).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#cancelPomo()`, () => {
+        it(`Should call 'emitPomoState()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'emitPomoState');
+            component.cancelPomo();
+
+            // Assert
+            expect(component.emitPomoState).toHaveBeenCalled();
+        });
+
+        it(`Should call 'resetCounter()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'resetCounter');
+            component.cancelPomo();
+
+            // Assert
+            expect(component.resetCounter).toHaveBeenCalled();
+        });
+
+        it(`Should call 'pomoStateService.interruptPomo()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(pomoStateService, 'interruptPomo');
+            component.cancelPomo();
+
+            // Assert
+            expect(pomoStateService.interruptPomo).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#savePomo()`, () => {
+        it(`Shouldn't change 'currentState' if 'event' is 'Escape'`, () => {
+            // Arrange
+            component.currentState = 'pomo';
+            const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                'key': 'Escape'
+            });
+
+            // Act
+            component.savePomo(keyDownEnterEvent);
+
+            // Assert
+            expect(component.currentState).toEqual('pomo');
+        });
+
+        it(`Shouldn't change 'currentState' if 'event' is 'Enter' and 'pomoTitleService.pomoTitle' is empty`, () => {
+            // Arrange
+            pomoTitleService.pomoTitle = '';
+            component.currentState = 'pomo';
+            const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                'key': 'Enter'
+            });
+
+            // Act
+            component.savePomo(keyDownEnterEvent);
+
+            // Assert
+            expect(component.currentState).toEqual('pomo');
+        });
+
+        it(`Should change 'currentState' to 'rest' if 'event' is 'Enter' and 'pomoTitleService.pomoTitle' is not empty`, () => {
+            // Arrange
+            pomoTitleService.pomoTitle = 'tst';
+            component.currentState = 'pomo';
+            const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                'key': 'Enter'
+            });
+
+            // Act
+            component.savePomo(keyDownEnterEvent);
+
+            // Assert
+            expect(component.currentState).toEqual('rest');
+        });
+
+        it(`Should call 'pomoStateService.saveCompletedPomo' if 'event' is 'Enter' and 'pomoTitleService.pomoTitle' is not empty`, () => {
+            // Arrange
+            pomoTitleService.pomoTitle = 'tst';
+            component.currentState = 'pomo';
+            const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                'key': 'Enter'
+            });
+
+            // Act
+            spyOn(pomoStateService, 'saveCompletedPomo');
+            component.savePomo(keyDownEnterEvent);
+
+            // Assert
+            expect(pomoStateService.saveCompletedPomo).toHaveBeenCalled();
+        });
+
+        it(`Should clear 'pomoTitleService.pomoTitle' if 'event' is 'Enter' and 'pomoTitleService.pomoTitle' is not empty`, () => {
+            // Arrange
+            pomoTitleService.pomoTitle = 'tst';
+            component.currentState = 'pomo';
+            const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                'key': 'Enter'
+            });
+
+            // Act
+            component.savePomo(keyDownEnterEvent);
+
+            // Assert
+            expect(pomoTitleService.pomoTitle).toEqual('');
+        });
+    });
+
+    describe(`#setSavePomoFocus()`, () => {
+        it(`Should set 'savePomoFocusState' to 'false' with 'false' argument`, () => {
+            // Arrange
+
+            // Act
+            component.setSavePomoFocus(false);
+
+            // Assert
+            expect(component.savePomoFocusState).toEqual(false);
+        });
+
+        it(`Should set 'savePomoFocusState' to 'true' with 'true' argument`, () => {
+            // Arrange
+
+            // Act
+            component.setSavePomoFocus(true);
+
+            // Assert
+            expect(component.savePomoFocusState).toEqual(true);
+        });
+    });
+
+    describe(`#emitPomoState()`, () => {
+        it(`Should emit 'statePomoHeaderComponentEmitter'`, () => {
+            // Arrange
+            let statePomo = 0;
+
+            // Act
+            component.statePomoHeaderComponentEmitter.subscribe((value) => statePomo = value);    // Subscribe to update event
+            component.emitPomoState(1, false);
+
+            // Assert
+            expect(statePomo).toEqual(1);
+        });
+
+        it(`Should call 'pomoTitleService.setPomoState()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(pomoTitleService, 'setPomoState');
+            component.emitPomoState(1, false);
+
+            // Assert
+            expect(pomoTitleService.setPomoState).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#pomoTitleManualChange()`, () => {
+        it(`Should call 'pomoTitleService.lockUsedTodos()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(pomoTitleService, 'lockUsedTodos');
+            component.pomoTitleManualChange(null);
+
+            // Assert
+            expect(pomoTitleService.lockUsedTodos).toHaveBeenCalled();
         });
     });
 });
