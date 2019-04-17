@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+
+// Models
+import { ToDo } from '@app/_models/to-do';
+
+@Injectable()
+export class PomoStateMockService {
+
+    constructor() { }
+
+    public initPomoState() { }
+
+    public savePomoState() { }
+
+    public loadPomoState() { }
+
+    public interruptPomo() { }
+
+    public setIdlePomoState() { }
+
+    public saveCompletedPomo(pomoName: string) { }
+
+    public savePomoList() { }
+
+    public loadPomoList() { }
+
+}

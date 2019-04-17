@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 // Models
@@ -18,6 +19,8 @@ import { MatDialogModule, MatDialog } from '@angular/material';
 
 // Mocks
 import { MatDialogMock } from '@app/_testing/mat-dialog-mock';
+import { PomoTitleMockService } from '@app/_services/pomo-title-mock.service';
+import { PomoStateMockService } from '@app/_services/pomo-state-mock.service';
 
 describe('Component: PomoHeaderComponent', () => {
     let component: PomoHeaderComponent;
@@ -39,6 +42,14 @@ describe('Component: PomoHeaderComponent', () => {
                 {
                     provide: MatDialog,
                     useClass: MatDialogMock,
+                },
+                {
+                    provide: PomoStateService,
+                    useClass: PomoStateMockService
+                },
+                {
+                    provide: PomoTitleService,
+                    useClass: PomoTitleMockService
                 }
             ]
         })
@@ -418,5 +429,32 @@ describe('Component: PomoHeaderComponent', () => {
             // Assert
             expect(pomoTitleService.lockUsedTodos).toHaveBeenCalled();
         });
+    });
+
+    describe(`#view tests:`, () => {
+
+        describe(`button.button-start-pomo:`, () => {
+            // Set 'pomo-start-container' active, and find element
+            component.pomoStatePomoHeader = 0;
+            const buttonStartEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find start-button element
+
+            it(`clicking on 'button.button-start-pomo' should call method 'startPomo()'`, () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'startPomo');
+                if (buttonStartEl instanceof HTMLElement) {
+                    buttonStartEl.click();
+                } else {
+                    buttonStartEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.startPomo).toHaveBeenCalled();
+                });
+            });
+        });
+
     });
 });
