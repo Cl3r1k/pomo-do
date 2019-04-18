@@ -29,6 +29,7 @@ describe('Component: PomoHeaderComponent', () => {
     let pomoStateService: PomoStateService;
     let pomoTitleService: PomoTitleService;
     let expectedTodo: ToDo;
+    let buttonStartEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -65,6 +66,10 @@ describe('Component: PomoHeaderComponent', () => {
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         expectedTodo.inner_id = '123456789';
         component.currentTodoPomoHeader = expectedTodo;                    // Lets count that we have todo with 'complete' = false
+
+        // Set 'pomo-start-container' active, and find element
+        component.pomoStatePomoHeader = 0;
+        fixture.detectChanges();
 
         dialog = TestBed.get(MatDialog);
 
@@ -434,12 +439,9 @@ describe('Component: PomoHeaderComponent', () => {
     describe(`#view tests:`, () => {
 
         describe(`button.button-start-pomo:`, () => {
-            // Set 'pomo-start-container' active, and find element
-            component.pomoStatePomoHeader = 0;
-            const buttonStartEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find start-button element
-
             it(`clicking on 'button.button-start-pomo' should call method 'startPomo()'`, () => {
                 // Arrange
+                buttonStartEl = fixture.debugElement.query(By.css('button.button-start-pomo'));           // Find start-button element
 
                 // Act
                 spyOn(component, 'startPomo');
