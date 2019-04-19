@@ -30,6 +30,11 @@ describe('Component: PomoHeaderComponent', () => {
     let pomoTitleService: PomoTitleService;
     let expectedTodo: ToDo;
     let buttonStartEl;
+    let spanProgressLabelEl;
+    let svgIconCrossEl;
+    let txtAreaPomoSaveEl;
+    let svgIconKeyboardReturn;
+    let svgIconCrossEl2;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -439,7 +444,7 @@ describe('Component: PomoHeaderComponent', () => {
     describe(`#view tests:`, () => {
 
         describe(`button.button-start-pomo:`, () => {
-            it(`clicking on 'button.button-start-pomo' should call method 'startPomo()'`, () => {
+            it(`Clicking on 'button.button-start-pomo' should call method 'startPomo()'`, () => {
                 // Arrange
                 buttonStartEl = fixture.debugElement.query(By.css('button.button-start-pomo'));           // Find start-button element
 
@@ -454,6 +459,149 @@ describe('Component: PomoHeaderComponent', () => {
                 // Assert
                 fixture.whenStable().then(() => {
                     expect(component.startPomo).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`span.cssProgress-label:`, () => {
+            it(`'span.cssProgress-label' should have value equal to 'counterView'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 1;
+                component.resetCounter(false);    // Change 'counterView' state
+                fixture.detectChanges();
+                spanProgressLabelEl = fixture.debugElement.query(By.css('span.cssProgress-label')); // Find span.Progress-label element
+
+                // Act
+
+                // Assert
+                expect(spanProgressLabelEl.nativeElement.innerText).toEqual(component.counterView);
+            });
+        });
+
+        describe(`svg.icon-cross:`, () => {
+            it(`Clicking on 'svg.icon-cross' should call 'cancelPomoClick()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 1;
+                fixture.detectChanges();
+                svgIconCrossEl = fixture.debugElement.query(By.css('svg.icon-cross')); // Find svg.icon-cross element
+
+                // Act
+                spyOn(component, 'cancelPomoClick');
+                if (svgIconCrossEl instanceof HTMLElement) {
+                    svgIconCrossEl.click();
+                } else {
+                    svgIconCrossEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.cancelPomoClick).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`textarea.pomo-save-field:`, () => {
+            it(`Press 'Enter' on 'textarea.pomo-save-field' should call 'savePomo()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 2;
+                fixture.detectChanges();
+                txtAreaPomoSaveEl = fixture.debugElement.nativeElement.querySelector('textarea.pomo-save-field'); // Find textarea element
+
+                const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                    'key': 'Enter'
+                });
+                console.log(`%c txtAreaPomoSaveEl`, 'color: red;', txtAreaPomoSaveEl);
+
+                // Act
+                spyOn(component, 'savePomo');
+                txtAreaPomoSaveEl.dispatchEvent(keyDownEnterEvent);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.savePomo).toHaveBeenCalled();
+                });
+            });
+
+            it(`Getting focus on 'textarea.pomo-save-field' should call 'setSavePomoFocus()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 2;
+                fixture.detectChanges();
+                txtAreaPomoSaveEl = fixture.debugElement.nativeElement.querySelector('textarea.pomo-save-field'); // Find textarea element
+
+                // Act
+                spyOn(component, 'setSavePomoFocus');
+
+                // Set input value focus lost
+                txtAreaPomoSaveEl.dispatchEvent(new Event('focus'));
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setSavePomoFocus).toHaveBeenCalled();
+                });
+            });
+
+            it(`Losing focus on 'textarea.pomo-save-field' should call 'setSavePomoFocus()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 2;
+                fixture.detectChanges();
+                txtAreaPomoSaveEl = fixture.debugElement.nativeElement.querySelector('textarea.pomo-save-field'); // Find textarea element
+
+                // Act
+                spyOn(component, 'setSavePomoFocus');
+
+                // Set textarea value focus lost
+                txtAreaPomoSaveEl.dispatchEvent(new Event('blur'));
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setSavePomoFocus).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`svg.icon-keyboard_return:`, () => {
+            it(`Clicking on 'svg.icon-keyboard_return' should call 'savePomo()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 2;
+                fixture.detectChanges();
+                svgIconKeyboardReturn = fixture.debugElement.query(By.css('svg.icon-keyboard_return')); // Find svg.icon-keyboard_return el
+
+                // Act
+                spyOn(component, 'savePomo');
+                if (svgIconKeyboardReturn instanceof HTMLElement) {
+                    svgIconKeyboardReturn.click();
+                } else {
+                    svgIconKeyboardReturn.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.savePomo).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`svg.icon-cross:`, () => {
+            it(`Clicking on 'svg.icon-cross' should call 'cancelPomoClick()'`, () => {
+                // Arrange
+                component.pomoStatePomoHeader = 2;
+                fixture.detectChanges();
+                svgIconCrossEl2 = fixture.debugElement.query(By.css('svg.icon-cross')); // Find svg.icon-cross el
+
+                // Act
+                spyOn(component, 'cancelPomoClick');
+                if (svgIconCrossEl2 instanceof HTMLElement) {
+                    svgIconCrossEl2.click();
+                } else {
+                    svgIconCrossEl2.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.cancelPomoClick).toHaveBeenCalled();
                 });
             });
         });

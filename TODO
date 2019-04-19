@@ -163,8 +163,8 @@ Todos:
                                             
                                     ✔ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct @done(19-03-31 10:24)
                                     
-                                ☐ Fix broken tests according to new 'Pomo' code
-                                ☐ Add tests for 'PomoHeaderComponent' <========================================================= CURRENT TASK
+                                ☐ Fix broken tests according to new 'Pomo' code <========================================================= CURRENT TASK
+                                ✔ Add tests for 'PomoHeaderComponent' @done(19-04-18 10:20)
                                 ✔ Add tests for 'PomoStateService' @done(19-04-09 11:34)
                                 ✔ Add tests for 'PomoTitleService' @done(19-04-06 10:15)
                                 ✔ Add tests for 'PomoState' class @done(19-04-10 11:39)
