@@ -15,23 +15,17 @@ export class TodoListComponent implements OnInit {
 
     @Input() todosAllAmount: number;
 
-    @Output()
-    toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    moreTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() moreTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    pinTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() pinTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    moveTodoListEmitter: EventEmitter<ToDo[]> = new EventEmitter();
+    @Output() moveTodoListEmitter: EventEmitter<ToDo[]> = new EventEmitter();
 
     @Output() clearTodoListEmitter: EventEmitter<boolean> = new EventEmitter();
     @Output() clearHoverStateTodoListEmitter: EventEmitter<boolean> = new EventEmitter();

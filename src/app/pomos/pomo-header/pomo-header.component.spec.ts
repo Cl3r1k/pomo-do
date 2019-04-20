@@ -68,11 +68,11 @@ describe('Component: PomoHeaderComponent', () => {
 
         pomoStateService = TestBed.get(PomoStateService);
         pomoTitleService = TestBed.get(PomoTitleService);
-        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
+        expectedTodo = new ToDo({ id: 1, title: 'Test title in PomoHeaderComponent', complete: false });
         expectedTodo.inner_id = '123456789';
         component.currentTodoPomoHeader = expectedTodo;                    // Lets count that we have todo with 'complete' = false
 
-        // Set 'pomo-start-container' active, and find element
+        // Set 'pomo-start-container' active
         component.pomoStatePomoHeader = 0;
         fixture.detectChanges();
 
@@ -404,7 +404,7 @@ describe('Component: PomoHeaderComponent', () => {
     });
 
     describe(`#emitPomoState()`, () => {
-        it(`Should emit 'statePomoHeaderComponentEmitter'`, () => {
+        it(`Should emit 'statePomoHeaderComponentEmitter' event`, () => {
             // Arrange
             let statePomo = 0;
 

@@ -169,6 +169,7 @@ Todos:
                                 ✔ Add tests for 'PomoTitleService' @done(19-04-06 10:15)
                                 ✔ Add tests for 'PomoState' class @done(19-04-10 11:39)
                                 ✔ Add tests for 'Pomo' class @done(19-04-10 11:39)
+                                ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
                                 ☐ After 'pomo-header' part completed bump 'patch' version
 
                         ☐ Add 'pomo-list' component
