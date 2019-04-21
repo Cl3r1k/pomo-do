@@ -7,6 +7,7 @@ import { ToDo } from '@app/_models/to-do';
 export class PomoTitleMockService {
 
     pomoTitle = '';
+    listOfUsedTodos: Object[] = [];
 
     constructor() { }
 

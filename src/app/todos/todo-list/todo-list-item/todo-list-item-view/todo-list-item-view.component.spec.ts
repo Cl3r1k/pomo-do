@@ -13,7 +13,13 @@ import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 
 // Services
 import { TagService } from '@app/_services/tag.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+import { PomoTitleService } from '@app/_services/pomo-title.service';
+
+// Mocks
 import { TagMockService } from '@app/_services/tag-mock.service';
+import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
+import { PomoTitleMockService } from '@app/_services/pomo-title-mock.service';
 
 describe('Component: TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;
@@ -24,6 +30,7 @@ describe('Component: TodoListItemViewComponent', () => {
     let moreEl;
     let pinEl;
     let expectedTodo: ToDo;
+    let pomoTitleService: PomoTitleService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -32,6 +39,14 @@ describe('Component: TodoListItemViewComponent', () => {
                 {
                     provide: TagService,
                     useClass: TagMockService
+                },
+                {
+                    provide: TodoOrderService,
+                    useClass: TodoOrderMockService
+                },
+                {
+                    provide: PomoTitleService,
+                    useClass: PomoTitleMockService
                 }
             ]
         })
@@ -42,6 +57,8 @@ describe('Component: TodoListItemViewComponent', () => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
 
+        pomoTitleService = TestBed.get(PomoTitleService);
+        pomoTitleService.listOfUsedTodos = [ { innerId: 'todo.inner_id', todoTitle: 'title', todoTitleState: 1 } ];
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;                    // Lets count that we have todo with 'complete' = false
         fixture.detectChanges();
@@ -135,7 +152,7 @@ describe('Component: TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    describe(`#parseTitle`, () => {
+    describe(`#parseTitle()`, () => {
         it(`Should return initial string without changes and 'priorityColor' should be 'transparent' (async)`, async(() => {
             // Arrange
             const todo: ToDo = new ToDo({ title: 'Add more todos!' });
@@ -207,6 +224,69 @@ describe('Component: TodoListItemViewComponent', () => {
             expect(result).toEqual('Add more todos !');
             expect(component.priorityColor).toEqual('paleturquoise');
         }));
+    });
+
+    describe(`#setHoverState()`, () => {
+        it(`Should set 'hoverState' with incoming argument (true)`, () => {
+            // Arrange
+            component.hoverState = false;
+
+            // Act
+            component.setHoverState(true);
+
+            // Assert
+            expect(component.hoverState).toEqual(true);
+        });
+
+        it(`Should set 'withCtrlHoverState' equal to 'hoverState' with incoming argument (false)`, () => {
+            // Arrange
+            component.hoverState = true;
+            component.withCtrlHoverState = true;
+
+            // Act
+            component.setHoverState(false);
+
+            // Assert
+            expect(component.withCtrlHoverState).toEqual(component.hoverState);
+        });
+    });
+
+    describe(`#changePomoTitle()`, () => {
+        it(`Shouldn't change 'isSelectedForPomoTitle' if 'pomoTitleService.currentPomoState' === 1`, () => {
+            // Arrange
+            pomoTitleService.currentPomoState = 1;
+            component.isSelectedForPomoTitle = false;
+
+            // Act
+            component.changePomoTitle(expectedTodo);
+
+            // Assert
+            expect(component.isSelectedForPomoTitle).toEqual(false);
+        });
+
+        it(`Should revert 'isSelectedForPomoTitle' if 'pomoTitleService.currentPomoState' === 2`, () => {
+            // Arrange
+            pomoTitleService.currentPomoState = 2;
+            component.isSelectedForPomoTitle = false;
+
+            // Act
+            component.changePomoTitle(expectedTodo);
+
+            // Assert
+            expect(component.isSelectedForPomoTitle).toEqual(true);
+        });
+
+        it(`Should call 'pomoTitleService.updatePomoTitleWithTodo()' if 'pomoTitleService.currentPomoState' === 2`, () => {
+            // Arrange
+            pomoTitleService.currentPomoState = 2;
+
+            // Act
+            spyOn(pomoTitleService, 'updatePomoTitleWithTodo');
+            component.changePomoTitle(expectedTodo);
+
+            // Assert
+            expect(pomoTitleService.updatePomoTitleWithTodo).toHaveBeenCalled();
+        });
     });
 
     describe(`#view tests:`, () => {

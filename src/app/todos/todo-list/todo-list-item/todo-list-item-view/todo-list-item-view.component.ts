@@ -21,26 +21,19 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     @Input() todo: ToDo;
 
-    @Output()
-    toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    editTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() editTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    moreTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() moreTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    cancelTodoListItemEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Output() cancelTodoListItemEmitter: EventEmitter<boolean> = new EventEmitter();
 
-    @Output()
-    removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     // TODO: Cleanup 'edit' code later
     // editHoverState = false;
