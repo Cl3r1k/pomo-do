@@ -125,54 +125,59 @@ Todos:
                                             ✔ On 'cross-icon' should be showed dialog (if current pomo in progress) @done(19-03-04 09:52)
                                                 ✔ Added 'DialogCancelComponent' @done(19-03-03 10:07)
                                                     ✔ Add tests for 'DialogCancelComponent' @done(19-03-04 09:32)
-                                    ☐ Complete UI and functionality for 'save-pomo' part
-                                        ✔ Add styled 'textarea.pomo-save-field' @done(19-03-29 10:13)
-                                            ✔ Improve check when on epmty 'save-pomo' field 'Enter' pressed (shouldn't write enter key in field) @done(19-03-06 09:25)
-                                            ✔ The 'textarea.pomo-save-field' vertical size shouldn't be changed manually @done(19-03-07 09:54)
-                                            ✔ The 'textarea.pomo-save-field' size should be changed according to it's text @done(19-03-08 09:23)
-                                            ✔ The 'textarea.pomo-save-field' should be styled when focused @done(19-03-09 09:23)
-                                            ✔ The 'textarea.pomo-save-field' should have 'icon-enter' icon and save pomo 'onClick' @done(19-03-11 10:40)
-                                                ✔ Fix error for 'icon-enter' click (when 'save-pomo' field is empty) @done(19-03-11 10:45)
-                                            ✔ The 'textarea.pomo-save-field' should have 'icon-cancel' icon and cancel/interrupt pomo @done(19-03-11 11:05)
-                                            ✔ Inner 'pomo' name in 'textarea.pomo-save-field' should be changed according selected 'todo' @done(19-03-29 10:13)
-                                                ✔ Add 'PomoTitleService' for 'textarea.pomo-save-field' value @done(19-03-13 10:05)
-                                                ✔ The 'PomoTitleService' should store own current 'pomo-state' for 'pomo-title' @done(19-03-14 10:55)
-                                                ✔ The 'PomoTitleService' should store list of selected 'todos' @done(19-03-16 09:59)
-                                                ✔ The selected 'todo' should change 'pomo-title' @done(19-03-19 09:21)
-                                                    ✔ Selected 'todo' should follow order in 'todo-list' @done(19-03-18 10:47)
-                                                    ✔ Selected 'todo' should be used in 'pomo-title' according to 'todo-list' @done(19-03-19 09:11)
-                                                ✔ The 'prioirity' symbol shouldn't be used in 'pomoTitle' @done(19-03-21 10:15)
-                                                ✔ Combine 'pomoTitleTodosPart' and 'pomoTitleManualPart' to 'pomoTitle' @done(19-03-22 09:30)
-                                                    ✔ If 'pomoTitle' changed manually, 'pomoTitleManualPart' should be updated and contain all text @done(19-03-22 09:30)
-                                                ✘ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay (insted used template-driven approach <- the final data should be stored in service, not in component) @cancelled(19-03-24 09:43)
-                                                ✔ The 'PomoTitleService' should be used in 'view-todo' component @done(19-03-24 09:42)
-                                                ✔ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded @done(19-03-28 09:26)
-                                                    ✔ After page reload should be selected first todo @done(19-03-29 09:50)
-                                                ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
-                                                    ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
-                                                ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
-                                                ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)`
-                                                    ☐ Check case - pomo started -> page reloaded -> in this case should be selected first todo `(Delayed for some time)`
-                                                ☐ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' `(Delayed for some time)`
-                                                ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope) @cancelled(19-03-29 09:48)
-                                                ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
-                                                ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)
-                                                ✔ Fix issue, when 'pomo' started and page reloaded -> a lot errors in console @done(19-03-29 10:08)
-                                                    ✔ Fix behavior in incognito -> start pomo - should be error on dialogs @done(19-03-29 10:11)
-                                            ✔ Consider to 'trim' 'pomo-title' @done(19-03-30 09:16)
+
+                            ☐ Complete UI and functionality for 'save-pomo' part
+                                ✔ Add styled 'textarea.pomo-save-field' @done(19-03-29 10:13)
+                                    ✔ Improve check when on epmty 'save-pomo' field 'Enter' pressed (shouldn't write enter key in field) @done(19-03-06 09:25)
+                                    ✔ The 'textarea.pomo-save-field' vertical size shouldn't be changed manually @done(19-03-07 09:54)
+                                    ✔ The 'textarea.pomo-save-field' size should be changed according to it's text @done(19-03-08 09:23)
+                                    ✔ The 'textarea.pomo-save-field' should be styled when focused @done(19-03-09 09:23)
+                                    ✔ The 'textarea.pomo-save-field' should have 'icon-enter' icon and save pomo 'onClick' @done(19-03-11 10:40)
+                                        ✔ Fix error for 'icon-enter' click (when 'save-pomo' field is empty) @done(19-03-11 10:45)
+                                    ✔ The 'textarea.pomo-save-field' should have 'icon-cancel' icon and cancel/interrupt pomo @done(19-03-11 11:05)
+                                    ✔ Inner 'pomo' name in 'textarea.pomo-save-field' should be changed according selected 'todo' @done(19-03-29 10:13)
+                                        ✔ Add 'PomoTitleService' for 'textarea.pomo-save-field' value @done(19-03-13 10:05)
+                                        ✔ The 'PomoTitleService' should store own current 'pomo-state' for 'pomo-title' @done(19-03-14 10:55)
+                                        ✔ The 'PomoTitleService' should store list of selected 'todos' @done(19-03-16 09:59)
+                                        ✔ The selected 'todo' should change 'pomo-title' @done(19-03-19 09:21)
+                                            ✔ Selected 'todo' should follow order in 'todo-list' @done(19-03-18 10:47)
+                                            ✔ Selected 'todo' should be used in 'pomo-title' according to 'todo-list' @done(19-03-19 09:11)
+                                        ✔ The 'prioirity' symbol shouldn't be used in 'pomoTitle' @done(19-03-21 10:15)
+                                        ✔ Combine 'pomoTitleTodosPart' and 'pomoTitleManualPart' to 'pomoTitle' @done(19-03-22 09:30)
+                                            ✔ If 'pomoTitle' changed manually, 'pomoTitleManualPart' should be updated and contain all text @done(19-03-22 09:30)
+                                        ✘ Use 'reactive forms' for 'textarea.pomo-save-field' to handle changes with delay (insted used template-driven approach <- the final data should be stored in service, not in component) @cancelled(19-03-24 09:43)
+                                        ✔ The 'PomoTitleService' should be used in 'view-todo' component @done(19-03-24 09:42)
+                                        ✔ The 'PomoTitleService' should be used to pick first 'todo' when app reloaded @done(19-03-28 09:26)
+                                            ✔ After page reload should be selected first todo @done(19-03-29 09:50)
+                                        ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
+                                            ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
+                                        ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
+                                        ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)`
+                                            ☐ Check case - pomo started -> page reloaded -> in this case should be selected first todo `(Delayed for some time)`
+                                        ☐ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' `(Delayed for some time)`
+                                        ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope) @cancelled(19-03-29 09:48)
+                                        ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
+                                        ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)
+                                        ✔ Fix issue, when 'pomo' started and page reloaded -> a lot errors in console @done(19-03-29 10:08)
+                                            ✔ Fix behavior in incognito -> start pomo - should be error on dialogs @done(19-03-29 10:11)
+                                    ✔ Consider to 'trim' 'pomo-title' @done(19-03-30 09:16)
                                             
                                     ✔ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct @done(19-03-31 10:24)
                                     
-                                ☐ Fix broken tests according to new 'Pomo' code <========================================================= CURRENT TASK
-                                ✔ Add tests for 'PomoHeaderComponent' @done(19-04-18 10:20)
-                                ✔ Add tests for 'PomoStateService' @done(19-04-09 11:34)
-                                ✔ Add tests for 'PomoTitleService' @done(19-04-06 10:15)
-                                ✔ Add tests for 'PomoState' class @done(19-04-10 11:39)
-                                ✔ Add tests for 'Pomo' class @done(19-04-10 11:39)
-                                ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
-                                ☐ After 'pomo-header' part completed bump 'patch' version
+                            ✔ Fix broken tests according to new 'Pomo' code @done(19-04-21 10:11)
+                            ✔ Add tests for 'PomoHeaderComponent' @done(19-04-18 10:20)
+                            ✔ Add tests for 'PomoStateService' @done(19-04-09 11:34)
+                            ✔ Add tests for 'PomoTitleService' @done(19-04-06 10:15)
+                            ✔ Add tests for 'PomoState' class @done(19-04-10 11:39)
+                            ✔ Add tests for 'Pomo' class @done(19-04-10 11:39)
+                            ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
+                            ✔ After 'pomo-header' part completed bump 'patch' version @done(19-04-21 10:17)
 
-                        ☐ Add 'pomo-list' component
+                        ☐ Add 'pomo-list' component <========================================================= CURRENT TASK
+                            ☐ Complete code and UI for 'Pomo...'
+
+                        
+                            ☐ Fix broken tests according to new 'PomoList' code
                             ☐ After 'pomo-list' part completed bump 'patch' version
 
 

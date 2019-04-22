@@ -15,7 +15,11 @@ import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 
 // Services
 import { TagService } from '@app/_services/tag.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+
+// Mocks
 import { TagMockService } from '@app/_services/tag-mock.service';
+import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
 
 describe('Component: TodoListItemComponent', () => {
     let component: TodoListItemComponent;
@@ -36,6 +40,10 @@ describe('Component: TodoListItemComponent', () => {
                 {
                     provide: TagService,
                     useClass: TagMockService
+                },
+                {
+                    provide: TodoOrderService,
+                    useClass: TodoOrderMockService
                 }
             ]
         })
