@@ -174,10 +174,11 @@ Todos:
                             ✔ After 'pomo-header' part completed bump 'patch' version @done(19-04-21 10:17)
 
                         ☐ Add 'pomo-list' component <========================================================= CURRENT TASK
-                            ☐ Complete code and UI for 'Pomo...'
+                            ☐ Complete code and UI for 'PomoListComponent'
 
                         
                             ☐ Fix broken tests according to new 'PomoList' code
+                            ☐ Add tests for 'PomoListComponent'
                             ☐ After 'pomo-list' part completed bump 'patch' version
 
 
