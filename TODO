@@ -175,10 +175,12 @@ Todos:
 
                         ☐ Add 'pomo-list' component <========================================================= CURRENT TASK
                             ☐ Complete code and UI for 'PomoListComponent'
+                                ☐ Consider to build Object for 'PomoListComponent' in 'PomoStateService' and simply show it in component
 
                         
                             ☐ Fix broken tests according to new 'PomoList' code
                             ☐ Add tests for 'PomoListComponent'
+                            ☐ Update test for 'PomoStateService' with new 'PomoList' code
                             ☐ After 'pomo-list' part completed bump 'patch' version
 
 

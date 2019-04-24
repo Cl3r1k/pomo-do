@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// Services
+import { PomoStateService } from '@app/_services/pomo-state.service';
+
 @Component({
     selector: 'app-pomo-list',
     templateUrl: './pomo-list.component.html',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PomoListComponent implements OnInit {
 
-    constructor() { }
+    constructor(private _pomoStateService: PomoStateService) { }
 
     ngOnInit() {
     }

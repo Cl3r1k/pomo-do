@@ -1,5 +1,7 @@
 <section class='pomo-list'>
-    <div>
-        <p>pomo-list works!</p>
-    </div>
+    <ul class="pomo-days">
+        <li *ngFor="let item of _pomoStateService.recentPomos">
+            {{item.title}}
+        </li>
+    </ul>
 </section>

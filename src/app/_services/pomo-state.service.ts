@@ -19,6 +19,7 @@ export class PomoStateService {
     pomoState: PomoState;
 
     recentPomos: Pomo[] = [];
+    recentPomosView: Object = {};
 
     constructor() { }
 
@@ -77,6 +78,7 @@ export class PomoStateService {
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
         this.recentPomos.push(recentPomo);
+        this.generatePomoListView();
         this.savePomoList();
         // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
@@ -130,6 +132,11 @@ export class PomoStateService {
             });
 
             console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+            this.generatePomoListView();
         }
+    }
+
+    generatePomoListView() {
+        //
     }
 }

@@ -1,4 +1,8 @@
 .pomo-list {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    .pomo-days {
+        grid-column: span 12;
+        list-style: none;
+    }
 }
