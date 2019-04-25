@@ -137,6 +137,26 @@ export class PomoStateService {
     }
 
     generatePomoListView() {
-        //
+
+        if (this.recentPomos.length) {
+            let dateGroup;
+            const options = {
+                month: 'short',
+                day: 'numeric'
+            };
+
+            for (let i = this.recentPomos.length - 1; i >= 0; i--) {
+                const pomoItem = this.recentPomos[i];
+                const tmpdateTime = new Date(pomoItem.end_time);
+                const tmpdateGroup = tmpdateTime.toLocaleString('en-US', options);
+
+                if (tmpdateTime !== dateGroup) {
+                    dateGroup = tmpdateGroup;
+                }
+
+                console.log(dateGroup);
+            }
+        }
+
     }
 }
