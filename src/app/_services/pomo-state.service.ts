@@ -145,17 +145,50 @@ export class PomoStateService {
                 day: 'numeric'
             };
 
+            const resultPomosArray = [];
+            let pomosArray = [];
+
             for (let i = this.recentPomos.length - 1; i >= 0; i--) {
                 const pomoItem = this.recentPomos[i];
-                const tmpdateTime = new Date(pomoItem.end_time);
-                const tmpdateGroup = tmpdateTime.toLocaleString('en-US', options);
+                const tmpDateTime = new Date(pomoItem.end_time);
+                const tmpDateGroup = tmpDateTime.toLocaleString('en-US', options);
 
-                if (tmpdateTime !== dateGroup) {
-                    dateGroup = tmpdateGroup;
+                if (tmpDateGroup !== dateGroup) {
+                    if (dateGroup !== undefined) {
+                        const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray};
+                        resultPomosArray.push(resultPomosGroup);
+                    }
+
+                    // Clear data for next 'day'
+                    dateGroup = tmpDateGroup;
+                    pomosArray = [];
                 }
 
-                console.log(dateGroup);
+                const pomoObj = { title: pomoItem.title, start_time: pomoItem.start_time, end_time: pomoItem.end_time, counter: 1 };
+
+                if (pomosArray.length > 0) {
+                    const tmpPrevPomoObj = pomosArray[pomosArray.length - 1];
+                    if (tmpPrevPomoObj['title'] === pomoObj['title']) {
+                        const tmpPrevPomoEndTime = new Date(tmpPrevPomoObj['end_time']);
+                        const pomoObjEndTime = new Date(pomoObj.end_time);
+                        console.log('%c tmpPrevPomoEndTime', this.consoleTextColorService, tmpPrevPomoEndTime);
+                        console.log('%c pomoObjEndTime', this.consoleTextColorService, pomoObjEndTime);
+                        // const diffTime = pomoObjEndTime - tmpPrevPomoEndTime;
+                    }
+                }
+
+                pomosArray.push(pomoObj);
+
+                if (i === 0) {
+                    // Save last data in array
+                    const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray};
+                    resultPomosArray.push(resultPomosGroup);
+                }
+
+                console.log('%c pomoObj', this.consoleTextColorService, pomoObj);
             }
+
+            console.log('%c resultPomosArray', 'color: red;', resultPomosArray);
         }
 
     }
