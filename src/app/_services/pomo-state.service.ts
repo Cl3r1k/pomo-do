@@ -148,14 +148,14 @@ export class PomoStateService {
             const resultPomosArray = [];
             let pomosArray = [];
 
-            for (let i = this.recentPomos.length - 1; i >= 0; i--) {
+            for (let i = 0; i < this.recentPomos.length; i++) {
                 const pomoItem = this.recentPomos[i];
                 const tmpDateTime = new Date(pomoItem.end_time);
                 const tmpDateGroup = tmpDateTime.toLocaleString('en-US', options);
 
                 if (tmpDateGroup !== dateGroup) {
                     if (dateGroup !== undefined) {
-                        const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray};
+                        const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray };
                         resultPomosArray.push(resultPomosGroup);
                     }
 
@@ -166,22 +166,34 @@ export class PomoStateService {
 
                 const pomoObj = { title: pomoItem.title, start_time: pomoItem.start_time, end_time: pomoItem.end_time, counter: 1 };
 
+                let isSeries = false;
                 if (pomosArray.length > 0) {
                     const tmpPrevPomoObj = pomosArray[pomosArray.length - 1];
-                    if (tmpPrevPomoObj['title'] === pomoObj['title']) {
+                    if (tmpPrevPomoObj['title'] === pomoObj['title'] && tmpPrevPomoObj['counter'] < 4) {
                         const tmpPrevPomoEndTime = new Date(tmpPrevPomoObj['end_time']);
-                        const pomoObjEndTime = new Date(pomoObj.end_time);
-                        console.log('%c tmpPrevPomoEndTime', this.consoleTextColorService, tmpPrevPomoEndTime);
-                        console.log('%c pomoObjEndTime', this.consoleTextColorService, pomoObjEndTime);
-                        // const diffTime = pomoObjEndTime - tmpPrevPomoEndTime;
+                        const pomoObjStartTime = new Date(pomoObj.start_time);
+                        // console.log('%c tmpPrevPomoEndTime', this.consoleTextColorService, tmpPrevPomoEndTime);
+                        // console.log('%c pomoObjEndTime', this.consoleTextColorService, pomoObjEndTime);
+                        const diffTime = pomoObjStartTime.getTime() - tmpPrevPomoEndTime.getTime();
+                        console.log('%c diffTime', this.consoleTextColorService, diffTime);
+                        const minutesDiff = diffTime / 1000 / 60;
+                        console.log('%c minutesDiff', this.consoleTextColorService, minutesDiff);
+
+                        // Let's check rest time between pomos for restTime*5
+                        if (minutesDiff <= this.restLength * 5) {
+                            pomosArray[pomosArray.length - 1]['counter']++;    // TODO: Stopped here, counter not increased in final obj
+                            isSeries = true;
+                        }
                     }
                 }
 
-                pomosArray.push(pomoObj);
+                if (!isSeries) {
+                    pomosArray.push(pomoObj);
+                }
 
-                if (i === 0) {
+                if (i === this.recentPomos.length - 1) {
                     // Save last data in array
-                    const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray};
+                    const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray };
                     resultPomosArray.push(resultPomosGroup);
                 }
 
