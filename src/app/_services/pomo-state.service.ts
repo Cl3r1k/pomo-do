@@ -147,6 +147,7 @@ export class PomoStateService {
 
             const resultPomosArray = [];
             let pomosArray = [];
+            let pomosCount = 0;
 
             for (let i = 0; i < this.recentPomos.length; i++) {
                 const pomoItem = this.recentPomos[i];
@@ -155,7 +156,8 @@ export class PomoStateService {
 
                 if (tmpDateGroup !== dateGroup) {
                     if (dateGroup !== undefined) {
-                        const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray };
+                        pomosCount = this.getPomosCount(pomosArray);
+                        const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosCount, pomosArray: pomosArray };
                         resultPomosArray.push(resultPomosGroup);
                     }
 
@@ -181,7 +183,8 @@ export class PomoStateService {
 
                         // Let's check rest time between pomos for restTime*5
                         if (minutesDiff <= this.restLength * 5) {
-                            pomosArray[pomosArray.length - 1]['counter']++;    // TODO: Stopped here, counter not increased in final obj
+                            pomosArray[pomosArray.length - 1]['counter']++;
+                            pomosArray[pomosArray.length - 1]['end_time'] = pomoObj['end_time'];
                             isSeries = true;
                         }
                     }
@@ -193,7 +196,8 @@ export class PomoStateService {
 
                 if (i === this.recentPomos.length - 1) {
                     // Save last data in array
-                    const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosArray.length, pomosArray: pomosArray };
+                    pomosCount = this.getPomosCount(pomosArray);
+                    const resultPomosGroup = { dateGroup: dateGroup, pomosCount: pomosCount, pomosArray: pomosArray };
                     resultPomosArray.push(resultPomosGroup);
                 }
 
@@ -203,5 +207,15 @@ export class PomoStateService {
             console.log('%c resultPomosArray', 'color: red;', resultPomosArray);
         }
 
+    }
+
+    getPomosCount(pomosArray): number {
+        let result = 0;
+
+        pomosArray.map(item => {
+            result += item['counter'];
+        });
+
+        return result;
     }
 }
