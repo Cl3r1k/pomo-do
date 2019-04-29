@@ -1,7 +1,15 @@
 <section class='pomo-list'>
     <ul class="pomo-days">
-        <li *ngFor="let item of _pomoStateService.recentPomos">
-            {{item.title}}
+        <li *ngFor="let item of _pomoStateService.recentPomosView">
+            <span>{{item.dateGroup}}</span>
+            <p>Finished {{item.pomosCount}} pomos</p>
+            <div>
+                <ul>
+                    <li *ngFor="let pomo of item.pomosArray">
+                        <span>{{pomo.start_short_time}}</span> - <span>{{pomo.end_short_time}}</span> {{pomo.title}} <span *ngIf="pomo.counter > 1">× {{pomo.counter}}</span>
+                    </li>
+                </ul>
+            </div>
         </li>
     </ul>
 </section>
