@@ -168,16 +168,16 @@ export class PomoStateService {
                 }
 
 
-                const startLocalHoursMintutes = new Date(pomoItem.start_time);
-                const endLocalHoursMintutes = new Date(pomoItem.end_time);
-                // tslint:disable-next-line:max-line-length
-                // console.log('%c startTime', this.consoleTextColorService, startLocalHoursMintutes.getHours() + ':' + startLocalHoursMintutes.getMinutes());
+                const startLocalHrsMins = new Date(pomoItem.start_time);
+                const endLocalHrsMins = new Date(pomoItem.end_time);
+                const tmpStart = ('00' + startLocalHrsMins.getHours()).slice(-2) + ':' + ('00' + startLocalHrsMins.getMinutes()).slice(-2);
+                const tmpEnd = ('00' + endLocalHrsMins.getHours()).slice(-2) + ':' + ('00' + endLocalHrsMins.getMinutes()).slice(-2);
                 const pomoObj = {
                     title: pomoItem.title,
                     start_time: pomoItem.start_time,
                     end_time: pomoItem.end_time,
-                    start_short_time: startLocalHoursMintutes.getHours() + ':' + startLocalHoursMintutes.getMinutes(),
-                    end_short_time: endLocalHoursMintutes.getHours() + ':' + endLocalHoursMintutes.getMinutes(),
+                    start_short_time: tmpStart,
+                    end_short_time: tmpEnd,
                     counter: 1
                 };
 

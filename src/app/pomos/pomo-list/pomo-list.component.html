@@ -1,8 +1,10 @@
-<section class='pomo-list'>
+<section class="pomo-list">
     <ul class="pomo-days">
-        <li *ngFor="let item of _pomoStateService.recentPomosView">
-            <span>{{item.dateGroup}}</span>
-            <p>Finished {{item.pomosCount}} pomos</p>
+        <li *ngFor="let item of _pomoStateService.recentPomosView" class="pomos-group-container">
+            <div class="pomos-date-count-container">
+                <span class="pomos-date-group">{{item.dateGroup}}</span>
+                <span class="pomos-count-group">Finished {{item.pomosCount}} pomos</span>
+            </div>
             <div>
                 <ul>
                     <li *ngFor="let pomo of item.pomosArray">

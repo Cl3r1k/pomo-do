@@ -2,7 +2,24 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     .pomo-days {
-        grid-column: span 12;
         list-style: none;
+        padding-left: 0;
+        grid-column: span 12;
+        .pomos-group-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            .pomos-date-count-container {
+                grid-column: span 12;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                .pomos-date-group {
+                    grid-column: span 6;
+                }
+                .pomos-count-group {
+                    grid-column: span 6;
+                    justify-self: end;
+                }
+            }
+        }
     }
 }
