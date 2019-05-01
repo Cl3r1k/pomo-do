@@ -1,6 +1,8 @@
 .pomo-list {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    padding: 0 20px;
+    border: 1px solid;
     .pomo-days {
         list-style: none;
         padding-left: 0;
@@ -18,6 +20,23 @@
                 .pomos-count-group {
                     grid-column: span 6;
                     justify-self: end;
+                }
+            }
+            .pomos-data-container {
+                grid-column: span 12;
+                .pomos-items {
+                    list-style: none;
+                    .pomo-item {
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        .pomo-time {
+                            grid-column: span 3;
+                        }
+                        .pomo-title {
+                            grid-column: span 9;
+                            margin: 0;
+                        }
+                    }
                 }
             }
         }

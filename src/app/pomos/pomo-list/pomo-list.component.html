@@ -5,10 +5,11 @@
                 <span class="pomos-date-group">{{item.dateGroup}}</span>
                 <span class="pomos-count-group">Finished {{item.pomosCount}} pomos</span>
             </div>
-            <div>
-                <ul>
-                    <li *ngFor="let pomo of item.pomosArray">
-                        <span>{{pomo.start_short_time}}</span> - <span>{{pomo.end_short_time}}</span> {{pomo.title}} <span *ngIf="pomo.counter > 1">× {{pomo.counter}}</span>
+            <div class="pomos-data-container">
+                <ul class="pomos-items">
+                    <li *ngFor="let pomo of item.pomosArray" class="pomo-item">
+                        <span class="pomo-time">{{pomo.start_short_time}} - {{pomo.end_short_time}}</span>
+                        <p class="pomo-title">{{pomo.title}} <span *ngIf="pomo.counter > 1">× {{pomo.counter}}</span></p>
                     </li>
                 </ul>
             </div>
