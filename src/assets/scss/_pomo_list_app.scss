@@ -26,6 +26,7 @@
                 grid-column: span 12;
                 .pomos-items {
                     list-style: none;
+                    padding-left: 0;
                     .pomo-item {
                         display: grid;
                         grid-template-columns: repeat(12, 1fr);
