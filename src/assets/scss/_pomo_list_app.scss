@@ -10,10 +10,12 @@
         .pomos-group-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
+            font-size: 0.9em;
             .pomos-date-count-container {
                 grid-column: span 12;
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
+                margin: 3px 0;
                 .pomos-date-group {
                     grid-column: span 6;
                 }
