@@ -9,7 +9,7 @@
                 <ul class="pomos-items">
                     <li *ngFor="let pomo of item.pomosArray" class="pomo-item">
                         <span class="pomo-time">{{pomo.start_short_time}} - {{pomo.end_short_time}}</span>
-                        <p class="pomo-title">{{pomo.title}} <span *ngIf="pomo.counter > 1">× {{pomo.counter}}</span></p>
+                        <p class="pomo-title">{{pomo.title}} <span *ngIf="pomo.counter > 1" class="pomo-multiplier">× {{pomo.counter}}</span></p>
                     </li>
                 </ul>
             </div>

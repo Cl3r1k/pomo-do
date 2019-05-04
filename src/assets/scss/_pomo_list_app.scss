@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 20px;
-    border: 1px solid;
+    border: 1px solid #aaaaaa;
+    box-shadow: 0 0 5px 0px #969696;
     .pomo-days {
         list-style: none;
         padding-left: 0;
@@ -16,12 +17,15 @@
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
                 margin: 3px 0;
+                color: #999999;
                 .pomos-date-group {
                     grid-column: span 6;
+                    font-size: 1.1em;
                 }
                 .pomos-count-group {
                     grid-column: span 6;
                     justify-self: end;
+                    color: #666666;
                 }
             }
             .pomos-data-container {
@@ -34,10 +38,14 @@
                         grid-template-columns: repeat(12, 1fr);
                         .pomo-time {
                             grid-column: span 3;
+                            color: #999999;
                         }
                         .pomo-title {
                             grid-column: span 9;
                             margin: 0;
+                            .pomo-multiplier {
+                                color: #666666;
+                            }
                         }
                     }
                 }
