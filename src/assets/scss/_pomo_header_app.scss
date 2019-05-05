@@ -45,6 +45,13 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
     }
 }
 
+.container-shadow {
+    -webkit-box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
 .pomo-header {
     grid-column: span 12;
     display: grid;

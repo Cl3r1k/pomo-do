@@ -2,8 +2,12 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 20px;
-    border: 1px solid #aaaaaa;
-    box-shadow: 0 0 5px 0px #969696;
+    // border: 1px solid #aaaaaa;
+    // box-shadow: 0 0 5px 0px #969696;
+    height: 100%;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
     .pomo-days {
         list-style: none;
         padding-left: 0;
