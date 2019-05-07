@@ -14,6 +14,8 @@
         .pomo-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
+            // grid-template-rows: 51px auto;
+            // height: 100%;
             align-items: center;
             background-color: #bad2cf; // For Debug
             .pomo-header-container {
