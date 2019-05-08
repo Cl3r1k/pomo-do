@@ -25,6 +25,7 @@
                 .pomos-date-group {
                     grid-column: span 6;
                     font-size: 1.1em;
+                    padding-left: 5px;
                 }
                 .pomos-count-group {
                     grid-column: span 6;
@@ -47,6 +48,7 @@
                         .pomo-title {
                             grid-column: span 9;
                             margin: 0;
+                            margin-left: -10px;
                             .pomo-multiplier {
                                 color: #666666;
                             }

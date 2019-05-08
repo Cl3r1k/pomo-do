@@ -176,6 +176,14 @@ Todos:
                         ☐ Add 'pomo-list' component <========================================================= CURRENT TASK
                             ☐ Complete code and UI for 'PomoListComponent'
                                 ☐ Consider to build Object for 'PomoListComponent' in 'PomoStateService' and simply show it in component
+                                ✔ Add 'PomoStateService' @done(19-05-07 09:28)
+                                ✔ Create object for 'PomoListComponent' in 'PomoStateService' @done(19-05-07 09:29)
+                                ☐ Height for 'pomo-list' shouldn't change height for 'todos'
+                                    ☐ Use 'overflow' for desired behaviour
+                                ☐ Hover on 'pomo-time' should show full time in popup
+
+                            ☐ Improve height for 'pomo-progress'
+
 
                         
                             ☐ Fix broken tests according to new 'PomoList' code
