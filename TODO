@@ -180,7 +180,7 @@ Todos:
                                 ✔ Create object for 'PomoListComponent' in 'PomoStateService' @done(19-05-07 09:29)
                                 ☐ Height for 'pomo-list' shouldn't change height for 'todos'
                                     ☐ Use 'overflow' for desired behaviour
-                                ☐ Hover on 'pomo-time' should show full time in popup
+                                ✔ Hover on 'pomo-time' should show full time in popup @done(19-05-08 10:03)
 
                             ☐ Improve height for 'pomo-progress'
 

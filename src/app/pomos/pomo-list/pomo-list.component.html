@@ -8,7 +8,7 @@
             <div class="pomos-data-container">
                 <ul class="pomos-items">
                     <li *ngFor="let pomo of item.pomosArray" class="pomo-item">
-                        <span class="pomo-time">{{pomo.start_short_time}} - {{pomo.end_short_time}}</span>
+                        <div class="pomo-time"><span appTooltipDirective='{{pomo.start_time}}' placement='top'>{{pomo.start_short_time}}</span> - <span appTooltipDirective='{{pomo.end_time}}' placement='top'>{{pomo.end_short_time}}</span></div>
                         <p class="pomo-title">{{pomo.title}} <span *ngIf="pomo.counter > 1" class="pomo-multiplier">× {{pomo.counter}}</span></p>
                     </li>
                 </ul>

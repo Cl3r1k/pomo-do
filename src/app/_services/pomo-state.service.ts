@@ -172,10 +172,14 @@ export class PomoStateService {
                 const endLocalHrsMins = new Date(pomoItem.end_time);
                 const tmpStart = ('00' + startLocalHrsMins.getHours()).slice(-2) + ':' + ('00' + startLocalHrsMins.getMinutes()).slice(-2);
                 const tmpEnd = ('00' + endLocalHrsMins.getHours()).slice(-2) + ':' + ('00' + endLocalHrsMins.getMinutes()).slice(-2);
+                // tslint:disable-next-line:max-line-length
+                const startTimeToView = startLocalHrsMins.toLocaleString() + ' +' + ('00' + -(startLocalHrsMins.getTimezoneOffset() / 60)).slice(-2) + ':00';
+                // tslint:disable-next-line:max-line-length
+                const endTimeToView = endLocalHrsMins.toLocaleString() + ' +' + ('00' + -(endLocalHrsMins.getTimezoneOffset() / 60)).slice(-2) + ':00';
                 const pomoObj = {
                     title: pomoItem.title,
-                    start_time: pomoItem.start_time,
-                    end_time: pomoItem.end_time,
+                    start_time: startTimeToView,
+                    end_time: endTimeToView,
                     start_short_time: tmpStart,
                     end_short_time: tmpEnd,
                     counter: 1
