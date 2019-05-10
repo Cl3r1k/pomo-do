@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 import { PomoState } from '@app/_models/pomo-state';
 import { Pomo } from '@app/_models/pomo';
 
+// Services
+import { IndexedDbService } from '@app/_services/indexed-db.service';
+
 // Imports
 import { v4 as uuidv4 } from 'uuid';
 
@@ -21,7 +24,7 @@ export class PomoStateService {
     recentPomos: Pomo[] = [];
     recentPomosView = [];
 
-    constructor() { }
+    constructor(private _indexedDbService: IndexedDbService) { }
 
     initPomoState() {
 
@@ -107,7 +110,7 @@ export class PomoStateService {
             this.recentPomos = [];
             console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
 
-            // TODO: Return to this part and improve, after object will be learned more
+            // TODO: Return to this part and improve, after object will be more learned
             Object.keys(data['pomos']).forEach(key => {
                 const item = data['pomos'][key];
 

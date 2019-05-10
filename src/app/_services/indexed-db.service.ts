@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ToDo } from '@app/_models/to-do';
 
 // Models
+import { ToDo } from '@app/_models/to-do';
 import { Tag } from '@app/_models/tag';
+import { Pomo } from '@app/_models/pomo';
 
 // Services
 import { TagLayerService } from '@app/_services/tag-layer.service';
@@ -19,6 +20,7 @@ export class IndexedDbService extends Dexie {
 
     dbTable: Dexie.Table<ToDo, number>;
     tagTable: Dexie.Table<Tag, number>;
+    pomoTable: Dexie.Table<Pomo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
     consoleTextColorService = 'color: salmon;';
     baseVersion = 3;

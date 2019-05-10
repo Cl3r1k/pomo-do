@@ -173,7 +173,7 @@ Todos:
                             ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
                             ✔ After 'pomo-header' part completed bump 'patch' version @done(19-04-21 10:17)
 
-                        ☐ Add 'pomo-list' component <========================================================= CURRENT TASK
+                        ☐ Add 'pomo-list' component
                             ☐ Complete code and UI for 'PomoListComponent'
                                 ☐ Consider to build Object for 'PomoListComponent' in 'PomoStateService' and simply show it in component
                                 ✔ Add 'PomoStateService' @done(19-05-07 09:28)
@@ -182,7 +182,9 @@ Todos:
                                     ☐ Use 'overflow' for desired behaviour
                                 ✔ Hover on 'pomo-time' should show full time in popup @done(19-05-08 10:03)
 
+
                             ☐ Improve height for 'pomo-progress'
+                            ☐ Add code in 'IndexedDbService' for 'pomoTable' <========================================================= CURRENT TASK
 
 
                         
