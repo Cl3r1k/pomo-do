@@ -1,11 +1,12 @@
 export class Pomo {
+    id: number;
     canceled: boolean;
     created_time: string;
     deleted: boolean;
     deleted_time: string;
     duration: number;
     end_time: string;
-    id: string;
+    uuid: string;
     manual: boolean;
     start_time: string;
     title: string;
@@ -27,7 +28,7 @@ export class Pomo {
         this.deleted_time = null;
         this.duration = 1500;
         this.end_time = this.created_time;
-        this.id = uuid;
+        this.uuid = uuid;
         this.manual = false;
         this.start_time = start_time;
         this.title = title;

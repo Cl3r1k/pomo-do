@@ -75,9 +75,21 @@ export class IndexedDbService extends Dexie {
             tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`
         });
 
+        // In version 6 added new table 'pomoTable'
+        this.version(6).stores({
+            dbTable: `++id, title, complete,
+                        inner_id, created_time, completed_time, updated_time, deleted_time, pin,
+                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
+            tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`,
+            pomoTable: `++id, canceled, created_time, deleted, deleted_time, duration, end_time,
+                        uuid, manual, start_time, title, updated_time, __accound_id, __dirty,
+                        _local_created_time, _local_deleted_time, _local_end_time, _local_start_time, _local_updated_time`
+        });
+
         // mapToClass (http://dexie.org/docs/Table/Table.mapToClass())
         this.dbTable.mapToClass(ToDo);
         this.tagTable.mapToClass(Tag);
+        this.pomoTable.mapToClass(Pomo);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColorService, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
