@@ -185,6 +185,10 @@ Todos:
 
                             ☐ Improve height for 'pomo-progress'
                             ☐ Add code in 'IndexedDbService' for 'pomoTable' <========================================================= CURRENT TASK
+                                ✔ Add method 'savePomo()' in 'IndexedDbService' @done(19-05-11 09:50)
+                            ☐ Refactor 'IndexedDbService'
+                                ☐ Rename 'dbTable' to 'todoTable' in 'IndexedDbService'
+                                ☐ Devide code with comments to 'todos', 'tags' and 'pomos' parts in 'IndexedDbService'
 
 
                         

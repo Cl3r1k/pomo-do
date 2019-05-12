@@ -90,6 +90,9 @@ export class PomoStateService {
         this.savePomoState();
 
         // TODO: Save pomo in IndexedDb
+        this._indexedDbService.savePomo(recentPomo).subscribe(result => {
+            console.log('%cPomoStateService - result: ', this.consoleTextColorService, result);
+        });
     }
 
     savePomoList() {

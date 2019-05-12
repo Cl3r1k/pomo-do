@@ -726,4 +726,16 @@ export class IndexedDbService extends Dexie {
     //     }));
     // }
 
+
+    /// ----- Pomos Part ----- ///
+    public savePomo(pomo: Pomo): Observable<boolean> {
+        return observableFrom(this.pomoTable.add(pomo).then(async (newId) => {
+            console.log('%c savePomo() - added new pomoId: ', this.consoleTextColorService, newId);
+            return true;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+    /// ----- End Pomos Part ----- ///
+
 }
