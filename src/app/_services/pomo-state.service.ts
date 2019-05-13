@@ -80,18 +80,18 @@ export class PomoStateService {
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
-        this.recentPomos.push(recentPomo);
-        this.generatePomoListView();
-        this.savePomoList();
-        // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
-
-        this.pomoState.status = 'resting';
-        this.pomoState.rest_time = new Date().toISOString();
-        this.savePomoState();
-
-        // TODO: Save pomo in IndexedDb
         this._indexedDbService.savePomo(recentPomo).subscribe(result => {
-            console.log('%cPomoStateService - result: ', this.consoleTextColorService, result);
+            // console.log('%cPomoStateService - result: ', this.consoleTextColorService, result);
+            if (result) {
+                this.recentPomos.push(recentPomo);
+                this.generatePomoListView();
+                this.savePomoList();
+                // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+
+                this.pomoState.status = 'resting';
+                this.pomoState.rest_time = new Date().toISOString();
+                this.savePomoState();
+            }
         });
     }
 
