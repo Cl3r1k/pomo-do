@@ -730,8 +730,19 @@ export class IndexedDbService extends Dexie {
     /// ----- Pomos Part ----- ///
     public savePomo(pomo: Pomo): Observable<boolean> {
         return observableFrom(this.pomoTable.add(pomo).then(async (newId) => {
-            console.log('%c savePomo() - added new pomoId: ', this.consoleTextColorService, newId);
+            // console.log('%c savePomo() - added new pomoId: ', this.consoleTextColorService, newId);
             return true;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
+    public getAllPomos(): Observable<Pomo[]> {
+        return observableFrom(this.pomoTable.toArray().then(async (response) => {
+
+            // TODO: Perform request to backend... Some part of code to process back-end <-------------------
+
+            return response;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
         }));

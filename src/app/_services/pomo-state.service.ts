@@ -80,9 +80,9 @@ export class PomoStateService {
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
-        this._indexedDbService.savePomo(recentPomo).subscribe(result => {
-            // console.log('%cPomoStateService - result: ', this.consoleTextColorService, result);
-            if (result) {
+        this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
+            // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
+            if (isSaved) {
                 this.recentPomos.push(recentPomo);
                 this.generatePomoListView();
                 this.savePomoList();
@@ -107,6 +107,11 @@ export class PomoStateService {
     }
 
     loadPomoList() {
+
+        this._indexedDbService.getAllPomos().subscribe(allPomos => {
+            console.log('%cPomoStateService - allPomos: ', this.consoleTextColorService, allPomos);
+        });
+
         const data = JSON.parse(localStorage.getItem('recentPomoList'));
 
         if (data) {
