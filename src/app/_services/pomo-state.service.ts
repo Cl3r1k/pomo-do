@@ -110,41 +110,54 @@ export class PomoStateService {
 
         this._indexedDbService.getAllPomos().subscribe(allPomos => {
             console.log('%cPomoStateService - allPomos: ', this.consoleTextColorService, allPomos);
+
+            const data = JSON.parse(localStorage.getItem('recentPomoList'));
+
+            if (allPomos.length) {
+                this.recentPomos = [];
+
+                const tmpRecentPomos: Pomo[] = [];
+
+                if (data) {
+                    console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
+
+                    // TODO: Return to this part and improve, after object will be more learned
+                    Object.keys(data['pomos']).forEach(key => {
+                        const item = data['pomos'][key];
+
+                        const tmpPomo = new Pomo(item['title'], item['start_time'], item['uuid'], item['canceled']);
+                        tmpPomo.created_time = item['created_time'];
+                        tmpPomo.deleted = item['deleted'];
+                        tmpPomo.deleted_time = item['deleted_time'];
+                        tmpPomo.duration = item['duration'];
+                        tmpPomo.end_time = item['end_time'];
+                        tmpPomo.manual = item['manual'];
+                        tmpPomo.title = item['title'];
+                        tmpPomo.updated_time = item['updated_time'];
+                        tmpPomo.__accound_id = item['__accound_id'];
+                        tmpPomo.__dirty = item['__dirty'];
+                        tmpPomo._local_created_time = item['_local_created_time'];
+                        tmpPomo._local_updated_time = item['_local_updated_time'];
+                        tmpPomo._local_end_time = item['_local_end_time'];
+                        tmpPomo._local_start_time = item['_local_start_time'];
+                        tmpPomo._local_deleted_time = item['_local_deleted_time'];
+
+                        tmpRecentPomos.push(tmpPomo);
+                    });
+                }
+
+                if (allPomos.length !== tmpRecentPomos.length) {
+                    this.recentPomos = allPomos;
+                    this.savePomoList();
+                } else {
+                    this.recentPomos = tmpRecentPomos;
+                }
+
+                console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+                this.generatePomoListView();
+            }
         });
 
-        const data = JSON.parse(localStorage.getItem('recentPomoList'));
-
-        if (data) {
-            this.recentPomos = [];
-            console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
-
-            // TODO: Return to this part and improve, after object will be more learned
-            Object.keys(data['pomos']).forEach(key => {
-                const item = data['pomos'][key];
-
-                const tmpPomo = new Pomo(item['title'], item['start_time'], item['uuid'], item['canceled']);
-                tmpPomo.created_time = item['created_time'];
-                tmpPomo.deleted = item['deleted'];
-                tmpPomo.deleted_time = item['deleted_time'];
-                tmpPomo.duration = item['duration'];
-                tmpPomo.end_time = item['end_time'];
-                tmpPomo.manual = item['manual'];
-                tmpPomo.title = item['title'];
-                tmpPomo.updated_time = item['updated_time'];
-                tmpPomo.__accound_id = item['__accound_id'];
-                tmpPomo.__dirty = item['__dirty'];
-                tmpPomo._local_created_time = item['_local_created_time'];
-                tmpPomo._local_updated_time = item['_local_updated_time'];
-                tmpPomo._local_end_time = item['_local_end_time'];
-                tmpPomo._local_start_time = item['_local_start_time'];
-                tmpPomo._local_deleted_time = item['_local_deleted_time'];
-
-                this.recentPomos.push(tmpPomo);
-            });
-
-            console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', this.consoleTextColorService, this.recentPomos);
-            this.generatePomoListView();
-        }
     }
 
     generatePomoListView() {
