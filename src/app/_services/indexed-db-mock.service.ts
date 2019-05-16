@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 // Models
 import { ToDo } from '@app/_models/to-do';
 import { Tag } from '@app/_models/tag';
+import { Pomo } from '@app/_models/pomo';
 
 // Imports
 import {of as observableOf,  Observable } from 'rxjs';
@@ -84,6 +85,16 @@ export class IndexedDbMockService {
 
     public cleanHashtags(todos: ToDo[], hashtagsInDb: Tag[]): boolean {
         return true;
+    }
+
+    public savePomo(pomo: Pomo): Observable<boolean> {
+        return observableOf(true);
+    }
+
+    public getAllPomos(): Observable<Pomo[]> {
+        return observableOf([
+            new Pomo('Pomo title', '2019-05-11T04:09:54.000Z', '74fb65cf-ba7b-40d3-a58f-0f7d4b176061', false)
+        ]);
     }
 
 }

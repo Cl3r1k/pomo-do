@@ -23,7 +23,7 @@ describe(`Model: Pomo`, () => {
         // Assert
         expect(pomoTest.title).toEqual('title test');
         expect(pomoTest.start_time).toBeTruthy();
-        expect(pomoTest.id).toEqual('uuid test');
+        expect(pomoTest.uuid).toEqual('uuid test');
     }));
 
     it(`Should have initial vaules after init (async)`, async(() => {
