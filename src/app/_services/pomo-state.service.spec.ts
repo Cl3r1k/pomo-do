@@ -2,21 +2,32 @@ import { TestBed } from '@angular/core/testing';
 
 // Services
 import { PomoStateService } from './pomo-state.service';
+import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 // Models
 import { PomoState } from '@app/_models/pomo-state';
 
+// Mocks
+import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
+
 describe('Service: PomoStateService', () => {
 
     let service: PomoStateService;
+    let indexedDbService: IndexedDbService;
     const store = {};
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: []
+            providers: [
+                {
+                    provide: IndexedDbService,
+                    useClass: IndexedDbMockService
+                }
+            ]
         });
 
         service = TestBed.get(PomoStateService);
+        indexedDbService = TestBed.get(IndexedDbService);
 
         const mockLocalStorage = {
             getItem: (key: string): string => {
@@ -218,6 +229,18 @@ describe('Service: PomoStateService', () => {
             // Assert
             expect(service.savePomoState).toHaveBeenCalled();
         });
+
+        // it(`Should call 'indexedDbService.savePomo()'`, () => {
+        //     // Arrange
+        //     service.pomoState = new PomoState();
+
+        //     // Act
+        //     spyOn(indexedDbService, 'savePomo');
+        //     service.saveCompletedPomo('Test pomoName (savePomoState)');
+
+        //     // Assert
+        //     expect(indexedDbService.savePomo).toHaveBeenCalled();
+        // });
     });
 
     describe(`#savePomoList()`, () => {
