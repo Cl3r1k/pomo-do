@@ -23,6 +23,7 @@ import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/t
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { PomosComponent } from '@app/pomos/pomos.component';
 import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
+import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';
@@ -76,7 +77,8 @@ describe('Component: AppMainComponent', () => {
                 TooltipDirective,
                 ActiveTaskComponent,
                 PomosComponent,
-                PomoHeaderComponent
+                PomoHeaderComponent,
+                PomoListComponent
             ],
             providers: [TodoService,
                 {
@@ -124,8 +126,22 @@ describe('Component: AppMainComponent', () => {
         fixture.detectChanges();
     });
 
-    // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used:  Components(TodosComponent, AppHeaderComponent, TodoListHeaderComponent, TodoListComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent, ActiveTaskComponent, PomosComponent, PomoHeaderComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
+    it(`Should create the app, used:
+        Components(
+            TodosComponent,
+            AppHeaderComponent,
+            TodoListHeaderComponent,
+            TodoListComponent,
+            TodoListItemComponent,
+            TodoListItemViewComponent,
+            TodoListItemEditComponent,
+            ActiveTaskComponent,
+            PomosComponent,
+            PomoHeaderComponent,
+            PomoListComponent
+        ),
+        Services(ApiMockService, ApiService, IndexedDbMockService),
+        Modules(DndModule, MatDialogModule) (async)`, async(() => {
         // Arrange
 
         // Act
