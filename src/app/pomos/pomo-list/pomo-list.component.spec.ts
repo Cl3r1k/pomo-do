@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 // Components
 import { PomoListComponent } from './pomo-list.component';
@@ -19,6 +20,7 @@ describe('PomoListComponent', () => {
     let fixture: ComponentFixture<PomoListComponent>;
     let pomoStateService: PomoStateService;
     let indexedDbService: IndexedDbService;
+    let sectionPomoListtEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -47,7 +49,25 @@ describe('PomoListComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it(`Should create an instance of 'PomoHeaderComponent'`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(component).toBeTruthy();
     });
+
+    describe(`#view tests:`, () => {
+        it(`Should have section.pomo-list element`, () => {
+            // Arrange
+            sectionPomoListtEl = fixture.debugElement.query(By.css('section.pomo-list'));    // Find 'section.pomo-list' element
+
+            // Act
+
+            // Assert
+            expect(sectionPomoListtEl).toBeTruthy();
+        });
+    });
+
 });

@@ -191,12 +191,12 @@ Todos:
                             ✔ Update tests for 'Pomo' class @done(19-05-15 10:24)
                             
                             ☐ Refactor 'IndexedDbService'
-                                ☐ Rename 'dbTable' to 'todoTable' in 'IndexedDbService'
+                                ☐ Rename 'dbTable' to 'todoTable' in 'IndexedDbService' <========================================================= CURRENT TASK
                                 ☐ Devide code with comments to 'todos', 'tags' and 'pomos' parts in 'IndexedDbService'
 
 
                             ✔ Fix broken tests according to new 'PomoList' code @done(19-05-17 10:02)
-                            ☐ Add tests for 'PomoListComponent' <========================================================= CURRENT TASK
+                            ✔ Add tests for 'PomoListComponent' @done(19-05-18 10:00)
                             ✔ Update test for 'PomoStateService' with new 'PomoList' code @done(19-05-16 11:03)
                             ☐ After 'pomo-list' part completed bump 'patch' version
 
