@@ -18,7 +18,7 @@ import { from as observableFrom, throwError as observableThrowError, Observable 
 @Injectable()
 export class IndexedDbService extends Dexie {
 
-    dbTable: Dexie.Table<ToDo, number>;
+    todoTable: Dexie.Table<ToDo, number>;
     tagTable: Dexie.Table<Tag, number>;
     pomoTable: Dexie.Table<Pomo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
@@ -44,24 +44,24 @@ export class IndexedDbService extends Dexie {
 
         // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
         this.version(1).stores({
-            dbTable: '++id, title, complete'
+            todoTable: '++id, title, complete'
         });
 
         // In version 2 added fields for 'pin' and 'time-operations'
         this.version(2).stores({
-            dbTable: '++id, title, complete, inner_id, created_time, completed_time, updated_time, deleted_time, pin'
+            todoTable: '++id, title, complete, inner_id, created_time, completed_time, updated_time, deleted_time, pin'
         });
 
         // In version 3 added fields for 'more-dialog'
         this.version(3).stores({
-            dbTable: `++id, title, complete,
+            todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
 
         // In version 4 added new table 'tagTable'
         this.version(4).stores({
-            dbTable: `++id, title, complete,
+            todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
             tagTable: `++id, tagName, created_time, updated_time, color`
@@ -69,7 +69,7 @@ export class IndexedDbService extends Dexie {
 
         // In version 5 added field 'readyToDelete' in 'tagTable'
         this.version(5).stores({
-            dbTable: `++id, title, complete,
+            todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
             tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`
@@ -77,7 +77,7 @@ export class IndexedDbService extends Dexie {
 
         // In version 6 added new table 'pomoTable'
         this.version(6).stores({
-            dbTable: `++id, title, complete,
+            todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
             tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`,
@@ -87,24 +87,24 @@ export class IndexedDbService extends Dexie {
         });
 
         // mapToClass (http://dexie.org/docs/Table/Table.mapToClass())
-        this.dbTable.mapToClass(ToDo);
+        this.todoTable.mapToClass(ToDo);
         this.tagTable.mapToClass(Tag);
         this.pomoTable.mapToClass(Pomo);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColorService, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
-            this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
-            this.dbTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
-            this.dbTable.add(new ToDo({ id: 3, title: '4. Todo with URL https://google.com', complete: false }));
-            this.dbTable.add(new ToDo({ id: 4, title: '5. Double click to edit me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on pin icon to pin/unpin me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 6, title: '7. Press on dots for advanced settings!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 7, title: '8. Click on checkbox to mark as completed!', complete: false }));
+            this.todoTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
+            this.todoTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
+            this.todoTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
+            this.todoTable.add(new ToDo({ id: 3, title: '4. Todo with URL https://google.com', complete: false }));
+            this.todoTable.add(new ToDo({ id: 4, title: '5. Double click to edit me!', complete: false }));
+            this.todoTable.add(new ToDo({ id: 5, title: '6. Press on pin icon to pin/unpin me!', complete: false }));
+            this.todoTable.add(new ToDo({ id: 6, title: '7. Press on dots for advanced settings!', complete: false }));
+            this.todoTable.add(new ToDo({ id: 7, title: '8. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
-            this.dbTable.add(new ToDo({ id: 8, title: '9. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
-            this.dbTable.add(new ToDo({ id: 9, title: '10. Completed todo', complete: true }));
+            this.todoTable.add(new ToDo({ id: 8, title: '9. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
+            this.todoTable.add(new ToDo({ id: 9, title: '10. Completed todo', complete: true }));
 
             const tag: Tag = new Tag('#tagName');
             tag.color = this.colorsHashtags[0];
@@ -122,9 +122,11 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
+
+    /// ----- Todos Part ----- ///
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return observableFrom(this.dbTable.add(todo).then(async (newId) => {
-            const newTodo = await this.dbTable.get(newId);
+        return observableFrom(this.todoTable.add(todo).then(async (newId) => {
+            const newTodo = await this.todoTable.get(newId);
 
             // TODO: Do not forget to clean this line after
             // this.parseTag(todo);
@@ -137,7 +139,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodoById(todoId: number): Observable<ToDo> {
-        return observableFrom(this.dbTable.get(todoId).then(async (todo) => {
+        return observableFrom(this.todoTable.get(todoId).then(async (todo) => {
             console.log('%c getTodoById - todo result: ', this.consoleTextColorService, todo);
             return todo;
         }).catch(error => {
@@ -146,7 +148,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
-        return observableFrom(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
+        return observableFrom(this.todoTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
             console.log('%c getTodoByTitle - todos result: ', this.consoleTextColorService, todos);
             return todos;
         }).catch(error => {
@@ -155,8 +157,8 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodosAmountObject(): Observable<Object> {
-        return observableFrom(this.transaction('r', this.dbTable, async () => {
-            const todos: ToDo[] = await this.dbTable.toArray();
+        return observableFrom(this.transaction('r', this.todoTable, async () => {
+            const todos: ToDo[] = await this.todoTable.toArray();
 
             let activeTodos = 0;
             let completeTodos = 0;
@@ -176,7 +178,7 @@ export class IndexedDbService extends Dexie {
 
     // public getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
     //     console.log('%c calling getTodosWithHashtag in IndexedDbService with hashtag:', this.consoleTextColorService, hashtag);
-    //     return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
+    //     return Observable.fromPromise(this.todoTable.toArray().then(async (response) => {
     //         let todos: ToDo[] = [];
 
     //         todos = response.filter(todo => {
@@ -194,7 +196,7 @@ export class IndexedDbService extends Dexie {
     // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
-        return observableFrom(this.dbTable.toArray().then(async (response) => {
+        return observableFrom(this.todoTable.toArray().then(async (response) => {
 
             // const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             // if (!hashtagsInDb.length) {
@@ -225,15 +227,15 @@ export class IndexedDbService extends Dexie {
     // TODO: Decide to use the method return type as ToDo or number (0 or 1) e.g. update() returns 1 if data updated and 0 if not
     public updateTodo(todo: ToDo): Observable<ToDo> {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
-        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
+        return observableFrom(this.transaction('rw', this.todoTable, this.tagTable, async () => {
 
-            await this.dbTable.update(todo.id, todo);
+            await this.todoTable.update(todo.id, todo);
 
             // TODO: Do not forget to clean line bellow after
             // this.parseTag(todo);
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-            const todos: ToDo[] = await this.dbTable.toArray();
+            const todos: ToDo[] = await this.todoTable.toArray();
 
             const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
 
@@ -252,7 +254,7 @@ export class IndexedDbService extends Dexie {
                 this._tagLayerService.tags = hashtagsInDb;
             }
 
-            return await this.dbTable.get(todo.id);
+            return await this.todoTable.get(todo.id);
         }).then(async (updatedTodo) => {
             console.log('%c Transaction committed updatedTodo: ', this.consoleTextColorService, updatedTodo);
             return updatedTodo;
@@ -263,8 +265,8 @@ export class IndexedDbService extends Dexie {
 
     // API: (toggle all todos complete status)
     public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
-        return observableFrom(this.transaction('rw', this.dbTable, async () => {
-            let todos: ToDo[] = await this.dbTable.toArray();
+        return observableFrom(this.transaction('rw', this.todoTable, async () => {
+            let todos: ToDo[] = await this.todoTable.toArray();
 
             todos.forEach(todo => {
                 todo.updated_time = new Date().toISOString();
@@ -274,7 +276,7 @@ export class IndexedDbService extends Dexie {
                 return todo.complete = toggleState;
             });
 
-            const lastKey = await this.dbTable.bulkPut(todos);
+            const lastKey = await this.todoTable.bulkPut(todos);
 
             // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
 
@@ -295,12 +297,12 @@ export class IndexedDbService extends Dexie {
     }
 
     public deleteTodoById(todoId: number): Observable<null> {
-        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
-            const todo = await this.dbTable.get(todoId);
+        return observableFrom(this.transaction('rw', this.todoTable, this.tagTable, async () => {
+            const todo = await this.todoTable.get(todoId);
             todo.updated_time = new Date().toISOString();
             todo.deleted_time = todo.updated_time;
-            await this.dbTable.update(todo.id, todo);
-            await this.dbTable.delete(todoId);
+            await this.todoTable.update(todo.id, todo);
+            await this.todoTable.delete(todoId);
 
             // TODO: Do not forget to clean this line after
             // this.parseTag(todo);
@@ -308,7 +310,7 @@ export class IndexedDbService extends Dexie {
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-            const todos: ToDo[] = await this.dbTable.toArray();
+            const todos: ToDo[] = await this.todoTable.toArray();
 
             const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
 
@@ -332,8 +334,8 @@ export class IndexedDbService extends Dexie {
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
-            let todos: ToDo[] = await this.dbTable.toArray();
+        return observableFrom(this.transaction('rw', this.todoTable, this.tagTable, async () => {
+            let todos: ToDo[] = await this.todoTable.toArray();
             const todosIds: number[] = [];
 
             todos.forEach(todo => {
@@ -348,9 +350,9 @@ export class IndexedDbService extends Dexie {
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
-            const resDelete = await this.dbTable.bulkDelete(todosIds);
+            const resDelete = await this.todoTable.bulkDelete(todosIds);
 
-            todos = await this.dbTable.toArray();
+            todos = await this.todoTable.toArray();
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 todos = todos.filter(todo => {
@@ -375,9 +377,9 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
-    public clearStore(): Observable<null> {
-        return observableFrom(this.dbTable.clear().then(() => {
-            console.log('%c clearStore -> all items deleted', this.consoleTextColorService);
+    public clearTodoStore(): Observable<null> {
+        return observableFrom(this.todoTable.clear().then(() => {
+            console.log('%c clearTodoStore() -> all items deleted', this.consoleTextColorService);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -386,8 +388,8 @@ export class IndexedDbService extends Dexie {
 
     // API: (move todo to new position)
     // public moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
-    //     return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
-    //         let todos: ToDo[] = await this.dbTable.toArray();
+    //     return Observable.fromPromise(this.transaction('rw', this.todoTable, async () => {
+    //         let todos: ToDo[] = await this.todoTable.toArray();
     //         const fromId = moveState['movedTodoIdDest'];
     //         const toId = moveState['movedTodoIdSource'];
 
@@ -437,12 +439,12 @@ export class IndexedDbService extends Dexie {
 
     //         // console.log('%c AFTER movements Array is:', this.consoleTextColorService, todos);
 
-    //         await this.dbTable.clear();
-    //         const lastKey = await this.dbTable.bulkPut(todos);
+    //         await this.todoTable.clear();
+    //         const lastKey = await this.todoTable.bulkPut(todos);
     // tslint:disable-next-line:max-line-length
     //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
 
-    //         todos = await this.dbTable.toArray();
+    //         todos = await this.todoTable.toArray();
 
     //         if (activeRouteState === 1 || activeRouteState === 2) {
     //             todos = todos.filter(todo => {
@@ -463,12 +465,10 @@ export class IndexedDbService extends Dexie {
     public addBatch() {
         //
     }
+    /// ----- End Todos Part ----- ///
 
-    private handleError(source: string, error: Event | any) {
-        console.error('IndexedDbService (%s) - handleError: ', source, error.stack || error);
-        return observableThrowError(error);
-    }
 
+    /// ----- Hashtags Part ----- ///
     private async parseTag(todo: ToDo) {
         // Find #hashtags in text
         if (todo.title.match(this.hashtagsRegExp)) {
@@ -476,7 +476,7 @@ export class IndexedDbService extends Dexie {
             // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
-            const todos: ToDo[] = await this.dbTable.toArray();
+            const todos: ToDo[] = await this.todoTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
                 return hashtag.tagName;
             });
@@ -561,7 +561,7 @@ export class IndexedDbService extends Dexie {
             // Some part of code to process back-end <-------------------
 
             // In any case we just parse each todo to find #hashtags, for cleanup, or restore in IndexedDb
-            const todos: ToDo[] = await this.dbTable.toArray();
+            const todos: ToDo[] = await this.todoTable.toArray();
             let updateTagsPending = false;
 
             // Here we should check each todo for #hashtags, and add if it's not in list (in case if db was corrupted)
@@ -665,7 +665,7 @@ export class IndexedDbService extends Dexie {
                 if (todo.title.includes(hashtagInDb.tagName.trim())) {
                     // Used regexp to define that current hastag is present in todo.title
                     // Look here https://regex101.com/r/A0H4wO/1/
-                    const hashtagRegExp = new RegExp(hashtagInDb.tagName.trim() + '($|\s)', 'i' );
+                    const hashtagRegExp = new RegExp(hashtagInDb.tagName.trim() + '($|\s)', 'i');
                     if (todo.title.match(hashtagRegExp)) {
                         // console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
                         isPresent = true;
@@ -725,6 +725,7 @@ export class IndexedDbService extends Dexie {
     //         return error;    // TODO: Handle error properly as Observable
     //     }));
     // }
+    /// ----- End Hashtags Part ----- ///
 
 
     /// ----- Pomos Part ----- ///
@@ -748,5 +749,13 @@ export class IndexedDbService extends Dexie {
         }));
     }
     /// ----- End Pomos Part ----- ///
+
+
+    /// ----- Additional Part ----- ///
+    private handleError(source: string, error: Event | any) {
+        console.error('IndexedDbService (%s) - handleError: ', source, error.stack || error);
+        return observableThrowError(error);
+    }
+    /// ----- End Additional Part ----- ///
 
 }

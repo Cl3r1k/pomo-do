@@ -69,7 +69,7 @@ export class IndexedDbMockService {
         ]);
     }
 
-    public clearStore(): Observable<null> {
+    public clearTodoStore(): Observable<null> {
         return observableOf(null);
     }
 
