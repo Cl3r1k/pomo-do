@@ -7,6 +7,9 @@ import { Pomo } from '@app/_models/pomo';
 // Services
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 
+// Modules
+import { Utils } from '@app/_common/utils';
+
 // Imports
 import { v4 as uuidv4 } from 'uuid';
 
@@ -24,7 +27,7 @@ export class PomoStateService {
     recentPomos: Pomo[] = [];
     recentPomosView = [];
 
-    constructor(private _indexedDbService: IndexedDbService) { }
+    constructor(private _indexedDbService: IndexedDbService, private _utils: Utils) { }
 
     initPomoState() {
 
@@ -146,10 +149,15 @@ export class PomoStateService {
                     });
                 }
 
+                console.log('%c PomoStatusService{loadPomoList()} - tmpRecentPomos: ', this.consoleTextColorService, tmpRecentPomos);
+                console.log('%c PomoStatusService{loadPomoList()} - allPomos: ', this.consoleTextColorService, allPomos);
+                const compareResult = this._utils.isEqualArrayOfObjects(allPomos, tmpRecentPomos);
                 if (allPomos.length !== tmpRecentPomos.length) {
                     this.recentPomos = allPomos;
                     this.savePomoList();
                 } else {
+                    // tslint:disable-next-line:max-line-length
+                    console.log('%c PomoStatusService{loadPomoList()} - allPomos.length === tmpRecentPomos.length : ', this.consoleTextColorService);
                     this.recentPomos = tmpRecentPomos;
                 }
 
