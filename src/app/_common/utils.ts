@@ -22,6 +22,28 @@ export class Utils {
             result = false;
         }
 
+        // Compare the length of the two items
+        const valueLen = typeValue === '[object Array]' ? value.length : Object.keys(value).length;
+        const valueToCheckLen = typeValue === '[object Array]' ? valueToCheck.length : Object.keys(value).length;
+
+        if (valueLen !== valueToCheckLen) {
+            result = false;
+        }
+
+        // Compare properties
+        if (typeValue === '[object Array]') {
+            for (let i = 0; i < valueLen; i++) {
+                // Compare the item
+            }
+        } else {
+            for (const key in value) {
+                if (value.hasOwnProperty(key)) {
+                    // Compare the item
+                }
+            }
+        }
+
+
         return true;
     }
 
