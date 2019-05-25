@@ -31,12 +31,16 @@ export class Utils {
         // Compare properties
         if (typeValue === '[object Array]') {
             for (let i = 0; i < valueLen; i++) {
-                this.compareObjects(value[i], valueToCheck[i]);
+                if (this.compareObjects(value[i], valueToCheck[i]) === false) {
+                    return false;
+                }
             }
         } else {
             for (const key in value) {
                 if (value.hasOwnProperty(key)) {
-                    this.compareObjects(value[key], valueToCheck[key]);
+                    if (this.compareObjects(value[key], valueToCheck[key]) === false) {
+                        return false;
+                    }
                 }
             }
         }
@@ -59,7 +63,16 @@ export class Utils {
                 return false;
             }
 
-            //
+            // If it's a function, convert to a string and compare, otherwise, just compare
+            if (itemType === '[object Function]') {
+                if (item1.toString() !== item2.toString()) {
+                    return false;
+                } else {
+                    if (item1 !== item2) {
+                        return false;
+                    }
+                }
+            }
         }
 
         return true;

@@ -184,6 +184,7 @@ Todos:
                                 ☐ Fix issue for 'pomo-series' <========================================================= CURRENT TASK
                                 ☐ Process/save interrupted 'pomo'
                                 ☐ Read from 'IndexedDB' only last 100 "completed" pomos
+                                ☐ For 'duration' member in 'Pomo' class calculte real duration for pomo
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)

@@ -129,6 +129,7 @@ export class PomoStateService {
                         const item = data['pomos'][key];
 
                         const tmpPomo = new Pomo(item['title'], item['start_time'], item['uuid'], item['canceled']);
+                        tmpPomo.id = item['id'];
                         tmpPomo.created_time = item['created_time'];
                         tmpPomo.deleted = item['deleted'];
                         tmpPomo.deleted_time = item['deleted_time'];
@@ -152,7 +153,7 @@ export class PomoStateService {
                 console.log('%c PomoStatusService{loadPomoList()} - tmpRecentPomos: ', this.consoleTextColorService, tmpRecentPomos);
                 console.log('%c PomoStatusService{loadPomoList()} - allPomos: ', this.consoleTextColorService, allPomos);
                 const compareResult = this._utils.isEqualArrayOfObjects(allPomos, tmpRecentPomos);
-                if (allPomos.length !== tmpRecentPomos.length) {
+                if (!compareResult) {
                     this.recentPomos = allPomos;
                     this.savePomoList();
                 } else {
