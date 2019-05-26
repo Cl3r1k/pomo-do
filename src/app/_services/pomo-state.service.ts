@@ -70,6 +70,7 @@ export class PomoStateService {
     interruptPomo() {
         this.setIdlePomoState();
         this.pomoState.end_time = new Date().toISOString();
+        // this.saveCompletedPomo('');
         this.savePomoState();
     }
 
@@ -211,8 +212,10 @@ export class PomoStateService {
                 const endTimeToView = endLocalHrsMins.toLocaleString() + ' +' + ('00' + -(endLocalHrsMins.getTimezoneOffset() / 60)).slice(-2) + ':00';
                 const pomoObj = {
                     title: pomoItem.title,
-                    start_time: startTimeToView,
-                    end_time: endTimeToView,
+                    start_time: pomoItem.start_time,
+                    end_time: pomoItem.end_time,
+                    start_time_view: startTimeToView,
+                    end_time_view: endTimeToView,
                     start_short_time: tmpStart,
                     end_short_time: tmpEnd,
                     counter: 1
