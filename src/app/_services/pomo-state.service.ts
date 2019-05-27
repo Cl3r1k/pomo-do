@@ -70,7 +70,7 @@ export class PomoStateService {
     interruptPomo() {
         this.setIdlePomoState();
         this.pomoState.end_time = new Date().toISOString();
-        // this.saveCompletedPomo('');
+        this.saveCompletedPomo('');
         this.savePomoState();
     }
 
@@ -80,9 +80,16 @@ export class PomoStateService {
 
     saveCompletedPomo(pomoName: string) {
         // console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
-        const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, false);
+
+        const isInterrupted = pomoName === '' ? true : false;
+        const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, isInterrupted);
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
+
+        if (isInterrupted) {
+            const pomoLength = (new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime();
+            console.log('%cPomoStatusService - pomoLength: ', this.consoleTextColorService, pomoLength);
+        }
 
         this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
             // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
