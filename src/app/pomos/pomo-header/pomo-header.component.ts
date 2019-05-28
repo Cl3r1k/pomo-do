@@ -213,10 +213,11 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
     cancelPomo() {
         console.log('%ccancelPomo() called', this.consoleTextColorComponent);
+        const isRestState = this.currentState === 'rest' ? true : false;
         clearInterval(this.timerId);
         this.emitPomoState(0, false);            // Emit the 'statePomo' event to 'PomosComponent' (standby)
         this.resetCounter(false);
-        this._pomoStateService.interruptPomo();
+        this._pomoStateService.interruptPomo(isRestState);
     }
 
     savePomo(event: KeyboardEvent) {

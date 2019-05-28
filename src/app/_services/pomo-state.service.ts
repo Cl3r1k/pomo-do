@@ -67,10 +67,14 @@ export class PomoStateService {
         }
     }
 
-    interruptPomo() {
+    interruptPomo(isRestState: boolean) {
         this.setIdlePomoState();
         this.pomoState.end_time = new Date().toISOString();
-        this.saveCompletedPomo('');
+
+        if (!isRestState) {
+            this.saveCompletedPomo('');
+        }
+
         this.savePomoState();
     }
 
@@ -86,24 +90,27 @@ export class PomoStateService {
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
+        let pomoLength = 0;
         if (isInterrupted) {
-            const pomoLength = (new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime();
-            console.log('%cPomoStatusService - pomoLength: ', this.consoleTextColorService, pomoLength);
+            pomoLength = (new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime();
+            // console.log('%cPomoStatusService - pomoLength: ', this.consoleTextColorService, pomoLength);
         }
 
-        this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
-            // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
-            if (isSaved) {
-                this.recentPomos.push(recentPomo);
-                this.generatePomoListView();
-                this.savePomoList();
-                // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+        if (pomoLength === 0 || pomoLength / 1000 > 30) {    // If spend time for pomo before interrup is less than 30 seconds, skip it
+            this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
+                // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
+                if (isSaved) {
+                    this.recentPomos.push(recentPomo);
+                    this.generatePomoListView();
+                    this.savePomoList();
+                    // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
-                this.pomoState.status = 'resting';
-                this.pomoState.rest_time = new Date().toISOString();
-                this.savePomoState();
-            }
-        });
+                    this.pomoState.status = 'resting';
+                    this.pomoState.rest_time = new Date().toISOString();
+                    this.savePomoState();
+                }
+            });
+        }
     }
 
     savePomoList() {
