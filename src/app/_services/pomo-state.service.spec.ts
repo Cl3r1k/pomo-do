@@ -7,6 +7,9 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 // Models
 import { PomoState } from '@app/_models/pomo-state';
 
+// Modules
+import { Utils } from '@app/_common/utils';
+
 // Mocks
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 
@@ -18,7 +21,7 @@ describe('Service: PomoStateService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [
+            providers: [ Utils,
                 {
                     provide: IndexedDbService,
                     useClass: IndexedDbMockService
@@ -149,7 +152,7 @@ describe('Service: PomoStateService', () => {
 
             // Act
             spyOn(service, 'setIdlePomoState');
-            service.interruptPomo();
+            service.interruptPomo(false);
 
             // Assert
             expect(service.setIdlePomoState).toHaveBeenCalled();
@@ -160,7 +163,7 @@ describe('Service: PomoStateService', () => {
             service.pomoState = new PomoState();
 
             // Act
-            service.interruptPomo();
+            service.interruptPomo(false);
 
             // Assert
             expect(service.pomoState.end_time).toBeTruthy();
@@ -172,10 +175,22 @@ describe('Service: PomoStateService', () => {
 
             // Act
             spyOn(service, 'savePomoState');
-            service.interruptPomo();
+            service.interruptPomo(false);
 
             // Assert
             expect(service.savePomoState).toHaveBeenCalled();
+        });
+
+        it(`Should call 'saveCompletedPomo()' if argument is 'false'`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+
+            // Act
+            spyOn(service, 'saveCompletedPomo');
+            service.interruptPomo(false);
+
+            // Assert
+            expect(service.saveCompletedPomo).toHaveBeenCalled();
         });
     });
 

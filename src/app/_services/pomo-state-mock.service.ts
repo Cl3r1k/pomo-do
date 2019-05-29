@@ -8,7 +8,7 @@ export class PomoStateMockService {
 
     constructor() { }
 
-    public initPomoState() { }
+    public initPomoState(isRestState: boolean) { }
 
     public savePomoState() { }
 
