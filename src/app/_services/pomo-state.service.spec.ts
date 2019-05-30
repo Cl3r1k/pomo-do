@@ -301,7 +301,7 @@ describe('Service: PomoStateService', () => {
     });
 
     describe(`#loadPomoList()`, () => {
-        it(`Should load 'recentPomos' list from localStorage`, () => {
+        it(`Should load 'recentPomos' list from IndexedDb and localStorage`, () => {
             // Arrange
             service.pomoState = new PomoState();
 
@@ -312,7 +312,7 @@ describe('Service: PomoStateService', () => {
 
             // Assert
             expect(service.recentPomos.length).toEqual(1);
-            expect(service.recentPomos[0].title).toEqual('Test pomoName 123');
+            expect(service.recentPomos[0].title).toEqual('Pomo title from IndexedDbMockService');
         });
 
         it(`Should call 'getItem()' of localStorage`, () => {

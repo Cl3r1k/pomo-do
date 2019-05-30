@@ -18,6 +18,7 @@ import { TooltipDirective } from '@app/_directives/tooltip.directive';
 
 // Modules
 import { MatDialogModule } from '@angular/material';
+import { Utils } from '@app/_common/utils';
 
 // Mocks
 import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
@@ -33,7 +34,7 @@ describe('Component: PomosComponent', () => {
         TestBed.configureTestingModule({
             declarations: [PomosComponent, PomoHeaderComponent, PomoListComponent, TooltipDirective],
             imports: [FormsModule, MatDialogModule],
-            providers: [
+            providers: [ Utils,
                 {
                     provide: TodoOrderService,
                     useClass: TodoOrderMockService

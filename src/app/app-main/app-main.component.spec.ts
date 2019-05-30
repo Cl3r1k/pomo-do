@@ -47,6 +47,7 @@ import { ActivatedRoute } from '@angular/router';
 // Modules
 import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from '@beyerleinf/ngx-dnd';
 import { MatDialogModule } from '@angular/material';
+import { Utils } from '@app/_common/utils';
 
 describe('Component: AppMainComponent', () => {
     let component: AppMainComponent;
@@ -80,7 +81,7 @@ describe('Component: AppMainComponent', () => {
                 PomoHeaderComponent,
                 PomoListComponent
             ],
-            providers: [TodoService,
+            providers: [TodoService, Utils,
                 {
                     provide: ApiService,
                     useClass: ApiMockService
