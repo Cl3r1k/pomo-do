@@ -63,6 +63,8 @@ export class Utils {
                 return false;
             }
 
+            console.log('%c value and valueToCheck', 'color: green;', item1, item1);
+
             // If it's a function, convert to a string and compare, otherwise, just compare
             if (itemType === '[object Function]') {
                 if (item1.toString() !== item2.toString()) {
