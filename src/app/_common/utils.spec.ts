@@ -10,44 +10,43 @@ describe(`Class: Utils`, () => {
         _utils = new Utils();
     });
 
-    // it(`Should create an instance (async)`, async(() => {
-    //     // Arrange
+    it(`Should create an instance (async)`, async(() => {
+        // Arrange
 
-    //     // Act
+        // Act
 
-    //     // Assert
-    //     expect(_utils).toBeTruthy();
-    // }));
+        // Assert
+        expect(_utils).toBeTruthy();
+    }));
 
-    // describe(`#randomRangeInteger():`, () => {
-    //     it(`Should return value from val1 to val2 (async)`, async(() => {
-    //         // Arrange
-    //         let result: number;
-    //         const val1 = 0;
-    //         const val2 = 10;
+    describe(`#randomRangeInteger():`, () => {
+        it(`Should return value from val1 to val2 (async)`, async(() => {
+            // Arrange
+            let result: number;
+            const val1 = 0;
+            const val2 = 10;
 
-    //         // Act
-    //         result = _utils.randomRangeInteger(val1, val2);
+            // Act
+            result = _utils.randomRangeInteger(val1, val2);
 
-    //         // Assert
-    //         expect(result).toBeGreaterThanOrEqual(val1);
-    //         expect(result).toBeLessThanOrEqual(val2);
-    //     }));
-    // });
+            // Assert
+            expect(result).toBeGreaterThanOrEqual(val1);
+            expect(result).toBeLessThanOrEqual(val2);
+        }));
+    });
 
     describe(`#isEqualArrayOfObjects()`, () => {
-        // it(`Shoud return 'true' for { tstKey: 'tstValue' } and { tstKey: 'tstValue' }`, () => {
-        //     // Arrange
-        //     const value = { tstKey: 'tstValue' };
-        //     const valueToCheck = { tstKey: 'tstValue' };
+        it(`Shoud return 'true' for { tstKey: 'tstValue' } and { tstKey: 'tstValue' }`, () => {
+            // Arrange
+            const value = { tstKey: 'tstValue' };
+            const valueToCheck = { tstKey: 'tstValue' };
 
-        //     // Act
-        //     const result = _utils.isEqualArrayOfObjects(value, valueToCheck);
-        //     console.log('%c result', 'color: green;', result);
+            // Act
+            const result = _utils.isEqualArrayOfObjects(value, valueToCheck);
 
-        //     // Assert
-        //     expect(result).toEqual(true);
-        // });
+            // Assert
+            expect(result).toEqual(true);
+        });
 
         it(`Shoud return 'false' for { tstKey: 'tstValue1' } and { tstKey: 'tstValue2' }`, () => {
             // Arrange
@@ -55,11 +54,144 @@ describe(`Class: Utils`, () => {
             const valueToCheck2 = { tstKey: 'tstValue2' };
 
             // Act
-            const result2 = _utils.isEqualArrayOfObjects(value2, valueToCheck2);
-            console.log('%c result (tstValue1)', 'color: green;', result2);
+            const result = _utils.isEqualArrayOfObjects(value2, valueToCheck2);
 
             // Assert
-            expect(result2).toEqual(true);
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'false' for { tstKey: 'tstValue' } and { tstKey2: 'tstValue' }`, () => {
+            // Arrange
+            const value2 = { tstKey: 'tstValue1' };
+            const valueToCheck2 = { tstKey: 'tstValue2' };
+
+            // Act
+            const result = _utils.isEqualArrayOfObjects(value2, valueToCheck2);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'false' for [{ tstKey: 'tstValue' }] and [{ tstKey2: 'tstValue' }]`, () => {
+            // Arrange
+            const value2 = { tstKey: 'tstValue1' };
+            const valueToCheck2 = { tstKey: 'tstValue2' };
+
+            // Act
+            const result = _utils.isEqualArrayOfObjects(value2, valueToCheck2);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'false' for [{ tstKey: 'tstValue' }] and [{ tstKey: 'tstValue' }]`, () => {
+            // Arrange
+            const value2 = { tstKey: 'tstValue1' };
+            const valueToCheck2 = { tstKey: 'tstValue2' };
+
+            // Act
+            const result = _utils.isEqualArrayOfObjects(value2, valueToCheck2);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+    });
+
+    describe(`#compareObjects()`, () => {
+        it(`Shoud return 'true' for { tstKey: 'tstValue' } and { tstKey: 'tstValue' }`, () => {
+            // Arrange
+            const value = { tstKey: 'tstValue' };
+            const valueToCheck = { tstKey: 'tstValue' };
+
+            // Act
+            const result = _utils.compareObjects(value, valueToCheck);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it(`Shoud return 'false' for { tstKey: 'tstValue1' } and { tstKey: 'tstValue2' }`, () => {
+            // Arrange
+            const value2 = { tstKey: 'tstValue1' };
+            const valueToCheck2 = { tstKey: 'tstValue2' };
+
+            // Act
+            const result = _utils.compareObjects(value2, valueToCheck2);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'false' for { tstKey: 'tstValue' } and { tstKey2: 'tstValue' }`, () => {
+            // Arrange
+            const value2 = { tstKey: 'tstValue1' };
+            const valueToCheck2 = { tstKey: 'tstValue2' };
+
+            // Act
+            const result = _utils.compareObjects(value2, valueToCheck2);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'true' for 'true' and 'true'`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects(true, true);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it(`Shoud return 'false' for 'true' and 'false'`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects(true, false);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'false' for (0) and (1)`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects(0, 1);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it(`Shoud return 'true' for (1) and (1)`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects(1, 1);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it(`Shoud return 'true' for 'tstStr' and 'tstStr'`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects('tstStr', 'tstStr');
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it(`Shoud return 'false' for 'tstStr' and 'tstStr2'`, () => {
+            // Arrange
+
+            // Act
+            const result = _utils.compareObjects('tstStr', 'tstStr2');
+
+            // Assert
+            expect(result).toEqual(false);
         });
     });
 });

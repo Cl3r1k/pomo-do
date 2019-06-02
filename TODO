@@ -185,8 +185,8 @@ Todos:
                                 ✔ Process/save interrupted 'pomo' @done(19-05-28 09:36)
                                     ✔ Update test 'PomoStateService' and 'PomoStateMockService' with new defenition for 'interruptPomo()' @done(19-05-28 09:42)
                                     ✔ Fix test with new code for 'interrupted pomos' @done(19-05-29 09:08)
-                                ☐ Update tests for 'Utils' class <========================================================= CURRENT TASK
-                                ☐ Read from 'IndexedDB' only last 100 "completed" pomos
+                                ✔ Update tests for 'Utils' class @done(19-06-01 09:48)
+                                ☐ Read from 'IndexedDB' only last 100 "completed" pomos <========================================================= CURRENT TASK
                                 ☐ For 'duration' member in 'Pomo' class calculte real duration for pomo
 
 
