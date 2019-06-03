@@ -738,6 +738,23 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
+    public getLastHundredCompletedPomos(): Observable<Pomo[]> {
+        return observableFrom(this.pomoTable.toArray().then(async (response) => {
+
+            // TODO: Perform request to backend... Some part of code to process back-end <-------------------
+            const resultPomos: Pomo[] = response.filter(item => {
+                return !item.canceled;
+            });
+
+            // console.log('%c getLastHundredCompletedPomos() resultPomos', 'color: red;', resultPomos);
+            // console.log('%c getLastHundredCompletedPomos() resultPomos slice', 'color: red;', resultPomos.slice(-3));
+
+            return resultPomos.slice(-100);
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
     public getAllPomos(): Observable<Pomo[]> {
         return observableFrom(this.pomoTable.toArray().then(async (response) => {
 
@@ -757,5 +774,7 @@ export class IndexedDbService extends Dexie {
         return observableThrowError(error);
     }
     /// ----- End Additional Part ----- ///
+
+    // TODO: Use `https://dexie.org/docs/Tutorial/Best-Practices` (Poin 6) as advice to complete error handler
 
 }

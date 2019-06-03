@@ -126,7 +126,7 @@ export class PomoStateService {
 
     loadPomoList() {
 
-        this._indexedDbService.getAllPomos().subscribe(allPomos => {
+        this._indexedDbService.getLastHundredCompletedPomos().subscribe(allPomos => {
             console.log('%cPomoStateService - allPomos: ', this.consoleTextColorService, allPomos);
 
             const data = JSON.parse(localStorage.getItem('recentPomoList'));

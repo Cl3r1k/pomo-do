@@ -91,6 +91,12 @@ export class IndexedDbMockService {
         return observableOf(true);
     }
 
+    public getLastHundredCompletedPomos(): Observable<Pomo[]> {
+        return observableOf([
+            new Pomo('Pomo title from IndexedDbMockService', '2019-05-11T04:09:54.000Z', '74fb65cf-ba7b-40d3-a58f-0f7d4b176061', false)
+        ]);
+    }
+
     public getAllPomos(): Observable<Pomo[]> {
         return observableOf([
             new Pomo('Pomo title from IndexedDbMockService', '2019-05-11T04:09:54.000Z', '74fb65cf-ba7b-40d3-a58f-0f7d4b176061', false)
