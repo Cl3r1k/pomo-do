@@ -88,6 +88,7 @@ export class PomoStateService {
         const isInterrupted = pomoName === '' ? true : false;
         const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, isInterrupted);
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
+        recentPomo.duration = ((new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime()) / 1000;
         // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
 
         let pomoLength = 0;

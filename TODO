@@ -187,8 +187,9 @@ Todos:
                                     ✔ Fix test with new code for 'interrupted pomos' @done(19-05-29 09:08)
                                 ✔ Update tests for 'Utils' class @done(19-06-01 09:48)
                                 ✔ Read from 'IndexedDB' only last 100 "completed" pomos @done(19-06-02 09:47)
-                                ☐ For 'duration' member in 'Pomo' class calculte real duration for pomo <========================================================= CURRENT TASK
-                                ☐ Fix max-height for 'pomo-list'
+                                ✔ For 'duration' member in 'Pomo' class calculte and save real duration for pomo @done(19-06-03 09:45)
+                                ✔ Set max-height for 'pomo-list' @done(19-06-03 10:12)
+                                    ☐ Fix height for 'todos' list <========================================================= CURRENT TASK
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)

@@ -221,6 +221,21 @@ describe('Service: PomoStateService', () => {
             expect(service.recentPomos[0].start_time).toEqual(service.pomoState.start_time);
         });
 
+        it(`Should set real duration time for 'duration' member for new 'Pomo' in 'recentPomos' list`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+            service.pomoState.start_time = new Date('2019-06-03T03:34:11.000Z').toISOString();
+            service.pomoState.end_time = new Date('2019-06-03T03:35:12.000Z').toISOString();
+
+            // Act
+            service.saveCompletedPomo('Test pomoName (duration test)');
+
+            // Assert
+            expect(service.recentPomos.length).toEqual(1);
+            expect(service.recentPomos[0].start_time).toEqual(service.pomoState.start_time);
+            expect(service.recentPomos[0].duration).toEqual(61);
+        });
+
         it(`Should call 'savePomoList()'`, () => {
             // Arrange
             service.pomoState = new PomoState();
