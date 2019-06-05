@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 10px;
+    ///
+    /* Pomo section */
     .pomo-app {
         grid-column: 1/7;
         // padding: 0 5px 0 0;
@@ -26,6 +28,8 @@
             }
         }
     }
+    /* End Pomo section */
+    ///
     /* Todo section */
     .todo-app {
         grid-column: 7/13;
