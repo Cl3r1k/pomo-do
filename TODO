@@ -189,8 +189,12 @@ Todos:
                                 ✔ Read from 'IndexedDB' only last 100 "completed" pomos @done(19-06-02 09:47)
                                 ✔ For 'duration' member in 'Pomo' class calculte and save real duration for pomo @done(19-06-03 09:45)
                                 ✔ Set max-height for 'pomo-list' @done(19-06-03 10:12)
-                                    ☐ Fix height for 'todos' list (currently - height increased automatically by grid system) <========================================================= CURRENT TASK
-                                ☐ Fix 'pomo-save' title for continuosly new pomo if was selected previously 'todo'
+                                    ✔ Fix height for 'todos' list (was - height increased automatically by grid system) @done(19-06-05 09:19)
+                                ☐ Fix 'pomo-save' title for continuosly new pomo if was selected previously 'todo' <========================================================= CURRENT TASK
+                                ☐ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled)
+                                ☐ Add style in bottom of 'pomo-list' to blur end of list
+                                ☐ For empty 'pomo-list' show info about empty pomos
+                                ☐ For empty 'todo-list' show info about empty todos
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)
