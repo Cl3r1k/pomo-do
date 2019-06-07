@@ -224,7 +224,8 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
         if (this._pomoTitleService.pomoTitle) {
             this._pomoStateService.saveCompletedPomo(this._pomoTitleService.pomoTitle.trim());
             this.currentState = 'rest';
-            this._pomoTitleService.pomoTitle = '';
+            // this._pomoTitleService.pomoTitle = '';
+            this._pomoTitleService.resetTitleStateAfterSave();
 
             this.startRest();
         } else {

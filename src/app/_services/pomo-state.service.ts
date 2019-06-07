@@ -97,7 +97,7 @@ export class PomoStateService {
             // console.log('%cPomoStatusService - pomoLength: ', this.consoleTextColorService, pomoLength);
         }
 
-        if (pomoLength === 0 || pomoLength / 1000 > 30) {    // If spend time for pomo before interrup is less than 30 seconds, skip it
+        if (pomoLength === 0 || pomoLength / 1000 > 30) {    // If spend time for pomo before interrupt is less than 30 seconds, skip it
             this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
                 // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
                 if (isSaved) {

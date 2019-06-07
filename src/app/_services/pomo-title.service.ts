@@ -202,4 +202,11 @@ export class PomoTitleService {
         this.pomoTitleManualPart = this.pomoTitle;
         this.pomoTitleTodosPart = '';
     }
+
+    resetTitleStateAfterSave() {
+        // Idea - after pomo saved, we should clear manual pomo,
+        // reset state for used todos,
+        // and set pomoTitle according to selected todos
+        this.pomoTitle = '';
+    }
 }
