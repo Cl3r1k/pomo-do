@@ -23,6 +23,10 @@ export class PomoTitleMockService {
 
     public parseTitlePriority(todoTitle: string) { }
 
-    public lockUsedTodos() { }
+    public lockUsedTodos(isLockedState: boolean) { }
+
+    public resetTitleStateAfterSave() { }
+
+    public generatePomoTitleManual() { }
 
 }

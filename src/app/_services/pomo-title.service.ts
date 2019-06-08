@@ -191,12 +191,10 @@ export class PomoTitleService {
         return tmpTitle;
     }
 
-    // Change todoTitleState for every object if 'pomoTitle' was changed in component manually
-    lockUsedTodos() {
+    // Change todoTitleState for every object if 'pomoTitle' was changed in component manually / or save state changed
+    lockUsedTodos(isLockedState: boolean) {
         this.listOfUsedTodos.map(item => {
-            if (item['todoTitleState'] !== 2) {
-                item['todoTitleState'] = 2;
-            }
+            item['todoTitleState'] = isLockedState ? 2 : 1;
         });
 
         this.pomoTitleManualPart = this.pomoTitle;
@@ -204,9 +202,28 @@ export class PomoTitleService {
     }
 
     resetTitleStateAfterSave() {
-        // Idea - after pomo saved, we should clear manual pomo,
-        // reset state for used todos,
-        // and set pomoTitle according to selected todos
+        this.pomoTitleManualPart = '';
         this.pomoTitle = '';
+
+        this.lockUsedTodos(false);
+
+        this.generatePomoTitleManual();
+    }
+
+    generatePomoTitleManual() {
+        let tmpTitle = '';
+        const lastIndex = this.listOfUsedTodos.length - 1;
+
+        this.listOfUsedTodos.map((item, i) => {
+            if (i !== lastIndex) {
+                tmpTitle += item['todoTitle'] + ' + ';
+            } else {
+                tmpTitle += item['todoTitle'];
+            }
+        });
+
+        // console.log('%cPomoTitleService - tmpTitle: ', this.consoleTextColorService, tmpTitle);
+        this.pomoTitleTodosPart = tmpTitle;
+        this.pomoTitle = this.pomoTitleTodosPart;
     }
 }

@@ -365,7 +365,7 @@ describe('Component: PomoHeaderComponent', () => {
             expect(pomoStateService.saveCompletedPomo).toHaveBeenCalled();
         });
 
-        it(`Should clear 'pomoTitleService.pomoTitle' if 'event' is 'Enter' and 'pomoTitleService.pomoTitle' is not empty`, () => {
+        it(`Should call 'pomoTitleService.resetTitleStateAfterSave' if 'event -> Enter' and 'pomoTitleService.pomoTitle' not empty`, () => {
             // Arrange
             pomoTitleService.pomoTitle = 'tst';
             component.currentState = 'pomo';
@@ -374,10 +374,11 @@ describe('Component: PomoHeaderComponent', () => {
             });
 
             // Act
+            spyOn(pomoTitleService, 'resetTitleStateAfterSave');
             component.savePomo(keyDownEnterEvent);
 
             // Assert
-            expect(pomoTitleService.pomoTitle).toEqual('');
+            expect(pomoTitleService.resetTitleStateAfterSave).toHaveBeenCalled();
         });
     });
 

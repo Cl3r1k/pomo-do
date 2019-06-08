@@ -250,7 +250,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
     pomoTitleManualChange(event) {
         // console.log('%cpomoTitle changed manually!', this.consoleTextColorComponent);
-        this._pomoTitleService.lockUsedTodos();
+        this._pomoTitleService.lockUsedTodos(true);
     }
 
 }

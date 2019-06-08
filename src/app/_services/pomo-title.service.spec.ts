@@ -202,16 +202,28 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#lockUsedTodos()`, () => {
-        it(`should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 `, () => {
+        it(`should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 with arg true`, () => {
             // Arrange
 
             // Act
-            service.lockUsedTodos();
+            service.lockUsedTodos(true);
 
             // Assert
             expect(service.listOfUsedTodos[0]['todoTitleState']).toEqual(2);
             expect(service.listOfUsedTodos[1]['todoTitleState']).toEqual(2);
             expect(service.listOfUsedTodos[2]['todoTitleState']).toEqual(2);
+        });
+
+        it(`should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 with arg false`, () => {
+            // Arrange
+
+            // Act
+            service.lockUsedTodos(false);
+
+            // Assert
+            expect(service.listOfUsedTodos[0]['todoTitleState']).toEqual(1);
+            expect(service.listOfUsedTodos[1]['todoTitleState']).toEqual(1);
+            expect(service.listOfUsedTodos[2]['todoTitleState']).toEqual(1);
         });
 
         it(`should set 'pomoTitleManualPart' to 'pomoTitle' and clear 'pomoTitleTodosPart'`, () => {
@@ -221,7 +233,7 @@ describe('Service: PomoTitleService', () => {
             service.pomoTitleTodosPart = 'Todos part';
 
             // Act
-            service.lockUsedTodos();
+            service.lockUsedTodos(true);
 
             // Assert
             expect(service.pomoTitleManualPart).toEqual('pomo Title');
