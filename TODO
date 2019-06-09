@@ -191,8 +191,8 @@ Todos:
                                 ✔ Set max-height for 'pomo-list' @done(19-06-03 10:12)
                                     ✔ Fix height for 'todos' list (was - height increased automatically by grid system) @done(19-06-05 09:19)
                                 ✔ Fix 'pomo-save' title for continuosly new pomo if was selected previously 'todo' @done(19-06-07 09:38)
-                                    ☐ Update test with new code with fix 'pomo-save' <========================================================= CURRENT TASK
-                                ☐ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled)
+                                    ✔ Update test with new code with fix 'pomo-save' @done(19-06-08 10:10)
+                                ☐ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) <========================================================= CURRENT TASK
                                 ☐ Add style in bottom of 'pomo-list' to blur end of list
                                 ☐ For empty 'pomo-list' show info about empty pomos
                                 ☐ For empty 'todo-list' show info about empty todos
@@ -225,7 +225,7 @@ Todos:
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
 
-            ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if filed not focused
+            ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused
 
             ☐ Update CLI to latest version (7.*.*)
 

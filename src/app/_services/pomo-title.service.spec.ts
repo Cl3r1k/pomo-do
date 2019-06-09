@@ -63,7 +63,7 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#setPomoState()`, () => {
-        it(`should set 'currentPomoState'`, () => {
+        it(`Should set 'currentPomoState'`, () => {
             // Arrange
             const newPomoState = 1;
 
@@ -74,7 +74,7 @@ describe('Service: PomoTitleService', () => {
             expect(service.currentPomoState).toEqual(newPomoState);
         });
 
-        it(`should call 'updatePomoTitleWithTodo()' if argument2 is true`, () => {
+        it(`Should call 'updatePomoTitleWithTodo()' if argument2 is true`, () => {
             // Arrange
             const newPomoState = 1;
 
@@ -89,7 +89,7 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#updatePomoTitleWithTodo()`, () => {
-        it(`should call 'parseTodosTitle()'`, () => {
+        it(`Should call 'parseTodosTitle()'`, () => {
             // Arrange
 
             // Act
@@ -100,7 +100,7 @@ describe('Service: PomoTitleService', () => {
             expect(service.updatePomoTitleWithTodo).toHaveBeenCalled();
         });
 
-        it(`should exclude 'expectedTodo1.title' in 'pomoTitle' as far 'todoTitleState' === 1 `, () => {
+        it(`Should exclude 'expectedTodo1.title' in 'pomoTitle' as far 'todoTitleState' === 1 `, () => {
             // Arrange
             service.pomoTitleManualPart = 'Test pomo';
 
@@ -113,7 +113,7 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#parseTodosTitle()`, () => {
-        it(`should return string with excluded 'expectedTodo1.title'`, () => {
+        it(`Should return string with excluded 'expectedTodo1.title'`, () => {
             // Arrange
 
             // Act
@@ -125,7 +125,7 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#processTodoTitle()`, () => {
-        it(`should return combined title of from 'listOfUsedTodos'`, () => {
+        it(`Should return combined title of from 'listOfUsedTodos'`, () => {
             // Arrange
 
             // Act
@@ -136,7 +136,7 @@ describe('Service: PomoTitleService', () => {
             expect(resultTitle).toEqual('Test title in PomoTitleService + Test title in PomoTitleService 2 + Test title in PomoTitleService 3 #tagName');
         });
 
-        it(`should call 'parseTitlePriority()'`, () => {
+        it(`Should call 'parseTitlePriority()'`, () => {
             // Arrange
 
             // Act
@@ -202,7 +202,7 @@ describe('Service: PomoTitleService', () => {
     });
 
     describe(`#lockUsedTodos()`, () => {
-        it(`should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 with arg true`, () => {
+        it(`Should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 with arg true`, () => {
             // Arrange
 
             // Act
@@ -214,7 +214,7 @@ describe('Service: PomoTitleService', () => {
             expect(service.listOfUsedTodos[2]['todoTitleState']).toEqual(2);
         });
 
-        it(`should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 2 with arg false`, () => {
+        it(`Should set for all 'todos' in 'listOfUsedTodos' 'todoTitleState' === 1 with arg false`, () => {
             // Arrange
 
             // Act
@@ -226,7 +226,7 @@ describe('Service: PomoTitleService', () => {
             expect(service.listOfUsedTodos[2]['todoTitleState']).toEqual(1);
         });
 
-        it(`should set 'pomoTitleManualPart' to 'pomoTitle' and clear 'pomoTitleTodosPart'`, () => {
+        it(`Should set 'pomoTitleManualPart' to 'pomoTitle' and clear 'pomoTitleTodosPart'`, () => {
             // Arrange
             service.pomoTitleManualPart = 'Manual part';
             service.pomoTitle = 'pomo Title';
@@ -238,6 +238,65 @@ describe('Service: PomoTitleService', () => {
             // Assert
             expect(service.pomoTitleManualPart).toEqual('pomo Title');
             expect(service.pomoTitleTodosPart).toEqual('');
+        });
+    });
+
+    describe(`#resetTitleStateAfterSave()`, () => {
+        it(`Should clear 'pomoTitleManualPart'`, () => {
+            // Arrange
+            service.pomoTitleManualPart = 'Test manual title';
+
+            // Act
+            service.resetTitleStateAfterSave();
+
+            // Assert
+            expect(service.pomoTitleManualPart).toEqual('');
+        });
+
+        it(`Should call 'lockUsedTodos()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(service, 'lockUsedTodos');
+            service.resetTitleStateAfterSave();
+
+            // Assert
+            expect(service.lockUsedTodos).toHaveBeenCalled();
+        });
+
+        it(`Should call 'generatePomoTitleManual()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(service, 'generatePomoTitleManual');
+            service.resetTitleStateAfterSave();
+
+            // Assert
+            expect(service.generatePomoTitleManual).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#generatePomoTitleManual()`, () => {
+        it(`Should combine title of from 'listOfUsedTodos' in 'pomoTitleTodosPart'`, () => {
+            // Arrange
+
+            // Act
+            service.generatePomoTitleManual();
+
+            // Assert
+            // tslint:disable-next-line:max-line-length
+            expect(service.pomoTitleTodosPart).toEqual('Test title in PomoTitleService + Test title in PomoTitleService 2 !!! + Test title in PomoTitleService 3 #tagName');
+        });
+
+        it(`Should set 'pomoTitle' equal to 'pomoTitleTodosPart'`, () => {
+            // Arrange
+            service.pomoTitle = 'Tst pomo title';
+
+            // Act
+            service.generatePomoTitleManual();
+
+            // Assert
+            expect(service.pomoTitle).toEqual(service.pomoTitleTodosPart);
         });
     });
 });
