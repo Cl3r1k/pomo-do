@@ -134,6 +134,11 @@ export class PomoTitleService {
             i++;
         });
 
+        // Workaround to delete dubbled + when selected 'todo' -> 'pomo-title' changed and selected another todo
+        if (splittedStringOfTodos.substr(splittedStringOfTodos.length - 3, 3) === ' + ') {
+            splittedStringOfTodos = splittedStringOfTodos.substring(0, splittedStringOfTodos.length - 3);
+        }
+
         // console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
 
         return splittedStringOfTodos;

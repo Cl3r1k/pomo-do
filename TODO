@@ -192,8 +192,8 @@ Todos:
                                     ✔ Fix height for 'todos' list (was - height increased automatically by grid system) @done(19-06-05 09:19)
                                 ✔ Fix 'pomo-save' title for continuosly new pomo if was selected previously 'todo' @done(19-06-07 09:38)
                                     ✔ Update test with new code with fix 'pomo-save' @done(19-06-08 10:10)
-                                ☐ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) <========================================================= CURRENT TASK
-                                ☐ Add style in bottom of 'pomo-list' to blur end of list
+                                ✔ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) @done(19-06-09 09:51)
+                                ☐ Add style in bottom of 'pomo-list' to blur end of list <========================================================= CURRENT TASK
                                 ☐ For empty 'pomo-list' show info about empty pomos
                                 ☐ For empty 'todo-list' show info about empty todos
 
