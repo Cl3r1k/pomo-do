@@ -1,7 +1,7 @@
 .pomo-list {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 20px;
+    padding: 0 20px 10px 20px;
     // border: 1px solid #aaaaaa;
     // box-shadow: 0 0 5px 0px #969696;
     height: 100%;
@@ -60,4 +60,13 @@
             }
         }
     }
+}
+
+.pomo-list-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0), #F7F7F7);
 }

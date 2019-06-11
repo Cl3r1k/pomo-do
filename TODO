@@ -102,8 +102,8 @@ Todos:
                             ✔ Move 'todo-list' to 'todos' folder @done(19-01-26 09:30)
                     
                     ☐ Create component for 'pomos'
-                        ✔ Add 'pomo-header' component @done(19-01-26 09:54)
-                            ☐ Complete code and UI for 'PomoHeaderComponent'
+                        ☐ Complete 'pomo-header' component
+                            ✔ Complete code and UI for 'PomoHeaderComponent' @done(19-06-10 09:58)
                                 ✔ Add service for 'PomoState' @done(19-02-05 10:36)                                    
                                 ✔ Process states for 'PomoState' ('started', 'idle', 'finished') @done(19-03-04 09:52)
                                     ✔ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component @done(19-02-17 09:40)
@@ -173,13 +173,13 @@ Todos:
                             ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
                             ✔ After 'pomo-header' part completed bump 'patch' version @done(19-04-21 10:17)
 
-                        ☐ Add 'pomo-list' component
+                        ☐ Complete 'pomo-list' component
                             ☐ Complete code and UI for 'PomoListComponent'
                                 ✔ Consider to build Object for 'PomoListComponent' in 'PomoStateService' and simply show it in component @done(19-05-19 10:30)
                                 ✔ Add 'PomoStateService' @done(19-05-07 09:28)
                                 ✔ Create object for 'PomoListComponent' in 'PomoStateService' @done(19-05-07 09:29)
-                                ☐ Height for 'pomo-list' shouldn't change height for 'todos'
-                                    ☐ Use 'overflow' for desired behaviour
+                                ✔ Height for 'pomo-list' shouldn't change height for 'todos' @done(19-06-10 09:56)
+                                    ✔ Use 'overflow' for desired behaviour @done(19-06-10 09:56)
                                 ✔ Hover on 'pomo-time' should show full time in popup @done(19-05-08 10:03)
                                 ✔ Fix issue for 'pomo-series' @done(19-05-25 09:27)
                                 ✔ Process/save interrupted 'pomo' @done(19-05-28 09:36)
@@ -193,8 +193,8 @@ Todos:
                                 ✔ Fix 'pomo-save' title for continuosly new pomo if was selected previously 'todo' @done(19-06-07 09:38)
                                     ✔ Update test with new code with fix 'pomo-save' @done(19-06-08 10:10)
                                 ✔ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) @done(19-06-09 09:51)
-                                ☐ Add style in bottom of 'pomo-list' to blur end of list <========================================================= CURRENT TASK
-                                ☐ For empty 'pomo-list' show info about empty pomos
+                                ✔ Add styles in bottom of 'pomo-list' to blur end of list @done(19-06-10 09:52)
+                                ☐ For empty 'pomo-list' show info about empty pomos <========================================================= CURRENT TASK
                                 ☐ For empty 'todo-list' show info about empty todos
 
 
