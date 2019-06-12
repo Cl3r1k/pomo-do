@@ -5,6 +5,7 @@
     // border: 1px solid #aaaaaa;
     // box-shadow: 0 0 5px 0px #969696;
     height: 100%;
+    min-height: 13em;
     max-height: 20em;
     overflow: hidden;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -57,6 +58,29 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    .empty-sync-pomo-list-container {
+        grid-column: span 12;
+        background-color: #aedfca; // For Debug
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        justify-items: center;
+        align-self: center;
+        .empty-pomo-list {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            background-color: #e6ba81; // For Debug
+            .icon-clock {
+                grid-column: span 12;
+                margin: auto;
+                font-size: 85px;
+            }
+            .empty-pomo-list-message {
+                grid-column: span 12;
+                text-align: center;
             }
         }
     }

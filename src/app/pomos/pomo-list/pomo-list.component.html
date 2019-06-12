@@ -1,5 +1,5 @@
 <section class="pomo-list">
-    <ul class="pomo-days">
+    <ul class="pomo-days" *ngIf="_pomoStateService.recentPomosView.length > 0">
         <li *ngFor="let item of _pomoStateService.recentPomosView" class="pomos-group-container">
             <div class="pomos-date-count-container">
                 <span class="pomos-date-group">{{item.dateGroup}}</span>
@@ -15,6 +15,14 @@
             </div>
         </li>
     </ul>
+    <div class="empty-sync-pomo-list-container" *ngIf="_pomoStateService.recentPomosView.length === 0">
+        <div class="empty-pomo-list">
+            <svg class="icon icon-clock">
+                <use xlink:href="#icon-clock"></use>
+            </svg>
+            <p class="empty-pomo-list-message">No records</p>
+        </div>
+    </div>
 </section>
 
 <div class="pomo-list-footer"></div>
