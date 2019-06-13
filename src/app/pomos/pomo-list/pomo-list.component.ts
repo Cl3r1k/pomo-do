@@ -10,6 +10,8 @@ import { PomoStateService } from '@app/_services/pomo-state.service';
 })
 export class PomoListComponent implements OnInit {
 
+    isSyncing = false;
+
     constructor(private _pomoStateService: PomoStateService) { }
 
     ngOnInit() {

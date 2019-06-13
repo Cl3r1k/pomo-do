@@ -194,7 +194,10 @@ Todos:
                                     ✔ Update test with new code with fix 'pomo-save' @done(19-06-08 10:10)
                                 ✔ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) @done(19-06-09 09:51)
                                 ✔ Add styles in bottom of 'pomo-list' to blur end of list @done(19-06-10 09:52)
-                                ☐ For empty 'pomo-list' show info about empty pomos <========================================================= CURRENT TASK
+                                ☐ For empty/sync 'pomo-list' show info about empty pomos
+                                    ✔ Show info for empty 'pomo-list' @done(19-06-12 09:14)
+                                    ☐ Show info for 'sync' 'pomo-list' <========================================================= CURRENT TASK
+                                    ☐ Add test for new code for empty/sync 'pomo-list'
                                 ☐ For empty 'todo-list' show info about empty todos
 
 
@@ -224,6 +227,8 @@ Todos:
                         ☐ For each 'stat' should be separate component
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
+
+            ☐ Current 'active-todo' should be only if there is pinned 'todo'
 
             ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused
 

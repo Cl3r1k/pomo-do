@@ -16,11 +16,17 @@
         </li>
     </ul>
     <div class="empty-sync-pomo-list-container" *ngIf="_pomoStateService.recentPomosView.length === 0">
-        <div class="empty-pomo-list">
+        <div class="empty-pomo-list" *ngIf="!isSyncing">
             <svg class="icon icon-clock">
                 <use xlink:href="#icon-clock"></use>
             </svg>
             <p class="empty-pomo-list-message">No records</p>
+        </div>
+        <div class="sync-pomo-list" *ngIf="isSyncing">
+            <svg class="icon icon-sync-spinner">
+                <use xlink:href="#icon-sync-spinner"></use>
+            </svg>
+            <p class="sync-pomo-list-message">Sync</p>
         </div>
     </div>
 </section>
