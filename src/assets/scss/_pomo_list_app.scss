@@ -69,20 +69,24 @@
         justify-items: center;
         align-self: center;
         color: #777777;
-        .empty-pomo-list {
+        .empty-pomo-list,
+        .sync-pomo-list {
             grid-column: span 12;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             background-color: #e6ba81; // For Debug
-            .icon-clock {
+            .icon-clock,
+            .icon-sync-spinner {
                 grid-column: span 12;
                 margin: auto;
                 font-size: 85px;
                 color: #9c9c9c;
             }
-            .empty-pomo-list-message {
+            .empty-pomo-list-message,
+            .sync-pomo-list-message {
                 grid-column: span 12;
                 text-align: center;
+                margin-bottom: 0;
             }
         }
     }
