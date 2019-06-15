@@ -194,11 +194,14 @@ Todos:
                                     ✔ Update test with new code with fix 'pomo-save' @done(19-06-08 10:10)
                                 ✔ Fix 'pomo-save' title when selected todo, changed text, and selected another todo (the plus is dubbled) @done(19-06-09 09:51)
                                 ✔ Add styles in bottom of 'pomo-list' to blur end of list @done(19-06-10 09:52)
-                                ☐ For empty/sync 'pomo-list' show info about empty pomos
+                                ✔ For empty/sync 'pomo-list' show info about empty pomos @done(19-06-14 10:05)
                                     ✔ Show info for empty 'pomo-list' @done(19-06-12 09:14)
                                     ✔ Show info for 'synchronization' 'pomo-list' @done(19-06-13 09:04)
-                                    ☐ Add test for new code for empty/sync 'pomo-list' <========================================================= CURRENT TASK
-                                ☐ For empty 'todo-list' show info about empty todos
+                                    ✔ Add test for new code for empty/sync 'pomo-list' @done(19-06-14 10:05)
+                                ☐ For empty/sync 'todo-list' show info about empty todos
+                                    ☐ Show info for empty 'todo-list' <========================================================= CURRENT TASK
+                                    ☐ Show info for 'synchronization' 'todo-list'
+                                    ☐ Add test for new code for empty/sync 'todo-list'
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)

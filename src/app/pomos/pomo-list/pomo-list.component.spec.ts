@@ -20,7 +20,6 @@ describe('PomoListComponent', () => {
     let fixture: ComponentFixture<PomoListComponent>;
     let pomoStateService: PomoStateService;
     let indexedDbService: IndexedDbService;
-    let sectionPomoListtEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -45,6 +44,8 @@ describe('PomoListComponent', () => {
 
         pomoStateService = TestBed.get(PomoStateService);
         indexedDbService = TestBed.get(IndexedDbService);
+        const resultPomosGroup = { dateGroup: 'Jun 14', pomosCount: 1, pomosArray: [ { title: 'Test pomo title' } ] };
+        pomoStateService.recentPomosView.push(resultPomosGroup);
 
         fixture.detectChanges();
     });
@@ -59,14 +60,58 @@ describe('PomoListComponent', () => {
     });
 
     describe(`#view tests:`, () => {
-        it(`Should have section.pomo-list element`, () => {
+        it(`Should have section.pomo-list element if 'pomoStateService.recentPomosView' is not empty`, () => {
             // Arrange
-            sectionPomoListtEl = fixture.debugElement.query(By.css('section.pomo-list'));    // Find 'section.pomo-list' element
+            const sectionPomoListtEl = fixture.debugElement.query(By.css('section.pomo-list'));    // Find 'section.pomo-list' element
 
             // Act
 
             // Assert
+            expect(pomoStateService.recentPomosView.length).toEqual(1);
             expect(sectionPomoListtEl).toBeTruthy();
+        });
+
+        it(`Should have '.empty-sync-pomo-list-container' element if 'pomoStateService.recentPomosView' is empty`, () => {
+            // Arrange
+            pomoStateService.recentPomosView = [];
+            fixture.detectChanges();
+            const emptySyncPomoListEl = fixture.debugElement.query(By.css('div.empty-sync-pomo-list-container'));    // Find 'div' element
+
+            // Act
+
+            // Assert
+            expect(pomoStateService.recentPomosView.length).toEqual(0);
+            expect(emptySyncPomoListEl).toBeTruthy();
+        });
+
+        it(`Should have '.empty-pomo-list' element if 'pomoStateService.recentPomosView' is empty and isSyncing = false`, () => {
+            // Arrange
+            pomoStateService.recentPomosView = [];
+            component.isSyncing = false;
+            fixture.detectChanges();
+            const emptyPomoListEl = fixture.debugElement.query(By.css('div.empty-pomo-list'));    // Find 'div' element
+
+            // Act
+
+            // Assert
+            expect(pomoStateService.recentPomosView.length).toEqual(0);
+            expect(component.isSyncing).toEqual(false);
+            expect(emptyPomoListEl).toBeTruthy();
+        });
+
+        it(`Should have '.sync-pomo-list' element if 'pomoStateService.recentPomosView' is empty and isSyncing = true`, () => {
+            // Arrange
+            pomoStateService.recentPomosView = [];
+            component.isSyncing = true;
+            fixture.detectChanges();
+            const syncPomoListEl = fixture.debugElement.query(By.css('div.sync-pomo-list'));    // Find 'div' element
+
+            // Act
+
+            // Assert
+            expect(pomoStateService.recentPomosView.length).toEqual(0);
+            expect(component.isSyncing).toEqual(true);
+            expect(syncPomoListEl).toBeTruthy();
         });
     });
 

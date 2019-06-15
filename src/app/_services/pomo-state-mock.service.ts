@@ -6,6 +6,8 @@ import { ToDo } from '@app/_models/to-do';
 @Injectable()
 export class PomoStateMockService {
 
+    recentPomosView = [];
+
     constructor() { }
 
     public initPomoState(isRestState: boolean) { }
