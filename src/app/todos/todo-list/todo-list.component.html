@@ -1,3 +1,7 @@
+<div *ngIf="isEmptyTodoList">
+    isEmptyTodoList
+</div>
+
 <section class='main' *ngIf='todosAllAmount > 0'>
     <div class='pinned-list' *ngIf='todosToView[0].length' dnd-sortable-container [dropZones]="['todos-zone-pinned']" [sortableData]='todosToView[0]'>
         <ul class='todo-list'>

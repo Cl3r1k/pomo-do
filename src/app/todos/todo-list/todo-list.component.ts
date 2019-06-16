@@ -12,6 +12,7 @@ export class TodoListComponent implements OnInit {
 
     @Input() todos: ToDo[];
     @Input() todosToView = [[]];
+    @Input() isEmptyTodoList = true;
 
     @Input() todosAllAmount: number;
 

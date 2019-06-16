@@ -22,6 +22,7 @@ export class TodosComponent implements OnInit {
 
     @Input() todos: ToDo[];
     @Input() todosToView = [[]];
+    @Input() isEmptyTodoList = true;
 
     @Output() toggleCompleteTodosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
     @Output() updateTodosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();

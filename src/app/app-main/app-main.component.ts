@@ -40,6 +40,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     currentTodo: ToDo = null;
     currentActiveTaskName = '';
     pomoStateAppMain = 0;
+    isEmptyTodoList = true;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -322,6 +323,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.todosToView[0] = pinnedTodos;
         this.todosToView[1] = unpinnedTodos;
         this.todosToView[2] = completedTodos;
+
+        this.isEmptyTodoList = (pinnedTodos.length + unpinnedTodos.length) > 0 ? false : true;
 
         console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
         console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
