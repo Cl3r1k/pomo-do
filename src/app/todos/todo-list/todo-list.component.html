@@ -1,5 +1,16 @@
-<div *ngIf="isEmptyTodoList">
-    isEmptyTodoList
+<div class="empty-sync-todo-list-container" *ngIf="isEmptyTodoList">
+    <div class="empty-todo-list" *ngIf="!isSyncing">
+        <svg class="icon icon-clock">
+            <use xlink:href="#icon-clock"></use>
+        </svg>
+        <p class="empty-todo-list-message">No records</p>
+    </div>
+    <div class="sync-todo-list" *ngIf="isSyncing">
+        <svg class="icon icon-sync-spinner">
+            <use xlink:href="#icon-sync-spinner"></use>
+        </svg>
+        <p class="sync-todo-list-message">Synchronization</p>
+    </div>
 </div>
 
 <section class='main' *ngIf='todosAllAmount > 0'>

@@ -411,4 +411,34 @@
             }
         }
     }
+    
+    .empty-sync-todo-list-container {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        background-color: #aedfca; // For Debug
+        align-items: center;
+        min-height: 13em;
+        color: #777777;
+        .empty-todo-list,
+        .sync-todo-list {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            margin-top: 20px;
+            background-color: #e6ba81; // For Debug
+            .icon-clock,
+            .icon-sync-spinner {
+                grid-column: span 12;
+                margin: auto;
+                font-size: 85px;
+                color: #9c9c9c;
+            }
+            .empty-todo-list-message,
+            .sync-todo-list-message {
+                grid-column: span 12;
+                text-align: center;
+                margin-bottom: 0;
+            }
+        }
+    }
     /* End TodoList section */
