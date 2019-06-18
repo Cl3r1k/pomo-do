@@ -199,9 +199,9 @@ Todos:
                                     ✔ Show info for 'synchronization' 'pomo-list' @done(19-06-13 09:04)
                                     ✔ Add test for new code for empty/sync 'pomo-list' @done(19-06-14 10:05)
                                 ☐ For empty/sync 'todo-list' show info about empty todos
-                                    ☐ Show info for empty 'todo-list' <========================================================= CURRENT TASK
-                                    ☐ Show info for 'synchronization' 'todo-list'
-                                    ☐ Add test for new code for empty/sync 'todo-list'
+                                    ✔ Show info for empty 'todo-list' @done(19-06-17 10:10)
+                                    ✔ Show info for 'synchronization' 'todo-list' @done(19-06-17 10:10)
+                                    ☐ Add test for new code for empty/sync 'todo-list' <========================================================= CURRENT TASK
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)
