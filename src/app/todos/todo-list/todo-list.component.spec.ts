@@ -418,6 +418,49 @@ describe('Component: TodoListComponent', () => {
                     expect(component.clearCompleted).toHaveBeenCalled();
                 });
             });
+
+            it(`Should have 'div.empty-sync-todo-list-container' element if 'isEmptyTodoList'`, () => {
+                // Arrange
+                component.isEmptyTodoList = true;
+                fixture.detectChanges();
+                const emptySyncDivEl = fixture.debugElement.query(By.css('div.empty-sync-todo-list-container'));    // Find 'div' element
+
+                // Act
+
+                // Assert
+                expect(component.isEmptyTodoList).toEqual(true);
+                expect(emptySyncDivEl).toBeTruthy();
+            });
+
+            it(`Should have '.empty-todo-list' element if 'isEmptyTodoList'  and 'isSyncing' = false`, () => {
+                // Arrange
+                component.isEmptyTodoList = true;
+                component.isSyncing = false;
+                fixture.detectChanges();
+                const emptyTodoListEl = fixture.debugElement.query(By.css('div.empty-todo-list'));    // Find 'div' element
+
+                // Act
+
+                // Assert
+                expect(component.isEmptyTodoList).toEqual(true);
+                expect(component.isSyncing).toEqual(false);
+                expect(emptyTodoListEl).toBeTruthy();
+            });
+
+            it(`Should have '.sync-todo-list' element if 'isEmptyTodoList' and 'isSyncing' = true`, () => {
+                // Arrange
+                component.isEmptyTodoList = true;
+                component.isSyncing = true;
+                fixture.detectChanges();
+                const syncTodoListEl = fixture.debugElement.query(By.css('div.sync-todo-list'));    // Find 'div' element
+
+                // Act
+
+                // Assert
+                expect(component.isEmptyTodoList).toEqual(true);
+                expect(component.isSyncing).toEqual(true);
+                expect(syncTodoListEl).toBeTruthy();
+            });
         });
     });
 

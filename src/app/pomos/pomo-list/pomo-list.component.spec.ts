@@ -84,7 +84,7 @@ describe('PomoListComponent', () => {
             expect(emptySyncPomoListEl).toBeTruthy();
         });
 
-        it(`Should have '.empty-pomo-list' element if 'pomoStateService.recentPomosView' is empty and isSyncing = false`, () => {
+        it(`Should have '.empty-pomo-list' element if 'pomoStateService.recentPomosView' is empty and 'isSyncing' = false`, () => {
             // Arrange
             pomoStateService.recentPomosView = [];
             component.isSyncing = false;
@@ -99,7 +99,7 @@ describe('PomoListComponent', () => {
             expect(emptyPomoListEl).toBeTruthy();
         });
 
-        it(`Should have '.sync-pomo-list' element if 'pomoStateService.recentPomosView' is empty and isSyncing = true`, () => {
+        it(`Should have '.sync-pomo-list' element if 'pomoStateService.recentPomosView' is empty and 'isSyncing' = true`, () => {
             // Arrange
             pomoStateService.recentPomosView = [];
             component.isSyncing = true;

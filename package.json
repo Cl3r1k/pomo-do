@@ -1,6 +1,6 @@
 {
     "name": "pomo-do",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -19,6 +19,7 @@
         "app-old": "concurrently \"node ./replace.build.js\" \"npm run start\"",
         "app-server": "concurrently \"npm run json-server-old\" \"node ./replace.build.js\" \"npm run start\"",
         "update-patch": "npm --no-git-tag-version version patch",
+        "update-minor": "npm --no-git-tag-version version minor",
         "deploy-gh": "ng build --prod --base-href 'https://Cl3r1k.github.io/pomo-do/' && ngh --no-silent",
         "sw": "ng build --prod && http-server -c-1 -p 4200 dist/"
     },

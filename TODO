@@ -69,7 +69,7 @@ Todos:
                             ✔ Fix '.footer:before' style @done(19-01-11 10:25)
                             ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)
                                 ✔ Update tests for app with removed todo-footer @done(19-01-14 09:59)
-                    ☐ Move all part for Todo-App in separate component
+                    ✔ Move all part for Todo-App in separate component @done(19-06-18 10:33)
                         ✔ Move all parts from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
                             ✔ Move styles from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move template from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
@@ -152,10 +152,10 @@ Todos:
                                         ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
                                             ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
                                         ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
-                                        ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)`
+                                        ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)` <========================================================= CURRENT TASK
                                             ☐ Check case - pomo started -> page reloaded -> in this case should be selected first todo `(Delayed for some time)`
                                         ☐ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' `(Delayed for some time)`
-                                        ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope) @cancelled(19-03-29 09:48)
+                                        ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope actually) @cancelled(19-03-29 09:48)
                                         ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
                                         ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)
                                         ✔ Fix issue, when 'pomo' started and page reloaded -> a lot errors in console @done(19-03-29 10:08)
@@ -173,8 +173,8 @@ Todos:
                             ✔ Add tests for 'PomosComponent' @done(19-04-19 09:57)
                             ✔ After 'pomo-header' part completed bump 'patch' version @done(19-04-21 10:17)
 
-                        ☐ Complete 'pomo-list' component
-                            ☐ Complete code and UI for 'PomoListComponent'
+                        ✔ Complete 'pomo-list' component @done(19-06-18 10:22)
+                            ✔ Complete code and UI for 'PomoListComponent' @done(19-06-18 10:22)
                                 ✔ Consider to build Object for 'PomoListComponent' in 'PomoStateService' and simply show it in component @done(19-05-19 10:30)
                                 ✔ Add 'PomoStateService' @done(19-05-07 09:28)
                                 ✔ Create object for 'PomoListComponent' in 'PomoStateService' @done(19-05-07 09:29)
@@ -198,10 +198,10 @@ Todos:
                                     ✔ Show info for empty 'pomo-list' @done(19-06-12 09:14)
                                     ✔ Show info for 'synchronization' 'pomo-list' @done(19-06-13 09:04)
                                     ✔ Add test for new code for empty/sync 'pomo-list' @done(19-06-14 10:05)
-                                ☐ For empty/sync 'todo-list' show info about empty todos
+                                ✔ For empty/sync 'todo-list' show info about empty todos @done(19-06-18 10:21)
                                     ✔ Show info for empty 'todo-list' @done(19-06-17 10:10)
                                     ✔ Show info for 'synchronization' 'todo-list' @done(19-06-17 10:10)
-                                    ☐ Add test for new code for empty/sync 'todo-list' <========================================================= CURRENT TASK
+                                    ✔ Add test for new code for empty/sync 'todo-list' @done(19-06-18 10:21)
 
 
                             ✔ Improve height for 'pomo-progress' (currently more than 'pomo-button' height) @done(19-05-20 10:19)
@@ -219,7 +219,7 @@ Todos:
                             ✔ Fix broken tests according to new 'PomoList' code @done(19-05-17 10:02)
                             ✔ Add tests for 'PomoListComponent' @done(19-05-18 10:00)
                             ✔ Update test for 'PomoStateService' with new 'PomoList' code @done(19-05-16 11:03)
-                            ☐ After 'pomo-list' part completed bump 'patch' version
+                            ✔ After 'pomo-list' part completed bump 'patch' version @done(19-06-18 10:24)
 
 
                     ☐ After 'pomos' part completed bump 'minor' version
@@ -235,7 +235,7 @@ Todos:
 
             ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused
 
-            ☐ Update CLI to latest version (7.*.*)
+            ☐ Update CLI to latest version (8.*.*)
 
             ☐ Fix App-title on SignIn page
             ☐ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo)
