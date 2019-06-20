@@ -173,6 +173,8 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     this.emitPomoState(0, false);    // Emit the 'statePomo' event to 'PomosComponent' (standby)
                 } else {
                     this.emitPomoState(2, false);    // Emit the 'statePomo' event to 'PomosComponent' (save)
+                    // TODO: Stopped here, should be processed pattern, 'pomo' started, page reloaded, after finish should be selected todo
+                    // this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
                 }
             }
         }, 1000);

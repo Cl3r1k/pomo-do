@@ -152,9 +152,11 @@ Todos:
                                         ✔ The selected 'todo' should be changed visually @done(19-03-15 09:38)
                                             ✔ Change 'border-top' for selected 'todo' @done(19-03-15 09:38)
                                         ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
-                                        ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)` <========================================================= CURRENT TASK
-                                            ☐ Check case - pomo started -> page reloaded -> in this case should be selected first todo `(Delayed for some time)`
-                                        ☐ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' `(Delayed for some time)`
+                                        ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)`
+                                            ☐ Check case - pomo started -> page reloaded -> 'progress' finished -> in this case should be selected first todo `(Delayed for some time)` <========================================================= CURRENT TASK
+                                        ✔ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' @done(19-06-19 09:49)
+                                        ☐ Fix bug - if 'pomo-save' canceled and page reloaded - shouldn't start 'pomo-rest' timer
+                                        ☐ Shouldn't add 'canceled' pomo in pomo list after 'cancel' click
                                         ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope actually) @cancelled(19-03-29 09:48)
                                         ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
                                         ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)
