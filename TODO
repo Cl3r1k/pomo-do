@@ -154,6 +154,7 @@ Todos:
                                         ✔ After 'pomo-save' state changed (saved/canceled) 'todo-list' view should be changed to normal state @done(19-03-28 09:41)
                                         ☐ If app reloaded -> started pomo and after 'pomo-progress' should be selected first todo `(Delayed for some time)`
                                             ☐ Check case - pomo started -> page reloaded -> 'progress' finished -> in this case should be selected first todo `(Delayed for some time)` <========================================================= CURRENT TASK
+                                            ☐ Check behaviuor when before 'progress' ends, current todo is changed (pin todo)
                                         ✔ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' @done(19-06-19 09:49)
                                         ☐ Fix bug - if 'pomo-save' canceled and page reloaded - shouldn't start 'pomo-rest' timer
                                         ☐ Shouldn't add 'canceled' pomo in pomo list after 'cancel' click

@@ -174,7 +174,16 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                 } else {
                     this.emitPomoState(2, false);    // Emit the 'statePomo' event to 'PomosComponent' (save)
                     // TODO: Stopped here, should be processed pattern, 'pomo' started, page reloaded, after finish should be selected todo
-                    // this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
+                    // console.log('%c pomoTitle', this.consoleTextColorComponent, this._pomoTitleService.pomoTitle);
+                    // console.log('%c pomoTitleManualPart', this.consoleTextColorComponent, this._pomoTitleService.pomoTitleManualPart);
+                    // console.log('%c pomoTitleTodosPart', this.consoleTextColorComponent, this._pomoTitleService.pomoTitleTodosPart);
+                    // console.log('%c this.currentTodoPomoHeader', this.consoleTextColorComponent, this.currentTodoPomoHeader);
+                    // TODO: Emit info, that 'progress' finished, and previously wasn't changed pomoTitle, so main component should process
+                    if (!this._pomoTitleService.pomoTitle
+                        && !this._pomoTitleService.pomoTitleManualPart
+                        && !this._pomoTitleService.pomoTitleTodosPart) {
+                        this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
+                    }
                 }
             }
         }, 1000);
