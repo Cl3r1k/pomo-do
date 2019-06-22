@@ -166,7 +166,7 @@
                 }
                 &.selected-for-pomo-title {
                     background-color: #c9f1c6;
-                    border-top: 1px solid #d7d7d7;
+                    // border-top: 1px solid #d7d7d7; // Should we use it?
                     .toggle:not(:checked) {
                         content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="25" fill="none" stroke="rgb(132, 184, 174)" stroke-width="3"/></svg>');
                     }

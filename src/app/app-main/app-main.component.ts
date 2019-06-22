@@ -41,6 +41,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     currentActiveTaskName = '';
     pomoStateAppMain = 0;
     isEmptyTodoList = true;
+    currentSelectedTodoForPomoTitle: ToDo = null;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -446,6 +447,16 @@ export class AppMainComponent implements OnInit, OnDestroy {
     onStatePomoChange(state: number) {
         this.pomoStateAppMain = state;
         // console.log('%cpomoStateAppMain: ', this.consoleTextColorComponent, this.pomoStateAppMain);
+    }
+
+    onCurrentTodoSelectedChange(todo: ToDo) {
+        if (this.currentTodo === todo) {
+            this.currentSelectedTodoForPomoTitle = todo;
+        } else {
+            this.currentSelectedTodoForPomoTitle = null;
+        }
+        console.log('%c onCurrentTodoSelectedChange() todo: ', this.consoleTextColorComponent, todo);
+        console.log('%c currentSelectedTodoForPomoTitle: ', this.consoleTextColorComponent, this.currentSelectedTodoForPomoTitle);
     }
 
 }

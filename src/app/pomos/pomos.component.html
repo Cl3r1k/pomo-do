@@ -1,5 +1,5 @@
 <div class='pomo-container'>
-    <app-pomo-header class='pomo-header-container' [pomoStatePomoHeader]='pomoStatePomos' [currentTodoPomoHeader]='currentTodoPomos' (statePomoHeaderComponentEmitter)='onStatePomoChange($event)'></app-pomo-header>
+    <app-pomo-header class='pomo-header-container' [pomoStatePomoHeader]='pomoStatePomos' [currentTodoPomoHeader]='currentTodoPomos' (statePomoHeaderComponentEmitter)='onStatePomoChange($event)' (currentTodoSelectedPomoHeaderComponentEmitter)='onCurrentTodoSelectedChange($event)'></app-pomo-header>
 
     <app-pomo-list class='pomo-list-container'></app-pomo-list>
 </div>
