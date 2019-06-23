@@ -26,7 +26,6 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     @Input() currentTodoPomoHeader: ToDo;
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
-    @Output() currentTodoSelectedPomoHeaderComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     pomoLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     restLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
@@ -180,12 +179,12 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     // console.log('%c pomoTitleTodosPart', this.consoleTextColorComponent, this._pomoTitleService.pomoTitleTodosPart);
                     // console.log('%c this.currentTodoPomoHeader', this.consoleTextColorComponent, this.currentTodoPomoHeader);
                     // TODO: Emit info, that 'progress' finished, and prev-ly wasn't changed pomoTitle, so main component should process it
-                    if (!this._pomoTitleService.pomoTitle
-                        && !this._pomoTitleService.pomoTitleManualPart
-                        && !this._pomoTitleService.pomoTitleTodosPart) {
-                        this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
-                        this.currentTodoSelectedPomoHeaderComponentEmitter.emit(this.currentTodoPomoHeader);
-                    }
+                    // if (!this._pomoTitleService.pomoTitle
+                    //     && !this._pomoTitleService.pomoTitleManualPart
+                    //     && !this._pomoTitleService.pomoTitleTodosPart) {
+                    //     this._pomoTitleService.setPomoState(2, true, this.currentTodoPomoHeader);
+                    //     this.currentTodoSelectedPomoHeaderComponentEmitter.emit(this.currentTodoPomoHeader);
+                    // }
                 }
             }
         }, 1000);

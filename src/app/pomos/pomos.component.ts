@@ -14,7 +14,6 @@ export class PomosComponent implements OnInit {
     @Input() currentTodoPomos: ToDo;
 
     @Output() statePomosComponentEmitter: EventEmitter<number> = new EventEmitter();
-    @Output() currentTodoSelectedPomosComponentEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
@@ -23,10 +22,6 @@ export class PomosComponent implements OnInit {
 
     onStatePomoChange(state: number) {
         this.statePomosComponentEmitter.emit(state);
-    }
-
-    onCurrentTodoSelectedChange(todo: ToDo) {
-        this.currentTodoSelectedPomosComponentEmitter.emit(todo);
     }
 
 }
