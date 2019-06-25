@@ -156,8 +156,8 @@ Todos:
                                             ☐ How to check test case  - pomo started -> page reloaded -> 'progress' finished -> in this case should be selected first todo `(Delayed for some time)` <- The reason of the delay - is dynamical component for 'todo-view' currently just can't update view in runtime for 'todo-item'
                                                 ☐ Check behaviuor when before 'progress' ends, current todo is changed (pin todo) `(Delayed for some time)`
                                         ✔ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' @done(19-06-19 09:49)
-                                        ☐ Fix bug - if 'pomo-save' canceled and page reloaded - shouldn't start 'pomo-rest' timer <========================================================= CURRENT TASK
-                                        ☐ Shouldn't add 'canceled' pomo in pomo list after 'cancel' click
+                                        ✔ Fix bug - if 'pomo-save' canceled and page reloaded - shouldn't start 'pomo-rest' timer @done(19-06-24 09:51)
+                                        ☐ Shouldn't add 'canceled' pomo in pomo list after 'cancel' click <========================================================= CURRENT TASK
                                         ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope actually) @cancelled(19-03-29 09:48)
                                         ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
                                         ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)

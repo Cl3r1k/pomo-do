@@ -102,12 +102,16 @@ export class PomoStateService {
                 // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
                 if (isSaved) {
                     this.recentPomos.push(recentPomo);
-                    this.generatePomoListView();
+                    this.generatePomoListView();    // <--- Look here to fix list of pomos when canceled
                     this.savePomoList();
                     // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
-                    this.pomoState.status = 'resting';
-                    this.pomoState.rest_time = new Date().toISOString();
+                    if (isInterrupted) {
+                        this.setIdlePomoState();
+                    } else {
+                        this.pomoState.status = 'resting';
+                        this.pomoState.rest_time = new Date().toISOString();
+                    }
                     this.savePomoState();
                 }
             });

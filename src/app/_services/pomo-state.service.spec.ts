@@ -236,7 +236,7 @@ describe('Service: PomoStateService', () => {
             expect(service.recentPomos[0].duration).toEqual(61);
         });
 
-        it(`Should call 'savePomoList()'`, () => {
+        it(`Should call 'savePomoList()'  if the argument is not empty`, () => {
             // Arrange
             service.pomoState = new PomoState();
 
@@ -248,7 +248,7 @@ describe('Service: PomoStateService', () => {
             expect(service.savePomoList).toHaveBeenCalled();
         });
 
-        it(`Should call 'savePomoState()'`, () => {
+        it(`Should call 'savePomoState()' if the argument is not empty`, () => {
             // Arrange
             service.pomoState = new PomoState();
 
@@ -258,6 +258,20 @@ describe('Service: PomoStateService', () => {
 
             // Assert
             expect(service.savePomoState).toHaveBeenCalled();
+        });
+
+        it(`Should call 'setIdlePomoState()' if the argument is not empty`, () => {
+            // Arrange
+            service.pomoState = new PomoState();
+            service.pomoState.start_time = new Date('2019-06-03T03:34:11.000Z').toISOString();
+            service.pomoState.end_time = new Date('2019-06-03T03:35:12.000Z').toISOString();
+
+            // Act
+            spyOn(service, 'setIdlePomoState');
+            service.saveCompletedPomo('');
+
+            // Assert
+            expect(service.setIdlePomoState).toHaveBeenCalled();
         });
 
         // it(`Should call 'indexedDbService.savePomo()'`, () => {
