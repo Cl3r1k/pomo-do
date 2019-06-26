@@ -102,7 +102,7 @@ export class PomoStateService {
                 // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
                 if (isSaved) {
                     this.recentPomos.push(recentPomo);
-                    this.generatePomoListView();    // <--- Look here to fix list of pomos when canceled
+                    this.generatePomoListView();
                     this.savePomoList();
                     // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
 
@@ -192,6 +192,11 @@ export class PomoStateService {
     generatePomoListView() {
 
         if (this.recentPomos.length) {
+            // Firstly - filter canceled 'pomos'
+            const filteredRecentPomosList = this.recentPomos.filter(item => {
+                return !item.canceled;
+            });
+
             let dateGroup;
             const options = {
                 month: 'short',
@@ -202,8 +207,8 @@ export class PomoStateService {
             let pomosArray = [];
             let pomosCount = 0;
 
-            for (let i = 0; i < this.recentPomos.length; i++) {
-                const pomoItem = this.recentPomos[i];
+            for (let i = 0; i < filteredRecentPomosList.length; i++) {
+                const pomoItem = filteredRecentPomosList[i];
                 const tmpDateTime = new Date(pomoItem.end_time);
                 const tmpDateGroup = tmpDateTime.toLocaleString('en-US', options);
 
@@ -267,7 +272,7 @@ export class PomoStateService {
                     pomosArray.push(pomoObj);
                 }
 
-                if (i === this.recentPomos.length - 1) {
+                if (i === filteredRecentPomosList.length - 1) {
                     // Save last data in array
                     pomosCount = this.getPomosCount(pomosArray);
                     pomosArray.reverse();

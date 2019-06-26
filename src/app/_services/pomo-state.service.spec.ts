@@ -6,6 +6,7 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 // Models
 import { PomoState } from '@app/_models/pomo-state';
+import { Pomo } from '@app/_models/pomo';
 
 // Modules
 import { Utils } from '@app/_common/utils';
@@ -21,7 +22,7 @@ describe('Service: PomoStateService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ Utils,
+            providers: [Utils,
                 {
                     provide: IndexedDbService,
                     useClass: IndexedDbMockService
@@ -352,6 +353,46 @@ describe('Service: PomoStateService', () => {
 
             // Assert
             expect(localStorage.getItem).toHaveBeenCalled();
+        });
+
+        it(`Should call 'generatePomoListView()'`, () => {
+            // Arrange
+
+            // Act
+            spyOn(service, 'generatePomoListView');
+            service.loadPomoList();
+
+            // Assert
+            expect(service.generatePomoListView).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#generatePomoListView()`, () => {
+        it(``, () => {
+            // Arrange
+            const pomo1 = new Pomo('Todo with priority 1', '2019-06-20T04:03:36.000Z', '1', false);
+            pomo1.end_time = '2019-06-20T04:04:36.000Z';
+            const pomo2 = new Pomo('1. Add more todos!', '2019-06-24T03:54:40.000Z', '2', false);
+            pomo1.end_time = '2019-06-24T03:55:40.000Z';
+            const pomo3 = new Pomo('Todo with priority 1', '2019-06-24T03:57:28.000Z', '3', false);
+            pomo1.end_time = '2019-06-24T03:58:28.000Z';
+            const pomo4 = new Pomo('', '2019-06-25T03:37:19.000Z', '4', true);
+            pomo1.end_time = '2019-06-25T03:38:28.446Z';
+
+            service.recentPomos = [ pomo1, pomo2, pomo3, pomo4 ];
+
+            // Act
+            // spyOn(service, 'generatePomoListView');
+            // service.loadPomoList();
+
+            // Assert
+            // expect(service.generatePomoListView).toHaveBeenCalled();
+        });
+    });
+
+    describe(`#getPomosCount()`, () => {
+        it(``, () => {
+            //
         });
     });
 

@@ -26,4 +26,8 @@ export class PomoStateMockService {
 
     public loadPomoList() { }
 
+    public generatePomoListView() { }
+
+    public getPomosCount() { }
+
 }
