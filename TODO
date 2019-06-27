@@ -35,7 +35,7 @@ Todos:
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
                         ✔ Add tests for 'DialogAccountComponent' @done(18-12-19 09:38)
-                        ☐ Consider to use 'mat-tab' for tabs in 'account-item' dialog (Some time delay)
+                        ☐ Consider to use 'mat-tab' for tabs in 'account-item' dialog `(Delayed for some time)`
                     ✔ Update tests for 'SessionStorageService' @done(18-12-17 10:43)
                     ✔ Fix all tests with new code ('account-item' + change 'Header') @done(18-12-19 10:00)
 
@@ -46,6 +46,8 @@ Todos:
                         ✔ Add tab 'Pomo' @done(18-12-26 10:35)
                         ✔ Add tab 'Subscribe' @done(18-12-26 10:35)
                             ✔ Add tests for 'DialogSettingsComponent' @done(18-12-28 09:59)
+
+                    ☐ Settings should be saved in 'localStorage' and 'IndexedDb' and used in 'pomos' part (e.g. 'pomo-time', 'rest-time' etc)
 
                 ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
@@ -59,12 +61,12 @@ Todos:
                     ✔ Add tests for 'TodoCurrentComponent' @done(19-01-04 09:58)
 
                 ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
-                    ☐ Update view for TodoList with new updates
+                    ✔ Update view for TodoList with new updates @done(19-06-26 10:21)
                         ✔ Update view for todo-view @done(19-01-09 09:52)
                         ✔ Update view for completed-todos @done(19-01-09 10:26)
                         ✔ Update view for todo-header @done(19-01-10 10:28)
                             ✔ Reorganize part for 'new-todo' and 'icon-keyboard_return' (instead position: absolute; for icon use grid) @done(19-01-11 09:50)
-                            ☐ Fix header, when there is no any todo in list (width collapse)
+                            ☐ Fix header, when there is no any todo in list (width collapse) <========================================================= CURRENT TASK
                         ✔ Update view for todo-footer @done(19-01-11 10:10)
                             ✔ Fix '.footer:before' style @done(19-01-11 10:25)
                             ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)
@@ -101,8 +103,8 @@ Todos:
                             ✔ Move 'todo-list-header' to 'todos' folder @done(19-01-25 09:59)
                             ✔ Move 'todo-list' to 'todos' folder @done(19-01-26 09:30)
                     
-                    ☐ Create component for 'pomos'
-                        ☐ Complete 'pomo-header' component
+                    ✔ Create component for 'pomos' @done(19-06-26 10:15)
+                        ✔ Complete 'pomo-header' component @done(19-06-26 10:15)
                             ✔ Complete code and UI for 'PomoHeaderComponent' @done(19-06-10 09:58)
                                 ✔ Add service for 'PomoState' @done(19-02-05 10:36)                                    
                                 ✔ Process states for 'PomoState' ('started', 'idle', 'finished') @done(19-03-04 09:52)
@@ -126,7 +128,7 @@ Todos:
                                                 ✔ Added 'DialogCancelComponent' @done(19-03-03 10:07)
                                                     ✔ Add tests for 'DialogCancelComponent' @done(19-03-04 09:32)
 
-                            ☐ Complete UI and functionality for 'save-pomo' part
+                            ✔ Complete UI and functionality for 'save-pomo' part @done(19-06-26 10:15)
                                 ✔ Add styled 'textarea.pomo-save-field' @done(19-03-29 10:13)
                                     ✔ Improve check when on epmty 'save-pomo' field 'Enter' pressed (shouldn't write enter key in field) @done(19-03-06 09:25)
                                     ✔ The 'textarea.pomo-save-field' vertical size shouldn't be changed manually @done(19-03-07 09:54)
@@ -158,8 +160,7 @@ Todos:
                                         ✔ If 'pomo-save' will be shown in next time (without page reload) after 'pomo-progress' -> 'pomo-title' should cointain list of selected 'todos' and 'todo-list' should show previously selected 'todos' @done(19-06-19 09:49)
                                         ✔ Fix bug - if 'pomo-save' canceled and page reloaded - shouldn't start 'pomo-rest' timer @done(19-06-24 09:51)
                                         ✔ Shouldn't add 'canceled' pomo in pomo list after 'cancel' click @done(19-06-25 09:47)
-                                            ☐ Update test for 'PomoStateService' <========================================================= CURRENT TASK
-                                        ☐ Consider to improve part for canceled 'pomo' and use 'canceled' and 'durarion' members instead new variables
+                                            ✔ Update test for 'PomoStateService' @done(19-06-26 10:07)
                                         ✘ Should be saved selected 'todos' and 'textarea.pomo-save-field' content in the localStorage (Nope actually) @cancelled(19-03-29 09:48)
                                         ✔ Todo selected state should be canceled selection, if 'pomoState' changed @done(19-03-29 09:48)
                                         ✔ Fix issue, when 'todo' selected and 'icon-enter' clicked -> 'pomo' not saved (empty field???) @done(19-03-29 10:00)

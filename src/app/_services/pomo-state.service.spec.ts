@@ -368,7 +368,7 @@ describe('Service: PomoStateService', () => {
     });
 
     describe(`#generatePomoListView()`, () => {
-        it(``, () => {
+        it(`Should 'recentPomosView' countain processed list of pomos`, () => {
             // Arrange
             const pomo1 = new Pomo('Todo with priority 1', '2019-06-20T04:03:36.000Z', '1', false);
             pomo1.end_time = '2019-06-20T04:04:36.000Z';
@@ -381,18 +381,35 @@ describe('Service: PomoStateService', () => {
 
             service.recentPomos = [ pomo1, pomo2, pomo3, pomo4 ];
 
+            const expectedRecentPomosView = [];
+
             // Act
-            // spyOn(service, 'generatePomoListView');
-            // service.loadPomoList();
+            service.generatePomoListView();
 
             // Assert
-            // expect(service.generatePomoListView).toHaveBeenCalled();
+            expect(service.recentPomosView.length).toEqual(2);
+            expect(service.recentPomosView[0]['dateGroup']).toEqual('Jun 26');
+            expect(service.recentPomosView[0]['pomosCount']).toEqual(2);
+            expect(service.recentPomosView[0]['pomosArray'].length).toEqual(2);
+            expect(service.recentPomosView[0]['pomosArray'][0]['title']).toEqual('Todo with priority 1');
+            expect(service.recentPomosView[1]['dateGroup']).toEqual('Jun 25');
+            expect(service.recentPomosView[1]['pomosCount']).toEqual(1);
+            expect(service.recentPomosView[1]['pomosArray'].length).toEqual(1);
+            expect(service.recentPomosView[1]['pomosArray'][0]['title']).toEqual('Todo with priority 1');
         });
     });
 
     describe(`#getPomosCount()`, () => {
-        it(``, () => {
-            //
+        it(`Should return summ of field 'counter' in given array`, () => {
+            // Arrange
+            // Create test-case array with only field 'counter'
+            const pomosArray = [ { counter: 1 }, { counter: 2 }, { counter: 3 }];
+
+            // Act
+            const result = service.getPomosCount(pomosArray);
+
+            // Assert
+            expect(result).toEqual(6);
         });
     });
 
