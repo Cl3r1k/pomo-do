@@ -23,7 +23,7 @@ Todos:
                         ✔ Add tests for submenu in 'TodoTitleComponent' @done(18-12-16 10:19)
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
-                    ☐ Add icons for 'sync-status'
+                    ☐ Add icons for 'sync-status' <========================================================= CURRENT TASK
 
                     ✔ Add dialog for 'account-item' @done(18-12-19 10:02)
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)
@@ -66,7 +66,8 @@ Todos:
                         ✔ Update view for completed-todos @done(19-01-09 10:26)
                         ✔ Update view for todo-header @done(19-01-10 10:28)
                             ✔ Reorganize part for 'new-todo' and 'icon-keyboard_return' (instead position: absolute; for icon use grid) @done(19-01-11 09:50)
-                            ☐ Fix header, when there is no any todo in list (width collapse) <========================================================= CURRENT TASK
+                            ✔ Fix header, when there is no any todo in list (width collapse) @done(19-06-27 09:44)
+                            ✔ Fix 'todo-header' 'border-bottom' styles (not in full field) @done(19-06-27 09:57)
                         ✔ Update view for todo-footer @done(19-01-11 10:10)
                             ✔ Fix '.footer:before' style @done(19-01-11 10:25)
                             ✔ Reorganize todo-list-footer part, and consider to remove it @done(19-01-13 09:38)

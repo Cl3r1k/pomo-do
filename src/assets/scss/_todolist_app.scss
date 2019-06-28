@@ -417,14 +417,14 @@
         grid-template-columns: repeat(12, 1fr);
         background-color: #aedfca; // For Debug
         align-items: center;
-        min-height: 13em;
+        min-height: 14.25em;
         color: #777777;
         .empty-todo-list,
         .sync-todo-list {
             grid-column: span 12;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            margin-top: 20px;
+            // margin-top: 20px;
             background-color: #e6ba81; // For Debug
             .icon-check-circle,
             .icon-sync-spinner {
