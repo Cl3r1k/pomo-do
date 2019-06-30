@@ -13,7 +13,10 @@
         </li>
         <li class='sync-status'>
             <div class='icon-offline-container' *ngIf='offlineState'>
-                <span (click)='changeSyncState()'>[OF]</span>
+                <!-- <span (click)='changeSyncState()'>[OF]</span> -->
+                <svg class="icon icon-cloud-off offline-sync" (click)='changeSyncState()'>
+                    <use xlink:href="#icon-cloud-off"></use>
+                </svg>
             </div>
             <div class='icon-online-container' *ngIf='!offlineState'>
                 <!-- <span class='success-sync' *ngIf='syncState === 0' (click)='changeSyncState()'>[SU]</span> -->
