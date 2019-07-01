@@ -23,8 +23,14 @@
                 <svg class="icon icon-cloud-check success-sync" *ngIf='syncState === 0' (click)='changeSyncState()'>
                     <use xlink:href="#icon-cloud-check"></use>
                 </svg>
-                <span class='standby-sync' *ngIf='syncState === 1' (click)='changeSyncState()'>[ST]</span>
-                <span class='syncing-sync' *ngIf='syncState === 2' (click)='changeSyncState()'>[SY]</span>
+                <!-- <span class='standby-sync' *ngIf='syncState === 1' (click)='changeSyncState()'>[ST]</span> -->
+                <svg class="icon icon-loop2 standby-sync" *ngIf='syncState === 1' (click)='changeSyncState()'>
+                    <use xlink:href="#icon-loop2"></use>
+                </svg>
+                <!-- <span class='syncing-sync' *ngIf='syncState === 2' (click)='changeSyncState()'>[SY]</span> -->
+                <svg class="icon icon-loop2 syncing-sync" *ngIf='syncState === 2' (click)='changeSyncState()'>
+                        <use xlink:href="#icon-loop2"></use>
+                    </svg>
                 <span class='failure-sync' *ngIf='syncState === 3' (click)='changeSyncState()'>[FL]</span>
             </div>
         </li>

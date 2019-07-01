@@ -62,6 +62,9 @@
                     svg:hover {
                         cursor: pointer;
                     }
+                    .syncing-sync {
+                        transform: rotate(90deg);
+                    }
                 }
             }
             &.profile-menu {

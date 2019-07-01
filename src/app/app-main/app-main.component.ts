@@ -372,6 +372,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
         // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+        console.log('%ccontainerClick called with event.target.innerHTML: ', this.consoleTextColorComponent, event.target.innerHTML);
+        console.log('%ccontainerClick called with event.target.parentNode: ', this.consoleTextColorComponent, event.target.parentNode);
         if (event.target.className === 'content-container') {
             console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         } else {
