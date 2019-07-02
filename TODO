@@ -23,7 +23,9 @@ Todos:
                         ✔ Add tests for submenu in 'TodoTitleComponent' @done(18-12-16 10:19)
                     ✔ Move 'Sign out' part from 'TodosComponent' to 'TodoTitleComponent' @done(18-11-24 09:18)
                     ✔ Update style for 'profile-name' arrow @done(18-11-26 09:30)
-                    ☐ Add icons for 'sync-status' <========================================================= CURRENT TASK
+                    ☐ Add icons for 'sync-status'
+                        ✔ Fix bug -> click on 'sync-icons' sometime (when icon not anymore in template) calls error @done(19-07-01 10:11)
+                        ☐ Improve part when 'profile-menu' is opened and click on 'sync-icon' (all of the sync-icons) should close the menu <========================================================= CURRENT TASK
 
                     ✔ Add dialog for 'account-item' @done(18-12-19 10:02)
                         ✔ Add 'Account' tab and elements @done(18-12-02 09:36)

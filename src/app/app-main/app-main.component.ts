@@ -371,7 +371,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
-        // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+        console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         console.log('%ccontainerClick called with event.target.innerHTML: ', this.consoleTextColorComponent, event.target.innerHTML);
         console.log('%ccontainerClick called with event.target.parentNode: ', this.consoleTextColorComponent, event.target.parentNode);
         if (event.target.className === 'content-container') {
@@ -380,7 +380,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
             // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         }
 
-        if (event.target.parentNode.className !== 'profile-menu' && event.target.parentNode.className !== 'profile-name') {
+        if (event.target.parentNode &&
+            event.target.parentNode.className !== 'profile-menu' &&
+            event.target.parentNode.className !== 'profile-name') {
             // console.log('click on profile-menu/profile-name');
             if (this.showSubmenuState) {
                 this.showSubmenuState = false;
