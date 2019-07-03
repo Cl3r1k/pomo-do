@@ -13,25 +13,23 @@
         </li>
         <li class='sync-status'>
             <div class='icon-offline-container' *ngIf='offlineState'>
-                <!-- <span (click)='changeSyncState()'>[OF]</span> -->
                 <svg class="icon icon-cloud-off offline-sync" (click)='changeSyncState()'>
                     <use xlink:href="#icon-cloud-off"></use>
                 </svg>
             </div>
             <div class='icon-online-container' *ngIf='!offlineState'>
-                <!-- <span class='success-sync' *ngIf='syncState === 0' (click)='changeSyncState()'>[SU]</span> -->
                 <svg class="icon icon-cloud-check success-sync" *ngIf='syncState === 0' (click)='changeSyncState()'>
                     <use xlink:href="#icon-cloud-check"></use>
                 </svg>
-                <!-- <span class='standby-sync' *ngIf='syncState === 1' (click)='changeSyncState()'>[ST]</span> -->
                 <svg class="icon icon-loop2 standby-sync" *ngIf='syncState === 1' (click)='changeSyncState()'>
                     <use xlink:href="#icon-loop2"></use>
                 </svg>
-                <!-- <span class='syncing-sync' *ngIf='syncState === 2' (click)='changeSyncState()'>[SY]</span> -->
                 <svg class="icon icon-loop2 syncing-sync" *ngIf='syncState === 2' (click)='changeSyncState()'>
                         <use xlink:href="#icon-loop2"></use>
                     </svg>
-                <span class='failure-sync' *ngIf='syncState === 3' (click)='changeSyncState()'>[FL]</span>
+                <svg class="icon icon-warning failure-sync" *ngIf='syncState === 3' (click)='changeSyncState()'>
+                    <use xlink:href="#icon-warning"></use>
+                </svg>
             </div>
         </li>
         <li class='profile-menu'>

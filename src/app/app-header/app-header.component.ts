@@ -32,8 +32,8 @@ export class AppHeaderComponent implements OnInit {
     @Output() subMenuStateAppTitleEmitter: EventEmitter<boolean> = new EventEmitter();
 
     syncMessage = 'Syncing...';
-    syncState = 0;
-    offlineState = true;
+    syncState = 2;
+    offlineState = false;
     profileName = '';
 
     constructor(private _sessionStorageService: SessionStorageService,
@@ -62,8 +62,7 @@ export class AppHeaderComponent implements OnInit {
             }
         }
 
-        // TODO: Do not forget to change this part and compare 'syncState' with 2, and btw change the init value of the variable
-        if (this.syncState === 0) {
+        if (this.syncState === 2) {
             this.syncMessage = 'Syncing...';
         } else {
             this.syncMessage = '';
