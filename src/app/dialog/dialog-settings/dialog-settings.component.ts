@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// Services
+import { SettingsService } from '@app/_services/settings.service';
+
 // Imports
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
@@ -44,6 +47,7 @@ export class DialogSettingsComponent implements OnInit {
         public dialogRef: MatDialogRef<DialogSettingsComponent>,
         @Inject(MAT_DIALOG_DATA) public data,
         private _formBuilder: FormBuilder,
+        private _settingsService: SettingsService
     ) {
 
         this.formGoal = _formBuilder.group({
@@ -51,6 +55,11 @@ export class DialogSettingsComponent implements OnInit {
             weeklyGoal: ['', Validators.required],
             monthlyGoal: ['', Validators.required],
         });
+
+        // TODO: Here we should read data form 'SettingsService' and save it in component fields,
+        // If there is no any data, then we should save initial values in 'SettingsService'
+        // For 'settings-data' exchange we should use separate 'SettingsData' class
+        this._settingsService.loadSettings();
 
         // Set initial values
         this.formGoal.controls['dailyGoal'].setValue(this.currentDailyGoal);
