@@ -10,4 +10,8 @@ export class SettingsService {
     loadSettings() {
         //
     }
+
+    saveSettings() {
+        //
+    }
 }
