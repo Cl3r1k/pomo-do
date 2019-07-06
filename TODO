@@ -52,6 +52,7 @@ Todos:
 
                     ☐ Settings should be saved in 'localStorage' and 'IndexedDb' and used in 'pomos' part (e.g. 'pomo-time', 'rest-time' etc)
                         ✔ Add 'SettingsService' @done(19-07-03 09:49)
+                            ✔ Add 'SettingsData' class @done(19-07-05 10:32)
                             ☐ Store setting in 'localStorage' through 'SettingsService' <========================================================= CURRENT TASK
 
                 ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)
