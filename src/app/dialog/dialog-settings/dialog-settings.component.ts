@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// Models
+import { SettingsData } from '@app/_models/settings-data';
+
 // Services
 import { SettingsService } from '@app/_services/settings.service';
 
@@ -59,7 +62,22 @@ export class DialogSettingsComponent implements OnInit {
         // TODO: Here we should read data form 'SettingsService' and save it in component fields,
         // If there is no any data, then we should save initial values in 'SettingsService'
         // For 'settings-data' exchange we should use separate 'SettingsData' class
-        this._settingsService.loadSettings();
+        let settingsData: SettingsData = this._settingsService.loadSettings();
+
+        if (!settingsData) {
+            _settingsService.initSettings();
+            _settingsService.saveSettings(_settingsService.settingsData);
+            settingsData = _settingsService.settingsData;
+        }
+
+        this.playSoundWorkState = settingsData.playSoundWorkState;
+        this.playSoundAlarmState = settingsData.playSoundAlarmState;
+        this.notificationState = settingsData.notificationState;
+        this.timeTypeState = settingsData.timeTypeState;
+        this.currentDailyGoal = settingsData.currentDailyGoal;
+        this.currentWeeklyGoal = settingsData.currentWeeklyGoal;
+        this.currentMonthlyGoal = settingsData.currentMonthlyGoal;
+        this.proStatus = settingsData.proStatus;
 
         // Set initial values
         this.formGoal.controls['dailyGoal'].setValue(this.currentDailyGoal);
