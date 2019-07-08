@@ -8,12 +8,14 @@ import { SettingsData } from '@app/_models/settings-data';
 })
 export class SettingsService {
 
-    settingsData: SettingsData = null;
+    settingsData: SettingsData;
     keyForLocalStorage = 'settings_data';
 
     constructor() { }
 
     initSettings() {
+        this.settingsData = null;
+        this.settingsData = new SettingsData();
         this.settingsData.playSoundWorkState = false;
         this.settingsData.playSoundAlarmState = false;
         this.settingsData.notificationState = false;

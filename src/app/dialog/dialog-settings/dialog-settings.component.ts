@@ -93,7 +93,10 @@ export class DialogSettingsComponent implements OnInit {
         ).subscribe(value => {
             console.log('%cform changed value: ', this.consoleTextColorComponent, value);
 
-            // TODO: Perform request to backEnd and change values
+            // TODO: Perform request to service and change values
+            //
+
+
             if (value['dailyGoal'] && value['dailyGoal'] !== this.currentDailyGoal) {
                 this.dailyGoalSaveState = true;
                 setTimeout(() => {
