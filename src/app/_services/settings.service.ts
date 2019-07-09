@@ -16,14 +16,14 @@ export class SettingsService {
     initSettings() {
         this.settingsData = null;
         this.settingsData = new SettingsData();
-        this.settingsData.playSoundWorkState = false;
-        this.settingsData.playSoundAlarmState = false;
-        this.settingsData.notificationState = false;
-        this.settingsData.timeTypeState = false;
-        this.settingsData.currentDailyGoal = 8;
-        this.settingsData.currentWeeklyGoal = 40;
-        this.settingsData.currentMonthlyGoal = 160;
-        this.settingsData.proStatus = false;
+        this.settingsData.play_sound_work_state = false;
+        this.settingsData.play_sound_alarm_state = false;
+        this.settingsData.notification_state = false;
+        this.settingsData.time_type_state = false;
+        this.settingsData.current_daily_goal = 8;
+        this.settingsData.current_weekly_goal = 40;
+        this.settingsData.current_monthly_goal = 160;
+        this.settingsData.pro_status = false;
     }
 
     loadSettings(): SettingsData {
@@ -32,16 +32,19 @@ export class SettingsService {
         if (data) {
             this.settingsData = null;
             this.settingsData = new SettingsData();
-            this.settingsData.playSoundWorkState = data['play_sound_work_state'];
-            this.settingsData.playSoundAlarmState = data['play_sound_alarm_state'];
-            this.settingsData.notificationState = data['notification_state'];
-            this.settingsData.timeTypeState = data['time_type_state'];
-            this.settingsData.currentDailyGoal = data['current_daily_goal'];
-            this.settingsData.currentWeeklyGoal = data['current_weekly_goal'];
-            this.settingsData.currentMonthlyGoal = data['current_monthly_goal'];
-            this.settingsData.proStatus = data['pro_status'];
+            this.settingsData.play_sound_work_state = data['play_sound_work_state'];
+            this.settingsData.play_sound_alarm_state = data['play_sound_alarm_state'];
+            this.settingsData.notification_state = data['notification_state'];
+            this.settingsData.time_type_state = data['time_type_state'];
+            this.settingsData.current_daily_goal = data['current_daily_goal'];
+            this.settingsData.current_weekly_goal = data['current_weekly_goal'];
+            this.settingsData.current_monthly_goal = data['current_monthly_goal'];
+            this.settingsData.pro_status = data['pro_status'];
         }
 
+        if (this.settingsData.isUndefined()) {
+            this.settingsData = null;
+        }
         return this.settingsData;
     }
 

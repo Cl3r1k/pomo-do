@@ -64,20 +64,21 @@ export class DialogSettingsComponent implements OnInit {
         // For 'settings-data' exchange we should use separate 'SettingsData' class
         let settingsData: SettingsData = this._settingsService.loadSettings();
 
+        // console.log('%c settingsData: ', this.consoleTextColorComponent, settingsData);
         if (!settingsData) {
             _settingsService.initSettings();
             _settingsService.saveSettings(_settingsService.settingsData);
             settingsData = _settingsService.settingsData;
         }
 
-        this.playSoundWorkState = settingsData.playSoundWorkState;
-        this.playSoundAlarmState = settingsData.playSoundAlarmState;
-        this.notificationState = settingsData.notificationState;
-        this.timeTypeState = settingsData.timeTypeState;
-        this.currentDailyGoal = settingsData.currentDailyGoal;
-        this.currentWeeklyGoal = settingsData.currentWeeklyGoal;
-        this.currentMonthlyGoal = settingsData.currentMonthlyGoal;
-        this.proStatus = settingsData.proStatus;
+        this.playSoundWorkState = settingsData.play_sound_work_state;
+        this.playSoundAlarmState = settingsData.play_sound_alarm_state;
+        this.notificationState = settingsData.notification_state;
+        this.timeTypeState = settingsData.time_type_state;
+        this.currentDailyGoal = settingsData.current_daily_goal;
+        this.currentWeeklyGoal = settingsData.current_weekly_goal;
+        this.currentMonthlyGoal = settingsData.current_monthly_goal;
+        this.proStatus = settingsData.pro_status;
 
         // Set initial values
         this.formGoal.controls['dailyGoal'].setValue(this.currentDailyGoal);

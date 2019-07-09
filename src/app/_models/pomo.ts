@@ -1,4 +1,5 @@
 export class Pomo {
+    // As far this class used to store data in 'localStorage' here used Snake_case notation for variables
     id: number;
     canceled: boolean;
     created_time: string;
