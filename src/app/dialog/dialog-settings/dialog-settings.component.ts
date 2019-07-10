@@ -188,4 +188,18 @@ export class DialogSettingsComponent implements OnInit {
         }, 3000);
     }
 
+    saveSettings() {
+        const settingsData: SettingsData = new SettingsData();
+        settingsData.play_sound_work_state = this.playSoundWorkState;
+        settingsData.play_sound_alarm_state = this.playSoundAlarmState;
+        settingsData.notification_state = this.notificationState;
+        settingsData.time_type_state = this.timeTypeState;
+        settingsData.current_daily_goal = this.currentDailyGoal;
+        settingsData.current_weekly_goal = this.currentWeeklyGoal;
+        settingsData.current_monthly_goal = this.currentMonthlyGoal;
+        settingsData.pro_status = this.proStatus;
+
+        this._settingsService.saveSettings(settingsData);
+    }
+
 }

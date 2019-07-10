@@ -53,9 +53,12 @@ Todos:
                     ☐ Settings should be saved in 'localStorage' and 'IndexedDb' and used in 'pomos' part (e.g. 'pomo-time', 'rest-time' etc)
                         ✔ Add 'SettingsService' @done(19-07-03 09:49)
                             ✔ Add 'SettingsData' class @done(19-07-05 10:32)
+                                ☐ Add tests 'SettingsData' class
                             ☐ Store setting in 'localStorage' through 'SettingsService'
                                 ✔ Fix loading prefs from service (values for 'dailyGoal' and other fields are empty) @done(19-07-08 10:13)
-                            ☐ Test case when there is no 'settings_data' in 'localStorage' <========================================================= CURRENT TASK
+                            ✔ Fix case when there is no 'settings_data' in 'localStorage' @done(19-07-09 09:18)
+                            ☐ Consider to save settings not every time, but use timer for saving and save at once all changed settings <========================================================= CURRENT TASK
+                                ☐ Info state for changed values, should write 'Saving' for each changed value and write 'Save' untill all changes saved
 
                 ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)

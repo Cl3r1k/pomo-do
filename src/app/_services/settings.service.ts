@@ -42,7 +42,7 @@ export class SettingsService {
             this.settingsData.pro_status = data['pro_status'];
         }
 
-        if (this.settingsData.isUndefined()) {
+        if (this.settingsData === undefined || this.settingsData.isUndefined()) {
             this.settingsData = null;
         }
         return this.settingsData;
