@@ -44,6 +44,9 @@ export class DialogSettingsComponent implements OnInit {
     monthlyGoalSaveText = 'Saving';
     proStatus = false;
 
+    interval;
+    updatePending = false;
+
     public formGoal: FormGroup;
 
     constructor(
@@ -200,6 +203,22 @@ export class DialogSettingsComponent implements OnInit {
         settingsData.pro_status = this.proStatus;
 
         this._settingsService.saveSettings(settingsData);
+    }
+
+    saveSettingsDelayed() {
+        // if (this.updatePending) {
+        //     clearInterval(this.interval);
+        // }
+
+        // this.updatePending = true;
+        // this.interval = setInterval(() => {
+        //     console.log('%c-->Pefrorm update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+
+        //     this._indexedDbService.updateHashtags(this._tagLayerService.tags).subscribe(() => {
+        //         console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+        //     });
+        //     clearInterval(this.interval);
+        // }, 100);
     }
 
 }
