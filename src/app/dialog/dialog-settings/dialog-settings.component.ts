@@ -182,13 +182,7 @@ export class DialogSettingsComponent implements OnInit {
 
     saveTimeTypeState(state: boolean) {
         this.timeTypeSaveState = true;
-        setTimeout(() => {
-            this.timeTypeSaveText = 'Saved';
-            setTimeout(() => {
-                this.timeTypeSaveState = false;
-                this.timeTypeSaveText = 'Saving';
-            }, 2000);
-        }, 3000);
+        this.saveSettingsDelayed();
     }
 
     saveSettings() {
@@ -205,6 +199,26 @@ export class DialogSettingsComponent implements OnInit {
         this._settingsService.saveSettings(settingsData);
 
         // Reset save-states for fields
+        if (this.timeTypeSaveState) {
+            // console.log('%c timeTypeSaveState is true execute setTimeout()', this.consoleTextColorComponent);
+            // setTimeout(() => {
+            //     this.timeTypeSaveText = 'Saved';
+            //     console.log('%c timeTypeSaveText changed execute setTimeout()', this.consoleTextColorComponent);
+            //     setTimeout(() => {
+            //         this.timeTypeSaveState = false;
+            //         this.timeTypeSaveText = 'Saving';
+            //         console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
+            //     }, 2000);
+            // }, 3000);
+            console.log('%c timeTypeSaveState is true', this.consoleTextColorComponent);
+            this.timeTypeSaveText = 'Saved';
+            console.log('%c timeTypeSaveText changed execute setTimeout()', this.consoleTextColorComponent);
+            setTimeout(() => {
+                this.timeTypeSaveState = false;
+                this.timeTypeSaveText = 'Saving';
+                console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
+            }, 2000);
+        }
     }
 
     saveSettingsDelayed() {
@@ -214,7 +228,7 @@ export class DialogSettingsComponent implements OnInit {
 
         this.updatePending = true;
         this.interval = setInterval(() => {
-            console.log('%c-->Pefrorm saveSettings()', this.consoleTextColorComponent, 'color: red;');
+            console.log('%c-->Pefrorm saveSettings()', this.consoleTextColorComponent);
             this.saveSettings();
             clearInterval(this.interval);
         }, 3000);
