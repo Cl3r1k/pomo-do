@@ -171,13 +171,7 @@ export class DialogSettingsComponent implements OnInit {
 
     saveNotificationState(state: boolean) {
         this.notificationSaveState = true;
-        setTimeout(() => {
-            this.notificationSaveText = 'Saved';
-            setTimeout(() => {
-                this.notificationSaveState = false;
-                this.notificationSaveText = 'Saving';
-            }, 2000);
-        }, 3000);
+        this.saveSettingsDelayed();
     }
 
     saveTimeTypeState(state: boolean) {
@@ -199,6 +193,26 @@ export class DialogSettingsComponent implements OnInit {
         this._settingsService.saveSettings(settingsData);
 
         // Reset save-states for fields
+        if (this.notificationSaveState) {
+            // setTimeout(() => {
+            //     this.notificationSaveText = 'Saved';
+            //     setTimeout(() => {
+            //         this.notificationSaveState = false;
+            //         this.notificationSaveText = 'Saving';
+            //     }, 2000);
+            // }, 3000);
+            console.log('%c notificationSaveState is true', this.consoleTextColorComponent);
+            this.notificationSaveText = 'Saved';
+            console.log('%c notificationSaveState changed execute setTimeout()', this.consoleTextColorComponent);
+            setTimeout(() => {
+                this.notificationSaveState = false;
+                this.notificationSaveText = 'Saving';
+            }, 2000);
+        }
+
+        // TODO: Check case: Click 'checkbox1'? click 'checkbox2', when status chaned to 'Saved' instantly click 'checkbox1'
+        // The settings should be saved again, e.g. called 'saveSettingsDelayed()' -> 'saveSettings()' and should be started 'setTimeout'
+
         if (this.timeTypeSaveState) {
             // console.log('%c timeTypeSaveState is true execute setTimeout()', this.consoleTextColorComponent);
             // setTimeout(() => {
