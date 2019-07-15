@@ -193,7 +193,7 @@ export class DialogSettingsComponent implements OnInit {
         this._settingsService.saveSettings(settingsData);
 
         // Reset save-states for fields
-        if (this.notificationSaveState) {
+        if (this.notificationSaveState && this.updatePending) {
             // setTimeout(() => {
             //     this.notificationSaveText = 'Saved';
             //     setTimeout(() => {
@@ -205,6 +205,10 @@ export class DialogSettingsComponent implements OnInit {
             this.notificationSaveText = 'Saved';
             console.log('%c notificationSaveState changed execute setTimeout()', this.consoleTextColorComponent);
             setTimeout(() => {
+                console.log('%c executed setTimeout() for notificationSaveState', this.consoleTextColorComponent);
+                console.log('%c notificationSaveState: ', this.notificationSaveState);
+                console.log('%c notificationSaveText: ', this.notificationSaveText);
+                console.log('%c this.updatePending', 'color: red;', this.updatePending);
                 this.notificationSaveState = false;
                 this.notificationSaveText = 'Saving';
             }, 2000);
@@ -242,6 +246,7 @@ export class DialogSettingsComponent implements OnInit {
 
         this.updatePending = true;
         this.interval = setInterval(() => {
+            this.updatePending = false;
             console.log('%c-->Pefrorm saveSettings()', this.consoleTextColorComponent);
             this.saveSettings();
             clearInterval(this.interval);
