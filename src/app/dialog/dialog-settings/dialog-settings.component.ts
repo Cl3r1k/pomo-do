@@ -46,6 +46,10 @@ export class DialogSettingsComponent implements OnInit {
 
     interval;
     updatePending = false;
+    timeTypeSaveStatePending = false;
+    timeTypeSaveStateInterval;
+    notificationSaveStatePending = false;
+    notificationSaveStateInterval;
 
     public formGoal: FormGroup;
 
@@ -193,48 +197,32 @@ export class DialogSettingsComponent implements OnInit {
         this._settingsService.saveSettings(settingsData);
 
         // Reset save-states for fields
-        if (this.notificationSaveState && this.updatePending) {
-            // setTimeout(() => {
-            //     this.notificationSaveText = 'Saved';
-            //     setTimeout(() => {
-            //         this.notificationSaveState = false;
-            //         this.notificationSaveText = 'Saving';
-            //     }, 2000);
-            // }, 3000);
-            console.log('%c notificationSaveState is true', this.consoleTextColorComponent);
+        if (this.notificationSaveState) {
             this.notificationSaveText = 'Saved';
-            console.log('%c notificationSaveState changed execute setTimeout()', this.consoleTextColorComponent);
-            setTimeout(() => {
-                console.log('%c executed setTimeout() for notificationSaveState', this.consoleTextColorComponent);
-                console.log('%c notificationSaveState: ', this.notificationSaveState);
-                console.log('%c notificationSaveText: ', this.notificationSaveText);
-                console.log('%c this.updatePending', 'color: red;', this.updatePending);
+            this.notificationSaveStatePending = true;
+            this.notificationSaveStateInterval = setInterval(() => {
                 this.notificationSaveState = false;
                 this.notificationSaveText = 'Saving';
+                this.notificationSaveStatePending = false;
+                clearInterval(this.notificationSaveStateInterval);
             }, 2000);
         }
 
-        // TODO: Check case: Click 'checkbox1'? click 'checkbox2', when status chaned to 'Saved' instantly click 'checkbox1'
-        // The settings should be saved again, e.g. called 'saveSettingsDelayed()' -> 'saveSettings()' and should be started 'setTimeout'
-
         if (this.timeTypeSaveState) {
-            // console.log('%c timeTypeSaveState is true execute setTimeout()', this.consoleTextColorComponent);
-            // setTimeout(() => {
-            //     this.timeTypeSaveText = 'Saved';
-            //     console.log('%c timeTypeSaveText changed execute setTimeout()', this.consoleTextColorComponent);
-            //     setTimeout(() => {
-            //         this.timeTypeSaveState = false;
-            //         this.timeTypeSaveText = 'Saving';
-            //         console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
-            //     }, 2000);
-            // }, 3000);
-            console.log('%c timeTypeSaveState is true', this.consoleTextColorComponent);
+            // console.log('%c timeTypeSaveState is true', this.consoleTextColorComponent);
             this.timeTypeSaveText = 'Saved';
-            console.log('%c timeTypeSaveText changed execute setTimeout()', this.consoleTextColorComponent);
-            setTimeout(() => {
+            this.timeTypeSaveStatePending = true;
+            // console.log('%c timeTypeSaveText changed execute setInterval()', this.consoleTextColorComponent);
+            this.timeTypeSaveStateInterval = setInterval(() => {
+                // console.log('%c executed setInterval() for timeTypeSaveState', this.consoleTextColorComponent);
+                // console.log('%c timeTypeSaveState: ', this.timeTypeSaveState);
+                // console.log('%c timeTypeSaveText: ', this.timeTypeSaveText);
+                // console.log('%c this.updatePending', 'color: red;', this.updatePending);
                 this.timeTypeSaveState = false;
                 this.timeTypeSaveText = 'Saving';
-                console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
+                this.timeTypeSaveStatePending = false;
+                clearInterval(this.timeTypeSaveStateInterval);
+                // console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
             }, 2000);
         }
     }
@@ -244,9 +232,19 @@ export class DialogSettingsComponent implements OnInit {
             clearInterval(this.interval);
         }
 
+        if (this.notificationSaveStatePending) {
+            this.notificationSaveText = 'Saving';
+            clearInterval(this.notificationSaveStateInterval);
+        }
+
+        if (this.timeTypeSaveStatePending) {
+            this.timeTypeSaveText = 'Saving';
+            clearInterval(this.timeTypeSaveStateInterval);
+        }
+
         this.updatePending = true;
         this.interval = setInterval(() => {
-            this.updatePending = false;
+            // this.updatePending = false;
             console.log('%c-->Pefrorm saveSettings()', this.consoleTextColorComponent);
             this.saveSettings();
             clearInterval(this.interval);
