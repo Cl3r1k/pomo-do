@@ -46,10 +46,16 @@ export class DialogSettingsComponent implements OnInit {
 
     interval;
     updatePending = false;
-    timeTypeSaveStatePending = false;
-    timeTypeSaveStateInterval;
+    dailyGoalSaveStatePending = false;
+    dailyGoalSaveStateInterval;
+    playSoundWorkSaveStatePending = false;
+    playSoundWorkSaveStateInterval;
+    playSoundAlarmSaveStatePending = false;
+    playSoundAlarmSaveStateInterval;
     notificationSaveStatePending = false;
     notificationSaveStateInterval;
+    timeTypeSaveStatePending = false;
+    timeTypeSaveStateInterval;
 
     public formGoal: FormGroup;
 
@@ -101,20 +107,10 @@ export class DialogSettingsComponent implements OnInit {
         ).subscribe(value => {
             console.log('%cform changed value: ', this.consoleTextColorComponent, value);
 
-            // TODO: Perform request to service and change values
-            //
-
-
             if (value['dailyGoal'] && value['dailyGoal'] !== this.currentDailyGoal) {
                 this.dailyGoalSaveState = true;
-                setTimeout(() => {
-                    this.currentDailyGoal = value['dailyGoal'];
-                    this.dailyGoalSaveText = 'Saved';
-                    setTimeout(() => {
-                        this.dailyGoalSaveState = false;
-                        this.dailyGoalSaveText = 'Saving';
-                    }, 2000);
-                }, 3000);
+                this.currentDailyGoal = value['dailyGoal'];
+                this.saveSettingsDelayed();
             }
 
             if (value['weeklyGoal'] && value['weeklyGoal'] !== this.currentWeeklyGoal) {
@@ -153,24 +149,12 @@ export class DialogSettingsComponent implements OnInit {
 
     savePlaySoundWorkState(state: boolean) {
         this.playSoundWorkSaveState = true;
-        setTimeout(() => {
-            this.playSoundWorkSaveText = 'Saved';
-            setTimeout(() => {
-                this.playSoundWorkSaveState = false;
-                this.playSoundWorkSaveText = 'Saving';
-            }, 2000);
-        }, 3000);
+        this.saveSettingsDelayed();
     }
 
     savePlaySoundAlarmState(state: boolean) {
         this.playSoundAlarmSaveState = true;
-        setTimeout(() => {
-            this.playSoundAlarmSaveText = 'Saved';
-            setTimeout(() => {
-                this.playSoundAlarmSaveState = false;
-                this.playSoundAlarmSaveText = 'Saving';
-            }, 2000);
-        }, 3000);
+        this.saveSettingsDelayed();
     }
 
     saveNotificationState(state: boolean) {
@@ -184,6 +168,8 @@ export class DialogSettingsComponent implements OnInit {
     }
 
     saveSettings() {
+        // TODO: Perform request to service and change values
+
         const settingsData: SettingsData = new SettingsData();
         settingsData.play_sound_work_state = this.playSoundWorkState;
         settingsData.play_sound_alarm_state = this.playSoundAlarmState;
@@ -197,6 +183,39 @@ export class DialogSettingsComponent implements OnInit {
         this._settingsService.saveSettings(settingsData);
 
         // Reset save-states for fields
+        if (this.dailyGoalSaveState) {
+            this.dailyGoalSaveText = 'Saved';
+            this.dailyGoalSaveStatePending = true;
+            this.dailyGoalSaveStateInterval = setInterval(() => {
+                this.dailyGoalSaveState = false;
+                this.dailyGoalSaveText = 'Saving';
+                this.dailyGoalSaveStatePending = false;
+                clearInterval(this.dailyGoalSaveStateInterval);
+            }, 2000);
+        }
+
+        if (this.playSoundWorkSaveState) {
+            this.playSoundWorkSaveText = 'Saved';
+            this.playSoundWorkSaveStatePending = true;
+            this.playSoundWorkSaveStateInterval = setInterval(() => {
+                this.playSoundWorkSaveState = false;
+                this.playSoundWorkSaveText = 'Saving';
+                this.playSoundWorkSaveStatePending = false;
+                clearInterval(this.playSoundWorkSaveStateInterval);
+            }, 2000);
+        }
+
+        if (this.playSoundAlarmSaveState) {
+            this.playSoundAlarmSaveText = 'Saved';
+            this.playSoundAlarmSaveStatePending = true;
+            this.playSoundAlarmSaveStateInterval = setInterval(() => {
+                this.playSoundAlarmSaveState = false;
+                this.playSoundAlarmSaveText = 'Saving';
+                this.playSoundAlarmSaveStatePending = false;
+                clearInterval(this.playSoundAlarmSaveStateInterval);
+            }, 2000);
+        }
+
         if (this.notificationSaveState) {
             this.notificationSaveText = 'Saved';
             this.notificationSaveStatePending = true;
@@ -230,6 +249,21 @@ export class DialogSettingsComponent implements OnInit {
     saveSettingsDelayed() {
         if (this.updatePending) {
             clearInterval(this.interval);
+        }
+
+        if (this.dailyGoalSaveState) {
+            this.dailyGoalSaveText = 'Saving';
+            clearInterval(this.dailyGoalSaveStateInterval);
+        }
+
+        if (this.playSoundWorkSaveState) {
+            this.playSoundWorkSaveText = 'Saving';
+            clearInterval(this.playSoundWorkSaveStateInterval);
+        }
+
+        if (this.playSoundAlarmSaveStatePending) {
+            this.playSoundAlarmSaveText = 'Saving';
+            clearInterval(this.playSoundAlarmSaveStateInterval);
         }
 
         if (this.notificationSaveStatePending) {
