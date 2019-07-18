@@ -48,6 +48,10 @@ export class DialogSettingsComponent implements OnInit {
     updatePending = false;
     dailyGoalSaveStatePending = false;
     dailyGoalSaveStateInterval;
+    weeklyGoalSaveStatePending = false;
+    weeklyGoalSaveStateInterval;
+    monthlyGoalSaveStatePending = false;
+    monthlyGoalSaveStateInterval;
     playSoundWorkSaveStatePending = false;
     playSoundWorkSaveStateInterval;
     playSoundAlarmSaveStatePending = false;
@@ -115,26 +119,14 @@ export class DialogSettingsComponent implements OnInit {
 
             if (value['weeklyGoal'] && value['weeklyGoal'] !== this.currentWeeklyGoal) {
                 this.weeklyGoalSaveState = true;
-                setTimeout(() => {
-                    this.currentWeeklyGoal = value['dailyGoal'];
-                    this.weeklyGoalSaveText = 'Saved';
-                    setTimeout(() => {
-                        this.weeklyGoalSaveState = false;
-                        this.weeklyGoalSaveText = 'Saving';
-                    }, 2000);
-                }, 3000);
+                this.currentWeeklyGoal = value['dailyGoal'];
+                this.saveSettingsDelayed();
             }
 
             if (value['monthlyGoal'] && value['monthlyGoal'] !== this.currentMonthlyGoal) {
                 this.monthlyGoalSaveState = true;
-                setTimeout(() => {
-                    this.currentMonthlyGoal = value['dailyGoal'];
-                    this.monthlyGoalSaveText = 'Saved';
-                    setTimeout(() => {
-                        this.monthlyGoalSaveState = false;
-                        this.monthlyGoalSaveText = 'Saving';
-                    }, 2000);
-                }, 3000);
+                this.currentMonthlyGoal = value['dailyGoal'];
+                this.saveSettingsDelayed();
             }
         });
     }
@@ -191,6 +183,28 @@ export class DialogSettingsComponent implements OnInit {
                 this.dailyGoalSaveText = 'Saving';
                 this.dailyGoalSaveStatePending = false;
                 clearInterval(this.dailyGoalSaveStateInterval);
+            }, 2000);
+        }
+
+        if (this.weeklyGoalSaveState) {
+            this.weeklyGoalSaveText = 'Saved';
+            this.weeklyGoalSaveStatePending = true;
+            this.weeklyGoalSaveStateInterval = setInterval(() => {
+                this.weeklyGoalSaveState = false;
+                this.weeklyGoalSaveText = 'Saving';
+                this.weeklyGoalSaveStatePending = false;
+                clearInterval(this.weeklyGoalSaveStateInterval);
+            }, 2000);
+        }
+
+        if (this.monthlyGoalSaveState) {
+            this.monthlyGoalSaveText = 'Saved';
+            this.monthlyGoalSaveStatePending = true;
+            this.monthlyGoalSaveStateInterval = setInterval(() => {
+                this.monthlyGoalSaveState = false;
+                this.monthlyGoalSaveText = 'Saving';
+                this.monthlyGoalSaveStatePending = false;
+                clearInterval(this.monthlyGoalSaveStateInterval);
             }, 2000);
         }
 
@@ -254,6 +268,16 @@ export class DialogSettingsComponent implements OnInit {
         if (this.dailyGoalSaveState) {
             this.dailyGoalSaveText = 'Saving';
             clearInterval(this.dailyGoalSaveStateInterval);
+        }
+
+        if (this.weeklyGoalSaveState) {
+            this.weeklyGoalSaveText = 'Saving';
+            clearInterval(this.weeklyGoalSaveStateInterval);
+        }
+
+        if (this.monthlyGoalSaveState) {
+            this.monthlyGoalSaveText = 'Saving';
+            clearInterval(this.monthlyGoalSaveStateInterval);
         }
 
         if (this.playSoundWorkSaveState) {
