@@ -76,9 +76,6 @@ export class DialogSettingsComponent implements OnInit {
             monthlyGoal: ['', Validators.required],
         });
 
-        // TODO: Here we should read data form 'SettingsService' and save it in component fields,
-        // If there is no any data, then we should save initial values in 'SettingsService'
-        // For 'settings-data' exchange we should use separate 'SettingsData' class
         let settingsData: SettingsData = this._settingsService.loadSettings();
 
         // console.log('%c settingsData: ', this.consoleTextColorComponent, settingsData);
