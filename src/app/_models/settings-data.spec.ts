@@ -1,52 +1,71 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { Tag } from '@app/_models/tag';
+import { SettingsData } from '@app/_models/settings-data';
 
+describe(`Model: SettingsData`, () => {
+    it(`Should create an instance (async)`, async(() => {
+        // Arrange
 
-// describe(`Model: Tag`, () => {
-//     it(`Should create an instance (async)`, async(() => {
-//         // Arrange
+        // Act
 
-//         // Act
+        // Assert
+        expect(new SettingsData()).toBeTruthy();
+    }));
 
-//         // Assert
-//         expect(new Tag('testTagName')).toBeTruthy();
-//     }));
+    it(`Should have initial vaules after init (async)`, async(() => {
+        // Arrange
+        let settingsData: SettingsData;
 
-//     it(`Should accept values in the constructor (async)`, async(() => {
-//         // Arrange
-//         let hashTag: Tag;
+        // Act
+        settingsData = new SettingsData();
 
-//         // Act
-//         hashTag = new Tag('testTagName1');
+        // Assert
+        expect(settingsData.play_sound_work_state).toEqual(undefined);
+        expect(settingsData.play_sound_alarm_state).toEqual(undefined);
+        expect(settingsData.notification_state).toEqual(undefined);
+        expect(settingsData.time_type_state).toEqual(undefined);
+        expect(settingsData.current_daily_goal).toEqual(undefined);
+        expect(settingsData.current_weekly_goal).toEqual(undefined);
+        expect(settingsData.current_monthly_goal).toEqual(undefined);
+        expect(settingsData.pro_status).toEqual(undefined);
+    }));
 
-//         // Assert
-//         expect(hashTag.tagName).toEqual('testTagName1');
-//     }));
+    describe(`#isUndefined()`, () => {
+        it(`Should return 'true' if at least one of the members is undefined`, () => {
+            // Arrange
+        let settingsData: SettingsData;
 
-//     it(`Should have initial vaules after init (async)`, async(() => {
-//         // Arrange
-//         let hashTag: Tag;
+        // Act
+        settingsData = new SettingsData();
+        settingsData.play_sound_work_state = false;
+        settingsData.play_sound_alarm_state = false;
+        settingsData.time_type_state = false;
+        settingsData.current_daily_goal = 1;
+        settingsData.current_weekly_goal = 2;
+        settingsData.current_monthly_goal = 3;
+        settingsData.pro_status = false;
 
-//         // Act
-//         hashTag = new Tag('testTagName2');
+        // Assert
+        expect(settingsData.isUndefined()).toEqual(true);
+        });
 
-//         // Assert
-//         expect(hashTag.id).toEqual(undefined);
-//         expect(hashTag.tagName).toEqual('testTagName2');
-//         expect(hashTag.color).toEqual('red');
-//         expect(hashTag.readyToDelete).toEqual(false);
-//     }));
+        it(`Should return 'false' if all of the members are defined`, () => {
+            // Arrange
+        let settingsData: SettingsData;
 
-//     it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {
-//         // Arrange
-//         let hashTag: Tag;
+        // Act
+        settingsData = new SettingsData();
+        settingsData.play_sound_work_state = false;
+        settingsData.play_sound_alarm_state = false;
+        settingsData.notification_state = false;
+        settingsData.time_type_state = false;
+        settingsData.current_daily_goal = 1;
+        settingsData.current_weekly_goal = 2;
+        settingsData.current_monthly_goal = 3;
+        settingsData.pro_status = false;
 
-//         // Act
-//         hashTag = new Tag('testTagName3');
-
-//         // Assert
-//         expect(hashTag.created_time).toBeTruthy();
-//         expect(hashTag.updated_time).toBeNull();
-//     }));
-// });
+        // Assert
+        expect(settingsData.isUndefined()).toEqual(false);
+        });
+    });
+});

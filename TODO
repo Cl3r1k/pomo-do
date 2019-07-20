@@ -53,14 +53,14 @@ Todos:
                     ☐ Settings should be saved in 'localStorage' and used in 'pomos' part (e.g. 'pomo-time', 'rest-time' etc)
                         ✔ Add 'SettingsService' @done(19-07-03 09:49)
                             ✔ Add 'SettingsData' class @done(19-07-05 10:32)
-                                ☐ Add tests for 'SettingsData' class <========================================================= CURRENT TASK
+                                ✔ Add tests for 'SettingsData' class @done(19-07-19 09:30)
                             ✔ Store setting in 'localStorage' through 'SettingsService' @done(19-07-17 09:31)
                             ✔ Load settings from 'localStorage' when called 'settings-window' @done(19-07-18 09:35)
                                 ✔ Fix loading prefs from service (values for 'dailyGoal' and other fields are empty) @done(19-07-08 10:13)
                             ✔ Fix case when there is no 'settings_data' in 'localStorage' @done(19-07-09 09:18)
                             ✔ Consider to save settings not every time, but use timer for saving and save at once all changed settings @done(19-07-17 09:31)
                                 ✔ Info state for changed values, should write 'Saving' for each changed value and write 'Save' untill all changes saved @done(19-07-17 09:31)
-                            ☐ Use 'SettingsService' data in 'pomos' part 
+                            ☐ Use 'SettingsService' data in 'pomos' part  <========================================================= CURRENT TASK
                             ☐ Add tests for 'SettingsService'
 
                 ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)

@@ -370,14 +370,14 @@ describe('Service: PomoStateService', () => {
     describe(`#generatePomoListView()`, () => {
         it(`Should 'recentPomosView' countain processed list of pomos`, () => {
             // Arrange
-            const pomo1 = new Pomo('Todo with priority 1', '2019-06-20T04:03:36.000Z', '1', false);
+            const pomo1 = new Pomo('Todo with priority 1 (TST)', '2019-06-20T04:03:36.000Z', '1', false);
             pomo1.end_time = '2019-06-20T04:04:36.000Z';
-            const pomo2 = new Pomo('1. Add more todos!', '2019-06-24T03:54:40.000Z', '2', false);
-            pomo1.end_time = '2019-06-24T03:55:40.000Z';
-            const pomo3 = new Pomo('Todo with priority 1', '2019-06-24T03:57:28.000Z', '3', false);
-            pomo1.end_time = '2019-06-24T03:58:28.000Z';
+            const pomo2 = new Pomo('1. Add more todos! (TST)', '2019-06-24T03:54:40.000Z', '2', false);
+            pomo2.end_time = '2019-06-24T03:55:40.000Z';
+            const pomo3 = new Pomo('Todo with priority 1 (TST)', '2019-06-24T03:57:28.000Z', '3', false);
+            pomo3.end_time = '2019-06-24T03:58:28.000Z';
             const pomo4 = new Pomo('', '2019-06-25T03:37:19.000Z', '4', true);
-            pomo1.end_time = '2019-06-25T03:38:28.446Z';
+            pomo4.end_time = '2019-06-25T03:38:28.446Z';
 
             service.recentPomos = [ pomo1, pomo2, pomo3, pomo4 ];
 
@@ -388,14 +388,14 @@ describe('Service: PomoStateService', () => {
 
             // Assert
             expect(service.recentPomosView.length).toEqual(2);
-            expect(service.recentPomosView[0]['dateGroup']).toEqual('Jun 26');
+            expect(service.recentPomosView[0]['dateGroup']).toEqual('Jun 24');
             expect(service.recentPomosView[0]['pomosCount']).toEqual(2);
             expect(service.recentPomosView[0]['pomosArray'].length).toEqual(2);
-            expect(service.recentPomosView[0]['pomosArray'][0]['title']).toEqual('Todo with priority 1');
-            expect(service.recentPomosView[1]['dateGroup']).toEqual('Jun 25');
+            expect(service.recentPomosView[0]['pomosArray'][0]['title']).toEqual('Todo with priority 1 (TST)');
+            expect(service.recentPomosView[1]['dateGroup']).toEqual('Jun 20');
             expect(service.recentPomosView[1]['pomosCount']).toEqual(1);
             expect(service.recentPomosView[1]['pomosArray'].length).toEqual(1);
-            expect(service.recentPomosView[1]['pomosArray'][0]['title']).toEqual('Todo with priority 1');
+            expect(service.recentPomosView[1]['pomosArray'][0]['title']).toEqual('Todo with priority 1 (TST)');
         });
     });
 

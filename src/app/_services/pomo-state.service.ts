@@ -225,7 +225,6 @@ export class PomoStateService {
                     pomosArray = [];
                 }
 
-
                 const startLocalHrsMins = new Date(pomoItem.start_time);
                 const endLocalHrsMins = new Date(pomoItem.end_time);
                 const tmpStart = ('00' + startLocalHrsMins.getHours()).slice(-2) + ':' + ('00' + startLocalHrsMins.getMinutes()).slice(-2);
