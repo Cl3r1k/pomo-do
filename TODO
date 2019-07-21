@@ -60,8 +60,7 @@ Todos:
                             ✔ Fix case when there is no 'settings_data' in 'localStorage' @done(19-07-09 09:18)
                             ✔ Consider to save settings not every time, but use timer for saving and save at once all changed settings @done(19-07-17 09:31)
                                 ✔ Info state for changed values, should write 'Saving' for each changed value and write 'Save' untill all changes saved @done(19-07-17 09:31)
-                            ☐ Use 'SettingsService' data in 'pomos' part  <========================================================= CURRENT TASK
-                            ☐ Add tests for 'SettingsService'
+                            ☐ Add tests for 'SettingsService'  <========================================================= CURRENT TASK
 
                 ✔ Add component 'TodoCurrentComponent' @done(19-01-04 09:58)
                     ✔ In 'TodosComponent' get most top todo for 'TodoCurrentComponent' @done(18-12-29 10:02)
