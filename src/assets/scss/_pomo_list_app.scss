@@ -63,7 +63,7 @@
     }
     .empty-sync-pomo-list-container {
         grid-column: span 12;
-        background-color: #aedfca; // For Debug
+        // background-color: #aedfca; // For Debug
         grid-template-columns: repeat(12, 1fr);
         align-items: center;
         justify-items: center;
@@ -74,7 +74,7 @@
             grid-column: span 12;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            background-color: #e6ba81; // For Debug
+            // background-color: #e6ba81; // For Debug
             .icon-clock,
             .icon-sync-spinner {
                 grid-column: span 12;

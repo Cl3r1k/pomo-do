@@ -47,7 +47,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     isSelectedForPomoTitle = false;
 
     // TODO: Delete sanitizer declaration ???
-    constructor(private sanitizer: DomSanitizer, private _pomoTitleService: PomoTitleService) { }
+    constructor(private sanitizer: DomSanitizer, public _pomoTitleService: PomoTitleService) { }
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);

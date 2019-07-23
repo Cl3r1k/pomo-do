@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    background-color: #90bedf; // For Debug
+    // background-color: #90bedf; // For Debug
     border-bottom: 1px solid #cccccc;
     color: #777777;
     font-size: 14px;
@@ -12,7 +12,7 @@
         // position: absolute;
         // top: -130px;
         // width: 100%;
-        background-color: #c4e6ff; // For Debug
+        // background-color: #c4e6ff; // For Debug
         grid-column: 1/3;
         line-height: initial;
         margin: 10px auto 10px 0px;
@@ -40,17 +40,17 @@
         grid-column: 10/17;
         justify-self: end;
         line-height: 48px;
-        background-color: #76a0be; // For Debug
+        // background-color: #76a0be; // For Debug
         padding: 0px;
         margin: 0;
         li {
             display: inline-block;
             &.sync-message {
-                background-color: #9f9ec9; // For Debug
+                // background-color: #9f9ec9; // For Debug
                 padding: 0 15px;
             }
             &.sync-status {
-                background-color: #b5a2c7; // For Debug
+                // background-color: #b5a2c7; // For Debug
                 text-align: center;
                 padding: 0 5px;
                 .icon-offline-container {
@@ -72,7 +72,7 @@
                 }
             }
             &.profile-menu {
-                background-color: #91c2b3; // For Debug
+                // background-color: #91c2b3; // For Debug
                 padding: 0 0 0 .9rem;
                 position: relative;
                 vertical-align: top;

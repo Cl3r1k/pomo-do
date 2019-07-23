@@ -12,14 +12,14 @@
         min-width: 230px;
         width: 100%;
         margin: 20px auto;
-        background-color: #f7e9d8; // For Debug
+        // background-color: #f7e9d8; // For Debug
         .pomo-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             // grid-template-rows: 51px auto;
             // height: 100%;
             align-items: center;
-            background-color: #bad2cf; // For Debug
+            // background-color: #bad2cf; // For Debug
             .pomo-header-container {
                 grid-column: span 12;
             }

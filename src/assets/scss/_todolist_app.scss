@@ -6,19 +6,19 @@
         // border-top: 1px solid #e6e6e6;
         .pinned-list {
             // height: 100px;                           // For Debug
-            background-color: #b76fee; // For Debug
+            // background-color: #b76fee; // For Debug
             border-top: 1px solid #e6e6e6;
         }
         .unpinned-list {
             // height: 100px;                           // For Debug
-            background-color: #6889ee; // For Debug
+            // background-color: #6889ee; // For Debug
             border-top: 1px solid #e6e6e6;
         }
         .completed-container {
             // height: 32px;
             display: grid;
             grid-template-columns: repeat(16, 1fr);
-            background-color: #42cf65; // For Debug
+            // background-color: #42cf65; // For Debug
             color: #a8a8a8;
             .collapse-container {
                 border-top: 1px solid #e6e6e6;
@@ -28,7 +28,7 @@
                 grid-template-columns: repeat(18, 1fr);
                 .completed-todos {
                     grid-column: 1/7;
-                    background-color: #08b2eb; // For Debug
+                    // background-color: #08b2eb; // For Debug
                     margin: 5px;
                     margin-left: 15px;
                     padding-left: 3px;
@@ -85,7 +85,7 @@
                     grid-column: 18/18;
                     font-size: 18px;
                     color: #a8a8a8;
-                    background-color: #50f550; // For debuging
+                    // background-color: #50f550; // For debuging
                     margin: auto auto;
                     padding: 3px 3px 3px 3px;
                     transition: 0.3s ease-out;
@@ -97,7 +97,7 @@
             }
             .completed-list {
                 // height: 100px;                           // For Debug
-                background-color: #62e9d2; // For Debug
+                // background-color: #62e9d2; // For Debug
                 border-top: 1px solid #e6e6e6;
                 grid-column: span 16;
                 overflow: hidden;
@@ -310,7 +310,7 @@
                 line-height: 1.2;
                 transition: color 0.4s;
                 grid-column: span 14;
-                background-color: #eb77eb; // For debuging
+                // background-color: #eb77eb; // For debuging
                 &.ctrl-hover {
                     // background-color: #9c389c; // For debuging
                     .url-class {
@@ -345,14 +345,15 @@
                 .icon-more_horiz {
                     font-size: 20px;
                     color: #bddad5;
-                    background-color: #0066ff; // For debuging
+                    // background-color: #0066ff; // For debuging
                     margin: auto auto;
                     padding: 3px 3px 3px 3px;
                     transition: 0.3s ease-out;
-                    opacity: 1;
+                    opacity: 0;
                     &:hover {
                         color: #5dc2af;
                         cursor: pointer;
+                        opacity: 1;
                     }
                 }
                 // .icon-pencil-edit {
@@ -377,11 +378,11 @@
                 .icon-pin {
                     font-size: 20px;
                     color: #858585;
-                    background-color: #50f550; // For debuging
+                    // background-color: #50f550; // For debuging
                     margin: auto auto;
                     padding: 3px 3px 3px 3px;
                     transition: 0.3s ease-out;
-                    opacity: 1;
+                    opacity: 0;
                     &:hover {
                         color: #c93b40;
                         cursor: pointer;
@@ -415,7 +416,7 @@
     .empty-sync-todo-list-container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        background-color: #aedfca; // For Debug
+        // background-color: #aedfca; // For Debug
         align-items: center;
         min-height: 14.25em;
         color: #777777;
@@ -425,7 +426,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             // margin-top: 20px;
-            background-color: #e6ba81; // For Debug
+            // background-color: #e6ba81; // For Debug
             .icon-check-circle,
             .icon-sync-spinner {
                 grid-column: span 12;

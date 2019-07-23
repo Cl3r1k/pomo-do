@@ -242,7 +242,8 @@ Todos:
                             ✔ After 'pomo-list' part completed bump 'patch' version @done(19-06-18 10:24)
 
 
-                    ☐ After 'pomos' part completed bump 'minor' version <========================================================= CURRENT TASK
+                    ✔ After 'pomos' part completed bump 'minor' version @done(19-07-23 09:16)
+                        ✔ Deploy updated build on GH-Pages @done(19-07-23 09:30)
                         
                 
                 ☐ Add component 'StatsComponent'
@@ -251,7 +252,7 @@ Todos:
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
 
-            ☐ Current 'active-todo' should be only if there is pinned 'todo'
+            ☐ Current 'active-todo' should be only if there is pinned 'todo' <========================================================= CURRENT TASK
 
             ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused
 

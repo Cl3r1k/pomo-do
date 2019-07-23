@@ -12,7 +12,7 @@ export class PomoListComponent implements OnInit {
 
     isSyncing = false;
 
-    constructor(private _pomoStateService: PomoStateService) { }
+    constructor(public _pomoStateService: PomoStateService) { }
 
     ngOnInit() {
     }
