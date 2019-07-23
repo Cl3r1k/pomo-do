@@ -1,0 +1,41 @@
+.current-todo-container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    // background-color: #90dfd5; // For Debug
+    margin: 20px auto 0 auto;
+    max-width: 960px;
+    .current-todo-content {
+        grid-column: span 16;
+        background-color: #bdde7b;
+        margin: auto;
+        padding: 10px;
+        border-radius: 3px;
+        max-width: 95%;
+        .todo-name {
+            // background-color: #93df90; // For Debug
+            font-size: 21px;
+            font-weight: 700;
+            vertical-align: middle;
+            color: #716666;
+            max-width: 95%;
+            white-space: nowrap;
+            margin: 0;
+            overflow: hidden;
+            display: inline-block;
+            padding: 1px 0 1px 0;
+        }
+        .icon-checkmark {
+            // background-color: #c290df; // For Debug
+            font-size: 23px;
+            vertical-align: middle;
+            margin: 0 0 0 9px;
+            color: #777777;
+            transition: 0.3s ease-out;
+            &:hover {
+                cursor: pointer;
+                color: #4d4d4d;
+            }
+        }
+    }
+}

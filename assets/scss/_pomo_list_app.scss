@@ -1,0 +1,102 @@
+.pomo-list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 20px 10px 20px;
+    // border: 1px solid #aaaaaa;
+    // box-shadow: 0 0 5px 0px #969696;
+    height: 100%;
+    min-height: 13em;
+    max-height: 20em;
+    overflow: hidden;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    .pomo-days {
+        list-style: none;
+        padding-left: 0;
+        grid-column: span 12;
+        .pomos-group-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            font-size: 0.9em;
+            .pomos-date-count-container {
+                grid-column: span 12;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                margin: 5px 0;
+                color: #888888;
+                .pomos-date-group {
+                    grid-column: span 6;
+                    font-size: 1.1em;
+                    padding-left: 5px;
+                }
+                .pomos-count-group {
+                    grid-column: span 6;
+                    justify-self: end;
+                    color: #666666;
+                }
+            }
+            .pomos-data-container {
+                grid-column: span 12;
+                .pomos-items {
+                    list-style: none;
+                    padding-left: 0;
+                    .pomo-item {
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        .pomo-time {
+                            grid-column: span 3;
+                            color: #888888;
+                        }
+                        .pomo-title {
+                            grid-column: span 9;
+                            margin: 0;
+                            margin-left: -10px;
+                            .pomo-multiplier {
+                                color: #666666;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .empty-sync-pomo-list-container {
+        grid-column: span 12;
+        // background-color: #aedfca; // For Debug
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        justify-items: center;
+        align-self: center;
+        color: #777777;
+        .empty-pomo-list,
+        .sync-pomo-list {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            // background-color: #e6ba81; // For Debug
+            .icon-clock,
+            .icon-sync-spinner {
+                grid-column: span 12;
+                margin: auto;
+                font-size: 85px;
+                color: #9c9c9c;
+            }
+            .empty-pomo-list-message,
+            .sync-pomo-list-message {
+                grid-column: span 12;
+                text-align: center;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.pomo-list-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0), #F7F7F7);
+}

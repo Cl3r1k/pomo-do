@@ -1,0 +1,221 @@
+/* Styles for 'PomoHeaderComponent' */
+
+// Progress bar bg colours
+$bar-default-bg: rgba(255, 0, 0, 0.2);
+$bar-rest-bg: rgba(0, 255, 0, 0.2);
+// ADDS A BROWSER PREFIX TO THE PROPERTY
+@mixin browser_prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
+}
+
+// KEYFRAMES
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+// ANIMATION
+@mixin animation($str) {
+    @include browser_prefix('animation', $str);
+}
+
+@include keyframes('cssProgressActive') {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 35px 35px;
+    }
+}
+
+.container-shadow {
+    -webkit-box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.pomo-header {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-bottom: 10px;
+    // background-color: #eeeeb8; // For Debug
+    .pomo-start-container {
+        grid-column: span 12;
+        .button-start-pomo {
+            width: 100%;
+            font-weight: bold;
+            height: 41px;
+            color: #666666;
+        }
+    }
+    .pomo-progress-container {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        position: relative;
+        .icon-cross {
+            cursor: pointer;
+            font-size: 10px;
+            position: absolute;
+            top: -9px;
+            right: -8px;
+            padding: 3px;
+            border: 1px solid #8c8c8c;
+            color: #656565;
+            border-radius: 50%;
+            background-color: #dedede;
+        }
+    }
+    .pomo-save-container {
+        grid-column: span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        position: relative;
+        .pomo-save-field {
+            grid-column: span 12;
+            @extend .input-field-style;
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.03);
+            // background-color: transparent;
+            padding: 9px 30px 11px 10px !important;
+            resize: horizontal; // Disable vertical resizing for pomo
+            word-break: break-all;
+            max-width: 100%;
+            font-size: 16px !important;
+            border-radius: 3px;
+            // height: 42px;
+            // -webkit-transition: all 0.30s ease-in-out;
+            // -moz-transition: all 0.30s ease-in-out;
+            // -ms-transition: all 0.30s ease-in-out;
+            // -o-transition: all 0.30s ease-in-out;
+            // transition: all 0.30s ease-in-out;
+            &::-webkit-input-placeholder {
+                font-style: italic;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            &::-moz-placeholder {
+                font-style: italic;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            &::input-placeholder {
+                font-style: italic;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.5);
+            }
+            &:focus {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 1px solid rgba(81, 203, 238, 1);
+            }
+        }
+        .icon-keyboard_return {
+            // background-color: #62e9d2; // For Debug
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 18px;
+            color: #939dc9;
+            padding: 5px 8px;
+            height: 32px;
+            // margin: auto auto;
+            transition: 0.3s ease-out;
+            opacity: 0;
+            &:hover {
+                color: #687197;
+                cursor: pointer;
+            }
+            &.save-pomo-focused {
+                opacity: 1;
+            }
+        }
+        .icon-cross {
+            cursor: pointer;
+            font-size: 10px;
+            position: absolute;
+            top: -9px;
+            right: -8px;
+            padding: 3px;
+            border: 1px solid #8c8c8c;
+            color: #656565;
+            border-radius: 50%;
+            background-color: #dedede;
+        }
+    }
+}
+
+.cssProgress {
+    grid-column: span 12;
+    width: 100%;
+    // margin-bottom: 20px;
+    .progress {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        font-family: "Roboto", sans-serif;
+        width: auto !important;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+    }
+    .cssProgress-bar {
+        display: block;
+        float: left;
+        width: 0%;
+        height: 100%;
+        background: $bar-default-bg;
+        box-shadow: inset 0px -1px 2px rgba(0, 0, 0, 0.1);
+        transition: width 0.8s ease-in-out;
+        height: 31px;
+        border-radius: 3px;
+        &.cssProgress-rest {
+            background-color: $bar-rest-bg;
+        }
+    }
+    .cssProgress-label {
+        position: absolute;
+        overflow: hidden;
+        left: 0px;
+        right: 0px;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 0.7em;
+        text-align: center;
+        text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+        line-height: 31px;
+        font-size: 18px;
+        cursor: default;
+    }
+    .cssProgress-active {
+        background-image: linear-gradient( -45deg, rgba(255, 255, 255, .125) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .125) 50%, rgba(255, 255, 255, .125) 75%, transparent 75%, transparent);
+        background-size: 35px 35px;
+        @include animation('cssProgressActive 2s linear infinite');
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

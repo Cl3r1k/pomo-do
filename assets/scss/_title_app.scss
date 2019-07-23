@@ -2,21 +2,143 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    h1 {
+    // background-color: #90bedf; // For Debug
+    border-bottom: 1px solid #cccccc;
+    color: #777777;
+    font-size: 14px;
+    max-width: 960px;
+    margin: 0 auto;
+    .app-name {
         // position: absolute;
         // top: -130px;
         // width: 100%;
-        // background-color: #2276b2;
-        grid-column: span 16;
+        // background-color: #c4e6ff; // For Debug
+        grid-column: 1/3;
         line-height: initial;
-        margin: 10px auto;
+        margin: 10px auto 10px 0px;
         word-break: break-all;
-        font-size: 80px;
-        font-weight: 100;
-        text-align: center;
-        color: rgba(175, 47, 47, 0.3);
-        -webkit-text-rendering: optimizeLegibility;
-        -moz-text-rendering: optimizeLegibility;
-        text-rendering: optimizeLegibility;
+        a {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            color: rgba(175, 47, 47, 0.3);
+            -webkit-text-rendering: optimizeLegibility;
+            -moz-text-rendering: optimizeLegibility;
+            text-rendering: optimizeLegibility;
+        }
+    }
+    .upgrade-pro-container {
+        grid-column: 3/3;
+        margin-left: -10px;
+        color: #00d169;
+        a {
+            color: inherit;
+            font-weight: 500;
+        }
+    }
+    .header-right-container {
+        grid-column: 10/17;
+        justify-self: end;
+        line-height: 48px;
+        // background-color: #76a0be; // For Debug
+        padding: 0px;
+        margin: 0;
+        li {
+            display: inline-block;
+            &.sync-message {
+                // background-color: #9f9ec9; // For Debug
+                padding: 0 15px;
+            }
+            &.sync-status {
+                // background-color: #b5a2c7; // For Debug
+                text-align: center;
+                padding: 0 5px;
+                .icon-offline-container {
+                    svg:hover {
+                        cursor: pointer;
+                    }
+                }
+                .icon-online-container {
+                    svg:hover {
+                        cursor: pointer;
+                    }
+                    .syncing-sync {
+                        animation-name: rotation;
+                        animation-duration: 2s;
+                        animation-iteration-count: infinite;
+                        animation-timing-function: linear;
+                        animation-fill-mode: forwards;
+                    }
+                }
+            }
+            &.profile-menu {
+                // background-color: #91c2b3; // For Debug
+                padding: 0 0 0 .9rem;
+                position: relative;
+                vertical-align: top;
+                cursor: pointer;
+                .profile-name {
+                    a {
+                        // padding: 0 .9rem;
+                        // padding: 0 3px 0 10px;
+                        color: inherit;
+                        font-weight: 500;
+                    }
+                    .collapse-button {
+                        height: 18px;
+                        width: 18px;
+                        margin: auto;
+                        text-align: center;
+                        border: none;
+                        cursor: pointer;
+                        color: #777777;
+                        -webkit-transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        -ms-transform: rotate(90deg);
+                        -o-transform: rotate(90deg);
+                        transform: rotate(90deg);
+                        &:before {
+                            content: '❯';
+                            padding: 3px;
+                        }
+                    }
+                }
+                .profile-submenu {
+                    position: absolute;
+                    left: auto;
+                    right: 0;
+                    min-width: 140px;
+                    text-align: left;
+                    padding: 5px 0;
+                    margin: 2px 0 0;
+                    line-height: initial;
+                    background-color: #ffffff;
+                    border: 1px solid #dddddd;
+                    border-radius: 2px;
+                    -webkit-border-radius: 2px;
+                    -moz-border-radius: 2px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, .175);
+                    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .175);
+                    z-index: 99;
+                    li {
+                        display: block;
+                        padding: 0 17px;
+                        line-height: 2em;
+                        &:hover {
+                            background-color: #eeeeee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

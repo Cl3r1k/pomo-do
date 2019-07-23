@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo');
 // CSS Grid site template with sticky footer (https://codepen.io/Cl3r1k/pen/WdbRER)
 $anchorColor: #0bb3b3;
+$gridConatinerColor: none;
 $gridHeaderColor: none;
 $gridContentColor: none;
 $gridFooterColor: none;
 // Debuging for grid
-// $gridHeaderColor: #19d5f7;
-// $gridContentColor: #fc8ff6;
-// $gridFooterColor: #7ae6a9;
+$gridConatinerColor: #52887a;
+$gridHeaderColor: #a8dee7;
+$gridContentColor: #d8bdd7;
+$gridFooterColor: #a7e4c1;
 body,
 html {
     // height: 100%;
@@ -20,7 +22,7 @@ html {
 }
 
 body {
-    background: #f5f5f5;
+    background: #F7F7F7;
     color: #4d4d4d;
     line-height: 1.3em;
     width: 100%;
@@ -55,14 +57,16 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
+    // background-color: $gridConatinerColor;
     // grid-gap: 5px;
-    margin: 0;
+    // max-width: 960px;    // Global value for app
+    margin: 0 auto;
     .header-container {
         grid-column: span 12;
         padding: 0px 30px;
         color: #0bb3b3;
-        background-color: $gridHeaderColor;
-        height: 20px;
+        // background-color: $gridHeaderColor;
+        height: 1px;
         // .header-title {
         //     display: inline-block;
         // }
@@ -70,35 +74,29 @@ body {
     .content-container {
         font-family: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
         grid-column: span 12;
-        background-color: $gridContentColor;
+        // background-color: $gridContentColor;
         // padding: 10px 0;
-        .sign-out-container {
-            display: grid;
-            grid-template-columns: repeat(16, 1fr);
-            margin-top: 50px;
-            .sign-out-button {
-                grid-column: 6/12;
-                // display: block;
-                background-color: rgba(175, 47, 47, 0.15);
-                width: 100%;
-                padding: 16px;
-                font-size: 20px;
-                cursor: pointer;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-            }
-        }
     }
     .footer-container {
         text-align: center;
-        background-color: $gridFooterColor;
+        // background-color: $gridFooterColor;
         grid-column: span 12;
-        padding-top: 15px;
-        padding-bottom: 5px;
-        p {
-            font-weight: 600;
-        }
-        img {
-            vertical-align: middle;
+        // padding-top: 15px;
+        // padding-bottom: 5px;
+        div {
+            max-width: 960px;
+            margin: 0 auto;
+            p {
+                font-weight: 600;
+                // background-color: antiquewhite;
+            }
+            img {
+                vertical-align: middle;
+            }
         }
     }
+}
+
+.hide {
+    display: none;
 }

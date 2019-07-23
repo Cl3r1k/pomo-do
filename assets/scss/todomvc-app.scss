@@ -1,12 +1,15 @@
 // @import 'variables';
+@import 'main_app';
 @import 'title_app';
-@import 'header_app';
+@import 'pomo_header_app';
+@import 'pomo_list_app';
+@import 'todo_header_app';
 @import 'todolist_app';
-@import 'todo_app';
-@import 'footer_app';
+@import 'todo_footer_app';
 @import 'sweetalert';
 @import 'tooltip';
 @import 'sign-in';
+@import 'todo_current';
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300");
 hr {
     margin: 20px, 0;

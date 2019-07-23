@@ -1,6 +1,7 @@
 /* Footer section */
 
 .footer {
+    font-size: 15px;
     color: #777;
     padding: 10px 15px;
     height: 20px;
@@ -9,6 +10,7 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
+    position: relative; // For &:before proper view
     &:before {
         content: '';
         position: absolute;

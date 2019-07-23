@@ -2,11 +2,11 @@
 
 /* Header section */
 
-.header {
+.header-todo {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    // position: relative;
+    position: relative;
     // z-index: 0;
     &.filter-state {
         background-color: #eeeeee;
@@ -16,12 +16,12 @@
         display: grid;
         grid-template-columns: repeat(16, 1fr);
         align-items: center;
+        box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.1);
         .toggleAll-container {
             grid-column: span 1;
             display: grid;
             height: 100%;
             align-items: center;
-            box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
             .toggle-all {
                 // position: absolute;
                 // top: 11px;
@@ -31,7 +31,7 @@
                 // background-color: firebrick;
                 height: 32px;
                 width: 32px;
-                margin: auto;
+                // margin: auto;
                 text-align: center;
                 border: none;
                 cursor: pointer;
@@ -51,22 +51,20 @@
             }
         }
         .new-todo {
-            grid-column: span 15;
+            grid-column: span 14;
             @extend .input-field-style;
-            padding: 14px 40px 14px 14px;
+            padding: 10px 5px 10px 0;
             border: none;
             background: rgba(0, 0, 0, 0.003);
-            box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.03);
         }
         .icon-keyboard_return {
             // background-color: #62e9d2; // For Debug
-            position: absolute;
-            top: 19px;
-            right: 11px;
+            grid-column: span 1;
             font-size: 18px;
             color: #939dc9;
             padding: 3px 3px 3px 3px;
-            margin: auto auto;
+            // margin: auto auto;
             transition: 0.3s ease-out;
             opacity: 0;
             &:hover {
