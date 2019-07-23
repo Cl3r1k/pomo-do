@@ -82,5 +82,59 @@ describe('Service: SettingsService', () => {
             // Assert
             expect(result.current_daily_goal).toEqual(tmpSettingsData.current_daily_goal);
         });
+
+        it(`Should call 'getItem()' of localStorage`, () => {
+            // Arrange
+
+            // Act
+            const result = service.loadSettings();
+
+            // Assert
+            expect(localStorage.getItem).toHaveBeenCalled();
+        });
+
+        it(`Should return 'null' if on of 'settingsData' member is undefined`, () => {
+            // Arrange
+            let tmpSettingsData: SettingsData;
+            service.initSettings();
+            tmpSettingsData = service.settingsData;
+            tmpSettingsData.play_sound_alarm_state = undefined;
+            service.saveSettings(tmpSettingsData);
+            service.settingsData = null;
+
+            // Act
+            const result = service.loadSettings();
+
+            // Assert
+            expect(result).toEqual(null);
+        });
+    });
+
+    describe(`#saveSettings()`, () => {
+        it(`Should store 'pomoState' in localStorage`, () => {
+            // Arrange
+            let tmpSettingsData: SettingsData;
+            service.initSettings();
+            tmpSettingsData = service.settingsData;
+
+            // Act
+            service.saveSettings(tmpSettingsData);
+
+            // Assert
+            expect(localStorage.getItem(service.keyForLocalStorage)).toEqual(JSON.stringify(service.settingsData));
+        });
+
+        it(`Should call 'setItem()' of localStorage`, () => {
+            // Arrange
+            let tmpSettingsData: SettingsData;
+            service.initSettings();
+            tmpSettingsData = service.settingsData;
+
+            // Act
+            service.saveSettings(tmpSettingsData);
+
+            // Assert
+            expect(localStorage.setItem).toHaveBeenCalled();
+        });
     });
 });
