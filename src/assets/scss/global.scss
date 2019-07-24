@@ -57,7 +57,7 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
-    // background-color: $gridConatinerColor;
+    background-color: $gridConatinerColor;
     // grid-gap: 5px;
     // max-width: 960px;    // Global value for app
     margin: 0 auto;
@@ -65,7 +65,7 @@ body {
         grid-column: span 12;
         padding: 0px 30px;
         color: #0bb3b3;
-        // background-color: $gridHeaderColor;
+        background-color: $gridHeaderColor;
         height: 1px;
         // .header-title {
         //     display: inline-block;
@@ -74,12 +74,12 @@ body {
     .content-container {
         font-family: 'Helvetica Neue', Helvetica, 'Arimo', Arial, sans-serif;
         grid-column: span 12;
-        // background-color: $gridContentColor;
+        background-color: $gridContentColor;
         // padding: 10px 0;
     }
     .footer-container {
         text-align: center;
-        // background-color: $gridFooterColor;
+        background-color: $gridFooterColor;
         grid-column: span 12;
         // padding-top: 15px;
         // padding-bottom: 5px;
@@ -88,7 +88,7 @@ body {
             margin: 0 auto;
             p {
                 font-weight: 600;
-                // background-color: antiquewhite;
+                background-color: antiquewhite;
             }
             img {
                 vertical-align: middle;
