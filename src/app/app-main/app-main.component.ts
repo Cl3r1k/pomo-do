@@ -337,8 +337,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
     private getTopMostTodo() {
         if (this.todosToView[0].length > 0) {
             this.currentTodo = this.todosToView[0][0];
-        } else if (this.todosToView[1].length > 0) {
-            this.currentTodo = this.todosToView[1][0];
         } else {
             this.currentTodo = null;
         }

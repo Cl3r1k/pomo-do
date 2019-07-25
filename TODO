@@ -252,9 +252,9 @@ Todos:
 
                 ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
 
-            ☐ Current 'active-todo' should be only if there is pinned 'todo' <========================================================= CURRENT TASK
+            ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 
-            ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused
+            ☐ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused <========================================================= CURRENT TASK
 
             ☐ Change variables names in models to one case standart (Camel/Snake) depending on it's functionality
 
