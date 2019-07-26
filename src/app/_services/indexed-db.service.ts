@@ -94,7 +94,9 @@ export class IndexedDbService extends Dexie {
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
-            this.todoTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
+            const pinnedTodo = new ToDo({ id: 0, title: '1. Add more todos!', complete: false });
+            pinnedTodo.pin = true;
+            this.todoTable.add(pinnedTodo);
             this.todoTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
             this.todoTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
             this.todoTable.add(new ToDo({ id: 3, title: '4. Todo with URL https://google.com', complete: false }));
