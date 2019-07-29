@@ -19,9 +19,8 @@
     </div>
 
     <div class='pomo-save-container container-shadow' *ngIf='pomoStatePomoHeader === 2'>
-        <textarea autosize class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='_pomoTitleService.pomoTitle' (ngModelChange)='pomoTitleManualChange($event)' (keydown.enter)='savePomo($event)' (focus)='setSavePomoFocus(true)' (blur)='setSavePomoFocus(false)'
-            #textAreaElement></textarea>
-        <svg class='icon icon-keyboard_return' [class.save-pomo-focused]='savePomoFocusState' (click)='savePomo()'>
+        <textarea autosize class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='_pomoTitleService.pomoTitle' (ngModelChange)='pomoTitleManualChange($event)' (keydown.enter)='savePomo($event)' #textAreaElement></textarea>
+        <svg class='icon icon-keyboard_return' (click)='savePomo()'>
             <use xlink:href='#icon-keyboard_return'></use>
         </svg>
 

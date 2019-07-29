@@ -126,6 +126,10 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
                 box-shadow: 0 0 5px rgba(81, 203, 238, 1);
                 border: 1px solid rgba(81, 203, 238, 1);
             }
+            &:focus~.icon-keyboard_return,
+            &:hover~.icon-keyboard_return {
+                opacity: 1;
+            }
         }
         .icon-keyboard_return {
             // background-color: #62e9d2; // For Debug
@@ -142,9 +146,6 @@ $bar-rest-bg: rgba(0, 255, 0, 0.2);
             &:hover {
                 color: #687197;
                 cursor: pointer;
-                opacity: 1;
-            }
-            &.save-pomo-focused {
                 opacity: 1;
             }
         }

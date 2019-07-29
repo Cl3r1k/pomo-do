@@ -103,7 +103,6 @@ describe('Component: PomoHeaderComponent', () => {
         expect(component.currentState).toEqual('pomo');
         expect(component.progressBarPercent).toEqual(0);
         expect(component.updatedTextHeight).toEqual(false);
-        expect(component.savePomoFocusState).toEqual(false);
     });
 
     it(`Should set 'afterViewCheckedCount' after 'ngAfterViewChecked()'`, () => {
@@ -382,28 +381,6 @@ describe('Component: PomoHeaderComponent', () => {
         });
     });
 
-    describe(`#setSavePomoFocus()`, () => {
-        it(`Should set 'savePomoFocusState' to 'false' with 'false' argument`, () => {
-            // Arrange
-
-            // Act
-            component.setSavePomoFocus(false);
-
-            // Assert
-            expect(component.savePomoFocusState).toEqual(false);
-        });
-
-        it(`Should set 'savePomoFocusState' to 'true' with 'true' argument`, () => {
-            // Arrange
-
-            // Act
-            component.setSavePomoFocus(true);
-
-            // Assert
-            expect(component.savePomoFocusState).toEqual(true);
-        });
-    });
-
     describe(`#emitPomoState()`, () => {
         it(`Should emit 'statePomoHeaderComponentEmitter' event`, () => {
             // Arrange
@@ -521,44 +498,6 @@ describe('Component: PomoHeaderComponent', () => {
                 // Assert
                 fixture.whenStable().then(() => {
                     expect(component.savePomo).toHaveBeenCalled();
-                });
-            });
-
-            it(`Getting focus on 'textarea.pomo-save-field' should call 'setSavePomoFocus()'`, () => {
-                // Arrange
-                component.pomoStatePomoHeader = 2;
-                fixture.detectChanges();
-                txtAreaPomoSaveEl = fixture.debugElement.nativeElement.querySelector('textarea.pomo-save-field'); // Find textarea element
-
-                // Act
-                spyOn(component, 'setSavePomoFocus');
-
-                // Set input value focus lost
-                txtAreaPomoSaveEl.dispatchEvent(new Event('focus'));
-                fixture.detectChanges();
-
-                // Assert
-                fixture.whenStable().then(() => {
-                    expect(component.setSavePomoFocus).toHaveBeenCalled();
-                });
-            });
-
-            it(`Losing focus on 'textarea.pomo-save-field' should call 'setSavePomoFocus()'`, () => {
-                // Arrange
-                component.pomoStatePomoHeader = 2;
-                fixture.detectChanges();
-                txtAreaPomoSaveEl = fixture.debugElement.nativeElement.querySelector('textarea.pomo-save-field'); // Find textarea element
-
-                // Act
-                spyOn(component, 'setSavePomoFocus');
-
-                // Set textarea value focus lost
-                txtAreaPomoSaveEl.dispatchEvent(new Event('blur'));
-                fixture.detectChanges();
-
-                // Assert
-                fixture.whenStable().then(() => {
-                    expect(component.setSavePomoFocus).toHaveBeenCalled();
                 });
             });
         });
