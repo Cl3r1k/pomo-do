@@ -1,5 +1,5 @@
 export class Tag {
-
+    // As far this class used to store data in 'localStorage' here used Snake_case notation for variables
     id: number;
     tagName: string;
     created_time: string;
