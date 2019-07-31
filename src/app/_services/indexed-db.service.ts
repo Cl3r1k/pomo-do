@@ -64,7 +64,7 @@ export class IndexedDbService extends Dexie {
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
-            tagTable: `++id, tagName, created_time, updated_time, color`
+            tagTable: `++id, tag_name, created_time, updated_time, color`
         });
 
         // In version 5 added field 'readyToDelete' in 'tagTable'
@@ -72,7 +72,7 @@ export class IndexedDbService extends Dexie {
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
-            tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`
+            tagTable: `++id, tag_name, created_time, updated_time, color, readyToDelete`
         });
 
         // In version 6 added new table 'pomoTable'
@@ -80,7 +80,7 @@ export class IndexedDbService extends Dexie {
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
-            tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`,
+            tagTable: `++id, tag_name, created_time, updated_time, color, readyToDelete`,
             pomoTable: `++id, canceled, created_time, deleted, deleted_time, duration, end_time,
                         uuid, manual, start_time, title, updated_time, __accound_id, __dirty,
                         _local_created_time, _local_deleted_time, _local_end_time, _local_start_time, _local_updated_time`
@@ -480,7 +480,7 @@ export class IndexedDbService extends Dexie {
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.todoTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
-                return hashtag.tagName;
+                return hashtag.tag_name;
             });
 
             console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
@@ -523,7 +523,7 @@ export class IndexedDbService extends Dexie {
                         // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
                         // console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
                         hashtagsInDb.map(hashtagInDb => {
-                            if (hashtagInDb.tagName === hashtag.trim() && !hashtagInDb.readyToDelete) {
+                            if (hashtagInDb.tag_name === hashtag.trim() && !hashtagInDb.readyToDelete) {
                                 hashtagInDb.updated_time = new Date().toISOString();
                                 hashtagInDb.readyToDelete = true;
                                 updateTagsPending = true;
@@ -573,7 +573,7 @@ export class IndexedDbService extends Dexie {
                     // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
                     const hashtagTitlesInDb: string[] = response.map(hashtag => {
-                        return hashtag.tagName;
+                        return hashtag.tag_name;
                     });
 
                     console.log(`%cBEFORE response: `, this.consoleTextColorService, response);
@@ -622,21 +622,21 @@ export class IndexedDbService extends Dexie {
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
-                return hashtag.tagName;
+                return hashtag.tag_name;
             });
             let updateTagsPending = false;
 
             console.log(`%cin 'updateHashtags()' incoming tags: `, 'color: purple;', tags);
             console.log(`%cin 'updateHashtags()' hashtagsInDb: `, 'color: purple;', hashtagsInDb);
             tags.map(tag => {
-                if (hashtagTitlesInDb.indexOf(tag.tagName) === -1) {
+                if (hashtagTitlesInDb.indexOf(tag.tag_name) === -1) {
                     hashtagsInDb.push(tag);
                     updateTagsPending = true;
                 } else {
                     console.log('%cFound in IndexedDb tag: ', this.consoleTextColorService, tag);
 
-                    if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tagName)].readyToDelete !== tag.readyToDelete) {
-                        hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tagName)].readyToDelete = tag.readyToDelete;
+                    if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].readyToDelete !== tag.readyToDelete) {
+                        hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].readyToDelete = tag.readyToDelete;
                         updateTagsPending = true;
                     }
                     // TODO: For case when color is changed, we just should check hashtag.color in db and income tag.color
@@ -664,12 +664,12 @@ export class IndexedDbService extends Dexie {
         hashtagsInDb.map(hashtagInDb => {
             let isPresent = false;
             todos.map(todo => {
-                if (todo.title.includes(hashtagInDb.tagName.trim())) {
+                if (todo.title.includes(hashtagInDb.tag_name.trim())) {
                     // Used regexp to define that current hastag is present in todo.title
                     // Look here https://regex101.com/r/A0H4wO/1/
-                    const hashtagRegExp = new RegExp(hashtagInDb.tagName.trim() + '($|\s)', 'i');
+                    const hashtagRegExp = new RegExp(hashtagInDb.tag_name.trim() + '($|\s)', 'i');
                     if (todo.title.match(hashtagRegExp)) {
-                        // console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
+                        // console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tag_name, todo.title);
                         isPresent = true;
                     }
                 }

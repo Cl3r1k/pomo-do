@@ -24,7 +24,7 @@ export class TagService {
         console.log('%c getTagByName - incoming tagName: ', this.consoleTextColorService, tagName);
         let tagColor = 'red';
         const tags = this._tagLayerService.tags.filter(tag => {
-            return tag.tagName === tagName;
+            return tag.tag_name === tagName;
         });
 
         if (tags.length) {
@@ -32,7 +32,7 @@ export class TagService {
 
             if (tags[0].readyToDelete) {
                 this._tagLayerService.tags.map(tag => {
-                    if (tag.tagName === tags[0].tagName) {
+                    if (tag.tag_name === tags[0].tag_name) {
                         tag.readyToDelete = false;
                     }
                 });

@@ -21,7 +21,7 @@ describe(`Model: Tag`, () => {
         hashTag = new Tag('testTagName1');
 
         // Assert
-        expect(hashTag.tagName).toEqual('testTagName1');
+        expect(hashTag.tag_name).toEqual('testTagName1');
     }));
 
     it(`Should have initial vaules after init (async)`, async(() => {
@@ -33,7 +33,7 @@ describe(`Model: Tag`, () => {
 
         // Assert
         expect(hashTag.id).toEqual(undefined);
-        expect(hashTag.tagName).toEqual('testTagName2');
+        expect(hashTag.tag_name).toEqual('testTagName2');
         expect(hashTag.color).toEqual('red');
         expect(hashTag.readyToDelete).toEqual(false);
     }));
