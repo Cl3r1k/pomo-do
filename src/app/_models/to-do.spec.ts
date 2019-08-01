@@ -43,7 +43,7 @@ describe(`Model: ToDo`, () => {
         expect(todo.title).toEqual('Hello');
         expect(todo.complete).toEqual(true);
         expect(todo.pin).toEqual(false);
-        expect(todo.costedPomo).toEqual(0);
+        expect(todo.costed_pomo).toEqual(0);
         expect(todo.estimatedPomos).toEqual(0);
         expect(todo.remindMe).toEqual(false);
         expect(todo.note).toBeNull();

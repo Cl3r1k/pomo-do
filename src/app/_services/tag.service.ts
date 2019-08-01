@@ -30,10 +30,10 @@ export class TagService {
         if (tags.length) {
             tagColor = tags[0].color;
 
-            if (tags[0].readyToDelete) {
+            if (tags[0].ready_to_delete) {
                 this._tagLayerService.tags.map(tag => {
                     if (tag.tag_name === tags[0].tag_name) {
-                        tag.readyToDelete = false;
+                        tag.ready_to_delete = false;
                     }
                 });
 

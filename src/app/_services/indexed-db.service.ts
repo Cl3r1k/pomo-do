@@ -56,31 +56,31 @@ export class IndexedDbService extends Dexie {
         this.version(3).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costedPomo, estimatedPomos, remindMe, remindTime, note`
+                        costed_pomo, estimatedPomos, remindMe, remindTime, note`
         });
 
         // In version 4 added new table 'tagTable'
         this.version(4).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
+                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
             tagTable: `++id, tag_name, created_time, updated_time, color`
         });
 
-        // In version 5 added field 'readyToDelete' in 'tagTable'
+        // In version 5 added field 'ready_to_delete' in 'tagTable'
         this.version(5).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
-            tagTable: `++id, tag_name, created_time, updated_time, color, readyToDelete`
+                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
+            tagTable: `++id, tag_name, created_time, updated_time, color, ready_to_delete`
         });
 
         // In version 6 added new table 'pomoTable'
         this.version(6).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
-            tagTable: `++id, tag_name, created_time, updated_time, color, readyToDelete`,
+                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
+            tagTable: `++id, tag_name, created_time, updated_time, color, ready_to_delete`,
             pomoTable: `++id, canceled, created_time, deleted, deleted_time, duration, end_time,
                         uuid, manual, start_time, title, updated_time, __accound_id, __dirty,
                         _local_created_time, _local_deleted_time, _local_end_time, _local_start_time, _local_updated_time`
@@ -523,11 +523,11 @@ export class IndexedDbService extends Dexie {
                         // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
                         // console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
                         hashtagsInDb.map(hashtagInDb => {
-                            if (hashtagInDb.tag_name === hashtag.trim() && !hashtagInDb.readyToDelete) {
+                            if (hashtagInDb.tag_name === hashtag.trim() && !hashtagInDb.ready_to_delete) {
                                 hashtagInDb.updated_time = new Date().toISOString();
-                                hashtagInDb.readyToDelete = true;
+                                hashtagInDb.ready_to_delete = true;
                                 updateTagsPending = true;
-                                console.log(`%cWill be marked as readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                                console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
                             }
                         });
                     }
@@ -550,7 +550,7 @@ export class IndexedDbService extends Dexie {
 
     // private async getAllHashtags() {
     //     const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-    //     this._tagLayerService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+    //     this._tagLayerService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.ready_to_delete));
     // }
 
     public getAllHashtags(): Observable<Tag[]> {
@@ -635,8 +635,8 @@ export class IndexedDbService extends Dexie {
                 } else {
                     console.log('%cFound in IndexedDb tag: ', this.consoleTextColorService, tag);
 
-                    if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].readyToDelete !== tag.readyToDelete) {
-                        hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].readyToDelete = tag.readyToDelete;
+                    if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].ready_to_delete !== tag.ready_to_delete) {
+                        hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].ready_to_delete = tag.ready_to_delete;
                         updateTagsPending = true;
                     }
                     // TODO: For case when color is changed, we just should check hashtag.color in db and income tag.color
@@ -677,17 +677,17 @@ export class IndexedDbService extends Dexie {
 
             // There is small conflict chance, when todo with tag deleted, page immediately reloaded, and then the same tag added
             if (!isPresent) {
-                if (!hashtagInDb.readyToDelete) {
+                if (!hashtagInDb.ready_to_delete) {
                     hashtagInDb.updated_time = new Date().toISOString();
-                    hashtagInDb.readyToDelete = true;
+                    hashtagInDb.ready_to_delete = true;
                     updateTagsPending = true;
-                    console.log(`%cWill be marked as readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                    console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
                 }
             } else {
-                if (hashtagInDb.readyToDelete) {
-                    console.log(`%cisPresent and readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                if (hashtagInDb.ready_to_delete) {
+                    console.log(`%cisPresent and ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
                     hashtagInDb.updated_time = new Date().toISOString();
-                    hashtagInDb.readyToDelete = false;
+                    hashtagInDb.ready_to_delete = false;
                     updateTagsPending = true;
                 }
             }

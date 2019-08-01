@@ -35,7 +35,7 @@ describe(`Model: Tag`, () => {
         expect(hashTag.id).toEqual(undefined);
         expect(hashTag.tag_name).toEqual('testTagName2');
         expect(hashTag.color).toEqual('red');
-        expect(hashTag.readyToDelete).toEqual(false);
+        expect(hashTag.ready_to_delete).toEqual(false);
     }));
 
     it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {

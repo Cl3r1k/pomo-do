@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export class ToDo {
-
+    // As far this class used to store data in 'DB' here used Snake_case notation for variables
     id: number;
     title = '';
     complete = false;
@@ -11,7 +11,7 @@ export class ToDo {
     completed_time: string;
     deleted_time: string;
     pin = false;
-    costedPomo = 0;
+    costed_pomo = 0;
     estimatedPomos = 0;
     remindMe = false;
     remindTime = null;

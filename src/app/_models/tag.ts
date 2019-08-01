@@ -5,7 +5,7 @@ export class Tag {
     created_time: string;
     updated_time: string;
     color: string;
-    readyToDelete = false;
+    ready_to_delete = false;
 
     constructor(tagName) {
         this.tag_name = tagName;
