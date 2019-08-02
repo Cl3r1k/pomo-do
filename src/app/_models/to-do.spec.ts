@@ -44,8 +44,8 @@ describe(`Model: ToDo`, () => {
         expect(todo.complete).toEqual(true);
         expect(todo.pin).toEqual(false);
         expect(todo.costed_pomo).toEqual(0);
-        expect(todo.estimatedPomos).toEqual(0);
-        expect(todo.remindMe).toEqual(false);
+        expect(todo.estimated_pomos).toEqual(0);
+        expect(todo.remind_me).toEqual(false);
         expect(todo.note).toBeNull();
     }));
 
@@ -64,7 +64,7 @@ describe(`Model: ToDo`, () => {
         expect(todo.completed_time).toBeNull();
         expect(todo.updated_time).toBeNull();
         expect(todo.deleted_time).toBeNull();
-        expect(todo.remindTime).toBeNull();
+        expect(todo.remind_time).toBeNull();
     }));
 
     it(`Should have not null 'inner_id' with length=36 after init (async)`, async(() => {

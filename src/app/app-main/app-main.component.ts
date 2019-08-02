@@ -161,9 +161,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
         const dataForDialog = {
             dialogTitle: 'Advanced settings',
             todoCost: todo.costed_pomo,
-            estimatedTodos: todo.estimatedPomos,
-            remind: todo.remindMe,
-            remindTime: todo.remindTime,
+            estimatedTodos: todo.estimated_pomos,
+            remind: todo.remind_me,
+            remindTime: todo.remind_time,
             note: todo.note
         };
 
@@ -183,9 +183,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
                     console.log('%cin TodosComponent in onMoreTodo() result: ', this.consoleTextColorComponent, result);
 
                     todo.costed_pomo = result['todoCost'];
-                    todo.estimatedPomos = result['estimatedTodos'];
-                    todo.remindMe = result['remind'];
-                    todo.remindTime = result['remindTime'];
+                    todo.estimated_pomos = result['estimatedTodos'];
+                    todo.remind_me = result['remind'];
+                    todo.remind_time = result['remindTime'];
                     todo.note = result['note'];
 
                     this.onUpdateTodo(todo);    // Save changes by calling 'onUpdateTodo()'

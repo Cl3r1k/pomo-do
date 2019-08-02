@@ -44,9 +44,9 @@ describe(`Model: ResolverData`, () => {
     //     expect(todo.complete).toEqual(true);
     //     expect(todo.pin).toEqual(false);
     //     expect(todo.costed_pomo).toEqual(0);
-    //     expect(todo.estimatedPomos).toEqual(0);
-    //     expect(todo.remindMe).toEqual(false);
-    //     expect(todo.remindTime).toBeNull();
+    //     expect(todo.estimated_pomos).toEqual(0);
+    //     expect(todo.remind_me).toEqual(false);
+    //     expect(todo.remind_time).toBeNull();
     //     expect(todo.note).toBeNull();
     // }));
 

@@ -56,14 +56,14 @@ export class IndexedDbService extends Dexie {
         this.version(3).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costed_pomo, estimatedPomos, remindMe, remindTime, note`
+                        costed_pomo, estimated_pomos, remind_me, remind_time, note`
         });
 
         // In version 4 added new table 'tagTable'
         this.version(4).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
+                        costed_pomo, estimated_pomos, remind_me, remind_time, note`,
             tagTable: `++id, tag_name, created_time, updated_time, color`
         });
 
@@ -71,7 +71,7 @@ export class IndexedDbService extends Dexie {
         this.version(5).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
+                        costed_pomo, estimated_pomos, remind_me, remind_time, note`,
             tagTable: `++id, tag_name, created_time, updated_time, color, ready_to_delete`
         });
 
@@ -79,7 +79,7 @@ export class IndexedDbService extends Dexie {
         this.version(6).stores({
             todoTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
-                        costed_pomo, estimatedPomos, remindMe, remindTime, note`,
+                        costed_pomo, estimated_pomos, remind_me, remind_time, note`,
             tagTable: `++id, tag_name, created_time, updated_time, color, ready_to_delete`,
             pomoTable: `++id, canceled, created_time, deleted, deleted_time, duration, end_time,
                         uuid, manual, start_time, title, updated_time, __accound_id, __dirty,

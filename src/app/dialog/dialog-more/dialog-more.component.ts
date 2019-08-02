@@ -20,14 +20,14 @@ export class DialogMoreComponent implements OnInit {
 
     onConfirmSave() {
         console.log('%creturn data: ', this.consoleTextColorComponent, this.data);
-        console.log('%cremindTime: ', this.consoleTextColorComponent, this.data['data']['remindTime']);
+        console.log('%c remind_time: ', this.consoleTextColorComponent, this.data['data']['remind_time']);
 
         this.dataFromDialog = {
             dialogResult: 'ConfirmSave',
             todoCost: this.data['data']['todoCost'],
             estimatedTodos: this.data['data']['estimatedTodos'],
             remind: this.data['data']['remind'],
-            remindTime: this.data['data']['remindTime'],
+            remindTime: this.data['data']['remind_time'],
             note: this.data['data']['note']
         };
 

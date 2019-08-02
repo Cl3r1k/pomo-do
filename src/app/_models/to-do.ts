@@ -12,9 +12,9 @@ export class ToDo {
     deleted_time: string;
     pin = false;
     costed_pomo = 0;
-    estimatedPomos = 0;
-    remindMe = false;
-    remindTime = null;
+    estimated_pomos = 0;
+    remind_me = false;
+    remind_time = null;
     note = null;
 
     constructor(values: Object = {}) {
