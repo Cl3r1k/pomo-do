@@ -20,7 +20,7 @@ describe('Component: DialogMoreComponent', () => {
     // Mock MAT_DIALOG_DATA with the Object
     const dataForDialog = {
         dialogTitle: 'Advanced settings',
-        todoCost: 1,
+        pomoCost: 1,
         estimatedTodos: 3,
         remind: false,
         remindTime: null,

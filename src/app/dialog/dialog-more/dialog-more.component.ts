@@ -24,7 +24,7 @@ export class DialogMoreComponent implements OnInit {
 
         this.dataFromDialog = {
             dialogResult: 'ConfirmSave',
-            todoCost: this.data['data']['todoCost'],
+            pomoCost: this.data['data']['pomoCost'],
             estimatedTodos: this.data['data']['estimatedTodos'],
             remind: this.data['data']['remind'],
             remindTime: this.data['data']['remind_time'],
