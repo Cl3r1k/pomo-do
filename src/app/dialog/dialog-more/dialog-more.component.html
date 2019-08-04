@@ -7,11 +7,11 @@
 
     <div mat-dialog-content class='dialog-content'>
         <mat-form-field>
-            <input matInput [(ngModel)]='data.data.pomoCost' placeholder='Costed todos'>
+            <input matInput type="number" [(ngModel)]='data.data.pomoCost' placeholder='Costed pomos'>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput [(ngModel)]='data.data.estimatedTodos' placeholder='Estimated todos'>
+            <input matInput type="number" [(ngModel)]='data.data.estimatedPomos' placeholder='Estimated pomos'>
         </mat-form-field>
 
         <mat-checkbox [(ngModel)]='data.data.remind'>Remind me at: </mat-checkbox>

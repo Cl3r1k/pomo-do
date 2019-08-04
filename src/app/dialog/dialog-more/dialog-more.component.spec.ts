@@ -21,7 +21,7 @@ describe('Component: DialogMoreComponent', () => {
     const dataForDialog = {
         dialogTitle: 'Advanced settings',
         pomoCost: 1,
-        estimatedTodos: 3,
+        estimatedPomos: 3,
         remind: false,
         remindTime: null,
         note: 'todo.note'
