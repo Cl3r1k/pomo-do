@@ -262,21 +262,21 @@ Todos:
 
             ✔ Fix labels on modal for 'costed pomos' and 'estimated pomos' and use only number fields (start from 'onMoreTodo()' in 'AppMainComponent') @done(19-08-03 08:47)
 
-            ☐ Update CLI to latest version (8.*.*) <========================================================= CURRENT TASK
+            ☐ Update CLI to latest version (8.*.*)
 
-            ☐ Fix App-title on SignIn page
-            ☐ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo)
+            ✔ Fix App-title on SignIn page @done(19-08-04 09:29)
+            ✔ Fix view for 'todos' when only one todo left (at bottom there is some white-space after todo) @done(19-08-04 09:17)
 
-            ☐ Fix 'todo-header' last container border-bottom styles (after grid changes)
+            ✔ Fix 'todo-header' last container border-bottom styles (after grid changes) @done(19-08-04 09:16)
 
-            ☐ Rename 'dialog' folder to 'dialogs'
+            ☐ Rename 'dialog' folder to 'dialogs' <========================================================= CURRENT TASK
             
             ☐ Take a look, why 'Created session_object:' shows twice on restart in console
                 ☐ And take a look, why 'Created session_object:' called even with clean start in incognito mode
 
             ☐ Move 'MockRouter' from test files to separate file and use it proper
 
-            ☐ Move colors for files (components, tests, etc) to environment file and use like constants
+            ☐ Move console colors for files (components, tests, etc) to environment file and use like constants
 
             ☐ Reorganize #hashtag-filter part (click on #hashtag should only filter view, and don't change data(resolver) and current-todo shouldn't be changes)
 
