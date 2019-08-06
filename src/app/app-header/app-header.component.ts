@@ -11,8 +11,8 @@ import { SessionStorageService } from '@app/_services/session-storage.service';
 import { AuthService } from '@app/_services/auth.service';
 
 // Components
-import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
-import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
+import { DialogAccountComponent } from '@app/dialogs/dialog-account/dialog-account.component';
+import { DialogSettingsComponent } from '@app/dialogs/dialog-settings/dialog-settings.component';
 
 // Modules
 import { MatDialog } from '@angular/material';

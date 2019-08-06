@@ -9,8 +9,8 @@ import { TodoService } from '@app/_services/todo.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 
 // Components
-import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
-import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
+import { DialogDeleteComponent } from '@app/dialogs/dialog-delete/dialog-delete.component';
+import { DialogMoreComponent } from '@app/dialogs/dialog-more/dialog-more.component';
 
 // Imports
 import { map } from 'rxjs/operators';

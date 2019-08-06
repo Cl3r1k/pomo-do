@@ -8,7 +8,7 @@ import { PomoStateService } from '@app/_services/pomo-state.service';
 import { PomoTitleService } from '@app/_services/pomo-title.service';
 
 // Components
-import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.component';
+import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.component';
 
 // Modules
 import { MatDialog } from '@angular/material';

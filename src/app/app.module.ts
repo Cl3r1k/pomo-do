@@ -14,16 +14,16 @@ import { TodoListItemComponent } from '@app/todos/todo-list/todo-list-item/todo-
 import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
-import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
+import { DialogDeleteComponent } from '@app/dialogs/dialog-delete/dialog-delete.component';
+import { DialogMoreComponent } from '@app/dialogs/dialog-more/dialog-more.component';
 import { SignInComponent } from '@app/sign-in/sign-in.component';
-import { DialogAccountComponent } from '@app/dialog/dialog-account/dialog-account.component';
-import { DialogSettingsComponent } from '@app/dialog/dialog-settings/dialog-settings.component';
+import { DialogAccountComponent } from '@app/dialogs/dialog-account/dialog-account.component';
+import { DialogSettingsComponent } from '@app/dialogs/dialog-settings/dialog-settings.component';
 import { ActiveTaskComponent } from '@app/active-task/active-task.component';
 import { AppMainComponent } from '@app/app-main/app-main.component';
 import { PomosComponent } from '@app/pomos/pomos.component';
 import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
-import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.component';
+import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.component';
 import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
 
 // Services

@@ -1,52 +1,28 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-// import { DialogCancelComponent } from './dialog-cancel.component';
-
-// describe('DialogCancelComponent', () => {
-//     let component: DialogCancelComponent;
-//     let fixture: ComponentFixture<DialogCancelComponent>;
-
-//     beforeEach(async(() => {
-//         TestBed.configureTestingModule({
-//             declarations: [DialogCancelComponent]
-//         })
-//             .compileComponents();
-//     }));
-
-//     beforeEach(() => {
-//         fixture = TestBed.createComponent(DialogCancelComponent);
-//         component = fixture.componentInstance;
-//         fixture.detectChanges();
-//     });
-
-//     it('should create', () => {
-//         expect(component).toBeTruthy();
-//     });
-// });
-
-
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 // Components
-import { DialogCancelComponent } from '@app/dialog/dialog-cancel/dialog-cancel.component';
+import { DialogDeleteComponent } from './dialog-delete.component';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
-describe('Component: DialogCancelComponent', () => {
-    let component: DialogCancelComponent;
-    let fixture: ComponentFixture<DialogCancelComponent>;
+describe('Component: DialogDeleteComponent', () => {
+    let component: DialogDeleteComponent;
+    let fixture: ComponentFixture<DialogDeleteComponent>;
     let dialogConfirmBtnEl;
 
     // Mock MAT_DIALOG_DATA with the Object
     const dataForDialog = {
-        dialogTitle: 'You are currently in a pomo, do you really want to interrupt it?'
+        dialogTitle: 'Delete Todos',
+        contentTitle: 'Are you sure want to delete todos amount: ',
+        contentData: 5,
+        isClearCompleted: true
     };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DialogCancelComponent],
+            declarations: [DialogDeleteComponent],
             providers: [
                 { provide: MatDialogRef, useClass: MatDialogRefMock },
                 { provide: MAT_DIALOG_DATA, useValue: {
@@ -60,7 +36,7 @@ describe('Component: DialogCancelComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DialogCancelComponent);
+        fixture = TestBed.createComponent(DialogDeleteComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
 
@@ -69,7 +45,7 @@ describe('Component: DialogCancelComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'DialogCancelComponent' (async)`, async(() => {
+    it(`should create an instance of 'DialogDeleteComponent' (async)`, async(() => {
         // Arrange
 
         // Act

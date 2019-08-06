@@ -1,27 +1,25 @@
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
+// Components
+import { DialogCancelComponent } from './dialog-cancel.component';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
-describe('Component: DialogDeleteComponent', () => {
-    let component: DialogDeleteComponent;
-    let fixture: ComponentFixture<DialogDeleteComponent>;
+describe('Component: DialogCancelComponent', () => {
+    let component: DialogCancelComponent;
+    let fixture: ComponentFixture<DialogCancelComponent>;
     let dialogConfirmBtnEl;
 
     // Mock MAT_DIALOG_DATA with the Object
     const dataForDialog = {
-        dialogTitle: 'Delete Todos',
-        contentTitle: 'Are you sure want to delete todos amount: ',
-        contentData: 5,
-        isClearCompleted: true
+        dialogTitle: 'You are currently in a pomo, do you really want to interrupt it?'
     };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DialogDeleteComponent],
+            declarations: [DialogCancelComponent],
             providers: [
                 { provide: MatDialogRef, useClass: MatDialogRefMock },
                 { provide: MAT_DIALOG_DATA, useValue: {
@@ -35,7 +33,7 @@ describe('Component: DialogDeleteComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DialogDeleteComponent);
+        fixture = TestBed.createComponent(DialogCancelComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
 
@@ -44,7 +42,7 @@ describe('Component: DialogDeleteComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'DialogDeleteComponent' (async)`, async(() => {
+    it(`should create an instance of 'DialogCancelComponent' (async)`, async(() => {
         // Arrange
 
         // Act

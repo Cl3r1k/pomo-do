@@ -269,9 +269,9 @@ Todos:
 
             ✔ Fix 'todo-header' last container border-bottom styles (after grid changes) @done(19-08-04 09:16)
 
-            ☐ Rename 'dialog' folder to 'dialogs' <========================================================= CURRENT TASK
+            ✔ Rename 'dialog' folder to 'dialogs' @done(19-08-05 09:15)
             
-            ☐ Take a look, why 'Created session_object:' shows twice on restart in console
+            ☐ Take a look, why 'Created session_object:' shows twice on restart in console <========================================================= CURRENT TASK
                 ☐ And take a look, why 'Created session_object:' called even with clean start in incognito mode
 
             ☐ Move 'MockRouter' from test files to separate file and use it proper

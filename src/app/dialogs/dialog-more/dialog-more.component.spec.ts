@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
-import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
+import { DialogMoreComponent } from './dialog-more.component';
 
 // tslint:disable-next-line:max-line-length
 import { MatDialogRef, MAT_DIALOG_DATA, MatInputModule, MatCheckboxModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
