@@ -5,5 +5,5 @@ export const environment = {
     apiUrl: 'https://github.com/Cl3r1k/pomo-do/db.json',
 
     // Autoincremented build version variable
-    version: '1.5.0.1029'
+    version: '1.5.0.1030'
 };

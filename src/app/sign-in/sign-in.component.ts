@@ -60,11 +60,13 @@ export class SignInComponent implements OnInit {
         const username = this.frm.get('username').value;
         const password = this.frm.get('password').value;
 
+        // ----- Test case for Github Pages -----
         if (username === 'tst' && password === 'tst') {
             this._authService.doSignIn('tst.Token.12345', 'tst.name'); // TODO: Use real value for 'Token' and 'name' ? or delete this part
             this._router.navigate(['app']);
             return;
         }
+        // ----- End test case -----
 
         // Submit request to API
         this._apiService.signIn(username, password).subscribe((response) => {

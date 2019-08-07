@@ -25,9 +25,7 @@ export class SessionStorageService {
         }
     };
 
-    constructor() {
-        this.init();
-    }
+    constructor() { }
 
     public init(): void {
         this.session_object.created_time = new Date().toISOString();
