@@ -1,11 +1,11 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+// Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
 
-class MockRouter {
-    navigate(path) { }
-}
+// Mocks
+import { RouterMock } from '@app/_testing/router-mock';
 
 describe('Guard: CanActivateTodosGuard', () => {
 
@@ -32,7 +32,7 @@ describe('Guard: CanActivateTodosGuard', () => {
     it(`should return true for a logged in user`, () => {
         // Arrange
         authService = { isSignedIn: () => true };
-        router = new MockRouter();
+        router = new RouterMock();
         todosGuard = new CanActivateTodosGuard(authService, router);
 
         // Act
@@ -44,7 +44,7 @@ describe('Guard: CanActivateTodosGuard', () => {
     it(`should navigate to 'sign-in' page for a logged out user`, () => {
         // Arrange
         authService = { isSignedIn: () => false };
-        router = new MockRouter();
+        router = new RouterMock();
         todosGuard = new CanActivateTodosGuard(authService, router);
         spyOn(router, 'navigate');
 

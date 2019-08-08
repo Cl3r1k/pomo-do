@@ -11,9 +11,8 @@ import { AppComponent } from '@app/app.component';
 import { AppMainComponent } from '@app/app-main/app-main.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
-class MockRouter {
-    navigate(path) { }
-}
+// Mocks
+import { RouterMock } from './_testing/router-mock';
 
 describe('Component: AppComponent', () => {
     beforeEach(async(() => {
@@ -52,7 +51,7 @@ describe('Component: AppComponent', () => {
             //     });
 
             // Arrange
-            const router = new MockRouter();
+            const router = new RouterMock();
             spyOn(router, 'navigate');
 
             // Act
@@ -78,7 +77,7 @@ describe('Component: AppComponent', () => {
             //     });
 
             // Arrange
-            const router = new MockRouter();
+            const router = new RouterMock();
             spyOn(router, 'navigate');
 
             // Act

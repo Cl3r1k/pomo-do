@@ -274,8 +274,8 @@ Todos:
             ✔ Take a look, why 'Created session_object:' shows twice on restart in console @done(19-08-06 08:55)
                 ✔ And take a look, why 'Created session_object:' called even with clean start in incognito mode @done(19-08-06 08:55)
 
-            ☐ Move 'MockRouter' from test files to separate file and use it proper <========================================================= CURRENT TASK
-            ☐ Move 'mockLocalStorage' from test files to separate file and use it proper
+            ✔ Move 'MockRouter' from tests files to separate file and use it proper @done(19-08-07 09:45)
+            ☐ Move 'mockLocalStorage' from test files to separate file and use it proper <========================================================= CURRENT TASK
 
             ☐ Move console colors for files (components, tests, etc) to environment file and use like constants
 

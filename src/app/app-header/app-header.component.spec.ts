@@ -17,10 +17,7 @@ import { MatDialogModule, MatDialog } from '@angular/material';
 
 // Mocks
 import { MatDialogMock } from '@app/_testing/mat-dialog-mock';
-
-class MockRouter {
-    navigate(path) { }
-}
+import { RouterMock } from '@app/_testing/router-mock';
 
 describe('Component: AppHeaderComponent', () => {
     let component: AppHeaderComponent;
@@ -36,7 +33,7 @@ describe('Component: AppHeaderComponent', () => {
             providers: [
                 {
                     provide: Router,
-                    useClass: MockRouter
+                    useClass: RouterMock
                 },
                 {
                     provide: AuthService,
@@ -90,13 +87,13 @@ describe('Component: AppHeaderComponent', () => {
         expect(authService instanceof AuthMockService).toBeTruthy();
     });
 
-    it('Router injected via component should be and instance of MockRouter', () => {
+    it('Router injected via component should be and instance of RouterMock', () => {
         // Arrange
 
         // Act
 
         // Assert
-        expect(router instanceof MockRouter).toBeTruthy();
+        expect(router instanceof RouterMock).toBeTruthy();
     });
 
     describe(`#changeSyncState()`, () => {
