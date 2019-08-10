@@ -6,6 +6,9 @@ import { SettingsService } from './settings.service';
 // Models
 import { SettingsData } from '@app/_models/settings-data';
 
+// Mocks
+import { LocalStorageMock } from '@app/_testing/localStorage-mock';
+
 describe('Service: SettingsService', () => {
 
     let service: SettingsService;
@@ -16,17 +19,10 @@ describe('Service: SettingsService', () => {
 
         service = TestBed.get(SettingsService);
 
-        const mockLocalStorage = {
-            getItem: (key: string): string => {
-                return key in store ? store[key] : null;
-            },
-            setItem: (key: string, value: string) => {
-                store[key] = `${value}`;
-            }
-        };
+        const localStorageMock = new LocalStorageMock();
 
-        spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
-        spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
+        spyOn(localStorage, 'getItem').and.callFake(localStorageMock.localStorageMockObject.getItem);
+        spyOn(localStorage, 'setItem').and.callFake(localStorageMock.localStorageMockObject.setItem);
     });
 
     it('Should be created', () => {

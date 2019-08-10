@@ -13,6 +13,7 @@ import { Utils } from '@app/_common/utils';
 
 // Mocks
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
+import { LocalStorageMock } from '@app/_testing/localStorage-mock';
 
 describe('Service: PomoStateService', () => {
 
@@ -33,17 +34,10 @@ describe('Service: PomoStateService', () => {
         service = TestBed.get(PomoStateService);
         indexedDbService = TestBed.get(IndexedDbService);
 
-        const mockLocalStorage = {
-            getItem: (key: string): string => {
-                return key in store ? store[key] : null;
-            },
-            setItem: (key: string, value: string) => {
-                store[key] = `${value}`;
-            }
-        };
+        const localStorageMock = new LocalStorageMock();
 
-        spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
-        spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
+        spyOn(localStorage, 'getItem').and.callFake(localStorageMock.localStorageMockObject.getItem);
+        spyOn(localStorage, 'setItem').and.callFake(localStorageMock.localStorageMockObject.setItem);
     });
 
     it('Should be created', () => {

@@ -3,10 +3,12 @@ import { TestBed } from '@angular/core/testing';
 // Services
 import { JwtService } from './jwt.service';
 
+// Mocks
+import { LocalStorageMock } from '@app/_testing/localStorage-mock';
+
 describe('Service: JwtService', () => {
 
     let service: JwtService;
-    let store = {};
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -15,25 +17,12 @@ describe('Service: JwtService', () => {
 
         service = TestBed.get(JwtService);
 
-        const mockLocalStorage = {
-            getItem: (key: string): string => {
-                return key in store ? store[key] : null;
-            },
-            setItem: (key: string, value: string) => {
-                store[key] = `${value}`;
-            },
-            removeItem: (key: string) => {
-                delete store[key];
-            },
-            clear: () => {
-                store = {};
-            }
-        };
+        const localStorageMock = new LocalStorageMock();
 
-        spyOn(localStorage, 'getItem').and.callFake(mockLocalStorage.getItem);
-        spyOn(localStorage, 'setItem').and.callFake(mockLocalStorage.setItem);
-        spyOn(localStorage, 'removeItem').and.callFake(mockLocalStorage.removeItem);
-        spyOn(localStorage, 'clear').and.callFake(mockLocalStorage.clear);
+        spyOn(localStorage, 'getItem').and.callFake(localStorageMock.localStorageMockObject.getItem);
+        spyOn(localStorage, 'setItem').and.callFake(localStorageMock.localStorageMockObject.setItem);
+        spyOn(localStorage, 'removeItem').and.callFake(localStorageMock.localStorageMockObject.removeItem);
+        spyOn(localStorage, 'clear').and.callFake(localStorageMock.localStorageMockObject.clear);
     });
 
     it('should be created', () => {
