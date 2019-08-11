@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Environments
+import { environment } from '@env/environment.prod';
+
 // Services
 import { TagService } from '@app/_services/tag.service';
 
@@ -8,7 +11,7 @@ import { TagService } from '@app/_services/tag.service';
 })
 export class ParseTagPipe implements PipeTransform {
 
-    consoleTextColorPipe = 'color: purple;';
+    CONSOLETEXTCOLORPIPE = environment.consoleTextColorPipe;
 
     // tslint:disable-next-line:max-line-length
     urlsRegExp = /(\b(https?|http|ftp|ftps|Https|rtsp|Rtsp):\/\/[A-Z0-9+&@#\/%?=~_|!:,.;-]*[-A-Z0-9+&@#\/%=~_|])/gim; // Find/Replace URL's in text
@@ -45,8 +48,8 @@ export class ParseTagPipe implements PipeTransform {
 
                 let colorInTagService = '';
                 colorInTagService = scope._tagService.getTagColorByName(tagName);
-                console.log(`%cin ParseTagPipe for %s colorInTagService is:`, scope.consoleTextColorPipe, tagName, colorInTagService);
-                // console.log(`%cin ParseTagPipe for %s tags is:`, scope.consoleTextColorPipe, tagName, scope._tagService.tags);
+                console.log(`%cin ParseTagPipe for %s colorInTagService is:`, scope.CONSOLETEXTCOLORPIPE, tagName, colorInTagService);
+                // console.log(`%cin ParseTagPipe for %s tags is:`, scope.CONSOLETEXTCOLORPIPE, tagName, scope._tagService.tags);
 
                 return space + `<span class='tag-class' style='background-color: ` + colorInTagService + `;'>` + tagName + `</span>`;
             });

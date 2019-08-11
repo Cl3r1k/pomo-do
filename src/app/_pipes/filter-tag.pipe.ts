@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Environments
+import { environment } from '@env/environment.prod';
+
 // Services
 import { TagService } from '@app/_services/tag.service';
 
@@ -8,7 +11,7 @@ import { TagService } from '@app/_services/tag.service';
 })
 export class FilterTagPipe implements PipeTransform {
 
-    consoleTextColorPipe = 'color: purple;';
+    CONSOLETEXTCOLORPIPE = environment.consoleTextColorPipe;
 
     constructor(private _tagService: TagService) { }
 
@@ -20,7 +23,7 @@ export class FilterTagPipe implements PipeTransform {
 
         let colorInTagService = 'gray';
         colorInTagService = this._tagService.getTagColorByName(text);
-        // console.log(`%cin ParseTagPipe for %s colorInTagService is:`, this.consoleTextColorPipe, text, colorInTagService);
+        // console.log(`%cin ParseTagPipe for %s colorInTagService is:`, this.CONSOLETEXTCOLORPIPE, text, colorInTagService);
 
         return `<div class='hashtag' style='background-color: ` + colorInTagService + `;'>` + text + `</div>`;
     }

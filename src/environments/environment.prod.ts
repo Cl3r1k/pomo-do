@@ -4,6 +4,9 @@ export const environment = {
     // URL of development API
     apiUrl: 'https://github.com/Cl3r1k/pomo-do/db.json',
 
+    // Colors for console
+    consoleTextColorPipe: 'color: purple;',
+
     // Autoincremented build version variable
-    version: '1.5.0.1033'
+    version: '1.5.0.1034'
 };
