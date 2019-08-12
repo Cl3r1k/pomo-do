@@ -6,7 +6,8 @@ export const environment = {
 
     // Colors for console
     consoleTextColorPipe: 'color: purple;',
+    consoleTextColorResolver: 'color: royalblue;',
 
     // Autoincremented build version variable
-    version: '1.5.0.1034'
+    version: '1.5.0.1035'
 };
