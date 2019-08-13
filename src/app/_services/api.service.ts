@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+// Environments
 import { environment } from '@env/environment';
+import { environment as environmentProd } from '@env/environment.prod';
 
 // Models
 import { ToDo } from '@app/_models/to-do';
@@ -13,18 +16,17 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 const API_URL = environment.apiUrl;
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
 
 @Injectable()
 export class ApiService {
-
-    consoleTextColorService = 'color: salmon;';
 
     constructor(private _httpClient: HttpClient, private _sessionStorage: SessionStorageService) { }
 
     public signIn(username: string, password: string) {
         return this._httpClient.post(API_URL + '/sign-in', { username, password }).pipe(
             map(response => {
-                // console.error(`%cApiService::response `, this.consoleTextColorService, response);
+                // console.error(`%cApiService::response `, CONSOLE_TEXT_COLOR_SERVICE, response);
                 console.log('ApiService response: ', response);
                 return response;
             }),
@@ -134,7 +136,7 @@ export class ApiService {
     // API: PUT /todos (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         const options = this.getRequestOptions();
-        console.log(`%cThis part is under construction`, this.consoleTextColorService);
+        console.log(`%cThis part is under construction`, CONSOLE_TEXT_COLOR_SERVICE);
 
         return this._httpClient.get(API_URL + '/todos', options).pipe(
             map(response => {
@@ -169,9 +171,9 @@ export class ApiService {
 
     private handleError(error: Response | any) {
         if (error._body.type === 'error') {
-            console.log(`%cRequest failed... Is json-server running?`, this.consoleTextColorService);
+            console.log(`%cRequest failed... Is json-server running?`, CONSOLE_TEXT_COLOR_SERVICE);
         }
-        console.error(`%cApiService::handleError`, this.consoleTextColorService, error);
+        console.error(`%cApiService::handleError`, CONSOLE_TEXT_COLOR_SERVICE, error);
         return observableThrowError(error);
     }
 

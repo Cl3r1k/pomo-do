@@ -2,25 +2,25 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeStyle, SafeHtml, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 // Environments
-import { environment } from '@env/environment.prod';
+import { environment as environmentProd } from '@env/environment.prod';
+
+const CONSOLE_TEXT_COLOR_PIPE = environmentProd.consoleTextColorPipe;
 
 @Pipe({
     name: 'safePipe'
 })
 export class SafePipe implements PipeTransform {
 
-    CONSOLETEXTCOLORPIPE = environment.consoleTextColorPipe;
-
     constructor(private sanitizer: DomSanitizer) { }
 
     transform(value: any, type: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
         switch (type) {
             case 'html': {
-                // console.log(`%bypassSecurityTrustHtml: `, this.CONSOLETEXTCOLORPIPE, this.sanitizer.bypassSecurityTrustHtml(value));
+                // console.log(`%bypassSecurityTrustHtml: `, CONSOLE_TEXT_COLOR_PIPE, this.sanitizer.bypassSecurityTrustHtml(value));
                 return this.sanitizer.bypassSecurityTrustHtml(value);
             }
             case 'style': {
-                // console.log(`%cbypassSecurityTrustStyle: `, this.CONSOLETEXTCOLORPIPE, this.sanitizer.bypassSecurityTrustStyle(value));
+                // console.log(`%cbypassSecurityTrustStyle: `, CONSOLE_TEXT_COLOR_PIPE, this.sanitizer.bypassSecurityTrustStyle(value));
                 return this.sanitizer.bypassSecurityTrustStyle(value);
             }
             case 'script': {
