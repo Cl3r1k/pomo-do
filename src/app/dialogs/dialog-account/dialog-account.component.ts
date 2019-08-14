@@ -1,11 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Utils
 import { MatchValidation } from '@app/_common/match-validation';
 
 // Imports
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-dialog-account',
@@ -13,8 +19,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     styleUrls: ['./dialog-account.component.scss']
 })
 export class DialogAccountComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     public formPassword: FormGroup;
 
@@ -41,12 +45,12 @@ export class DialogAccountComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('%cdata: ', this.consoleTextColorComponent, this.data);
+        console.log('%cdata: ', CONSOLE_TEXT_COLOR_COMPONENT, this.data);
 
         this.formPassword.controls['name'].setValue(this.data['Name']);
         this.formPassword.controls['email'].setValue(this.data['Email']);
 
-        // console.log('%cthis.formPassword.controls: ', this.consoleTextColorComponent, this.formPassword.controls);
+        // console.log('%cthis.formPassword.controls: ', CONSOLE_TEXT_COLOR_COMPONENT, this.formPassword.controls);
     }
 
     changeCurrentTabAccount(state: boolean) {
@@ -67,14 +71,14 @@ export class DialogAccountComponent implements OnInit {
 
     changePassword() {
 
-        // console.log('%cformPassword.errors: ', this.consoleTextColorComponent, this.formPassword.errors);
-        // console.log('%cfrmPwd.ctls.pwdCnfrm.err: ', this.consoleTextColorComponent, this.formPassword.controls.passwordConfirm.errors);
+        // console.log('%cformPassword.errors: ', CONSOLE_TEXT_COLOR_COMPONENT, this.formPassword.errors);
+        // console.log('%cfrmPwd.ctls.pwdCnfrm.err: ', CONSOLE_TEXT_COLOR_COMPONENT, this.formPassword.controls.passwordConfirm.errors);
 
         if (this.formPassword.invalid) {
             return;
         }
 
-        console.log('%cPassword changed!', this.consoleTextColorComponent);
+        console.log('%cPassword changed!', CONSOLE_TEXT_COLOR_COMPONENT);
     }
 
 }

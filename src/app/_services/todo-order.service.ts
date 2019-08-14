@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable()
 export class TodoOrderService {
-
-    consoleTextColorService = 'color: salmon;';
 
     constructor() { }
 
@@ -12,7 +16,7 @@ export class TodoOrderService {
         let data: Object;
 
         const update_time = new Date().toISOString();
-        console.log('%cin TodoOrderService in updateOrder() order to save: ', this.consoleTextColorService, todoOrderList);
+        console.log('%cin TodoOrderService in updateOrder() order to save: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
         data = {
             update_time: update_time,
@@ -34,7 +38,7 @@ export class TodoOrderService {
             todoOrderList = data['order'];
         }
 
-        console.log('%cin TodoOrderService in getOrder() order: ', this.consoleTextColorService, todoOrderList);
+        console.log('%cin TodoOrderService in getOrder() order: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
         return todoOrderList;
     }

@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { SettingsData } from '@app/_models/settings-data';
 
@@ -11,14 +14,15 @@ import { SettingsService } from '@app/_services/settings.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
 
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
+
 @Component({
     selector: 'app-dialog-settings',
     templateUrl: './dialog-settings.component.html',
     styleUrls: ['./dialog-settings.component.scss']
 })
 export class DialogSettingsComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     currentTab = 0;
     playSoundWorkState = false;
@@ -78,7 +82,7 @@ export class DialogSettingsComponent implements OnInit {
 
         let settingsData: SettingsData = this._settingsService.loadSettings();
 
-        // console.log('%c settingsData: ', this.consoleTextColorComponent, settingsData);
+        // console.log('%c settingsData: ', CONSOLE_TEXT_COLOR_COMPONENT, settingsData);
         if (!settingsData) {
             _settingsService.initSettings();
             _settingsService.saveSettings(_settingsService.settingsData);
@@ -106,7 +110,7 @@ export class DialogSettingsComponent implements OnInit {
             debounceTime(1000),
             distinctUntilChanged(),
         ).subscribe(value => {
-            console.log('%cform changed value: ', this.consoleTextColorComponent, value);
+            console.log('%cform changed value: ', CONSOLE_TEXT_COLOR_COMPONENT, value);
 
             if (value['dailyGoal'] && value['dailyGoal'] !== this.currentDailyGoal) {
                 this.dailyGoalSaveState = true;
@@ -129,7 +133,7 @@ export class DialogSettingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('%cdata: ', this.consoleTextColorComponent, this.data);
+        console.log('%cdata: ', CONSOLE_TEXT_COLOR_COMPONENT, this.data);
     }
 
     changeCurrentTab(tabIndex: number) {
@@ -239,12 +243,12 @@ export class DialogSettingsComponent implements OnInit {
         }
 
         if (this.timeTypeSaveState) {
-            // console.log('%c timeTypeSaveState is true', this.consoleTextColorComponent);
+            // console.log('%c timeTypeSaveState is true', CONSOLE_TEXT_COLOR_COMPONENT);
             this.timeTypeSaveText = 'Saved';
             this.timeTypeSaveStatePending = true;
-            // console.log('%c timeTypeSaveText changed execute setInterval()', this.consoleTextColorComponent);
+            // console.log('%c timeTypeSaveText changed execute setInterval()', CONSOLE_TEXT_COLOR_COMPONENT);
             this.timeTypeSaveStateInterval = setInterval(() => {
-                // console.log('%c executed setInterval() for timeTypeSaveState', this.consoleTextColorComponent);
+                // console.log('%c executed setInterval() for timeTypeSaveState', CONSOLE_TEXT_COLOR_COMPONENT);
                 // console.log('%c timeTypeSaveState: ', this.timeTypeSaveState);
                 // console.log('%c timeTypeSaveText: ', this.timeTypeSaveText);
                 // console.log('%c this.updatePending', 'color: red;', this.updatePending);
@@ -252,7 +256,7 @@ export class DialogSettingsComponent implements OnInit {
                 this.timeTypeSaveText = 'Saving';
                 this.timeTypeSaveStatePending = false;
                 clearInterval(this.timeTypeSaveStateInterval);
-                // console.log('%c timeTypeSaveState set to false', this.consoleTextColorComponent);
+                // console.log('%c timeTypeSaveState set to false', CONSOLE_TEXT_COLOR_COMPONENT);
             }, 2000);
         }
     }
@@ -300,7 +304,7 @@ export class DialogSettingsComponent implements OnInit {
         this.updatePending = true;
         this.interval = setInterval(() => {
             // this.updatePending = false;
-            console.log('%c-->Pefrorm saveSettings()', this.consoleTextColorComponent);
+            console.log('%c-->Pefrorm saveSettings()', CONSOLE_TEXT_COLOR_COMPONENT);
             this.saveSettings();
             clearInterval(this.interval);
         }, 3000);

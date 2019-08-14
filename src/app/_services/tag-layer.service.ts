@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { Tag } from '@app/_models/tag';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable()
 export class TagLayerService {
-
-    consoleTextColorService = 'color: salmon;';
 
     tags: Tag[] = [];
     colorsHashtags: string[] = [
@@ -25,7 +29,7 @@ export class TagLayerService {
     constructor() { }
 
     public setTagsList(tags: Tag[]) {
-        console.log('%c setTagsList - incoming tags: ', this.consoleTextColorService, tags);
+        console.log('%c setTagsList - incoming tags: ', CONSOLE_TEXT_COLOR_SERVICE, tags);
         this.tags = tags;
     }
 

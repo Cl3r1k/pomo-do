@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
 
@@ -13,16 +16,17 @@ import { TodoOrderService } from '@app/_services/todo-order.service';
 // Imports
 import { map, switchMap } from 'rxjs/operators';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable()
 export class TodoService {
-
-    consoleTextColorService = 'color: salmon;';
 
     serviceState = 1;    // Switcher for service 0 - ApiService, 1 - _indexedDbService
 
     // TODO: Use only IndexedDbService, and sync data with backend
     constructor(private _api: ApiService, private _indexedDbService: IndexedDbService, private _todoOrderService: TodoOrderService) {
-        console.log('%cconstructor in TodoService', this.consoleTextColorService);
+        console.log('%cconstructor in TodoService', CONSOLE_TEXT_COLOR_SERVICE);
     }
 
     initIndexedDbBase(): Observable<null> {
@@ -33,8 +37,8 @@ export class TodoService {
     addTodo(todo: ToDo, todos: ToDo[]): Observable<ToDo[]> {
         return this._indexedDbService.createTodo(todo).pipe(
             switchMap(todoResult => {
-                // console.log('%cprevTodoPinState: ', this.consoleTextColorService, prevTodoPinState);
-                // console.log('%ctodoResult.pin: ', this.consoleTextColorService, todoResult.pin);
+                // console.log('%cprevTodoPinState: ', CONSOLE_TEXT_COLOR_SERVICE, prevTodoPinState);
+                // console.log('%ctodoResult.pin: ', CONSOLE_TEXT_COLOR_SERVICE, todoResult.pin);
                 let pinnedTodosOrderList: string[];
                 let unpinnedTodosOrderList: string[];
                 let completedTodosOrderList: string[];
@@ -63,7 +67,7 @@ export class TodoService {
                 const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
 
                 const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
-                // console.log('%cAfter todoOrderList: ', this.consoleTextColorService, todoOrderList);
+                // console.log('%cAfter todoOrderList: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
                 return this.getAllTodos(0);
             })
@@ -121,7 +125,7 @@ export class TodoService {
 
     //             todoList = this.sortListByOrder(todos, todoOrderList);
 
-    //             // console.log('%cfound todoList: ', this.consoleTextColorService, todoList);
+    //             // console.log('%cfound todoList: ', CONSOLE_TEXT_COLOR_SERVICE, todoList);
 
     //             return (todoList);
     //         })
@@ -141,7 +145,7 @@ export class TodoService {
 
                         todoList = this.sortListByOrder(todos, todoOrderList);
 
-                        // console.log('%cfound todoList: ', this.consoleTextColorService, todoList);
+                        // console.log('%cfound todoList: ', CONSOLE_TEXT_COLOR_SERVICE, todoList);
                         if (todoList.length !== todos.length) {    // If order list is not equal by length with todos list, reset order
                             const todoOrderListRestored = todos.map(todo => {
                                 return todo.inner_id;
@@ -185,8 +189,8 @@ export class TodoService {
 
         return this.updateTodo(todo).pipe(
             switchMap(todoResult => {
-                // console.log('%cprevTodoPinState: ', this.consoleTextColorService, prevTodoPinState);
-                // console.log('%ctodoResult.pin: ', this.consoleTextColorService, todoResult.pin);
+                // console.log('%cprevTodoPinState: ', CONSOLE_TEXT_COLOR_SERVICE, prevTodoPinState);
+                // console.log('%ctodoResult.pin: ', CONSOLE_TEXT_COLOR_SERVICE, todoResult.pin);
                 let pinnedTodosOrderList: string[];
                 let unpinnedTodosOrderList: string[];
                 let completedTodosOrderList: string[];
@@ -229,7 +233,7 @@ export class TodoService {
                 const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
 
                 const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
-                // console.log('%cAfter todoOrderList: ', this.consoleTextColorService, todoOrderList);
+                // console.log('%cAfter todoOrderList: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
                 return this.getAllTodos(0);
             })
@@ -244,8 +248,8 @@ export class TodoService {
 
         return this.updateTodo(todo).pipe(
             switchMap(todoResult => {
-                // console.log('%cprevTodoPinState: ', this.consoleTextColorService, prevTodoPinState);
-                // console.log('%ctodoResult.pin: ', this.consoleTextColorService, todoResult.pin);
+                // console.log('%cprevTodoPinState: ', CONSOLE_TEXT_COLOR_SERVICE, prevTodoPinState);
+                // console.log('%ctodoResult.pin: ', CONSOLE_TEXT_COLOR_SERVICE, todoResult.pin);
                 let pinnedTodosOrderList: string[];
                 let unpinnedTodosOrderList: string[];
                 let completedTodosOrderList: string[];
@@ -282,7 +286,7 @@ export class TodoService {
                 const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
 
                 const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
-                // console.log('%cAfter todoOrderList: ', this.consoleTextColorService, todoOrderList);
+                // console.log('%cAfter todoOrderList: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
                 return this.getAllTodos(0);
             })
@@ -315,7 +319,7 @@ export class TodoService {
                     // Reorder list with new list of todos
                     let todoOrderList = this._todoOrderService.getOrder();
 
-                    // console.log('%cBefore todoOrderList: ', this.consoleTextColorService, todoOrderList);
+                    // console.log('%cBefore todoOrderList: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
                     const innerIdList = todos.map(todo => {
                         return todo.inner_id;
@@ -329,7 +333,7 @@ export class TodoService {
                     todos = this.sortListByOrder(todos, todoOrderList);
 
                     const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
-                    // console.log('%cAfter todoOrderList: ', this.consoleTextColorService, todoOrderList);
+                    // console.log('%cAfter todoOrderList: ', CONSOLE_TEXT_COLOR_SERVICE, todoOrderList);
 
                     return todos;
                 })
@@ -355,7 +359,7 @@ export class TodoService {
         todoOrderList.map(inner_id => {
             todos.map(todo => {
                 if (todo.inner_id === inner_id) {
-                    // console.log('%cfound todo: ', this.consoleTextColorService, todo);
+                    // console.log('%cfound todo: ', CONSOLE_TEXT_COLOR_SERVICE, todo);
                     todoList.push(todo);
                 }
             });

@@ -15,6 +15,7 @@ import { SessionStorageService } from '@app/_services/session-storage.service';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
+// Constants
 const API_URL = environment.apiUrl;
 const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
 

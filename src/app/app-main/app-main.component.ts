@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Routes
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,14 +22,15 @@ import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
+
 @Component({
     selector: 'app-main',
     templateUrl: './app-main.component.html',
     styleUrls: ['./app-main.component.scss']
 })
 export class AppMainComponent implements OnInit, OnDestroy {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     todos: ToDo[] = [];
     todo: ToDo = null;
@@ -55,11 +59,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
             map((data) => data['resolverData'])
         ).subscribe(
             (resolverData) => {
-                // console.log(`%c'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
-                // console.log(`%c'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
-                // console.log(`%c'TodosComponent' routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
+                // console.log(`%c'TodosComponent' _route.params: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.params);
+                // console.log(`%c'TodosComponent' _route.queryParams: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.queryParams);
+                // console.log(`%c'TodosComponent' routeConfig.path: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.routeConfig.path);
 
-                // console.log(`%cincoming 'resolverData' from resolver: `, this.consoleTextColorComponent, resolverData);
+                // console.log(`%cincoming 'resolverData' from resolver: `, CONSOLE_TEXT_COLOR_COMPONENT, resolverData);
                 this.activeRouteState = resolverData.activeRouteState;
                 this.hashTagToFilter = resolverData.params;
                 this.todos = resolverData.todos;
@@ -70,7 +74,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log('%cDo not forget to Unsubscribe!', this.consoleTextColorComponent);
+        console.log('%cDo not forget to Unsubscribe!', CONSOLE_TEXT_COLOR_COMPONENT);
         // this._route.data.unsubscribe();
         // this.todos.unsubscribe();
     }
@@ -78,7 +82,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo, this.todos).subscribe((updatedTodos) => {
-            console.log('%cin onAddTodo() updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
+            console.log('%cin onAddTodo() updatedTodos: ', CONSOLE_TEXT_COLOR_COMPONENT, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
         });
@@ -102,7 +106,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // });
 
         this._todoService.toggleTodoComplete(todo, this.todos).subscribe((updatedTodos) => {
-            console.log('%cin onToggleTodoComplete updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
+            console.log('%cin onToggleTodoComplete updatedTodos: ', CONSOLE_TEXT_COLOR_COMPONENT, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
         });
@@ -138,7 +142,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // Additional method to perform deletion after modal confirmation
     removeTodo(todo: ToDo) {
         // tslint:disable-next-line:max-line-length
-        console.log('%cremoveTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)', this.consoleTextColorComponent, todo.title, todo.id);
+        console.log('%cremoveTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)', CONSOLE_TEXT_COLOR_COMPONENT, todo.title, todo.id);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
@@ -180,7 +184,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
                 if (result['dialogResult'] === 'ConfirmDelete') {
                     this.removeTodo(todo);
                 } else {
-                    console.log('%cin TodosComponent in onMoreTodo() result: ', this.consoleTextColorComponent, result);
+                    console.log('%cin TodosComponent in onMoreTodo() result: ', CONSOLE_TEXT_COLOR_COMPONENT, result);
 
                     todo.costed_pomo = result['pomoCost'];
                     todo.estimated_pomos = result['estimatedPomos'];
@@ -199,16 +203,16 @@ export class AppMainComponent implements OnInit, OnDestroy {
     onPinTodo(todo: ToDo) {
         this._todoService.pinTodo(todo, this.todos).subscribe((updatedTodos) => {
             // todo = updatedTodo;        // We even do not need to update inner todo
-            console.log('%cin onPinTodo updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
+            console.log('%cin onPinTodo updatedTodos: ', CONSOLE_TEXT_COLOR_COMPONENT, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
         });
     }
 
     onToggleAll(toggleState: boolean) {
-        console.log('%ctoggleState() called', this.consoleTextColorComponent);
+        console.log('%ctoggleState() called', CONSOLE_TEXT_COLOR_COMPONENT);
         this._todoService.toggleAll(toggleState, this.activeRouteState).subscribe((todos) => {
-            console.log('%cin onToggleAll incoming todos:', this.consoleTextColorComponent, todos);
+            console.log('%cin onToggleAll incoming todos:', CONSOLE_TEXT_COLOR_COMPONENT, todos);
             this.todos = todos;
             this.transformView();
         });
@@ -241,7 +245,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     clearCompleted(clearState: boolean) {
         // tslint:disable-next-line:max-line-length
-        console.log('%conClearCompleted (remove %s in TodosComponent): ', this.consoleTextColorComponent, clearState);
+        console.log('%conClearCompleted (remove %s in TodosComponent): ', CONSOLE_TEXT_COLOR_COMPONENT, clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service
@@ -252,21 +256,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onClearHoverSetState(clearCompletetHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', this.consoleTextColorComponent, clearCompletetHoverState);
+        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, clearCompletetHoverState);
         this.clearHoverState = clearCompletetHoverState;
     }
 
     onToggleAllHoverSetState(toggleAllHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', this.consoleTextColorComponent, toggleAllHoverState);
+        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, toggleAllHoverState);
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
     onMoveTodo(todosUpdated: ToDo[]) {
         // tslint:disable-next-line:max-line-length
-        console.log('%conMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', this.consoleTextColorComponent, todosUpdated);
+        console.log('%conMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', CONSOLE_TEXT_COLOR_COMPONENT, todosUpdated);
         // this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
-        //     console.log('%cin onMoveTodo incoming todos:', this.consoleTextColorComponent, todos);
+        //     console.log('%cin onMoveTodo incoming todos:', CONSOLE_TEXT_COLOR_COMPONENT, todos);
         //     this.todos = todos;
         // });
 
@@ -299,11 +303,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         unpinnedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                // console.log('%cin TodosComponent todo.complete: ', this.consoleTextColorComponent, todo.complete);
-                // console.log('%cin TodosComponent todo.pin: ', this.consoleTextColorComponent, todo.pin);
-                // console.log('%cin TodosComponent todo.title: ', this.consoleTextColorComponent, todo.title);
+                // console.log('%cin TodosComponent todo.complete: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.complete);
+                // console.log('%cin TodosComponent todo.pin: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.pin);
+                // console.log('%cin TodosComponent todo.title: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.title);
                 // tslint:disable-next-line:max-line-length
-                // console.log('%cin TodosComponent todo.title.indexOf: ', this.consoleTextColorComponent, todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()));
+                // console.log('%cin TodosComponent todo.title.indexOf: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()));
                 return !todo.complete && !todo.pin && this.hashtagIsPresent(todo.title, this.hashTagToFilter);
             } else {
                 return !todo.complete && !todo.pin;
@@ -326,9 +330,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         this.isEmptyTodoList = (pinnedTodos.length + unpinnedTodos.length) > 0 ? false : true;
 
-        console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
-        console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
-        console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
+        console.log('%cin TodosComponent pinnedTodos', CONSOLE_TEXT_COLOR_COMPONENT, pinnedTodos);
+        console.log('%cin TodosComponent unpinnedTodos', CONSOLE_TEXT_COLOR_COMPONENT, unpinnedTodos);
+        console.log('%cin TodosComponent completedTodos', CONSOLE_TEXT_COLOR_COMPONENT, completedTodos);
 
         this.getTopMostTodo();
         this.setAllCompletedState();
@@ -369,14 +373,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
-        // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
-        // console.log('%ccontainerClick called with event.target: ', this.consoleTextColorComponent, event.target);
-        // console.log('%ccontainerClick called with event.target.innerHTML: ', this.consoleTextColorComponent, event.target.innerHTML);
-        // console.log('%ccontainerClick called with event.target.parentNode: ', this.consoleTextColorComponent, event.target.parentNode);
+        // console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
+        // console.log('%ccontainerClick called with event.target: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target);
+        // console.log('%ccontainerClick called with event.target.innerHTML: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.innerHTML);
+        // console.log('%ccontainerClick called with event.target.parentNode: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.parentNode);
         if (event.target.className === 'content-container') {
-            console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+            console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
         } else {
-            // console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+            // console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
         }
 
         if ((event.target.parentNode &&
@@ -449,7 +453,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onStatePomoChange(state: number) {
         this.pomoStateAppMain = state;
-        // console.log('%cpomoStateAppMain: ', this.consoleTextColorComponent, this.pomoStateAppMain);
+        // console.log('%cpomoStateAppMain: ', CONSOLE_TEXT_COLOR_COMPONENT, this.pomoStateAppMain);
     }
 
 }

@@ -1,6 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-dialog-more',
@@ -8,8 +14,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     styleUrls: ['./dialog-more.component.scss']
 })
 export class DialogMoreComponent implements OnInit {
-
-    private consoleTextColorComponent = 'color: cadetblue;';
 
     dataFromDialog: Object;
 
@@ -19,8 +23,8 @@ export class DialogMoreComponent implements OnInit {
     }
 
     onConfirmSave() {
-        console.log('%creturn data: ', this.consoleTextColorComponent, this.data);
-        console.log('%c remind_time: ', this.consoleTextColorComponent, this.data['data']['remind_time']);
+        console.log('%creturn data: ', CONSOLE_TEXT_COLOR_COMPONENT, this.data);
+        console.log('%c remind_time: ', CONSOLE_TEXT_COLOR_COMPONENT, this.data['data']['remind_time']);
 
         this.dataFromDialog = {
             dialogResult: 'ConfirmSave',

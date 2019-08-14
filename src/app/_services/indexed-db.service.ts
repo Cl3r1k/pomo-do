@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
 import { Tag } from '@app/_models/tag';
@@ -15,6 +18,9 @@ import { Utils } from '@app/_common/utils';
 // Imports
 import { from as observableFrom, throwError as observableThrowError, Observable } from 'rxjs';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable()
 export class IndexedDbService extends Dexie {
 
@@ -22,7 +28,6 @@ export class IndexedDbService extends Dexie {
     tagTable: Dexie.Table<Tag, number>;
     pomoTable: Dexie.Table<Pomo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
-    consoleTextColorService = 'color: salmon;';
     baseVersion = 3;
 
     hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
@@ -90,7 +95,7 @@ export class IndexedDbService extends Dexie {
         this.todoTable.mapToClass(ToDo);
         this.tagTable.mapToClass(Tag);
         this.pomoTable.mapToClass(Pomo);
-        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColorService, this.name, this.baseVersion);
+        console.log('%c Created/Inited/Opened %s (v%d)', CONSOLE_TEXT_COLOR_SERVICE, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
@@ -111,13 +116,13 @@ export class IndexedDbService extends Dexie {
             const tag: Tag = new Tag('#tagName');
             tag.color = this.colorsHashtags[0];
             this.tagTable.add(tag);
-            console.log('%c DB populated successfully', this.consoleTextColorService);
+            console.log('%c DB populated successfully', CONSOLE_TEXT_COLOR_SERVICE);
         });
     }
 
     public openIndexedDb(): Observable<null> {
         return observableFrom(this.open().then(async () => {
-            console.log('%c Opened %s successfully (v%d)', this.consoleTextColorService, this.name, 1);
+            console.log('%c Opened %s successfully (v%d)', CONSOLE_TEXT_COLOR_SERVICE, this.name, 1);
             return null;
         }).catch(error => {
             this.handleError('openIndexedDb', error);
@@ -133,7 +138,7 @@ export class IndexedDbService extends Dexie {
             // TODO: Do not forget to clean this line after
             // this.parseTag(todo);
 
-            console.log('%c createTodo - added new todo: ', this.consoleTextColorService, newTodo);
+            console.log('%c createTodo - added new todo: ', CONSOLE_TEXT_COLOR_SERVICE, newTodo);
             return newTodo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -142,7 +147,7 @@ export class IndexedDbService extends Dexie {
 
     public getTodoById(todoId: number): Observable<ToDo> {
         return observableFrom(this.todoTable.get(todoId).then(async (todo) => {
-            console.log('%c getTodoById - todo result: ', this.consoleTextColorService, todo);
+            console.log('%c getTodoById - todo result: ', CONSOLE_TEXT_COLOR_SERVICE, todo);
             return todo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -151,7 +156,7 @@ export class IndexedDbService extends Dexie {
 
     public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
         return observableFrom(this.todoTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
-            console.log('%c getTodoByTitle - todos result: ', this.consoleTextColorService, todos);
+            console.log('%c getTodoByTitle - todos result: ', CONSOLE_TEXT_COLOR_SERVICE, todos);
             return todos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -171,7 +176,7 @@ export class IndexedDbService extends Dexie {
 
             return { all: todos.length, active: activeTodos, complete: completeTodos };
         }).then(async (todosAmount) => {
-            console.log('%c Transaction committed getTodosAmountObject: ', this.consoleTextColorService, todosAmount);
+            console.log('%c Transaction committed getTodosAmountObject: ', CONSOLE_TEXT_COLOR_SERVICE, todosAmount);
             return todosAmount;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -179,16 +184,16 @@ export class IndexedDbService extends Dexie {
     }
 
     // public getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
-    //     console.log('%c calling getTodosWithHashtag in IndexedDbService with hashtag:', this.consoleTextColorService, hashtag);
+    //     console.log('%c calling getTodosWithHashtag in IndexedDbService with hashtag:', CONSOLE_TEXT_COLOR_SERVICE, hashtag);
     //     return Observable.fromPromise(this.todoTable.toArray().then(async (response) => {
     //         let todos: ToDo[] = [];
 
     //         todos = response.filter(todo => {
-    //             console.log(`%c in getTodosWithHashtag todo: `, this.consoleTextColorService, todo);
+    //             console.log(`%c in getTodosWithHashtag todo: `, CONSOLE_TEXT_COLOR_SERVICE, todo);
     //             return todo.title.toLowerCase().indexOf(hashtag.toLowerCase()) !== -1;
     //         });
 
-    //         console.log('%c in getTodosWithHashtag todos: ', this.consoleTextColorService, todos);
+    //         console.log('%c in getTodosWithHashtag todos: ', CONSOLE_TEXT_COLOR_SERVICE, todos);
     //         return todos;
     //     }).catch(error => {
     //         return error;    // TODO: Handle error properly as Observable
@@ -197,7 +202,7 @@ export class IndexedDbService extends Dexie {
 
     // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
+        // console.log('%c calling getAllTodos in IndexedDbService', CONSOLE_TEXT_COLOR_SERVICE);
         return observableFrom(this.todoTable.toArray().then(async (response) => {
 
             // const hashtagsInDb: Tag[] = await this.tagTable.toArray();
@@ -215,10 +220,10 @@ export class IndexedDbService extends Dexie {
                     return todo.complete === (activeRouteState === 2 ? true : false);
                 });
 
-                console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColorService, activeRouteState, todos);
+                console.log('%c getAllTodos - with activeRouteState = %d todos: ', CONSOLE_TEXT_COLOR_SERVICE, activeRouteState, todos);
                 return todos;
             } else {
-                console.log('%c getAllTodos - response: ', this.consoleTextColorService, response);
+                console.log('%c getAllTodos - response: ', CONSOLE_TEXT_COLOR_SERVICE, response);
                 return response;
             }
         }).catch(error => {
@@ -242,10 +247,10 @@ export class IndexedDbService extends Dexie {
             const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
 
             if (updateTagsPending) {
-                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                // console.log(`%cshould be Updated tags DB? `, CONSOLE_TEXT_COLOR_SERVICE, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
-                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+                console.log(`%cin 'updateTodo()' lastKey: `, CONSOLE_TEXT_COLOR_SERVICE, lastKey);
             }
 
             // Next condition is for check, if lenght of list not equal in length in service, then don't change it
@@ -258,7 +263,7 @@ export class IndexedDbService extends Dexie {
 
             return await this.todoTable.get(todo.id);
         }).then(async (updatedTodo) => {
-            console.log('%c Transaction committed updatedTodo: ', this.consoleTextColorService, updatedTodo);
+            console.log('%c Transaction committed updatedTodo: ', CONSOLE_TEXT_COLOR_SERVICE, updatedTodo);
             return updatedTodo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -280,7 +285,7 @@ export class IndexedDbService extends Dexie {
 
             const lastKey = await this.todoTable.bulkPut(todos);
 
-            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
+            // console.log('%c lastKey: %d, todos[length - 1].id: %d', CONSOLE_TEXT_COLOR_SERVICE, lastKey, todos[todos.length - 1].id);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
 
@@ -291,7 +296,7 @@ export class IndexedDbService extends Dexie {
 
             return todos;
         }).then(async (updatedTodos) => {
-            console.log('%c Transaction committed toggleAll: ', this.consoleTextColorService, updatedTodos);
+            console.log('%c Transaction committed toggleAll: ', CONSOLE_TEXT_COLOR_SERVICE, updatedTodos);
             return updatedTodos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -317,17 +322,17 @@ export class IndexedDbService extends Dexie {
             const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
 
             if (updateTagsPending) {
-                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                // console.log(`%cshould be Updated tags DB? `, CONSOLE_TEXT_COLOR_SERVICE, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
-                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+                console.log(`%cin 'updateTodo()' lastKey: `, CONSOLE_TEXT_COLOR_SERVICE, lastKey);
             }
 
             this._tagLayerService.tags = hashtagsInDb;
 
             return null;
         }).then(async () => {
-            console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColorService, todoId);
+            console.log('%c deleteTodoById - deleted value with id: ', CONSOLE_TEXT_COLOR_SERVICE, todoId);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -348,7 +353,7 @@ export class IndexedDbService extends Dexie {
                 }
             });
 
-            // console.log('%c todos Ids to delete:', this.consoleTextColorService, todosIds);
+            // console.log('%c todos Ids to delete:', CONSOLE_TEXT_COLOR_SERVICE, todosIds);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -369,10 +374,10 @@ export class IndexedDbService extends Dexie {
                 this._tagLayerService.tags = hashtagsInDb;
             }
 
-            // console.log('%c returned todos:', this.consoleTextColorService, todos);
+            // console.log('%c returned todos:', CONSOLE_TEXT_COLOR_SERVICE, todos);
             return todos;
         }).then(async (updatedTodos) => {
-            console.log('%c Transaction committed clearCompleted: ', this.consoleTextColorService, updatedTodos);
+            console.log('%c Transaction committed clearCompleted: ', CONSOLE_TEXT_COLOR_SERVICE, updatedTodos);
             return updatedTodos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -381,7 +386,7 @@ export class IndexedDbService extends Dexie {
 
     public clearTodoStore(): Observable<null> {
         return observableFrom(this.todoTable.clear().then(() => {
-            console.log('%c clearTodoStore() -> all items deleted', this.consoleTextColorService);
+            console.log('%c clearTodoStore() -> all items deleted', CONSOLE_TEXT_COLOR_SERVICE);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -397,7 +402,7 @@ export class IndexedDbService extends Dexie {
 
     //         const direction = fromId < toId ? 1 : -1;
 
-    //         // console.log('%c moveState in service:', this.consoleTextColorService, moveState);
+    //         // console.log('%c moveState in service:', CONSOLE_TEXT_COLOR_SERVICE, moveState);
 
     //         if (direction > 0) {
     //             let processMovement = false;
@@ -439,12 +444,12 @@ export class IndexedDbService extends Dexie {
     //             }
     //         }
 
-    //         // console.log('%c AFTER movements Array is:', this.consoleTextColorService, todos);
+    //         // console.log('%c AFTER movements Array is:', CONSOLE_TEXT_COLOR_SERVICE, todos);
 
     //         await this.todoTable.clear();
     //         const lastKey = await this.todoTable.bulkPut(todos);
     // tslint:disable-next-line:max-line-length
-    //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
+    //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', CONSOLE_TEXT_COLOR_SERVICE, lastKey, todos[todos.length - 1].id);
 
     //         todos = await this.todoTable.toArray();
 
@@ -456,7 +461,7 @@ export class IndexedDbService extends Dexie {
 
     //         return todos;
     //     }).then(async (updatedTodos) => {
-    //         console.log('%c Transaction committed moveTodo: ', this.consoleTextColorService, updatedTodos);
+    //         console.log('%c Transaction committed moveTodo: ', CONSOLE_TEXT_COLOR_SERVICE, updatedTodos);
     //         return updatedTodos;
     //     }).catch(error => {
     //         return error;    // TODO: Handle error properly as Observable
@@ -475,7 +480,7 @@ export class IndexedDbService extends Dexie {
         // Find #hashtags in text
         if (todo.title.match(this.hashtagsRegExp)) {
             const hashtagsInTitle = todo.title.match(this.hashtagsRegExp);
-            // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
+            // console.log(`%chashtags: `, CONSOLE_TEXT_COLOR_SERVICE, hashtags);
 
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.todoTable.toArray();
@@ -483,18 +488,18 @@ export class IndexedDbService extends Dexie {
                 return hashtag.tag_name;
             });
 
-            console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
+            console.log(`%cBEFORE hashtagsInDb: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
 
             let updateTagsPending = false;
             hashtagsInTitle.map(hashtag => {
                 if (!hashtagTitlesInDb.includes(hashtag.trim())) {
-                    console.log(`%cNOT found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
+                    console.log(`%cNOT found in tagTable hashtag: `, CONSOLE_TEXT_COLOR_SERVICE, hashtag.trim());
                     const newHashtag: Tag = new Tag(hashtag.trim());
 
                     const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
                     const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
                     newHashtag.color = rndColor;
-                    // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+                    // console.log(`%crndColor: `, CONSOLE_TEXT_COLOR_SERVICE, rndColor);
 
                     this.tagTable.add(newHashtag);
                 } else {
@@ -515,19 +520,19 @@ export class IndexedDbService extends Dexie {
                         }
                     });
 
-                    // console.log(`%ctodos: `, this.consoleTextColorService, todos);
-                    console.log(`%chashtag: %s isPresent: `, this.consoleTextColorService, hashtag, isPresent);
+                    // console.log(`%ctodos: `, CONSOLE_TEXT_COLOR_SERVICE, todos);
+                    console.log(`%chashtag: %s isPresent: `, CONSOLE_TEXT_COLOR_SERVICE, hashtag, isPresent);
 
                     if (!isPresent) {
                         // const tagToUpdate = this.tagTable.get(6);
-                        // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
-                        // console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
+                        // console.log(`%ctagToUpdate: `, CONSOLE_TEXT_COLOR_SERVICE, tagToUpdate);
+                        // console.log(`%cBEFORE hashtagsInDb: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
                         hashtagsInDb.map(hashtagInDb => {
                             if (hashtagInDb.tag_name === hashtag.trim() && !hashtagInDb.ready_to_delete) {
                                 hashtagInDb.updated_time = new Date().toISOString();
                                 hashtagInDb.ready_to_delete = true;
                                 updateTagsPending = true;
-                                console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                                console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagInDb);
                             }
                         });
                     }
@@ -535,15 +540,15 @@ export class IndexedDbService extends Dexie {
             });
 
             if (updateTagsPending) {
-                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                // console.log(`%cshould be Updated tags DB? `, CONSOLE_TEXT_COLOR_SERVICE, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
             }
 
             // this.getAllHashtags();
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
-            console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+            console.log(`%cUPDATED hashtagsInDB: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
             this._tagLayerService.setTagsList(hashtagsInDb);
         }
     }
@@ -554,7 +559,7 @@ export class IndexedDbService extends Dexie {
     // }
 
     public getAllHashtags(): Observable<Tag[]> {
-        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
+        // console.log('%c calling getAllTodos in IndexedDbService', CONSOLE_TEXT_COLOR_SERVICE);
         return observableFrom(this.tagTable.toArray().then(async (response) => {
 
             // TODO: This part is under construction ------
@@ -570,29 +575,29 @@ export class IndexedDbService extends Dexie {
             todos.map(todo => {
                 if (todo.title.match(this.hashtagsRegExp)) {
                     const hashtagsArrayInTodoTitle = todo.title.match(this.hashtagsRegExp);
-                    // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
+                    // console.log(`%chashtags: `, CONSOLE_TEXT_COLOR_SERVICE, hashtags);
 
                     const hashtagTitlesInDb: string[] = response.map(hashtag => {
                         return hashtag.tag_name;
                     });
 
-                    console.log(`%cBEFORE response: `, this.consoleTextColorService, response);
+                    console.log(`%cBEFORE response: `, CONSOLE_TEXT_COLOR_SERVICE, response);
 
                     hashtagsArrayInTodoTitle.map(hashtag => {
                         if (!hashtagTitlesInDb.includes(hashtag.trim())) {
-                            console.log(`%cNOT found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
+                            console.log(`%cNOT found in tagTable hashtag: `, CONSOLE_TEXT_COLOR_SERVICE, hashtag.trim());
                             const newHashtag: Tag = new Tag(hashtag.trim());
 
                             const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
                             const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
                             newHashtag.color = rndColor;
-                            // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+                            // console.log(`%crndColor: `, CONSOLE_TEXT_COLOR_SERVICE, rndColor);
 
                             response.push(newHashtag);
                             updateTagsPending = true;
                         } else {
                             // tslint:disable-next-line:max-line-length
-                            // console.log(`%cFOUND in tagTable hashtag: %s, and response: `, this.consoleTextColorService, hashtag.trim(), response);
+                            // console.log(`%cFOUND in tagTable hashtag: %s, and response: `, CONSOLE_TEXT_COLOR_SERVICE, hashtag.trim(), response);
                         }
                     });
                 }
@@ -603,10 +608,10 @@ export class IndexedDbService extends Dexie {
             updateTagsPending = updateTagsPending || this.cleanHashtags(todos, response);
 
             if (updateTagsPending) {
-                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                // console.log(`%cAFTER response: `, this.consoleTextColorService, response);
+                // console.log(`%cshould be Updated tags DB? `, CONSOLE_TEXT_COLOR_SERVICE, updateTagsPending);
+                // console.log(`%cAFTER response: `, CONSOLE_TEXT_COLOR_SERVICE, response);
                 const lastKey = await this.tagTable.bulkPut(response);
-                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+                console.log(`%cin 'updateTodo()' lastKey: `, CONSOLE_TEXT_COLOR_SERVICE, lastKey);
             }
             // --------------------------------------
 
@@ -618,7 +623,7 @@ export class IndexedDbService extends Dexie {
 
     public updateHashtags(tags: Tag[]): Observable<null> {
         return observableFrom(this.transaction('rw', this.tagTable, async () => {
-            // console.log('%c Incoming hashtagsList: ', this.consoleTextColorService, tags);
+            // console.log('%c Incoming hashtagsList: ', CONSOLE_TEXT_COLOR_SERVICE, tags);
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
@@ -633,7 +638,7 @@ export class IndexedDbService extends Dexie {
                     hashtagsInDb.push(tag);
                     updateTagsPending = true;
                 } else {
-                    console.log('%cFound in IndexedDb tag: ', this.consoleTextColorService, tag);
+                    console.log('%cFound in IndexedDb tag: ', CONSOLE_TEXT_COLOR_SERVICE, tag);
 
                     if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].ready_to_delete !== tag.ready_to_delete) {
                         hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tag_name)].ready_to_delete = tag.ready_to_delete;
@@ -650,7 +655,7 @@ export class IndexedDbService extends Dexie {
 
             return null;
         }).then(async () => {
-            console.log('%c Transaction committed successfully - updateHashtags.', this.consoleTextColorService);
+            console.log('%c Transaction committed successfully - updateHashtags.', CONSOLE_TEXT_COLOR_SERVICE);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -658,7 +663,7 @@ export class IndexedDbService extends Dexie {
     }
 
     private cleanHashtags(todos: ToDo[], hashtagsInDb: Tag[]): boolean {
-        console.log('%cIn cleanHashtags todos and hashtagsInDb:', this.consoleTextColorService, todos, hashtagsInDb);
+        console.log('%cIn cleanHashtags todos and hashtagsInDb:', CONSOLE_TEXT_COLOR_SERVICE, todos, hashtagsInDb);
 
         let updateTagsPending = false;
         hashtagsInDb.map(hashtagInDb => {
@@ -669,7 +674,7 @@ export class IndexedDbService extends Dexie {
                     // Look here https://regex101.com/r/A0H4wO/1/
                     const hashtagRegExp = new RegExp(hashtagInDb.tag_name.trim() + '($|\s)', 'i');
                     if (todo.title.match(hashtagRegExp)) {
-                        // console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tag_name, todo.title);
+                        // console.log('%ctag: %s is Present in title: %s', CONSOLE_TEXT_COLOR_SERVICE, hashtagInDb.tag_name, todo.title);
                         isPresent = true;
                     }
                 }
@@ -681,11 +686,11 @@ export class IndexedDbService extends Dexie {
                     hashtagInDb.updated_time = new Date().toISOString();
                     hashtagInDb.ready_to_delete = true;
                     updateTagsPending = true;
-                    console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                    console.log(`%cWill be marked as ready_to_delete hashtagInDb: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagInDb);
                 }
             } else {
                 if (hashtagInDb.ready_to_delete) {
-                    console.log(`%cisPresent and ready_to_delete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                    console.log(`%cisPresent and ready_to_delete hashtagInDb: `, CONSOLE_TEXT_COLOR_SERVICE, hashtagInDb);
                     hashtagInDb.updated_time = new Date().toISOString();
                     hashtagInDb.ready_to_delete = false;
                     updateTagsPending = true;
@@ -702,14 +707,14 @@ export class IndexedDbService extends Dexie {
     //         let hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
     //         let colorTag = 'red';
 
-    //         console.log('%c getTagColor - tags result: ', this.consoleTextColorService, hashtagsInDb);
+    //         console.log('%c getTagColor - tags result: ', CONSOLE_TEXT_COLOR_SERVICE, hashtagsInDb);
 
     //         if (!hashtagsInDb.length) {
     //             const newHashtag: Tag = new Tag(tagName.trim());
     // const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
     // const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
     //             newHashtag.color = rndColor;
-    //             // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+    //             // console.log(`%crndColor: `, CONSOLE_TEXT_COLOR_SERVICE, rndColor);
     //             this.tagTable.add(newHashtag);
 
     //             hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
@@ -721,7 +726,7 @@ export class IndexedDbService extends Dexie {
 
     //         return colorTag;
     //     }).then(async (colorTag) => {
-    //         console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
+    //         console.log('%c Transaction committed getTagColor: ', CONSOLE_TEXT_COLOR_SERVICE, colorTag);
     //         return colorTag;
     //     }).catch(error => {
     //         return error;    // TODO: Handle error properly as Observable
@@ -733,7 +738,7 @@ export class IndexedDbService extends Dexie {
     /// ----- Pomos Part ----- ///
     public savePomo(pomo: Pomo): Observable<boolean> {
         return observableFrom(this.pomoTable.add(pomo).then(async (newId) => {
-            // console.log('%c savePomo() - added new pomoId: ', this.consoleTextColorService, newId);
+            // console.log('%c savePomo() - added new pomoId: ', CONSOLE_TEXT_COLOR_SERVICE, newId);
             return true;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable

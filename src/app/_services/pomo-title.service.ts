@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
 
 // Services
 import { TodoOrderService } from '@app/_services/todo-order.service';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable({
     providedIn: 'root'
 })
 export class PomoTitleService {
-
-    consoleTextColorService = 'color: salmon;';
 
     listOfUsedTodos: Object[] = [];
 
@@ -26,14 +30,14 @@ export class PomoTitleService {
     setPomoState(state: number, isInitialStart: boolean, todo: ToDo = null) {
         this.currentPomoState = state;
         if (isInitialStart) {
-            console.log('%cPomoTitleService - isInitialStart: ', this.consoleTextColorService, isInitialStart);
-            console.log('%cPomoTitleService setPomoState() - todo: ', this.consoleTextColorService, todo);
+            console.log('%cPomoTitleService - isInitialStart: ', CONSOLE_TEXT_COLOR_SERVICE, isInitialStart);
+            console.log('%cPomoTitleService setPomoState() - todo: ', CONSOLE_TEXT_COLOR_SERVICE, todo);
             this.updatePomoTitleWithTodo(todo);
         }
     }
 
     updatePomoTitleWithTodo(todo: ToDo) {
-        console.log('%cPomoTitleService updatePomoTitleWithTodo() - todo: ', this.consoleTextColorService, todo);
+        console.log('%cPomoTitleService updatePomoTitleWithTodo() - todo: ', CONSOLE_TEXT_COLOR_SERVICE, todo);
 
         this.pomoTitleTodosPart = this.parseTodosTitle(todo);
 
@@ -70,7 +74,7 @@ export class PomoTitleService {
         if (todoTitleState === 0) {
             const orderList = this._todoOrderService.getOrder();
 
-            console.log('%cPomoTitleService - inner_id: ', this.consoleTextColorService, todo.inner_id);
+            console.log('%cPomoTitleService - inner_id: ', CONSOLE_TEXT_COLOR_SERVICE, todo.inner_id);
             const orderListFiltered = orderList.filter(item => {
 
                 let isPresentInnerId = false;
@@ -88,7 +92,7 @@ export class PomoTitleService {
                 return isPresentInnerId;
             });
 
-            console.log('%cPomoTitleService - orderListFiltered: ', this.consoleTextColorService, orderListFiltered);
+            console.log('%cPomoTitleService - orderListFiltered: ', CONSOLE_TEXT_COLOR_SERVICE, orderListFiltered);
 
             if (orderListFiltered.length === 1) {
                 this.listOfUsedTodos.push({ innerId: todo.inner_id, todoTitle: todo.title, todoTitleState: 1 });
@@ -100,13 +104,13 @@ export class PomoTitleService {
                 }
             }
 
-            console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
+            console.log('%cPomoTitleService - listOfUsedTodos: ', CONSOLE_TEXT_COLOR_SERVICE, this.listOfUsedTodos);
         }
 
         if (todoTitleState === 1) {
             this.listOfUsedTodos.splice(todoTitleIndex, 1);
 
-            console.log('%cPomoTitleService - listOfUsedTodos: ', this.consoleTextColorService, this.listOfUsedTodos);
+            console.log('%cPomoTitleService - listOfUsedTodos: ', CONSOLE_TEXT_COLOR_SERVICE, this.listOfUsedTodos);
         }
 
         // if todoTitleState = 2 -> do nothing in the service
@@ -139,7 +143,7 @@ export class PomoTitleService {
             splittedStringOfTodos = splittedStringOfTodos.substring(0, splittedStringOfTodos.length - 3);
         }
 
-        // console.log('%cPomoTitleService - splittedStringOfTodos: ', this.consoleTextColorService, splittedStringOfTodos);
+        // console.log('%cPomoTitleService - splittedStringOfTodos: ', CONSOLE_TEXT_COLOR_SERVICE, splittedStringOfTodos);
 
         return splittedStringOfTodos;
     }
@@ -227,7 +231,7 @@ export class PomoTitleService {
             }
         });
 
-        // console.log('%cPomoTitleService - tmpTitle: ', this.consoleTextColorService, tmpTitle);
+        // console.log('%cPomoTitleService - tmpTitle: ', CONSOLE_TEXT_COLOR_SERVICE, tmpTitle);
         this.pomoTitleTodosPart = tmpTitle;
         this.pomoTitle = this.pomoTitleTodosPart;
     }

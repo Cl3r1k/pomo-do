@@ -2,9 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Services
 import { ApiService } from '@app/_services/api.service';
 import { AuthService } from '@app/_services/auth.service';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-sign-in',
@@ -12,8 +18,6 @@ import { AuthService } from '@app/_services/auth.service';
     styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     public frm: FormGroup;
 
@@ -40,7 +44,7 @@ export class SignInComponent implements OnInit {
         // This part will be used for register/login
         this._route.url.subscribe(data => {
             this.authType = data[data.length - 1].path;
-            console.log('%cauthType: ', this.consoleTextColorComponent, this.authType);
+            console.log('%cauthType: ', CONSOLE_TEXT_COLOR_COMPONENT, this.authType);
         });
     }
 

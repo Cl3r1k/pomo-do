@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { Tag } from '@app/_models/tag';
 
@@ -10,10 +13,11 @@ import { TagLayerService } from '@app/_services/tag-layer.service';
 // Modules
 import { Utils } from '@app/_common/utils';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable()
 export class TagService {
-
-    consoleTextColorService = 'color: salmon;';
 
     interval;
     updatePending = false;
@@ -21,7 +25,7 @@ export class TagService {
     constructor(private _utils: Utils, private _tagLayerService: TagLayerService, private _indexedDbService: IndexedDbService) { }
 
     public getTagColorByName(tagName: string): string {
-        console.log('%c getTagByName - incoming tagName: ', this.consoleTextColorService, tagName);
+        console.log('%c getTagByName - incoming tagName: ', CONSOLE_TEXT_COLOR_SERVICE, tagName);
         let tagColor = 'red';
         const tags = this._tagLayerService.tags.filter(tag => {
             return tag.tag_name === tagName;
@@ -45,10 +49,10 @@ export class TagService {
             const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
             tagColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
             newHashtag.color = tagColor;
-            // console.log(`%cin 'getTagColorByName' tagColor: `, this.consoleTextColorService, tagColor);
+            // console.log(`%cin 'getTagColorByName' tagColor: `, CONSOLE_TEXT_COLOR_SERVICE, tagColor);
             this._tagLayerService.tags.push(newHashtag);
 
-            console.log('%cPending update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+            console.log('%cPending update in %cIndexedDb!', CONSOLE_TEXT_COLOR_SERVICE, 'color: red;');
             // TODO: Now we should run Sevice Worker or another worker with interval 3 sec, and update tagList in IndexedDb
             // BTW check if SW is running and waiting for update already, than just reset timer to 3 sec
             this.updateHashtagsDelayed();
@@ -64,10 +68,10 @@ export class TagService {
 
         this.updatePending = true;
         this.interval = setInterval(() => {
-            console.log('%c-->Pefrorm update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+            console.log('%c-->Pefrorm update in %cIndexedDb!', CONSOLE_TEXT_COLOR_SERVICE, 'color: red;');
 
             this._indexedDbService.updateHashtags(this._tagLayerService.tags).subscribe(() => {
-                console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+                console.log('%c--->Hashtags updated in %cIndexedDb!', CONSOLE_TEXT_COLOR_SERVICE, 'color: red;');
             });
             clearInterval(this.interval);
         }, 100);

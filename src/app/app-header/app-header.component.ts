@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 // Environments
-import { environment } from '@env/environment.prod';
+import { environment as environmentProd } from '@env/environment.prod';
 
 // Routes
 import { Router } from '@angular/router';
@@ -17,6 +17,9 @@ import { DialogSettingsComponent } from '@app/dialogs/dialog-settings/dialog-set
 // Modules
 import { MatDialog } from '@angular/material';
 
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
+
 @Component({
     selector: 'app-header',
     templateUrl: './app-header.component.html',
@@ -24,9 +27,7 @@ import { MatDialog } from '@angular/material';
 })
 export class AppHeaderComponent implements OnInit {
 
-    BUILD_VERSION = environment.version;
-
-    consoleTextColorComponent = 'color: cadetblue;';
+    readonly BUILD_VERSION = environmentProd.version;
 
     @Input() showSubmenuState: boolean;
     @Output() subMenuStateAppTitleEmitter: EventEmitter<boolean> = new EventEmitter();
@@ -68,7 +69,7 @@ export class AppHeaderComponent implements OnInit {
             this.syncMessage = '';
         }
 
-        console.log('%csyncState: %d, offlineState: ', this.consoleTextColorComponent, this.syncState, this.offlineState);
+        console.log('%csyncState: %d, offlineState: ', CONSOLE_TEXT_COLOR_COMPONENT, this.syncState, this.offlineState);
     }
 
     toggleSubmenuState() {

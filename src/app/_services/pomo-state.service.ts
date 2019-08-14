@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { PomoState } from '@app/_models/pomo-state';
 import { Pomo } from '@app/_models/pomo';
@@ -13,12 +16,13 @@ import { Utils } from '@app/_common/utils';
 // Imports
 import { v4 as uuidv4 } from 'uuid';
 
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable({
     providedIn: 'root'
 })
 export class PomoStateService {
-
-    consoleTextColorService = 'color: salmon;';
 
     pomoLength = 1;    // Constant value from prefs TODO: change for real value from prefs
     restLength = 1;    // Constant value from prefs TODO: change for real value from prefs
@@ -44,7 +48,7 @@ export class PomoStateService {
         this.pomoState.status = 'started';
         this.pomoState.uuid = uuidv4();            // Generate new UUID
 
-        console.log('%cPomoStatusService - pomoState: ', this.consoleTextColorService, this.pomoState);
+        console.log('%cPomoStatusService - pomoState: ', CONSOLE_TEXT_COLOR_SERVICE, this.pomoState);
 
         this.savePomoState();
     }
@@ -83,28 +87,28 @@ export class PomoStateService {
     }
 
     saveCompletedPomo(pomoName: string) {
-        // console.log('%cPomoStatusService - saveCompletedPomo: ', this.consoleTextColorService, pomoName);
+        // console.log('%cPomoStatusService - saveCompletedPomo: ', CONSOLE_TEXT_COLOR_SERVICE, pomoName);
 
         const isInterrupted = pomoName === '' ? true : false;
         const recentPomo = new Pomo(pomoName, this.pomoState.start_time, this.pomoState.uuid, isInterrupted);
         recentPomo.end_time = this.pomoState.end_time;    // Set 'end_time' manually from 'pomoState'
         recentPomo.duration = ((new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime()) / 1000;
-        // console.log('%cPomoStatusService - recentPomo: ', this.consoleTextColorService, recentPomo);
+        // console.log('%cPomoStatusService - recentPomo: ', CONSOLE_TEXT_COLOR_SERVICE, recentPomo);
 
         let pomoLength = 0;
         if (isInterrupted) {
             pomoLength = (new Date(recentPomo.end_time)).getTime() - (new Date(recentPomo.start_time)).getTime();
-            // console.log('%cPomoStatusService - pomoLength: ', this.consoleTextColorService, pomoLength);
+            // console.log('%cPomoStatusService - pomoLength: ', CONSOLE_TEXT_COLOR_SERVICE, pomoLength);
         }
 
         if (pomoLength === 0 || pomoLength / 1000 > 30) {    // If spend time for pomo before interrupt is less than 30 seconds, skip it
             this._indexedDbService.savePomo(recentPomo).subscribe(isSaved => {
-                // console.log('%cPomoStateService - isSaved: ', this.consoleTextColorService, isSaved);
+                // console.log('%cPomoStateService - isSaved: ', CONSOLE_TEXT_COLOR_SERVICE, isSaved);
                 if (isSaved) {
                     this.recentPomos.push(recentPomo);
                     this.generatePomoListView();
                     this.savePomoList();
-                    // console.log('%cPomoStatusService - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+                    // console.log('%cPomoStatusService - recentPomos: ', CONSOLE_TEXT_COLOR_SERVICE, this.recentPomos);
 
                     if (isInterrupted) {
                         this.setIdlePomoState();
@@ -132,7 +136,7 @@ export class PomoStateService {
     loadPomoList() {
 
         this._indexedDbService.getLastHundredCompletedPomos().subscribe(allPomos => {
-            console.log('%cPomoStateService - allPomos: ', this.consoleTextColorService, allPomos);
+            console.log('%cPomoStateService - allPomos: ', CONSOLE_TEXT_COLOR_SERVICE, allPomos);
 
             const data = JSON.parse(localStorage.getItem('recentPomoList'));
 
@@ -142,7 +146,7 @@ export class PomoStateService {
                 const tmpRecentPomos: Pomo[] = [];
 
                 if (data) {
-                    console.log('%cPomoStatusService{loadPomoList()} - pomos: ', this.consoleTextColorService, data['pomos']);
+                    console.log('%cPomoStatusService{loadPomoList()} - pomos: ', CONSOLE_TEXT_COLOR_SERVICE, data['pomos']);
 
                     // TODO: Return to this part and improve, after object will be more learned
                     Object.keys(data['pomos']).forEach(key => {
@@ -170,19 +174,19 @@ export class PomoStateService {
                     });
                 }
 
-                console.log('%c PomoStatusService{loadPomoList()} - tmpRecentPomos: ', this.consoleTextColorService, tmpRecentPomos);
-                console.log('%c PomoStatusService{loadPomoList()} - allPomos: ', this.consoleTextColorService, allPomos);
+                console.log('%c PomoStatusService{loadPomoList()} - tmpRecentPomos: ', CONSOLE_TEXT_COLOR_SERVICE, tmpRecentPomos);
+                console.log('%c PomoStatusService{loadPomoList()} - allPomos: ', CONSOLE_TEXT_COLOR_SERVICE, allPomos);
                 const compareResult = this._utils.isEqualArrayOfObjects(allPomos, tmpRecentPomos);
                 if (!compareResult) {
                     this.recentPomos = allPomos;
                     this.savePomoList();
                 } else {
                     // tslint:disable-next-line:max-line-length
-                    console.log('%c PomoStatusService{loadPomoList()} - allPomos.length === tmpRecentPomos.length : ', this.consoleTextColorService);
+                    console.log('%c PomoStatusService{loadPomoList()} - allPomos.length === tmpRecentPomos.length : ', CONSOLE_TEXT_COLOR_SERVICE);
                     this.recentPomos = tmpRecentPomos;
                 }
 
-                console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', this.consoleTextColorService, this.recentPomos);
+                console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', CONSOLE_TEXT_COLOR_SERVICE, this.recentPomos);
                 this.generatePomoListView();
             }
         });
@@ -250,12 +254,12 @@ export class PomoStateService {
                     if (tmpPrevPomoObj['title'] === pomoObj['title'] && tmpPrevPomoObj['counter'] < 4) {
                         const tmpPrevPomoEndTime = new Date(tmpPrevPomoObj['end_time']);
                         const pomoObjStartTime = new Date(pomoObj.start_time);
-                        // console.log('%c tmpPrevPomoEndTime', this.consoleTextColorService, tmpPrevPomoEndTime);
-                        // console.log('%c pomoObjEndTime', this.consoleTextColorService, pomoObjEndTime);
+                        // console.log('%c tmpPrevPomoEndTime', CONSOLE_TEXT_COLOR_SERVICE, tmpPrevPomoEndTime);
+                        // console.log('%c pomoObjEndTime', CONSOLE_TEXT_COLOR_SERVICE, pomoObjEndTime);
                         const diffTime = pomoObjStartTime.getTime() - tmpPrevPomoEndTime.getTime();
-                        // console.log('%c diffTime', this.consoleTextColorService, diffTime);
+                        // console.log('%c diffTime', CONSOLE_TEXT_COLOR_SERVICE, diffTime);
                         const minutesDiff = diffTime / 1000 / 60;
-                        // console.log('%c minutesDiff', this.consoleTextColorService, minutesDiff);
+                        // console.log('%c minutesDiff', CONSOLE_TEXT_COLOR_SERVICE, minutesDiff);
 
                         // Let's check rest time between pomos for restTime*5
                         if (minutesDiff <= this.restLength * 5) {
@@ -279,7 +283,7 @@ export class PomoStateService {
                     resultPomosArray.push(resultPomosGroup);
                 }
 
-                // console.log('%c pomoObj', this.consoleTextColorService, pomoObj);
+                // console.log('%c pomoObj', CONSOLE_TEXT_COLOR_SERVICE, pomoObj);
             }
 
             console.log('%c resultPomosArray', 'color: red;', resultPomosArray);

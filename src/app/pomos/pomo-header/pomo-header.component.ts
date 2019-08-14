@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
 
@@ -13,14 +16,15 @@ import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.
 // Modules
 import { MatDialog } from '@angular/material';
 
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
+
 @Component({
     selector: 'app-pomo-header',
     templateUrl: './pomo-header.component.html',
     styleUrls: ['./pomo-header.component.scss']
 })
 export class PomoHeaderComponent implements OnInit, AfterViewChecked {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() pomoStatePomoHeader: number;
     @Input() currentTodoPomoHeader: ToDo;
@@ -42,15 +46,15 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     constructor(private _pomoStateService: PomoStateService, private _pomoTitleService: PomoTitleService, public dialog: MatDialog) { }
 
     ngOnInit() {
-        // console.log('%ccurrentTodoPomoHeader: ', this.consoleTextColorComponent, this.currentTodoPomoHeader);
+        // console.log('%ccurrentTodoPomoHeader: ', CONSOLE_TEXT_COLOR_COMPONENT, this.currentTodoPomoHeader);
         this._pomoStateService.loadPomoState();
         this._pomoStateService.loadPomoList();
 
         if (this._pomoStateService.pomoState) {
-            console.log('%cpomoState: ', this.consoleTextColorComponent, this._pomoStateService.pomoState);
+            console.log('%cpomoState: ', CONSOLE_TEXT_COLOR_COMPONENT, this._pomoStateService.pomoState);
 
-            // console.log('%ccurrentTime: ', this.consoleTextColorComponent, currentTime);
-            // console.log('%cend_time: ', this.consoleTextColorComponent, new Date(this._pomoStateService.pomoState.end_time));
+            // console.log('%ccurrentTime: ', CONSOLE_TEXT_COLOR_COMPONENT, currentTime);
+            // console.log('%cend_time: ', CONSOLE_TEXT_COLOR_COMPONENT, new Date(this._pomoStateService.pomoState.end_time));
             if (this._pomoStateService.pomoState.status === 'started' || this._pomoStateService.pomoState.status === 'resting') {
 
                 const currentTime = new Date();
@@ -73,14 +77,14 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
                     }, 100);
 
                     const timeLeft = endTime.getTime() - currentTime.getTime();
-                    console.log('%cend_time: ', this.consoleTextColorComponent, this._pomoStateService.pomoState.end_time);
-                    console.log('%ccurrentTime: ', this.consoleTextColorComponent, currentTime.toISOString());
-                    console.log('%ctimeLeft: ', this.consoleTextColorComponent, timeLeft);
+                    console.log('%cend_time: ', CONSOLE_TEXT_COLOR_COMPONENT, this._pomoStateService.pomoState.end_time);
+                    console.log('%ccurrentTime: ', CONSOLE_TEXT_COLOR_COMPONENT, currentTime.toISOString());
+                    console.log('%ctimeLeft: ', CONSOLE_TEXT_COLOR_COMPONENT, timeLeft);
 
                     const secondsLeft = Math.floor((timeLeft / 1000) % 60);
                     const minutesLeft = Math.floor(((timeLeft / 1000) / 60) % 60);
-                    console.log('%cseconds: ', this.consoleTextColorComponent, secondsLeft);
-                    console.log('%cminutes: ', this.consoleTextColorComponent, minutesLeft);
+                    console.log('%cseconds: ', CONSOLE_TEXT_COLOR_COMPONENT, secondsLeft);
+                    console.log('%cminutes: ', CONSOLE_TEXT_COLOR_COMPONENT, minutesLeft);
                     this.counter = secondsLeft;
                     this.startTimer();
                 } else {
@@ -149,17 +153,17 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
     startTimer() {
         // this.counter--;
-        console.log('%cthis.counter', this.consoleTextColorComponent, this.counter);
-        console.log('%cthis.counterView', this.consoleTextColorComponent, this.counterView);
+        console.log('%cthis.counter', CONSOLE_TEXT_COLOR_COMPONENT, this.counter);
+        console.log('%cthis.counterView', CONSOLE_TEXT_COLOR_COMPONENT, this.counterView);
         this.timerId = setInterval(() => {
             this.counter--;
             // const minutes = Math.floor(this.counter / 60);
             // const seconds = this.counter % 60;
-            // console.log('%cminutes: %d seconds: %d', this.consoleTextColorComponent, minutes, seconds);
+            // console.log('%cminutes: %d seconds: %d', CONSOLE_TEXT_COLOR_COMPONENT, minutes, seconds);
             this.counterView = ('00' + Math.floor(this.counter / 60)).slice(-2) + ':' + ('00' + (this.counter % 60)).slice(-2);
             document.title = this.counterView + ' - Pomodo';
             this.progressBarPercent = 100 - Math.round(this.counter / (this.pomoLengthSeconds / 100));
-            // console.log('%cprogressBarPercent', this.consoleTextColorComponent, this.progressBarPercent);
+            // console.log('%cprogressBarPercent', CONSOLE_TEXT_COLOR_COMPONENT, this.progressBarPercent);
 
             if (this.counter <= 0) {
                 clearInterval(this.timerId);
@@ -186,7 +190,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     cancelPomoClick() {
-        console.log('%ccancelPomoClick() called', this.consoleTextColorComponent);
+        console.log('%ccancelPomoClick() called', CONSOLE_TEXT_COLOR_COMPONENT);
 
         if (this.currentState === 'pomo') {
             const dataForDialog = {
@@ -211,7 +215,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     cancelPomo() {
-        console.log('%ccancelPomo() called', this.consoleTextColorComponent);
+        console.log('%ccancelPomo() called', CONSOLE_TEXT_COLOR_COMPONENT);
         const isRestState = this.currentState === 'rest' ? true : false;
         clearInterval(this.timerId);
         this.emitPomoState(0, false);            // Emit the 'statePomo' event to 'PomosComponent' (standby)
@@ -228,7 +232,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
 
             this.startRest();
         } else {
-            console.log('%cpomoTitle: emtpy???', this.consoleTextColorComponent, this._pomoTitleService.pomoTitle);
+            console.log('%cpomoTitle: emtpy???', CONSOLE_TEXT_COLOR_COMPONENT, this._pomoTitleService.pomoTitle);
             if (event !== undefined) {
                 event.preventDefault();
             }
@@ -244,7 +248,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     pomoTitleManualChange(event) {
-        // console.log('%cpomoTitle changed manually!', this.consoleTextColorComponent);
+        // console.log('%cpomoTitle changed manually!', CONSOLE_TEXT_COLOR_COMPONENT);
         this._pomoTitleService.lockUsedTodos(true);
     }
 

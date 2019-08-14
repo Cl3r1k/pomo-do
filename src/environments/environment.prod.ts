@@ -8,7 +8,8 @@ export const environment = {
     consoleTextColorPipe: 'color: purple;',
     consoleTextColorResolver: 'color: royalblue;',
     consoleTextColorService: 'color: salmon;',
+    consoleTextColorComponent: 'color: cadetblue;',
 
     // Autoincremented build version variable
-    version: '1.5.0.1036'
+    version: '1.5.0.1037'
 };

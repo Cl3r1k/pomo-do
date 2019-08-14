@@ -1,7 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-active-task',
@@ -9,8 +15,6 @@ import { ToDo } from '@app/_models/to-do';
     styleUrls: ['./active-task.component.scss']
 })
 export class ActiveTaskComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todo: ToDo;
     @Input() currentActiveTaskName: string;
@@ -20,7 +24,7 @@ export class ActiveTaskComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.log('%cin ActiveTaskComponent todo: ', this.consoleTextColorComponent, this.todo);
+        console.log('%cin ActiveTaskComponent todo: ', CONSOLE_TEXT_COLOR_COMPONENT, this.todo);
     }
 
     toggleComplete(todo: ToDo) {

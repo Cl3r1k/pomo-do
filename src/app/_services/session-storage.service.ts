@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
+// Constants
+const CONSOLE_TEXT_COLOR_SERVICE = environmentProd.consoleTextColorService;
+
 @Injectable({
     providedIn: 'root'
 })
 export class SessionStorageService {
-
-    consoleTextColorService = 'color: salmon;';
 
     public session_object = {
         created_time: null as string,
@@ -42,7 +46,7 @@ export class SessionStorageService {
         this.session_object.account.username = '';
         this.session_object.account.register_time = new Date().toISOString();
 
-        console.log('%cCreated session_object: ', this.consoleTextColorService , this.session_object);
+        console.log('%cCreated session_object: ', CONSOLE_TEXT_COLOR_SERVICE , this.session_object);
     }
 
     public destroy(): void {
