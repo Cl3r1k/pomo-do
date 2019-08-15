@@ -1,7 +1,16 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
+
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
+// Interfaces
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-todo-list-item-edit',
@@ -9,8 +18,6 @@ import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-compo
     styleUrls: ['./todo-list-item-edit.component.scss']
 })
 export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterViewChecked, CustomTodoComponentInterface {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todo: ToDo;
 
@@ -56,9 +63,9 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     ngAfterViewChecked() {
         // Workaround for autosize Textarea with two-side binding initial text
         // Another workaround is adjust height if length of todo.title more than 50 symbols, and if not height === 58px
-        // console.log('%cvalue', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.value);
-        // console.log('%cheight', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.style.height);
-        // console.log('%cscrollHeight', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.scrollHeight);
+        // console.log('%cvalue', CONSOLE_TEXT_COLOR_COMPONENT, this.editedTodoElementRef.nativeElement.value);
+        // console.log('%cheight', CONSOLE_TEXT_COLOR_COMPONENT, this.editedTodoElementRef.nativeElement.style.height);
+        // console.log('%cscrollHeight', CONSOLE_TEXT_COLOR_COMPONENT, this.editedTodoElementRef.nativeElement.scrollHeight);
 
         if (this.afterViewCheckedCount >= 1) {
             if (!this.updatedTextHeight) {
@@ -74,7 +81,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
                     }
                 }
 
-                // console.log('%cheight set to ', this.consoleTextColorComponent, el.style.height);
+                // console.log('%cheight set to ', CONSOLE_TEXT_COLOR_COMPONENT, el.style.height);
 
                 this.updatedTextHeight = true;
             }
@@ -105,7 +112,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
 
     removeTodo(todo: ToDo) {
         // tslint:disable-next-line:max-line-length
-        console.log('%cremoveTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ', this.consoleTextColorComponent, todo.title);
+        console.log('%cremoveTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 

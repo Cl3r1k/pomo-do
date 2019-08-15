@@ -1,7 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
 // Models
 import { ToDo } from '@app/_models/to-do';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-todos',
@@ -9,8 +15,6 @@ import { ToDo } from '@app/_models/to-do';
     styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todosAllAmount: number;
     @Input() todosAllCompleted: boolean;

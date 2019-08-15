@@ -1,7 +1,14 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
-import { Router } from '@angular/router';
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-todo-list-header',
@@ -9,8 +16,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./todo-list-header.component.scss']
 })
 export class TodoListHeaderComponent implements OnInit {
-
-    consoleTextColorComponent = 'color: cadetblue;';
 
     newTodo: ToDo = new ToDo();
 
@@ -29,7 +34,7 @@ export class TodoListHeaderComponent implements OnInit {
     constructor(public router: Router) { }
 
     ngOnInit() {
-        console.log(`%cin 'TodoListHeaderComponent' hashTagToFilter: `, this.consoleTextColorComponent, this.hashTagToFilter);
+        console.log(`%cin 'TodoListHeaderComponent' hashTagToFilter: `, CONSOLE_TEXT_COLOR_COMPONENT, this.hashTagToFilter);
     }
 
     addTodo() {
@@ -38,7 +43,7 @@ export class TodoListHeaderComponent implements OnInit {
             this.addTodoListHeaderEmitter.emit(this.newTodo);    // Emit the 'addTodo' event to 'TodosComponent'
             this.newTodo = new ToDo();
 
-            // console.log('%c Added new Todo, created_time: ', this.consoleTextColorComponent, this.newTodo.created_time);
+            // console.log('%c Added new Todo, created_time: ', CONSOLE_TEXT_COLOR_COMPONENT, this.newTodo.created_time);
         }
     }
 

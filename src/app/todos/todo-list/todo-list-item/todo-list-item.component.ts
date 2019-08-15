@@ -1,12 +1,20 @@
 import { Component, Input, Output, OnInit, EventEmitter, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef } from '@angular/core';
+
+// Environments
+import { environment as environmentProd } from '@env/environment.prod';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
 // Dynamically created components
 import { TodoListItemViewComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todos/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 
-// Interface for dynamic components
+// Interface for dynamical components
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
+
+// Constants
+const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
     selector: 'app-todo-list-item',
@@ -19,7 +27,6 @@ export class TodoListItemComponent implements OnInit {
     @ViewChild('container', { read: ViewContainerRef }) _container: ViewContainerRef;
 
     currentComponent = null;
-    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todo: ToDo;
 
@@ -64,7 +71,7 @@ export class TodoListItemComponent implements OnInit {
 
     removeTodo(todo: ToDo) {
         // tslint:disable-next-line:max-line-length
-        console.log('%cremoveTodo emited evt removeEventTodoListItem from TodoListItemComponent with ttl: %s (id: %d)', this.consoleTextColorComponent, todo.title, todo.id);
+        console.log('%cremoveTodo emited evt removeEventTodoListItem from TodoListItemComponent with ttl: %s (id: %d)', CONSOLE_TEXT_COLOR_COMPONENT, todo.title, todo.id);
         this.removeTodoListItemEmitter.emit(todo);
     }
 
@@ -114,7 +121,7 @@ export class TodoListItemComponent implements OnInit {
         // Destroy the previosly created component
         if (this.currentComponent) {
             // tslint:disable-next-line:max-line-length
-            // console.log('%ccurrentComponent (' + this.currentComponent.location.nativeElement.nodeName + ') destroyed', this.consoleTextColorComponent);
+            // console.log('%ccurrentComponent (' + this.currentComponent.location.nativeElement.nodeName + ') destroyed', CONSOLE_TEXT_COLOR_COMPONENT);
             this.currentComponent.destroy();
         }
 
