@@ -56,7 +56,7 @@ import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
 import { DndModule } from '@beyerleinf/ngx-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
 // tslint:disable-next-line:max-line-length
-import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatIconModule, MatProgressBarModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatIconModule, MatProgressBarModule, MatSelectModule } from '@angular/material';
 import { Utils } from '@app/_common/utils';
 
 // Guards
@@ -109,7 +109,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         MatTooltipModule,
         ReactiveFormsModule,
         MatIconModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatSelectModule
     ],
     providers: [
         TodoService,
