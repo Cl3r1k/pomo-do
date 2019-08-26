@@ -1,7 +1,7 @@
 .footer-content {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    background-color: #b197ee; // For Debug
+    background-color: #a790df; // For Debug
     max-width: 960px;
     margin: 0 auto;
     border-top: 1px solid #cccccc;
@@ -21,7 +21,8 @@
         }
         mat-select {
             width: 70px;
-            .mat-select-value {
+            .mat-select-value,
+            .mat-select-arrow {
                 color: #888888;
             }
         }
