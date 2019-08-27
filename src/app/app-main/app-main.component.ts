@@ -46,7 +46,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     pomoStateAppMain = 0;
     isEmptyTodoList = true;
 
-    selected = 1;
+    selectedLanguage = 'optionEnglish';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
