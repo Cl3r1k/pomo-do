@@ -248,9 +248,9 @@ Todos:
                 
                 ☐ Add component 'StatsComponent'
                     ☐ Add separate component for 'stats'
-                        ☐ For each 'stat' should be separate component
+                        ☐ For each 'stat' should be separate component <========================================================= CURRENT TASK
 
-                ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) <========================================================= CURRENT TASK
+                ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 

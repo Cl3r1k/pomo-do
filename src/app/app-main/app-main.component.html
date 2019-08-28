@@ -35,7 +35,7 @@
                 <mat-select [(value)]="selectedLanguage">
                     <mat-option value="optionEnglish">English</mat-option>
                 </mat-select>
-                <svg class="icon icon-contrast">
+                <svg class="icon icon-contrast" (click)="toggleThemeMode()">
                     <use xlink:href="#icon-contrast"></use>
                 </svg>
             </div>

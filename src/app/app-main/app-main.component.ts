@@ -47,6 +47,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     isEmptyTodoList = true;
 
     selectedLanguage = 'optionEnglish';
+    nightMode = false;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -456,6 +457,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
     onStatePomoChange(state: number) {
         this.pomoStateAppMain = state;
         // console.log('%cpomoStateAppMain: ', CONSOLE_TEXT_COLOR_COMPONENT, this.pomoStateAppMain);
+    }
+
+    toggleThemeMode() {
+        this.nightMode = !this.nightMode;
+        console.log('%c nightMode: ', CONSOLE_TEXT_COLOR_COMPONENT, this.nightMode);
     }
 
 }

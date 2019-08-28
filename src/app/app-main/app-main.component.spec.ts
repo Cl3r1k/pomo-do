@@ -46,13 +46,14 @@ import { ActivatedRoute } from '@angular/router';
 
 // Modules
 import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from '@beyerleinf/ngx-dnd';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatSelectModule } from '@angular/material';
 import { Utils } from '@app/_common/utils';
 
 describe('Component: AppMainComponent', () => {
     let component: AppMainComponent;
     let fixture: ComponentFixture<AppMainComponent>;
     let sectionEl;
+    let svgIconContrastEl;
     let expectedTodo;
 
     beforeEach(async(() => {
@@ -61,7 +62,8 @@ describe('Component: AppMainComponent', () => {
                 FormsModule,
                 RouterTestingModule,
                 DndModule,
-                MatDialogModule
+                MatDialogModule,
+                MatSelectModule
             ],
             declarations: [
                 AppMainComponent,
@@ -123,6 +125,7 @@ describe('Component: AppMainComponent', () => {
 
         expectedTodo = new ToDo({ id: 1, title: 'Test 1', complete: false });
         sectionEl = fixture.debugElement.query(By.css('section.app-grid-container'));        // Find section.app-grid-container element
+        svgIconContrastEl = fixture.debugElement.query(By.css('svg.icon-contrast'));        // Find svg.icon-contrast element
 
         fixture.detectChanges();
     });
@@ -177,6 +180,25 @@ describe('Component: AppMainComponent', () => {
                 // Assert
                 fixture.whenStable().then(() => {
                     expect(component.containerClickHandler).toHaveBeenCalled();
+                });
+            }));
+        });
+
+        describe(`svg.icon-contrast:`, () => {
+            it(`'click' on 'svg.icon-contrast' should call method 'toggleThemeMode()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'toggleThemeMode');
+                if (svgIconContrastEl instanceof HTMLElement) {
+                    svgIconContrastEl.click();
+                } else {
+                    svgIconContrastEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.toggleThemeMode).toHaveBeenCalled();
                 });
             }));
         });
