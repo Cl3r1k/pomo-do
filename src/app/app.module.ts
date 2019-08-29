@@ -61,6 +61,7 @@ import { Utils } from '@app/_common/utils';
 
 // Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
+import { StatHistoryComponent } from './stat-history/stat-history.component';
 
 @NgModule({
     declarations: [
@@ -90,7 +91,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         AppMainComponent,
         PomoHeaderComponent,
         DialogCancelComponent,
-        PomoListComponent
+        PomoListComponent,
+        StatHistoryComponent
     ],
     imports: [
         AppRoutingModule,
