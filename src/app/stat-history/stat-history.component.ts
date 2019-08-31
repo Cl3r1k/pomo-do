@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatHistoryComponent implements OnInit {
 
+    weeklyCumulationCount = 0;
+
     constructor() { }
 
     ngOnInit() {
