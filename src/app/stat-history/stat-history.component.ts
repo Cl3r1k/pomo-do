@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class StatHistoryComponent implements OnInit {
 
     weeklyCumulationCount = 0;
+    dailyGoalCount = 0;
+    allPomosCount = 0;
+    allTodosCount = 0;
 
     constructor() { }
 

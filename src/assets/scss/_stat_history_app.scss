@@ -7,5 +7,20 @@
     margin: 0 auto;
     .stat-history-item {
         grid-column: span 4;
+        padding: 10px;
+        .card-header {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 0 0 5px 0;
+            padding: 0;
+        }
+        .card-description {
+            margin: 0 0 5px 0;
+            padding: 0;
+        }
+        .card-value {
+            margin: 0 0 5px 0;
+            padding: 0;
+        }
     }
 }
