@@ -8,6 +8,10 @@
     .stat-history-item {
         grid-column: span 4;
         padding: 10px;
+        cursor: pointer;
+        &.selected-item {
+            background-color: #e6e6e6;
+        }
         .card-header {
             font-size: 16px;
             font-weight: normal;

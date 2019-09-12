@@ -11,10 +11,19 @@ export class StatHistoryComponent implements OnInit {
     dailyGoalCount = 0;
     allPomosCount = 0;
     allTodosCount = 0;
+    currentSelectedItem = 0;
 
     constructor() { }
 
     ngOnInit() {
+    }
+
+    setSelectedItem(currentSelectedItemValue) {
+        if (this.currentSelectedItem === currentSelectedItemValue) {
+            this.currentSelectedItem = 0;
+        } else {
+            this.currentSelectedItem = currentSelectedItemValue;
+        }
     }
 
 }

@@ -1,23 +1,23 @@
 <div class="stat-history-container">
-    <div class="stats stat-history-item">
+    <div class="stats stat-history-item" [class.selected-item]="currentSelectedItem === 1" (click)="setSelectedItem(1)">
         <h3 class="card-header">Stat</h3>
         <p class="card-description">Weekly cumulation</p>
         <p class="card-value">{{weeklyCumulationCount}}</p>
         <div class="card-chart"></div>
     </div>
-    <div class="goal stat-history-item">
+    <div class="goal stat-history-item" [class.selected-item]="currentSelectedItem === 2" (click)="setSelectedItem(2)">
         <h3 class="card-header">Goal</h3>
         <p class="card-description">Daily goal</p>
         <p class="card-value">{{dailyGoalCount}}</p>
         <div class="card-chart"></div>
     </div>
-    <div class="pomo-history stat-history-item">
+    <div class="pomo-history stat-history-item" [class.selected-item]="currentSelectedItem === 3" (click)="setSelectedItem(3)">
         <h3 class="card-header">Pomo history</h3>
         <p class="card-description">All time pomos</p>
         <p class="card-value">{{allPomosCount}}</p>
         <div class="card-chart"></div>
     </div>
-    <div class="todo-history stat-history-item">
+    <div class="todo-history stat-history-item" [class.selected-item]="currentSelectedItem === 4" (click)="setSelectedItem(4)">
         <h3 class="card-header">Todo history</h3>
         <p class="card-description">All time todos</p>
         <p class="card-value">{{allTodosCount}}</p>
