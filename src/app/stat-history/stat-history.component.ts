@@ -12,6 +12,8 @@ export class StatHistoryComponent implements OnInit {
     allPomosCount = 0;
     allTodosCount = 0;
     currentSelectedItem = 0;
+    // TODO: Don't forget to change value below to real value from prefs
+    dailyGoalCountPrefs = 8;
 
     constructor() { }
 
