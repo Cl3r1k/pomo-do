@@ -49,6 +49,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
         // console.log('%ccurrentTodoPomoHeader: ', CONSOLE_TEXT_COLOR_COMPONENT, this.currentTodoPomoHeader);
         this._pomoStateService.loadPomoState();
         this._pomoStateService.loadPomoList();
+        this.emitPomoList();    // Emit list to MainComponent
 
         if (this._pomoStateService.pomoState) {
             console.log('%cpomoState: ', CONSOLE_TEXT_COLOR_COMPONENT, this._pomoStateService.pomoState);
@@ -226,6 +227,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     savePomo(event: KeyboardEvent) {
         if (this._pomoTitleService.pomoTitle) {
             this._pomoStateService.saveCompletedPomo(this._pomoTitleService.pomoTitle.trim());
+            this.emitPomoList();    // Emit list to MainComponent
             this.currentState = 'rest';
             // this._pomoTitleService.pomoTitle = '';
             this._pomoTitleService.resetTitleStateAfterSave();
@@ -250,6 +252,13 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     pomoTitleManualChange(event) {
         // console.log('%cpomoTitle changed manually!', CONSOLE_TEXT_COLOR_COMPONENT);
         this._pomoTitleService.lockUsedTodos(true);
+    }
+
+    emitPomoList() {
+        // To handle 'observable' response from service correctly we delay emit event
+        setTimeout(() => {
+            console.log('%c PomoHeaderComponent emitPomoList() - recentPomos: ', 'color: red;', this._pomoStateService.recentPomos);
+        }, 300);
     }
 
 }

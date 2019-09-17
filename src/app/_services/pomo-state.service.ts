@@ -108,7 +108,6 @@ export class PomoStateService {
                     this.recentPomos.push(recentPomo);
                     this.generatePomoListView();
                     this.savePomoList();
-                    this.emitPomoList();
                     // console.log('%cPomoStatusService - recentPomos: ', CONSOLE_TEXT_COLOR_SERVICE, this.recentPomos);
 
                     if (isInterrupted) {
@@ -189,7 +188,6 @@ export class PomoStateService {
 
                 console.log('%cPomoStatusService{loadPomoList()} - recentPomos: ', CONSOLE_TEXT_COLOR_SERVICE, this.recentPomos);
                 this.generatePomoListView();
-                this.emitPomoList();
             }
         });
 
@@ -305,9 +303,5 @@ export class PomoStateService {
         });
 
         return result;
-    }
-
-    emitPomoList() {
-        console.log('%c PomoStateService emitPomoList() - recentPomos: ', 'color: red;', this.recentPomos);
     }
 }
