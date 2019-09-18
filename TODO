@@ -278,6 +278,8 @@ Todos:
 
             ✔ Move console colors for files (components, tests, etc) to environment file and use like constants @done(19-08-14 09:49)
 
+            ☐ Consider to reorganize and move all main part related to 'recentPomos' and 'pomos' part to 'AppMainComponent'
+
             ☐ Reorganize #hashtag-filter part (click on #hashtag should only filter view, and don't change data(resolver) and current-todo shouldn't be changes)
 
             ☐ Add OAuth authorization for VK, G+, FB, TWitter, GH

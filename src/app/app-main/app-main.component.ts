@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ToDo } from '@app/_models/to-do';
 
 // Environments
 import { environment as environmentProd } from '@env/environment.prod';
+
+// Models
+import { ToDo } from '@app/_models/to-do';
+import { Pomo } from '@app/_models/pomo';
 
 // Routes
 import { ActivatedRoute } from '@angular/router';
@@ -462,6 +465,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
     toggleThemeMode() {
         this.nightMode = !this.nightMode;
         console.log('%c nightMode: ', CONSOLE_TEXT_COLOR_COMPONENT, this.nightMode);
+    }
+
+    onRecentPomosChange(recentPomos: Pomo[]) {
+        console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', 'color: red;', recentPomos);
     }
 
 }

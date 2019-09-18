@@ -5,6 +5,7 @@ import { environment as environmentProd } from '@env/environment.prod';
 
 // Models
 import { ToDo } from '@app/_models/to-do';
+import { Pomo } from '@app/_models/pomo';
 
 // Services
 import { PomoStateService } from '@app/_services/pomo-state.service';
@@ -30,6 +31,8 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     @Input() currentTodoPomoHeader: ToDo;
 
     @Output() statePomoHeaderComponentEmitter: EventEmitter<number> = new EventEmitter();
+
+    @Output() recentPomosPomoHeaderComponentEmitter: EventEmitter<Pomo[]> = new EventEmitter();
 
     pomoLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
     restLengthSeconds = 60;    // Constant value from prefs TODO: change for real value from prefs (in seconds)
@@ -257,7 +260,7 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     emitPomoList() {
         // To handle 'observable' response from service correctly we delay emit event
         setTimeout(() => {
-            console.log('%c PomoHeaderComponent emitPomoList() - recentPomos: ', 'color: red;', this._pomoStateService.recentPomos);
+            this.recentPomosPomoHeaderComponentEmitter.emit(this._pomoStateService.recentPomos);
         }, 300);
     }
 
