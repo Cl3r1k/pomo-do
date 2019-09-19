@@ -51,6 +51,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     selectedLanguage = 'optionEnglish';
     nightMode = false;
+    recentPomos: Pomo[] = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -468,7 +469,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
     }
 
     onRecentPomosChange(recentPomos: Pomo[]) {
-        console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', 'color: red;', recentPomos);
+        // console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', CONSOLE_TEXT_COLOR_COMPONENT, recentPomos);
+        this.recentPomos = [];
+        this.recentPomos = recentPomos;
     }
 
 }

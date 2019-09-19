@@ -14,7 +14,7 @@
     <div class="pomo-history stat-history-item" [class.selected-item]="currentSelectedItem === 3" (click)="setSelectedItem(3)">
         <h3 class="card-header">Pomo history</h3>
         <p class="card-description">All time pomos</p>
-        <p class="card-value">{{allPomosCount}}</p>
+        <p class="card-value">{{recentPomos.length}}</p>
         <div class="card-chart"></div>
     </div>
     <div class="todo-history stat-history-item" [class.selected-item]="currentSelectedItem === 4" (click)="setSelectedItem(4)">
