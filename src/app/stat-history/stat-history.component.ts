@@ -5,6 +5,7 @@ import { environment as environmentProd } from '@env/environment.prod';
 
 // Models
 import { Pomo } from '@app/_models/pomo';
+import { ToDo } from '@app/_models/to-do';
 
 // Constants
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
@@ -17,6 +18,7 @@ const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 export class StatHistoryComponent implements OnInit {
 
     @Input() recentPomos: Pomo[];
+    @Input() todos: ToDo[];
 
     weeklyCumulationCount = 0;
     dailyGoalCount = 0;

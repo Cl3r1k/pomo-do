@@ -20,7 +20,7 @@
     <div class="todo-history stat-history-item" [class.selected-item]="currentSelectedItem === 4" (click)="setSelectedItem(4)">
         <h3 class="card-header">Todo history</h3>
         <p class="card-description">All time todos</p>
-        <p class="card-value">{{allTodosCount}}</p>
+        <p class="card-value">{{todos.length}}</p>
         <div class="card-chart"></div>
     </div>
 </div>
