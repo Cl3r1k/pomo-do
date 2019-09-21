@@ -19,9 +19,9 @@ export class StatHistoryComponent implements OnInit {
 
     @Input() recentPomos: Pomo[];
     @Input() todos: ToDo[];
+    @Input() dailyGoalCount: number;
 
     weeklyCumulationCount = 0;
-    dailyGoalCount = 0;
     allTodosCount = 0;
     currentSelectedItem = 0;
     // TODO: Don't forget to change value below to real value from prefs
