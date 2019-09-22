@@ -489,6 +489,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
         this.dailyGoalCount = tmpDailyGoalCount;
+
+        const tmpWeeklyCumulationCount = this.recentPomos.filter(pomoItem => {
+            // const dateOptions = {
+            //     month: 'short',
+            //     day: 'numeric'
+            // };
+
+            // const tmpDateGroup = new Date(pomoItem.end_time).toLocaleString('en-US', dateOptions);
+            // const currentDate = new Date().toLocaleString('en-US', dateOptions);
+            // return tmpDateGroup === currentDate;
+            const startWeekTime = new Date();
+            // startWeekTime
+            startWeekTime.setHours(0, 0, 0, 0);
+            console.log('%c AppMainComponent onRecentPomosChange() - tmpCreatedTime: ', CONSOLE_TEXT_COLOR_COMPONENT, startWeekTime);
+        }).length;
     }
 
 }
