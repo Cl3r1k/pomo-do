@@ -52,7 +52,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     selectedLanguage = 'optionEnglish';
     nightMode = false;
     recentPomos: Pomo[] = [];
-    dailyGoalCount = 0;
+    dailyGoalList: Pomo[] = [];
+    weeklyCumulationList: Pomo[] = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -485,25 +486,22 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const tmpDateGroup = new Date(pomoItem.end_time).toLocaleString('en-US', dateOptions);
             const currentDate = new Date().toLocaleString('en-US', dateOptions);
             return tmpDateGroup === currentDate;
-        }).length;
+        });
 
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
-        this.dailyGoalCount = tmpDailyGoalCount;
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
+        this.dailyGoalList = tmpDailyGoalCount;
 
-        const tmpWeeklyCumulationCount = this.recentPomos.filter(pomoItem => {
-            // const dateOptions = {
-            //     month: 'short',
-            //     day: 'numeric'
-            // };
-
-            // const tmpDateGroup = new Date(pomoItem.end_time).toLocaleString('en-US', dateOptions);
-            // const currentDate = new Date().toLocaleString('en-US', dateOptions);
-            // return tmpDateGroup === currentDate;
+        const tmpWeeklyCumulationList = this.recentPomos.filter(pomoItem => {
             const startWeekTime = new Date();
-            // startWeekTime
+            startWeekTime.setDate(startWeekTime.getDate() - 7);
             startWeekTime.setHours(0, 0, 0, 0);
-            console.log('%c AppMainComponent onRecentPomosChange() - tmpCreatedTime: ', CONSOLE_TEXT_COLOR_COMPONENT, startWeekTime);
-        }).length;
+
+            return new Date(pomoItem.end_time) >= startWeekTime;
+        });
+
+        // tslint:disable-next-line:max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
+        this.weeklyCumulationList = tmpWeeklyCumulationList;
     }
 
 }
