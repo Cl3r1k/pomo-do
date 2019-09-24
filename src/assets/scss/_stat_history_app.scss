@@ -13,6 +13,7 @@
         border-right: 1px solid #cccccc;
         height: 100%;
         box-sizing: border-box;
+        position: relative;
         &:last-child {
             border-right: none;
         }
@@ -35,6 +36,11 @@
             margin: 0 0 5px 0;
             padding: 0;
             font-size: 30px;
+        }
+        .card-chart {
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
     }
 }
