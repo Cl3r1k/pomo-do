@@ -41,6 +41,18 @@
             position: absolute;
             bottom: 0;
             right: 0;
+            background-color: #e6c87f; // For Debug
+            height: 70%;
+            .chart-column {
+                display: inline-block;
+                background-color: red;
+                width: 18px;
+                height: 30px;
+                margin-right: 7px;
+                &:last-child {
+                    margin-right: 5px;
+                }
+            }
         }
     }
 }
