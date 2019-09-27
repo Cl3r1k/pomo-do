@@ -8,7 +8,7 @@
     border: 1px solid #cccccc;
     .stat-history-item {
         grid-column: span 4;
-        padding: 10px;
+        padding: 10px 0 0 10px;
         cursor: pointer;
         border-right: 1px solid #cccccc;
         height: 100%;
@@ -27,6 +27,7 @@
             padding: 0;
         }
         .card-info {
+            position: absolute;
             .card-description {
                 font-size: 12px;
                 margin: 0 0 6px 0;
@@ -40,13 +41,11 @@
             }
         }
         .card-chart {
-            position: absolute;
-            bottom: 0;
-            right: 0;
             background-color: #e6c87f; // For Debug
-            height: 70%;
+            height: 70px;
             display: flex;
             align-items: flex-end;
+            justify-content: flex-end;
             .chart-column {
                 display: inline-block;
                 background-color: red;
