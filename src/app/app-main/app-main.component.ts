@@ -504,7 +504,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
-        this.weeklyCumulationChartValues = [ 1, 10, 20, 30, 40, 50, 70];
+        this.weeklyCumulationChartValues = [1, 10, 20, 30, 40, 50, 70];
+
+        const optionsDate = {
+            month: 'short',
+            day: 'numeric'
+        };
+
+        // const tmpDateTime = new Date(pomoItem.end_time);
+        // const tmpDateGroup = tmpDateTime.toLocaleString('en-US', optionsDate);
     }
 
 }

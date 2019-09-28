@@ -6,13 +6,7 @@
             <p class="card-value">{{weeklyCumulationList.length}}</p>
         </div>
         <div class="card-chart">
-            <span class="chart-column" [style.height.%]="dailyGoalCountPrefs">1</span>
-            <span class="chart-column">2</span>
-            <span class="chart-column">3</span>
-            <span class="chart-column">4</span>
-            <span class="chart-column">5</span>
-            <span class="chart-column">6</span>
-            <span class="chart-column">7</span>
+            <span class="chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col">{{col}}</span>
         </div>
     </div>
     <div class="goal stat-history-item" [class.selected-item]="currentSelectedItem === 2" (click)="setSelectedItem(2)">
