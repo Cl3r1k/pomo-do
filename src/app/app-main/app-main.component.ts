@@ -492,11 +492,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
         this.dailyGoalList = tmpDailyGoalCount;
 
-        const tmpWeeklyCumulationList = this.recentPomos.filter(pomoItem => {
-            const startWeekTime = new Date();
-            startWeekTime.setDate(startWeekTime.getDate() - 7);
-            startWeekTime.setHours(0, 0, 0, 0);
+        const startWeekTime = new Date();
+        startWeekTime.setDate(startWeekTime.getDate() - 6);
+        startWeekTime.setHours(0, 0, 0, 0);
 
+        const tmpWeeklyCumulationList = this.recentPomos.filter(pomoItem => {
             return new Date(pomoItem.end_time) >= startWeekTime;
         });
 
@@ -511,8 +511,17 @@ export class AppMainComponent implements OnInit, OnDestroy {
             day: 'numeric'
         };
 
-        // const tmpDateTime = new Date(pomoItem.end_time);
-        // const tmpDateGroup = tmpDateTime.toLocaleString('en-US', optionsDate);
+        const tmpDateOfWeek = new Date();
+        for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+            tmpDateOfWeek.setDate(startWeekTime.getDate() + dayOffset);
+            const tmpDateShort = tmpDateOfWeek.toLocaleString('en-US', optionsDate);
+            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+            tmpWeeklyCumulationList.filter(item => {
+                // if (item.toLocaleString('en-US', optionsDate) === tmpDateShort) {
+                //     //
+                // }
+            });
+        }
     }
 
 }
