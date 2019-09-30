@@ -33,7 +33,7 @@ Todos:
                             ✔ For 'Name' and 'Email' fields use reactive forms @done(18-12-11 09:10)
                             ✔ Add validation for 'email' field @done(18-12-11 09:23)
                         ✔ Add 'Security' tab and elements @done(18-12-02 09:37)
-                            ✔ For passwords fields and 'Save' button use reactive forms @done(18-12-10 10:00)                                
+                            ✔ For passwords fields and 'Save' button use reactive forms @done(18-12-10 10:00)
                                 ✔ Add validation length for password field @done(18-12-11 09:27)
                                 ✔ Use 'suffix' for passwords fields (look example `https://material.angular.io/components/form-field/overview#prefix-amp-suffix`) @done(18-12-11 09:59)
                         ✔ Add tests for 'MatchValidation' @done(18-12-12 10:16)
@@ -92,7 +92,7 @@ Todos:
                             ✔ Move code from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:45)
                             ✔ Move tests from 'TodosComponent' to 'MainComponent' @done(19-01-16 09:57)
                         ✔ Move part for 'todo' from 'MainComponent' to 'TodosComponent' @done(19-01-25 09:34)
-                            ✔ Moved code and template for 'todo' part from 'MainComponent' to 'TodosComponent' @done(19-01-19 10:32)                                                        
+                            ✔ Moved code and template for 'todo' part from 'MainComponent' to 'TodosComponent' @done(19-01-19 10:32)
                             ✔ Fix issue with 'update-todo' @done(19-01-20 09:37)
                             ✔ Fix issue with 'onMoreTodo' @done(19-01-20 09:38)
                             ✔ Fix issue with 'onPinTodo' @done(19-01-20 09:38)
@@ -116,11 +116,11 @@ Todos:
                         ✔ Combine part 'todos' related to 'todos' folder @done(19-01-26 09:30)
                             ✔ Move 'todo-list-header' to 'todos' folder @done(19-01-25 09:59)
                             ✔ Move 'todo-list' to 'todos' folder @done(19-01-26 09:30)
-                    
+
                     ✔ Create component for 'pomos' @done(19-06-26 10:15)
                         ✔ Complete 'pomo-header' component @done(19-06-26 10:15)
                             ✔ Complete code and UI for 'PomoHeaderComponent' @done(19-06-10 09:58)
-                                ✔ Add service for 'PomoState' @done(19-02-05 10:36)                                    
+                                ✔ Add service for 'PomoState' @done(19-02-05 10:36)
                                 ✔ Process states for 'PomoState' ('started', 'idle', 'finished') @done(19-03-04 09:52)
                                     ✔ In case if pomoState.status === 'started' and 'end_time' passed, show 'save-pomo' view in the component @done(19-02-17 09:40)
                                     ✔ In case if pomoState.status === 'started' and 'end_time' NOT passed, show 'progress' view in the component @done(19-02-17 09:41)
@@ -181,9 +181,9 @@ Todos:
                                         ✔ Fix issue, when 'pomo' started and page reloaded -> a lot errors in console @done(19-03-29 10:08)
                                             ✔ Fix behavior in incognito -> start pomo - should be error on dialogs @done(19-03-29 10:11)
                                     ✔ Consider to 'trim' 'pomo-title' @done(19-03-30 09:16)
-                                            
+
                                     ✔ Check 'recentPomoList' with new pomo 'time' (create/updated/started/ended), seems time is not correct @done(19-03-31 10:24)
-                                    
+
                             ✔ Fix broken tests according to new 'Pomo' code @done(19-04-21 10:11)
                             ✔ Add tests for 'PomoHeaderComponent' @done(19-04-18 10:20)
                             ✔ Add tests for 'PomoStateService' @done(19-04-09 11:34)
@@ -230,7 +230,7 @@ Todos:
                                 ✔ Add method 'getAllPomos()' in 'IndexedDbService' @done(19-05-13 09:53)
                             ✔ Update 'IndexedDbMockService' with updated 'IndexedDbService' @done(19-05-15 09:50)
                             ✔ Update tests for 'Pomo' class @done(19-05-15 10:24)
-                            
+
                             ✔ Refactor 'IndexedDbService' @done(19-05-19 10:29)
                                 ✔ Rename 'dbTable' to 'todoTable' in 'IndexedDbService' @done(19-05-19 10:20)
                                 ✔ Devide code with comments to 'todos', 'tags' and 'pomos' parts in 'IndexedDbService' @done(19-05-19 10:28)
@@ -244,8 +244,8 @@ Todos:
 
                     ✔ After 'pomos' part completed bump 'minor' version @done(19-07-23 09:16)
                         ✔ Deploy updated build on GH-Pages @done(19-07-23 09:30)
-                        
-                
+
+
                 ☐ Add component 'StatsComponent'
                     ☐ Add separate component for 'stats'
                         ☐ For each 'stat' should be separate component <========================================================= CURRENT TASK
@@ -269,7 +269,7 @@ Todos:
             ✔ Fix 'todo-header' last container border-bottom styles (after grid changes) @done(19-08-04 09:16)
 
             ✔ Rename 'dialog' folder to 'dialogs' @done(19-08-05 09:15)
-            
+
             ✔ Take a look, why 'Created session_object:' shows twice on restart in console @done(19-08-06 08:55)
                 ✔ And take a look, why 'Created session_object:' called even with clean start in incognito mode @done(19-08-06 08:55)
 
@@ -286,7 +286,7 @@ Todos:
             ☐ Add posibility to save list as CSV on local PC, GDrive, Yandex.Disk (with OAuth), DropBox
 
             ☐ Remove part related to 'todos/active' and 'todos/completed' (Routes, resolvers, etc)
-            
+
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
                     ✔ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color) @done(18-07-22 09:48)
@@ -370,10 +370,10 @@ Todos:
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                     ☐ After fix position remove all 'matTooltip' (only on left in todo-list-item-view.component.html for fixing position purpose)
-                
+
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
-            ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)            
+            ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)
 
             ✔ Update 'concurrently' to latest version (4.0.1) @done(18-09-16 09:35)
 
@@ -393,7 +393,7 @@ Todos:
                             ✔ Update test for 'AuthService' @done(18-10-25 10:29)
                             ✔ Update test for 'SessionStorageService' @done(18-10-26 09:40)
                             ✔ Update test for 'SignInComponent' @done(18-10-28 09:54)
-            ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
+            ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)
                 ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
                     ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
@@ -414,10 +414,10 @@ Todos:
             ✔ Update CLI to v7 @done(18-11-02 10:24)
                 ✔ Fix errors after update @done(18-11-03 10:57)
                 ✔ Fix errors in tests for 'TodoListComponent' @done(18-11-03 11:07)
-            
+
 
             ☐ Consider 'Auto-resizing <textarea> elements' in material to replace current auto-resize (look here `https://material.angular.io/components/input/overview#auto-resizing-code-lt-textarea-gt-code-elements`)
-            
+
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
 
         ☐ Fix cursor type for contaners (example: hover mouse between 'pinned-list' and 'unpinned-list', or between 'pinned-list' and input field for new todo)
@@ -454,7 +454,7 @@ Todos:
 
         ☐ Remove 'sweet-alert' styles
         ☐ In app for header use not simple text but styled text with logo (like example `https://pomotodo.com/pro` top left corner)
-        ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
+        ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`
         ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
         ☐ Rewrite test for 'IndexedDbService' (currently not complete)
@@ -472,17 +472,17 @@ Todos:
 
         ☐ Consider to cancel editing, if user clicks on other area ---> Delayed for some time (Back to this later)
             ☐ Probably should be used 'ViewChild'
-        
+
         ☐ After finishing the tutor, improve the app using (`https://github.com/tastejs/todomvc-app-template`)
 
-        
+
         ☐ Fix all TODO in all files
         ☐ Check the app in 'Internet mail.ru' browser
             ☐ Add additional page 'upgrade' if browser not supported (for example `https://pomotodo.com/upgrade`)
         ☐ Add new column in DB with name 'deletePending'
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
-        
+
         ☐ Read about Service Workers and change the App architecture (`https://habrahabr.ru/company/2gis/blog/345552/`)
             ☐ Add 'pwa' module
             ☐ Sync using SW according to some state (like example some idea: `https://github.com/johnpapa/pwa-angular#background-sync-1`)
@@ -492,7 +492,7 @@ Todos:
             |
             |
             ☐ Use Chrome LightHouse to test the app and get 100%
-            
+
         ☐ Improve DnD functionality -> Currently if todos moved to fast the movements not handled propely (posibly disable move posibility until server returns response)
         ☐ Limit amount of todo by 100 (more will be available in pro)
         ☐ Possibility to sync DB (look here `https://github.com/dfahlander/Dexie.js/issues/437`)
@@ -501,7 +501,7 @@ Todos:
 
         ☐ Idea to implement multiple adding items
             `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
-            flatMap -> 
+            flatMap ->
             post(...).flatMap(result => post(result.data))
             ....data)).subscribe(finalResult => ....) (`https://t.me/angular_ru/78351`)`
 
@@ -532,7 +532,7 @@ Todos:
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here `https://angular.io/api/common/NgComponentOutlet` and here `https://github.com/angular/angular/pull/19713`) (return to this point after 01.01.2018)
             look example here `https://github.com/thekiba/ngx-component-outlet` and here `https://gist.github.com/thekiba/9b7fc4e32c92353e26890320f255f712`
-    
+
     Done:
         ✔ Update unit tests for part-2
         ✔ Update e2e tests for part-3
@@ -547,7 +547,7 @@ Todos:
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
-        
+
         ✔ Editing todos block
             ✔ On finish editing, if the title of the todo is empty -> delete todo
             ✔ If todo is edited, cursor not entered in the todo title field
@@ -559,7 +559,7 @@ Todos:
                 ✔ Update unit test for TodoListItemComponent (according to editable Todo)
                 ✔ Update unit test for TodoListItemViewComponent (according to editable Todo)
                 ✔ Update unit test for TodoListItemEditComponent (according to editable Todo)
-            
+
         ✔ Update project to new CLI version (1.5) @done(17-11-07 09:35)
         ✔ OnHover checkbox(or whole todo) show more effective @done(17-11-07 09:53)
         ✔ OnHover todo change bg color to a little darker @done(17-11-07 10:42)
@@ -625,14 +625,14 @@ Todos:
                 ✔ Update global.scss @done(18-01-18 10:45)
                 ✔ Update todomvc-app.scss @done(18-01-22 09:29)
                 ✔ Update modal.component.scss @done(18-01-19 08:47)
-        
+
         ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
         ✔ Fix 'toggleAll' checkbox style in FF (look here `http://yoksel.github.io/url-encoder/` and here `http://css.yoksel.ru/svg-angular-firefox/`) @done(18-01-26 09:28)
 
         ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
         ✔ Update all modules to latests versions @done(18-01-28 09:47)
             ✔ Update tests for new karma @done(18-01-31 09:46)
-        
+
         ✔ Add drag'n'drop posibility (look here `https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/` and `https://github.com/akserg/ng2-dnd`) @done(18-02-11 09:33)
             ✔ Update styles for DnD support @done(18-02-08 09:11)
             ✔ Update unit tests for DnD support @done(18-02-07 09:08)
@@ -649,7 +649,7 @@ Todos:
             `https://alligator.io/angular/dialogs-angular-material/`
             ✔ Update tests with new dialog @done(18-03-02 09:35)
                 ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here `https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894`)
-            
+
             ✔ In modal for deletion set focus on 'Cancel' button (cdkFocusRegionstart used) @done(18-03-03 09:10)
             ✔ Add modal for 'clearCompleted' (with amount of deleted todos) @done(18-03-03 09:41)
 
@@ -705,7 +705,7 @@ Todos:
             ✔ Add new fields in the model @done(18-04-06 09:48)
                 ✔ Update tests for the model 'ToDo' @done(18-04-06 09:53)
             ✔ Update app logic for new fields @done(18-04-06 10:27)
-        
+
         ✔ Fix 'clearCompleted' order issue (if 'clearComplete()' called - order resets) @done(18-04-14 10:03)
 
         ✔ Add baloon tooltips for buttons @done(18-04-16 09:11)

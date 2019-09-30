@@ -477,6 +477,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.recentPomos = [];
         this.recentPomos = recentPomos;
 
+        // At first -> let's generate dailyGoalList
         const tmpDailyGoalCount = this.recentPomos.filter(pomoItem => {
             // console.log('%c AppMainComponent onRecentPomosChange() - pomo.end_time: ', CONSOLE_TEXT_COLOR_COMPONENT, pomoItem.end_time);
             const dateOptions = {
@@ -492,6 +493,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
         this.dailyGoalList = tmpDailyGoalCount;
 
+        // Next -> let's form weeklyCumulationList
         const startWeekTime = new Date();
         startWeekTime.setDate(startWeekTime.getDate() - 6);
         startWeekTime.setHours(0, 0, 0, 0);
@@ -504,8 +506,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
-        this.weeklyCumulationChartValues = [1, 10, 20, 30, 40, 50, 70];
-
+        // Next -> let's form weeklyCumulationChartValues
         const optionsDate = {
             month: 'short',
             day: 'numeric'
@@ -516,12 +517,19 @@ export class AppMainComponent implements OnInit, OnDestroy {
             tmpDateOfWeek.setDate(startWeekTime.getDate() + dayOffset);
             const tmpDateShort = tmpDateOfWeek.toLocaleString('en-US', optionsDate);
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-            tmpWeeklyCumulationList.filter(item => {
-                // if (item.toLocaleString('en-US', optionsDate) === tmpDateShort) {
-                //     //
-                // }
+            const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter(pomoItem => {
+                const tmpDateToFilter = new Date(pomoItem.end_time);
+                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
             });
+
+            // tslint:disable-next-line:max-line-length
+            console.log('%c AppMainComponent onRecentPomosChange() - dateOfWeekPomoCount: ', CONSOLE_TEXT_COLOR_COMPONENT, dateOfWeekPomoCount);
+
+            // this.weeklyCumulationChartValues[dayOffset] = dateOfWeekPomoCount === 0 ? 1 : dateOfWeekPomoCount;
         }
+
+        // tslint:disable-next-line:max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
     }
 
 }
