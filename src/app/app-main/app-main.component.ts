@@ -69,11 +69,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
             map((data) => data['resolverData'])
         ).subscribe(
             (resolverData) => {
-                // console.log(`%c'TodosComponent' _route.params: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.params);
-                // console.log(`%c'TodosComponent' _route.queryParams: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.queryParams);
-                // console.log(`%c'TodosComponent' routeConfig.path: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.routeConfig.path);
+                // console.log(`%c 'TodosComponent' _route.params: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.params);
+                // console.log(`%c 'TodosComponent' _route.queryParams: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.queryParams);
+                // console.log(`%c 'TodosComponent' routeConfig.path: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.routeConfig.path);
 
-                // console.log(`%cincoming 'resolverData' from resolver: `, CONSOLE_TEXT_COLOR_COMPONENT, resolverData);
+                // console.log(`%c incoming 'resolverData' from resolver: `, CONSOLE_TEXT_COLOR_COMPONENT, resolverData);
                 this.activeRouteState = resolverData.activeRouteState;
                 this.hashTagToFilter = resolverData.params;
                 this.todos = resolverData.todos;
@@ -152,7 +152,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // Additional method to perform deletion after modal confirmation
     removeTodo(todo: ToDo) {
         // tslint:disable-next-line:max-line-length
-        console.log('%cremoveTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)', CONSOLE_TEXT_COLOR_COMPONENT, todo.title, todo.id);
+        console.log('%c removeTodo emitted evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)', CONSOLE_TEXT_COLOR_COMPONENT, todo.title, todo.id);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
@@ -220,7 +220,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     }
 
     onToggleAll(toggleState: boolean) {
-        console.log('%ctoggleState() called', CONSOLE_TEXT_COLOR_COMPONENT);
+        console.log('%c toggleState() called', CONSOLE_TEXT_COLOR_COMPONENT);
         this._todoService.toggleAll(toggleState, this.activeRouteState).subscribe((todos) => {
             console.log('%cin onToggleAll incoming todos:', CONSOLE_TEXT_COLOR_COMPONENT, todos);
             this.todos = todos;
@@ -264,15 +264,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
     }
 
-    onClearHoverSetState(clearCompletetHoverState: boolean) {
+    onClearHoverSetState(clearCompletedHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, clearCompletetHoverState);
-        this.clearHoverState = clearCompletetHoverState;
+        // console.log('%conClearHoverSetState emitted evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, clearCompletedHoverState);
+        this.clearHoverState = clearCompletedHoverState;
     }
 
     onToggleAllHoverSetState(toggleAllHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, toggleAllHoverState);
+        // console.log('%conToggleAllHoverSetState emitted evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', CONSOLE_TEXT_COLOR_COMPONENT, toggleAllHoverState);
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
@@ -383,14 +383,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
-        // console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
-        // console.log('%ccontainerClick called with event.target: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target);
-        // console.log('%ccontainerClick called with event.target.innerHTML: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.innerHTML);
-        // console.log('%ccontainerClick called with event.target.parentNode: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.parentNode);
+        // console.log('%c containerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
+        // console.log('%c containerClick called with event.target: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target);
+        // console.log('%c containerClick called with event.target.innerHTML: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.innerHTML);
+        // console.log('%c containerClick called with event.target.parentNode: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target.parentNode);
         if (event.target.className === 'content-container') {
-            console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
+            console.log('%c containerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
         } else {
-            // console.log('%ccontainerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
+            // console.log('%c containerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
         }
 
         if ((event.target.parentNode &&
@@ -463,7 +463,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onStatePomoChange(state: number) {
         this.pomoStateAppMain = state;
-        // console.log('%cpomoStateAppMain: ', CONSOLE_TEXT_COLOR_COMPONENT, this.pomoStateAppMain);
+        // console.log('%c pomoStateAppMain: ', CONSOLE_TEXT_COLOR_COMPONENT, this.pomoStateAppMain);
     }
 
     toggleThemeMode() {
@@ -513,6 +513,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         };
 
         const tmpDateOfWeek = new Date();
+        const tmpWeeklyCumulationChartValues = [];
         for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
             tmpDateOfWeek.setDate(startWeekTime.getDate() + dayOffset);
             const tmpDateShort = tmpDateOfWeek.toLocaleString('en-US', optionsDate);
@@ -520,16 +521,30 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter(pomoItem => {
                 const tmpDateToFilter = new Date(pomoItem.end_time);
                 return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
-            });
+            }).length;
 
-            // tslint:disable-next-line:max-line-length
-            console.log('%c AppMainComponent onRecentPomosChange() - dateOfWeekPomoCount: ', CONSOLE_TEXT_COLOR_COMPONENT, dateOfWeekPomoCount);
-
-            // this.weeklyCumulationChartValues[dayOffset] = dateOfWeekPomoCount === 0 ? 1 : dateOfWeekPomoCount;
+            tmpWeeklyCumulationChartValues[dayOffset] = dateOfWeekPomoCount;
         }
 
         // tslint:disable-next-line:max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpWeeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationChartValues);
+
+        let maxWeeklyDayCount = 0;
+        tmpWeeklyCumulationChartValues.map(item => {
+            if (item > maxWeeklyDayCount) {
+                maxWeeklyDayCount = item;
+            }
+        });
+
+        console.log('%c AppMainComponent onRecentPomosChange() - maxWeeklyDayCount: ', CONSOLE_TEXT_COLOR_COMPONENT, maxWeeklyDayCount);
+
+        for (let index = 0; index < tmpWeeklyCumulationChartValues.length; index++) {
+            const tmpColValue = tmpWeeklyCumulationChartValues[index] * (maxWeeklyDayCount / 100);
+            this.weeklyCumulationChartValues[index] = tmpColValue === 0 ? 1 : tmpColValue;
+        }
+
+        // tslint:disable-next-line:max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
     }
 
 }
