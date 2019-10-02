@@ -503,7 +503,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
 
         // tslint:disable-next-line:max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
+        console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
         // Next -> let's form weeklyCumulationChartValues
@@ -512,6 +512,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             day: 'numeric'
         };
 
+        // TODO: Fix bug with 'setDate()'
         const tmpDateOfWeek = new Date();
         const tmpWeeklyCumulationChartValues = [];
         for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
@@ -520,6 +521,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
             const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter(pomoItem => {
                 const tmpDateToFilter = new Date(pomoItem.end_time);
+                if (tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort) {
+                    console.log('%c AppMainComponent onRecentPomosChange() - MATCH???: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+                } else {
+                    console.log('%c tmpDateShort', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+                    console.log('%c tmpDateToFilter', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateToFilter.toLocaleString('en-US', optionsDate));
+                }
                 return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
             }).length;
 
