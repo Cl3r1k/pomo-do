@@ -495,7 +495,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // Next -> let's form weeklyCumulationList
         const startWeekTime = new Date();
-        startWeekTime.setDate(startWeekTime.getDate() - 6);
+        const timeOffset = (24 * 60 * 60 * 1000) * 6;  // 6 Days
+        startWeekTime.setTime(startWeekTime.getTime() - timeOffset);
         startWeekTime.setHours(0, 0, 0, 0);
 
         const tmpWeeklyCumulationList = this.recentPomos.filter(pomoItem => {
@@ -503,7 +504,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
 
         // tslint:disable-next-line:max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - weeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpWeeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
         // Next -> let's form weeklyCumulationChartValues
@@ -512,11 +513,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
             day: 'numeric'
         };
 
-        // TODO: Fix bug with 'setDate()'
         const tmpDateOfWeek = new Date();
         const tmpWeeklyCumulationChartValues = [];
         for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
-            tmpDateOfWeek.setDate(startWeekTime.getDate() + dayOffset);
+            tmpDateOfWeek.setTime(startWeekTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
             const tmpDateShort = tmpDateOfWeek.toLocaleString('en-US', optionsDate);
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
             const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter(pomoItem => {
@@ -546,7 +546,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent onRecentPomosChange() - maxWeeklyDayCount: ', CONSOLE_TEXT_COLOR_COMPONENT, maxWeeklyDayCount);
 
         for (let index = 0; index < tmpWeeklyCumulationChartValues.length; index++) {
-            const tmpColValue = tmpWeeklyCumulationChartValues[index] * (maxWeeklyDayCount / 100);
+            const tmpColValue = tmpWeeklyCumulationChartValues[index] / (maxWeeklyDayCount / 100);
             this.weeklyCumulationChartValues[index] = tmpColValue === 0 ? 1 : tmpColValue;
         }
 
