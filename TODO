@@ -248,7 +248,12 @@ Todos:
 
                 ☐ Add component 'StatsComponent'
                     ☐ Add separate component for 'stats'
-                        ☐ For each 'stat' should be separate component <========================================================= CURRENT TASK
+                        ☐ For each 'stat' should be separate component
+                            ✔ Create chart for 'Stat' card @done(19-10-04 09:28)
+                                ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty)
+                            ☐ Create chart for 'Goal' card <========================================================= CURRENT TASK
+                            ☐ Create chart for 'Pomo history' card
+                            ☐ Create chart for 'Todo history' card
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 
