@@ -16,8 +16,9 @@
             <p class="card-value">{{dailyGoalList.length}}/{{dailyGoalCountPrefs}}</p>
         </div>
         <div class="card-chart round-progress-container">
-            <div class="pie-wrapper"></div>
-            <!-- <span class="percent-value">88<span class="percent">%</span></span> -->
+            <div class="pie-wrapper pie-wrapper--solid progress-50">
+                <span class="label">88<span class="smaller">%</span></span>
+            </div>
         </div>
     </div>
     <div class="pomo-history stat-history-item" [class.selected-item]="currentSelectedItem === 3" (click)="setSelectedItem(3)">
