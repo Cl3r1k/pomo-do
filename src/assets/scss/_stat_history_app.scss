@@ -1,5 +1,6 @@
 // -- vars
-$bg-color: #34495e;
+$bg-color: #cfe4e2;
+$progress-color: #86c5a1;
 $default-size: 1em;
 $label-font-size: $default-size / 4;
 $label-font-size-redo: $default-size * 4;
@@ -24,7 +25,8 @@ $label-font-size-redo: $default-size * 4;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    background-color: #93da97; // For Debug
+    background-color: #ffffff;
+    // background-color: #93da97; // For Debug
     max-width: 960px;
     margin: 0 auto;
     border: 1px solid #cccccc;
@@ -93,7 +95,6 @@ $label-font-size-redo: $default-size * 4;
                         border-radius: 50%;
                         bottom: $label-font-size-redo / 10;
                         color: #ecf0f1;
-                        cursor: default;
                         display: block;
                         font-size: $label-font-size;
                         left: $label-font-size-redo / 10;
@@ -125,31 +126,31 @@ $label-font-size-redo: $default-size * 4;
                         background: transparent;
                     }
                     &.progress-0 {
-                        @include draw-progress--solid(0, #3498db, $bg-color);
+                        @include draw-progress--solid(0, $progress-color, $bg-color);
                     }
                     &.progress-13 {
-                        @include draw-progress--solid(13, #3498db, $bg-color);
+                        @include draw-progress--solid(13, $progress-color, $bg-color);
                     }
                     &.progress-25 {
-                        @include draw-progress--solid(25, #3498db, $bg-color);
+                        @include draw-progress--solid(25, $progress-color, $bg-color);
                     }
                     &.progress-38 {
-                        @include draw-progress--solid(38, #3498db, $bg-color);
+                        @include draw-progress--solid(38, $progress-color, $bg-color);
                     }
                     &.progress-50 {
-                        @include draw-progress--solid(50, #3498db, $bg-color);
+                        @include draw-progress--solid(50, $progress-color, $bg-color);
                     }
                     &.progress-63 {
-                        @include draw-progress--solid(63, #3498db, $bg-color);
+                        @include draw-progress--solid(63, $progress-color, $bg-color);
                     }
                     &.progress-75 {
-                        @include draw-progress--solid(75, #3498db, $bg-color);
+                        @include draw-progress--solid(75, $progress-color, $bg-color);
                     }
                     &.progress-88 {
-                        @include draw-progress--solid(88, #3498db, $bg-color);
+                        @include draw-progress--solid(88, $progress-color, $bg-color);
                     }
                     &.progress-100 {
-                        @include draw-progress--solid(100, #3498db, $bg-color);
+                        @include draw-progress--solid(100, $progress-color, $bg-color);
                     }
                 }
             }
