@@ -28,6 +28,7 @@ export class StatHistoryComponent implements OnInit {
     currentSelectedItem = 0;
     // TODO: Don't forget to change value below to real value from prefs
     dailyGoalCountPrefs = 8;
+    dailyGoalCountPercent = 13;
 
     constructor() { }
 
