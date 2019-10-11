@@ -55,6 +55,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     dailyGoalList: Pomo[] = [];
     weeklyCumulationList: Pomo[] = [];
     weeklyCumulationChartValues: number[] = [];
+    dailyGoalCountPercent = 0;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -552,6 +553,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
+
+        // Next -> let's form dailyGoalCountPercent for round-progress
+        this.dailyGoalCountPercent = Math.round(this.dailyGoalList.length / 8 * 100);
     }
 
 }

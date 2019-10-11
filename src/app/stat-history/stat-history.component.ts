@@ -22,13 +22,13 @@ export class StatHistoryComponent implements OnInit {
     @Input() dailyGoalList: Pomo[];
     @Input() weeklyCumulationList: Pomo[];
     @Input() weeklyCumulationChartValues: number[];
+    @Input() dailyGoalCountPercent: number;
 
     weeklyCumulationCount = 0;
     allTodosCount = 0;
     currentSelectedItem = 0;
     // TODO: Don't forget to change value below to real value from prefs
     dailyGoalCountPrefs = 8;
-    dailyGoalCountPercent = 13;
 
     constructor() { }
 
