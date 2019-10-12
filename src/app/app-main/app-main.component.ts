@@ -555,7 +555,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
 
         // Next -> let's form dailyGoalCountPercent for round-progress
-        this.dailyGoalCountPercent = Math.round(this.dailyGoalList.length / 8 * 100);
+        // TODO: Do not forget to change value 8 to real value from preferences
+        this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
     }
 
 }

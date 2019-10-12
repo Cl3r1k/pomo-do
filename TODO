@@ -253,6 +253,7 @@ Todos:
                                 ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty)
                             ☐ Create chart for 'Goal' card <========================================================= CURRENT TASK
                             ☐ Create chart for 'Pomo history' card
+                                ☐ Shoudn't count interrupted pomos
                             ☐ Create chart for 'Todo history' card
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)

@@ -11,5 +11,5 @@ export const environment = {
     consoleTextColorComponent: 'color: cadetblue;',
 
     // Autoincremented build version variable
-    version: '1.5.0.1090'
+    version: '1.5.0.1091'
 };
