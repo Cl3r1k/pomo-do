@@ -251,10 +251,16 @@ Todos:
                         ☐ For each 'stat' should be separate component
                             ✔ Create chart for 'Stat' card @done(19-10-04 09:28)
                                 ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty)
-                            ☐ Create chart for 'Goal' card <========================================================= CURRENT TASK
-                            ☐ Create chart for 'Pomo history' card
-                                ☐ Shoudn't count interrupted pomos
+                                ☐ Create child component for 'Goal' card
+                            ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
+                                ☐ Create child component for 'Goal' card
+                            ☐ Create chart for 'Pomo history' card <========================================================= CURRENT TASK
+                                ☐ Period for chart for 'Pomo history' card should be over last month
+                                ✔ Shoudn't count interrupted pomos @done(19-10-12 09:03)
+                                ☐ Create child component for 'Pomo history' card
                             ☐ Create chart for 'Todo history' card
+                                ☐ Period for chart for 'Todo history' card should be over last month
+                                ☐ Create child component for 'Todo history' card
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 

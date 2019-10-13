@@ -476,7 +476,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', CONSOLE_TEXT_COLOR_COMPONENT, recentPomos);
 
         this.recentPomos = [];
-        this.recentPomos = recentPomos;
+        this.recentPomos = recentPomos.filter(pomo => {
+            return !pomo.canceled;
+        });
 
         // At first -> let's generate dailyGoalList
         const tmpDailyGoalCount = this.recentPomos.filter(pomoItem => {
