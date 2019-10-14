@@ -154,6 +154,20 @@ $label-font-size-redo: $default-size * 4;
                     }
                 }
             }
+            .card-line {
+                background-color: #6c6cdf;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    // Override left padding for 'history' cards
+    .pomo-history,
+    .todo-history {
+        padding-left: 0;
+        .card-header,
+        .card-info {
+            margin-left: 10px;
         }
     }
 }
