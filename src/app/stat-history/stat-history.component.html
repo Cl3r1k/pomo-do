@@ -28,7 +28,11 @@
             <p class="card-value">{{recentPomos.length}}</p>
         </div>
         <div class="card-chart">
-            <div class="card-line"></div>
+            <div class="card-line">
+                <svg width="230" height="70">
+                    <rect class="rect-1" width="42.5%" height="42.5%" x="0%" y="57.0%" fill="tomato"></rect>
+                </svg>
+            </div>
         </div>
     </div>
     <div class="todo-history stat-history-item" [class.selected-item]="currentSelectedItem === 4" (click)="setSelectedItem(4)">

@@ -32,7 +32,7 @@ $label-font-size-redo: $default-size * 4;
     border: 1px solid #cccccc;
     .stat-history-item {
         grid-column: span 4;
-        padding: 10px 0 0 10px;
+        padding: 10px 0 0 0;
         cursor: pointer;
         border-right: 1px solid #cccccc;
         height: 100%;
@@ -48,9 +48,10 @@ $label-font-size-redo: $default-size * 4;
             font-size: 14px;
             font-weight: normal;
             margin: 0 0 3px 0;
-            padding: 0;
+            padding: 0 0 0 10px;
         }
         .card-info {
+            padding: 0 0 0 10px;
             position: absolute;
             .card-description {
                 font-size: 12px;
@@ -155,19 +156,10 @@ $label-font-size-redo: $default-size * 4;
                 }
             }
             .card-line {
-                background-color: #6c6cdf;
+                background-color: #b1b1e2;
                 height: 100%;
                 width: 100%;
             }
-        }
-    }
-    // Override left padding for 'history' cards
-    .pomo-history,
-    .todo-history {
-        padding-left: 0;
-        .card-header,
-        .card-info {
-            margin-left: 10px;
         }
     }
 }

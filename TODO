@@ -257,6 +257,7 @@ Todos:
                             ☐ Create chart for 'Pomo history' card <========================================================= CURRENT TASK
                                 ☐ Period for chart for 'Pomo history' card should be over last month
                                 ✔ Shoudn't count interrupted pomos @done(19-10-12 09:03)
+                                ☐ Fix bug for 'Pomo history' chart/data on first app load (data is empty)
                                 ☐ Create child component for 'Pomo history' card
                             ☐ Create chart for 'Todo history' card
                                 ☐ Period for chart for 'Todo history' card should be over last month
