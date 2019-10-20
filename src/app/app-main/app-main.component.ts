@@ -480,7 +480,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return !pomo.canceled;
         });
 
-        // At first -> let's generate dailyGoalList
+        // At first -> let's generate 'dailyGoalList'
         const tmpDailyGoalCount = this.recentPomos.filter(pomoItem => {
             // console.log('%c AppMainComponent onRecentPomosChange() - pomo.end_time: ', CONSOLE_TEXT_COLOR_COMPONENT, pomoItem.end_time);
             const dateOptions = {
@@ -496,7 +496,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
         this.dailyGoalList = tmpDailyGoalCount;
 
-        // Next -> let's form weeklyCumulationList
+        // Next -> let's form 'weeklyCumulationList'
         const startWeekTime = new Date();
         const timeOffset = (24 * 60 * 60 * 1000) * 6;  // 6 Days
         startWeekTime.setTime(startWeekTime.getTime() - timeOffset);
@@ -510,7 +510,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent onRecentPomosChange() - tmpWeeklyCumulationList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpWeeklyCumulationList);
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
-        // Next -> let's form weeklyCumulationChartValues
+        // Next -> let's form 'weeklyCumulationChartValues'
         const optionsDate = {
             month: 'short',
             day: 'numeric'
@@ -556,9 +556,60 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
 
-        // Next -> let's form dailyGoalCountPercent for round-progress
+        // Next -> let's form 'dailyGoalCountPercent' for round-progress
         // TODO: Do not forget to change value 8 to real value from preferences
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
+
+        // Next -> let's form 'monthlyPomosPercentList' for round-progress
+        // monthlyPomosPercentList
+
+        const startMonthTime = new Date();
+        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 30);
+        startMonthTime.setHours(0, 0, 0, 0);
+
+        const tmpMonthlyPomosList = this.recentPomos.filter(pomoItem => {
+            return new Date(pomoItem.end_time) >= startMonthTime;
+        });
+
+        const tmpDateOfMonth = new Date();
+        const tmpMonthlyPomosValues = [];
+        for (let dayOffset = 0; dayOffset < 30; dayOffset++) {
+            tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
+            const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
+            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+            const dateOfMonthPomoCount = tmpMonthlyPomosList.filter(pomoItem => {
+                const tmpDateToFilter = new Date(pomoItem.end_time);
+                // if (tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort) {
+                //     console.log('%c AppMainComponent onRecentPomosChange() - MATCH???: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+                // } else {
+                //     console.log('%c tmpDateShort', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+                //     console.log('%c tmpDateToFilter', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateToFilter.toLocaleString('en-US', optionsDate));
+                // }
+                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
+            }).length;
+
+            tmpMonthlyPomosValues[dayOffset] = dateOfMonthPomoCount;
+        }
+
+        // tslint:disable-next-line:max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
+
+        // let maxWeeklyDayCount = 0;
+        // tmpWeeklyCumulationChartValues.map(item => {
+        //     if (item > maxWeeklyDayCount) {
+        //         maxWeeklyDayCount = item;
+        //     }
+        // });
+
+        // console.log('%c AppMainComponent onRecentPomosChange() - maxWeeklyDayCount: ', CONSOLE_TEXT_COLOR_COMPONENT, maxWeeklyDayCount);
+
+        // for (let index = 0; index < tmpWeeklyCumulationChartValues.length; index++) {
+        //     const tmpColValue = tmpWeeklyCumulationChartValues[index] / (maxWeeklyDayCount / 100);
+        //     this.weeklyCumulationChartValues[index] = tmpColValue === 0 ? 1 : tmpColValue;
+        // }
+
+        // tslint:disable-next-line:max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
     }
 
 }
