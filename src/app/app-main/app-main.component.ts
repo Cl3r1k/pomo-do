@@ -591,6 +591,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
             tmpMonthlyPomosValues[dayOffset] = dateOfMonthPomoCount;
         }
 
+        for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
+            if (tmpMonthlyPomosValues[i - 1] !== undefined) {
+                tmpMonthlyPomosValues[i] += tmpMonthlyPomosValues[i - 1];
+            }
+        }
+
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
 
