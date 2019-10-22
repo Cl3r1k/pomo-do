@@ -596,9 +596,23 @@ export class AppMainComponent implements OnInit, OnDestroy {
                 tmpMonthlyPomosValues[i] += tmpMonthlyPomosValues[i - 1];
             }
         }
+        const chartMaxValue = tmpMonthlyPomosValues[tmpMonthlyPomosValues.length - 1];
+
+        let tmpMonthlyPomosChartData = '';
+        let chartStep = 0;
+        for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
+            if (tmpMonthlyPomosValues[i - 1] !== undefined) {
+                const yValue = 70 - 70 / 100 * ((tmpMonthlyPomosValues[i] + tmpMonthlyPomosValues[i - 1]) / chartMaxValue * 100);
+                console.log('%c AppMainComponent onRecentPomosChange() - yValue: ', CONSOLE_TEXT_COLOR_COMPONENT, yValue);
+                tmpMonthlyPomosChartData += yValue + ',' + chartStep + ' ';
+                chartStep += 7.5;    // Increase step value;
+            }
+        }
 
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
+        // tslint:disable-next-line:max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
 
         // let maxWeeklyDayCount = 0;
         // tmpWeeklyCumulationChartValues.map(item => {
