@@ -573,7 +573,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         const tmpDateOfMonth = new Date();
         const tmpMonthlyPomosValues = [];
-        for (let dayOffset = 0; dayOffset < 30; dayOffset++) {
+        for (let dayOffset = 1; dayOffset <= 30; dayOffset++) {
             tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
             const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
@@ -588,7 +588,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
                 return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
             }).length;
 
-            tmpMonthlyPomosValues[dayOffset] = dateOfMonthPomoCount;
+            tmpMonthlyPomosValues.push(dateOfMonthPomoCount);
         }
 
         for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
@@ -599,37 +599,25 @@ export class AppMainComponent implements OnInit, OnDestroy {
         const chartMaxValue = tmpMonthlyPomosValues[tmpMonthlyPomosValues.length - 1];
 
         let tmpMonthlyPomosChartData = '';
-        let chartStep = 0;
+        let xValue = 7.5;
         for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
             if (tmpMonthlyPomosValues[i - 1] !== undefined) {
-                const yValue = 70 - 70 / 100 * ((tmpMonthlyPomosValues[i] + tmpMonthlyPomosValues[i - 1]) / chartMaxValue * 100);
+                const yValue = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartMaxValue * 100);
+                // const p1 = 70 / 100;
+                // const p2 = tmpMonthlyPomosValues[i] / chartMaxValue * 100;
+                // const p3 = 70 - p1 * p2;
                 console.log('%c AppMainComponent onRecentPomosChange() - yValue: ', CONSOLE_TEXT_COLOR_COMPONENT, yValue);
-                tmpMonthlyPomosChartData += yValue + ',' + chartStep + ' ';
-                chartStep += 7.5;    // Increase step value;
+                tmpMonthlyPomosChartData += xValue + ',' + yValue + ' ';
+                xValue += 7.5;    // Increase step value;
             }
         }
+
+        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '239,0';
 
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
         // tslint:disable-next-line:max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
-
-        // let maxWeeklyDayCount = 0;
-        // tmpWeeklyCumulationChartValues.map(item => {
-        //     if (item > maxWeeklyDayCount) {
-        //         maxWeeklyDayCount = item;
-        //     }
-        // });
-
-        // console.log('%c AppMainComponent onRecentPomosChange() - maxWeeklyDayCount: ', CONSOLE_TEXT_COLOR_COMPONENT, maxWeeklyDayCount);
-
-        // for (let index = 0; index < tmpWeeklyCumulationChartValues.length; index++) {
-        //     const tmpColValue = tmpWeeklyCumulationChartValues[index] / (maxWeeklyDayCount / 100);
-        //     this.weeklyCumulationChartValues[index] = tmpColValue === 0 ? 1 : tmpColValue;
-        // }
-
-        // tslint:disable-next-line:max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
     }
 
 }
