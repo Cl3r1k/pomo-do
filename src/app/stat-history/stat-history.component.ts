@@ -23,6 +23,7 @@ export class StatHistoryComponent implements OnInit {
     @Input() weeklyCumulationList: Pomo[];
     @Input() weeklyCumulationChartValues: number[];
     @Input() dailyGoalCountPercent: number;
+    @Input() monthlyPomosPolylinePoints: string;
 
     weeklyCumulationCount = 0;
     allTodosCount = 0;

@@ -56,6 +56,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     weeklyCumulationList: Pomo[] = [];
     weeklyCumulationChartValues: number[] = [];
     dailyGoalCountPercent = 0;
+    monthlyPomosPolylinePoints = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -557,8 +558,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent onRecentPomosChange() - this.weeklyCumulationChartValues: ', CONSOLE_TEXT_COLOR_COMPONENT, this.weeklyCumulationChartValues);
 
         // Next -> let's form 'dailyGoalCountPercent' for round-progress
-        // TODO: Do not forget to change value 8 to real value from preferences
+        // TODO: Do not forget to change value 8 (pomoGoal) to real value from preferences
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
+        this.monthlyPomosPolylinePoints = '';
 
         // Next -> let's form 'monthlyPomosPercentList' for round-progress
         // monthlyPomosPercentList
@@ -579,12 +581,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
             const dateOfMonthPomoCount = tmpMonthlyPomosList.filter(pomoItem => {
                 const tmpDateToFilter = new Date(pomoItem.end_time);
-                // if (tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort) {
-                //     console.log('%c AppMainComponent onRecentPomosChange() - MATCH???: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-                // } else {
-                //     console.log('%c tmpDateShort', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-                //     console.log('%c tmpDateToFilter', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateToFilter.toLocaleString('en-US', optionsDate));
-                // }
                 return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
             }).length;
 
@@ -598,26 +594,26 @@ export class AppMainComponent implements OnInit, OnDestroy {
         }
         const chartMaxValue = tmpMonthlyPomosValues[tmpMonthlyPomosValues.length - 1];
 
+        const stepValue = 8;
         let tmpMonthlyPomosChartData = '';
-        let xValue = 7.5;
+        let xValue = 0;
         for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
-            if (tmpMonthlyPomosValues[i - 1] !== undefined) {
-                const yValue = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartMaxValue * 100);
-                // const p1 = 70 / 100;
-                // const p2 = tmpMonthlyPomosValues[i] / chartMaxValue * 100;
-                // const p3 = 70 - p1 * p2;
-                console.log('%c AppMainComponent onRecentPomosChange() - yValue: ', CONSOLE_TEXT_COLOR_COMPONENT, yValue);
-                tmpMonthlyPomosChartData += xValue + ',' + yValue + ' ';
-                xValue += 7.5;    // Increase step value;
-            }
+            const yValue = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartMaxValue * 100);
+            // console.log('%c AppMainComponent onRecentPomosChange() - yValue: ', CONSOLE_TEXT_COLOR_COMPONENT, yValue);
+            tmpMonthlyPomosChartData += xValue + ',' + yValue + ' ';
+            xValue += stepValue;    // Increase step for xCoordinate;
         }
 
-        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '239,0';
+        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '240,0';
+
+        this.monthlyPomosPolylinePoints = tmpMonthlyPomosChartData;
 
         // tslint:disable-next-line:max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
         // tslint:disable-next-line:max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
+        // tslint:disable-next-line: max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
     }
 
 }

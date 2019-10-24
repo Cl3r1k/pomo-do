@@ -4,28 +4,45 @@
     </div>
 
     <div class='content-container'>
-        <app-header [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubmenuAppCall($event)'></app-header>
+        <app-header [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubmenuAppCall($event)'>
+        </app-header>
 
-        <app-active-task [todo]='currentTodo' [currentActiveTaskName]='currentActiveTaskName' (toggleCompleteActiveTaskComponentEmitter)='onToggleTodoComplete($event)'></app-active-task>
+        <app-active-task [todo]='currentTodo' [currentActiveTaskName]='currentActiveTaskName'
+            (toggleCompleteActiveTaskComponentEmitter)='onToggleTodoComplete($event)'></app-active-task>
 
         <div class='pomodo-app'>
             <section class='pomo-app'>
 
-                <app-pomos [pomoStatePomos]='pomoStateAppMain' [currentTodoPomos]='currentTodo' (statePomosComponentEmitter)='onStatePomoChange($event)' (recentPomosPomosComponentEmitter)='onRecentPomosChange($event)'></app-pomos>
+                <app-pomos [pomoStatePomos]='pomoStateAppMain' [currentTodoPomos]='currentTodo'
+                    (statePomosComponentEmitter)='onStatePomoChange($event)'
+                    (recentPomosPomosComponentEmitter)='onRecentPomosChange($event)'></app-pomos>
 
             </section>
 
-            <section class='todo-app' [class.not-empty-todo-list-footer]='todos.length !== 0' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
+            <section class='todo-app' [class.not-empty-todo-list-footer]='todos.length !== 0'
+                [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
-                <app-todos [todosAllAmount]='todos.length' [todosAllCompleted]='allCompleted' [hashTagToFilter]='hashTagToFilter' (addTodosComponentEmitter)='onAddTodo($event)' (toggleAllTodosComponentEmitter)='onToggleAll($event)' (toggleAllHoverStateTodosComponentEmitter)='onToggleAllHoverSetState($event)'
-                    [todos]='todos' [todosToView]='todosToView' [isEmptyTodoList]='isEmptyTodoList' (toggleCompleteTodosComponentEmitter)='onToggleTodoComplete($event)' (updateTodosComponentEmitter)='onUpdateTodo($event)' (moreTodosComponentEmitter)='onMoreTodo($event)'
-                    (pinTodosComponentEmitter)='onPinTodo($event)' (removeTodosComponentEmitter)='onRemoveTodo($event)' (moveTodosComponentEmitter)='onMoveTodo($event)' (clearTodosComponentEmitter)='onClearCompleted($event)' (clearHoverStateTodosComponentEmitter)='onClearHoverSetState($event)'>
+                <app-todos [todosAllAmount]='todos.length' [todosAllCompleted]='allCompleted'
+                    [hashTagToFilter]='hashTagToFilter' (addTodosComponentEmitter)='onAddTodo($event)'
+                    (toggleAllTodosComponentEmitter)='onToggleAll($event)'
+                    (toggleAllHoverStateTodosComponentEmitter)='onToggleAllHoverSetState($event)' [todos]='todos'
+                    [todosToView]='todosToView' [isEmptyTodoList]='isEmptyTodoList'
+                    (toggleCompleteTodosComponentEmitter)='onToggleTodoComplete($event)'
+                    (updateTodosComponentEmitter)='onUpdateTodo($event)'
+                    (moreTodosComponentEmitter)='onMoreTodo($event)' (pinTodosComponentEmitter)='onPinTodo($event)'
+                    (removeTodosComponentEmitter)='onRemoveTodo($event)'
+                    (moveTodosComponentEmitter)='onMoveTodo($event)'
+                    (clearTodosComponentEmitter)='onClearCompleted($event)'
+                    (clearHoverStateTodosComponentEmitter)='onClearHoverSetState($event)'>
                 </app-todos>
 
             </section>
         </div>
 
-        <app-stat-history [recentPomos]="recentPomos" [todos]="todos" [dailyGoalList]="dailyGoalList" [weeklyCumulationList]="weeklyCumulationList" [weeklyCumulationChartValues]="weeklyCumulationChartValues" [dailyGoalCountPercent]="dailyGoalCountPercent"></app-stat-history>
+        <app-stat-history [recentPomos]="recentPomos" [todos]="todos" [dailyGoalList]="dailyGoalList"
+            [weeklyCumulationList]="weeklyCumulationList" [weeklyCumulationChartValues]="weeklyCumulationChartValues"
+            [dailyGoalCountPercent]="dailyGoalCountPercent" [monthlyPomosPolylinePoints]="monthlyPomosPolylinePoints">
+        </app-stat-history>
 
     </div>
 
