@@ -566,7 +566,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // monthlyPomosPercentList
 
         const startMonthTime = new Date();
-        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 30);
+        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 31);
         startMonthTime.setHours(0, 0, 0, 0);
 
         const tmpMonthlyPomosList = this.recentPomos.filter(pomoItem => {
@@ -575,7 +575,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         const tmpDateOfMonth = new Date();
         const tmpMonthlyPomosValues = [];
-        for (let dayOffset = 1; dayOffset <= 30; dayOffset++) {
+        for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
             tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
             const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
             // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
@@ -598,13 +598,18 @@ export class AppMainComponent implements OnInit, OnDestroy {
         let tmpMonthlyPomosChartData = '';
         let xValue = 0;
         for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
-            const yValue = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartMaxValue * 100);
+            let yValue = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartMaxValue * 100);
+            if (yValue === 70) {
+                yValue--;
+            } else if (yValue === 0) {
+                yValue++;
+            }
             // console.log('%c AppMainComponent onRecentPomosChange() - yValue: ', CONSOLE_TEXT_COLOR_COMPONENT, yValue);
             tmpMonthlyPomosChartData += xValue + ',' + yValue + ' ';
             xValue += stepValue;    // Increase step for xCoordinate;
         }
 
-        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '240,0';
+        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '240,70';
 
         this.monthlyPomosPolylinePoints = tmpMonthlyPomosChartData;
 
