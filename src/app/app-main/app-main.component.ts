@@ -57,6 +57,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     weeklyCumulationChartValues: number[] = [];
     dailyGoalCountPercent = 0;
     monthlyPomosPolylinePoints = '';
+    monthlyTodosPolylinePoints = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -560,11 +561,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // Next -> let's form 'dailyGoalCountPercent' for round-progress
         // TODO: Do not forget to change value 8 (pomoGoal) to real value from preferences
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
+
+        // Next -> let's form 'monthlyPomosPolylinePoints' for 'monthly pomos progress'
         this.monthlyPomosPolylinePoints = '';
-
-        // Next -> let's form 'monthlyPomosPercentList' for round-progress
-        // monthlyPomosPercentList
-
         const startMonthTime = new Date();
         startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 31);
         startMonthTime.setHours(0, 0, 0, 0);
@@ -618,7 +617,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // tslint:disable-next-line:max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
         // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
+        // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
+
+
+        // TODO: Consider to move part related to 'monthly todos progress' to new method
+        // Next -> let's form 'monthlyTodosPolylinePoints' for 'monthly todos progress'
+        this.monthlyTodosPolylinePoints = '';
+
+        let tmpMonthlyTodosChartData = [];
+        tmpMonthlyTodosChartData = this.todos.filter(todo => {
+            return todo.complete;
+        });
+
+        // tslint:disable-next-line: max-line-length
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosChartData);
     }
 
 }
