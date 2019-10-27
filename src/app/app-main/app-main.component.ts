@@ -572,6 +572,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return new Date(pomoItem.end_time) >= startMonthTime;
         });
 
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosList);
+
         const tmpDateOfMonth = new Date();
         const tmpMonthlyPomosValues = [];
         for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
@@ -624,13 +626,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // Next -> let's form 'monthlyTodosPolylinePoints' for 'monthly todos progress'
         this.monthlyTodosPolylinePoints = '';
 
-        let tmpMonthlyTodosChartData = [];
-        tmpMonthlyTodosChartData = this.todos.filter(todo => {
-            return todo.complete;
+        const tmpMonthlyTodosPolylinePoints = this.todos.filter(todoItem => {
+            return todoItem.complete && new Date(todoItem.completed_time) >= startMonthTime;
         });
 
         // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosChartData);
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosPolylinePoints);
+
+        // const tmpMonthlyTodosCompletedChartData = monthlyTodosCompleted.filter(todoItem => {
+        //     return new Date(todoItem.completed_time) >= startMonthTime;
+        // }).map(todoItemFiltered => {
+        //     return todoItemFiltered.completed_time;
+        // });
+
+        // // tslint:disable-next-line: max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosCompletedChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosCompletedChartData);
     }
 
 }
