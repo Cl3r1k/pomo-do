@@ -18,7 +18,7 @@ const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 export class StatHistoryComponent implements OnInit {
 
     @Input() recentPomos: Pomo[];
-    @Input() todos: ToDo[];
+    @Input() todosCompleted: ToDo[];
     @Input() dailyGoalList: Pomo[];
     @Input() weeklyCumulationList: Pomo[];
     @Input() weeklyCumulationChartValues: number[];

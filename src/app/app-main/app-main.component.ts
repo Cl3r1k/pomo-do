@@ -58,6 +58,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     dailyGoalCountPercent = 0;
     monthlyPomosPolylinePoints = '';
     monthlyTodosPolylinePoints = '';
+    todosCompleted = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -621,17 +622,35 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // tslint:disable-next-line: max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
 
-
+        //  --- part Todos ---
         // TODO: Consider to move part related to 'monthly todos progress' to new method
         // Next -> let's form 'monthlyTodosPolylinePoints' for 'monthly todos progress'
         this.monthlyTodosPolylinePoints = '';
 
-        const tmpMonthlyTodosPolylinePoints = this.todos.filter(todoItem => {
-            return todoItem.complete && new Date(todoItem.completed_time) >= startMonthTime;
+        this.todosCompleted = this.todos.filter(todoItem => {
+            return todoItem.complete;
         });
 
+        const tmpMonthlyTodosList = this.todosCompleted.filter(todoItem => {
+            return new Date(todoItem.completed_time) >= startMonthTime;
+        });
+
+        const tmpMonthlyTodosValues = [];
+        for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
+            tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
+            const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
+            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+            const dateOfMonthTodoCount = tmpMonthlyTodosList.filter(todoItem => {
+                const tmpDateToFilter = new Date(todoItem.completed_time);
+                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
+            }).length;
+
+            tmpMonthlyTodosValues.push(dateOfMonthTodoCount);
+            // TODO: Consider to summ array values in one cycle
+        }
+
         // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosPolylinePoints);
+        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosValues);
 
         // const tmpMonthlyTodosCompletedChartData = monthlyTodosCompleted.filter(todoItem => {
         //     return new Date(todoItem.completed_time) >= startMonthTime;
