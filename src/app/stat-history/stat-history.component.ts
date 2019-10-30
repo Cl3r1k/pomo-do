@@ -24,6 +24,7 @@ export class StatHistoryComponent implements OnInit {
     @Input() weeklyCumulationChartValues: number[];
     @Input() dailyGoalCountPercent: number;
     @Input() monthlyPomosPolylinePoints: string;
+    @Input() monthlyTodosPolylinePoints: string;
 
     weeklyCumulationCount = 0;
     allTodosCount = 0;

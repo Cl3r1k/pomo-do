@@ -264,6 +264,7 @@ Todos:
                                 ☐ Period for chart for 'Todo history' card should be over last month
                                 ☐ Make chart for 'Todo history' responsive
                                 ☐ Create child component for 'Todo history' card
+                            ☐ Change behavior of 'onClearCompleted()' method (all completed todos should be marked as 'cleaned' = true, not delete todo)
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 

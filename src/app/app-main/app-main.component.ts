@@ -232,6 +232,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
     }
 
+    // TODO: Change behavior of this method (all completed todos should be marked as 'cleaned' = true, not delete todo)
     // Method to handle event 'clearTodoListEmitter' and call Dialog
     onClearCompleted(clearState: boolean) {
         const dataForDialog = {
@@ -409,11 +410,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     }
 
-    onSubmenuAppCall(subMenuAppState) {
+    onSubMenuAppCall(subMenuAppState) {
         // console.log('subMenuAppState is: ', subMenuAppState);
         this.showSubmenuState = subMenuAppState;
     }
 
+    // TODO: rename method 'parseTitle' to 'parseTitlePriority'
     parseTitle(todo: ToDo) {
 
         let tmpTitle = todo.title;
@@ -619,67 +621,69 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
         // tslint:disable-next-line: max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
+    }
 
-        //  --- part Todos ---
-        // TODO: Consider to move part related to 'monthly todos progress' to new method
-        // Next -> let's form 'monthlyTodosPolylinePoints' for 'monthly todos progress'
-        this.monthlyTodosPolylinePoints = '';
+    transformViewTodoStats() {
+        // //  --- part Todos ---
+        // // TODO: Consider to move part related to 'monthly todos progress' to new method
+        // // Next -> let's form 'monthlyTodosPolylinePoints' for 'monthly todos progress'
+        // this.monthlyTodosPolylinePoints = '';
 
-        this.todosCompleted = this.todos.filter(todoItem => {
-            return todoItem.complete;
-        });
+        // this.todosCompleted = this.todos.filter(todoItem => {
+        //     return todoItem.complete;
+        // });
 
-        const tmpMonthlyTodosList = this.todosCompleted.filter(todoItem => {
-            return new Date(todoItem.completed_time) >= startMonthTime;
-        });
+        // const tmpMonthlyTodosList = this.todosCompleted.filter(todoItem => {
+        //     return new Date(todoItem.completed_time) >= startMonthTime;
+        // });
 
-        // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosList);
+        // // tslint:disable-next-line: max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosList);
 
-        const tmpMonthlyTodosValues = [];
-        let sumTodos = 0;
-        for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
-            tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
-            const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
-            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-            const dateOfMonthTodoCount = tmpMonthlyTodosList.filter(todoItem => {
-                const tmpDateToFilter = new Date(todoItem.completed_time);
-                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
-            }).length;
+        // const tmpMonthlyTodosValues = [];
+        // let sumTodos = 0;
+        // for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
+        //     tmpDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
+        //     const tmpDateShort = tmpDateOfMonth.toLocaleString('en-US', optionsDate);
+        //     // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+        //     const dateOfMonthTodoCount = tmpMonthlyTodosList.filter(todoItem => {
+        //         const tmpDateToFilter = new Date(todoItem.completed_time);
+        //         return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
+        //     }).length;
 
-            sumTodos += dateOfMonthTodoCount;
-            tmpMonthlyTodosValues.push(sumTodos);
-        }
+        //     sumTodos += dateOfMonthTodoCount;
+        //     tmpMonthlyTodosValues.push(sumTodos);
+        // }
 
-        // TODO: consider to move todos and pomos generation part to separate function
-        const chartTodosMaxValue = tmpMonthlyTodosValues[tmpMonthlyTodosValues.length - 1];
+        // // TODO: consider to move todos and pomos generation part to separate function
+        // const chartTodosMaxValue = tmpMonthlyTodosValues[tmpMonthlyTodosValues.length - 1];
 
-        const stepValueTodosChart = 8;
-        let tmpMonthlyTodosChartData = '';
-        let xValueTodosChart = 0;
-        for (let i = 0; i < tmpMonthlyTodosValues.length; i++) {
-            let yValueTodosChart = 70 - 70 / 100 * (tmpMonthlyTodosValues[i] / chartTodosMaxValue * 100);
-            if (yValueTodosChart === 70) {
-                yValueTodosChart--;
-            } else if (yValueTodosChart === 0) {
-                yValueTodosChart++;
-            }
-            // tslint:disable-next-line: max-line-length
-            // console.log('%c AppMainComponent onRecentPomosChange() - yValueTodosChart: ', CONSOLE_TEXT_COLOR_COMPONENT, yValueTodosChart);
-            tmpMonthlyTodosChartData += xValueTodosChart + ',' + yValueTodosChart + ' ';
-            xValueTodosChart += stepValueTodosChart;    // Increase step for xCoordinate;
-        }
+        // const stepValueTodosChart = 8;
+        // let tmpMonthlyTodosChartData = '';
+        // let xValueTodosChart = 0;
+        // for (let i = 0; i < tmpMonthlyTodosValues.length; i++) {
+        //     let yValueTodosChart = 70 - 70 / 100 * (tmpMonthlyTodosValues[i] / chartTodosMaxValue * 100);
+        //     if (yValueTodosChart === 70) {
+        //         yValueTodosChart--;
+        //     } else if (yValueTodosChart === 0) {
+        //         yValueTodosChart++;
+        //     }
+        //     // tslint:disable-next-line: max-line-length
+        //     // console.log('%c AppMainComponent onRecentPomosChange() - yValueTodosChart: ', CONSOLE_TEXT_COLOR_COMPONENT, yValueTodosChart);
+        //     tmpMonthlyTodosChartData += xValueTodosChart + ',' + yValueTodosChart + ' ';
+        //     xValueTodosChart += stepValueTodosChart;    // Increase step for xCoordinate;
+        // }
 
-        tmpMonthlyTodosChartData = '0,70 ' + tmpMonthlyTodosChartData + '240,70';
+        // tmpMonthlyTodosChartData = '0,70 ' + tmpMonthlyTodosChartData + '240,70';
 
-        this.monthlyTodosPolylinePoints = tmpMonthlyTodosChartData;
+        // this.monthlyTodosPolylinePoints = tmpMonthlyTodosChartData;
 
-        // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosValues);
-        // tslint:disable-next-line:max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosChartData);
-        // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - monthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyTodosPolylinePoints);
+        // // tslint:disable-next-line: max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosValues);
+        // // tslint:disable-next-line:max-line-length
+        // // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosChartData);
+        // // tslint:disable-next-line: max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - monthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyTodosPolylinePoints);
     }
 
 }

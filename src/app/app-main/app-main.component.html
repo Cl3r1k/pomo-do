@@ -4,7 +4,7 @@
     </div>
 
     <div class='content-container'>
-        <app-header [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubmenuAppCall($event)'>
+        <app-header [showSubmenuState]='showSubmenuState' (subMenuStateAppTitleEmitter)='onSubMenuAppCall($event)'>
         </app-header>
 
         <app-active-task [todo]='currentTodo' [currentActiveTaskName]='currentActiveTaskName'
@@ -41,7 +41,8 @@
 
         <app-stat-history [recentPomos]="recentPomos" [todosCompleted]="todosCompleted" [dailyGoalList]="dailyGoalList"
             [weeklyCumulationList]="weeklyCumulationList" [weeklyCumulationChartValues]="weeklyCumulationChartValues"
-            [dailyGoalCountPercent]="dailyGoalCountPercent" [monthlyPomosPolylinePoints]="monthlyPomosPolylinePoints">
+            [dailyGoalCountPercent]="dailyGoalCountPercent" [monthlyPomosPolylinePoints]="monthlyPomosPolylinePoints"
+            [monthlyTodosPolylinePoints]="monthlyTodosPolylinePoints">
         </app-stat-history>
 
     </div>
