@@ -633,70 +633,77 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return todoItem.complete;
         });
 
-        const startMonthTime = new Date();
-        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 31);
-        startMonthTime.setHours(0, 0, 0, 0);
-
-        const tmpMonthlyTodosList = this.todosCompleted.filter(todoItem => {
-            return new Date(todoItem.completed_time) >= startMonthTime;
-        });
-
-        // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosList);
-
-        const optionsDate = {
-            month: 'short',
-            day: 'numeric'
-        };
-
-        const tmpCurrentDateOfMonthForTodo = new Date();
-        const tmpMonthlyTodosValues = [];
-        let sumTodos = 0;
-        for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
-            tmpCurrentDateOfMonthForTodo.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
-            const tmpDateShort = tmpCurrentDateOfMonthForTodo.toLocaleString('en-US', optionsDate);
-            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-            const dateOfMonthTodoCount = tmpMonthlyTodosList.filter(todoItem => {
-                const tmpDateToFilter = new Date(todoItem.completed_time);
-                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
-            }).length;
-
-            sumTodos += dateOfMonthTodoCount;
-            tmpMonthlyTodosValues.push(sumTodos);
-        }
-
-        // TODO: consider to move todos and pomos generation part to separate function
-        this.monthlyTodosPolylinePoints = this.generatePolylineChartValues(tmpMonthlyTodosValues, 240, 70);
+        this.monthlyTodosPolylinePoints = this.generatePolylineChartValues(this.todosCompleted, 240, 70, 31);
 
         // this.monthlyTodosPolylinePoints = tmpMonthlyTodosChartData;
 
-        // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosValues);
         // tslint:disable-next-line:max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosChartData);
         // tslint:disable-next-line: max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - monthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyTodosPolylinePoints);
     }
 
-    generatePolylineChartValues(monthlyChartValues, chartWidth: number, chartHeight: number): string {
-        const chartMaxValue = monthlyChartValues[monthlyChartValues.length - 1];
-        const stepValueChart = chartWidth / 30;
-        let resultMonthlyChartData = '';
-        let xValueChart = 0;
-        for (let i = 0; i < monthlyChartValues.length; i++) {
-            let yValueChart = chartHeight - chartHeight / 100 * (monthlyChartValues[i] / chartMaxValue * 100);
-            if (yValueChart === chartHeight) {
-                yValueChart--;
-            } else if (yValueChart === 0) {
-                yValueChart++;
-            }
-            // tslint:disable-next-line: max-line-length
-            // console.log('%c AppMainComponent generatePolylineChartValues() - yValueChart: ', CONSOLE_TEXT_COLOR_COMPONENT, yValueChart);
-            resultMonthlyChartData += xValueChart + ',' + yValueChart + ' ';
-            xValueChart += stepValueChart;    // Increase step for xCoordinate;
-        }
+    generatePolylineChartValues(itemsArray, chartWidth: number, chartHeight: number, monthLength: number): string {
 
-        return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
+        const optionsDate = {
+            month: 'short',
+            day: 'numeric'
+        };
+
+        const startMonthTime = new Date();
+        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * monthLength);
+        startMonthTime.setHours(0, 0, 0, 0);
+
+        const monthlyItemsArray = itemsArray.filter(item => {
+            if (item instanceof ToDo) {
+                return new Date(item.completed_time) >= startMonthTime;
+            }
+        });
+
+        // tslint:disable-next-line: max-line-length
+        console.log('%c AppMainComponent generatePolylineChartValues() - monthlyItemsArray: ', CONSOLE_TEXT_COLOR_COMPONENT, monthlyItemsArray);
+
+        return '00';    // TODO: Do not forget to delete this line
+
+        // const currentDateOfMonth = new Date();
+        // const tmpMonthlyTodosValues = [];
+        // let sumItems = 0;
+        // for (let dayOffset = 1; dayOffset <= monthLength; dayOffset++) {
+        //     currentDateOfMonth.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
+        //     const tmpDateShort = currentDateOfMonth.toLocaleString('en-US', optionsDate);
+        //     // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
+        //     const dateOfMonthItemsCount = monthlyItemsArray.filter(item => {
+        //         const tmpDateToFilter = new Date(item.completed_time);
+        //         return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
+        //     }).length;
+
+        //     sumItems += dateOfMonthItemsCount;
+        //     tmpMonthlyTodosValues.push(sumItems);
+        // }
+
+        // // tslint:disable-next-line: max-line-length
+        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyTodosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyTodosValues);
+
+        // const monthlyChartValues1 = [];
+
+        // const chartMaxValue = monthlyChartValues[monthlyChartValues.length - 1];
+        // const stepValueChart = chartWidth / 30;
+        // let resultMonthlyChartData = '';
+        // let xValueChart = 0;
+        // for (let i = 0; i < monthlyChartValues.length; i++) {
+        //     let yValueChart = chartHeight - chartHeight / 100 * (monthlyChartValues[i] / chartMaxValue * 100);
+        //     if (yValueChart === chartHeight) {
+        //         yValueChart--;
+        //     } else if (yValueChart === 0) {
+        //         yValueChart++;
+        //     }
+        //     // tslint:disable-next-line: max-line-length
+        //     // console.log('%c AppMainComponent generatePolylineChartValues() - yValueChart: ', CONSOLE_TEXT_COLOR_COMPONENT, yValueChart);
+        //     resultMonthlyChartData += xValueChart + ',' + yValueChart + ' ';
+        //     xValueChart += stepValueChart;    // Increase step for xCoordinate;
+        // }
+
+        // return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
     }
 
 }
