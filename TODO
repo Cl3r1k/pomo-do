@@ -250,18 +250,19 @@ Todos:
                     ☐ Add separate component for 'stats'
                         ☐ For each 'stat' should be separate component
                             ✔ Create chart for 'Stat' card @done(19-10-04 09:28)
-                                ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty)
+                                ✔ Improve 'weekly-cummulation' Pomo chart when there is no data for last week @done(19-11-02 09:03)
+                                ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) <========================================================= CURRENT TASK
                                 ☐ Create child component for 'Goal' card
                             ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
                                 ☐ Create child component for 'Goal' card
-                            ☐ Create chart for 'Pomo history' card <========================================================= CURRENT TASK
-                                ☐ Period for chart for 'Pomo history' card should be over last month
+                            ☐ Create chart for 'Pomo history' card
+                                ✔ Period for chart for 'Pomo history' card should be over last month @done(19-11-02 08:54)
                                 ✔ Shoudn't count interrupted pomos @done(19-10-12 09:03)
                                 ☐ Fix bug for 'Pomo history' chart/data on first app load (data is empty)
                                 ☐ Make chart for 'Pomo history' responsive
                                 ☐ Create child component for 'Pomo history' card
                             ☐ Create chart for 'Todo history' card
-                                ☐ Period for chart for 'Todo history' card should be over last month
+                                ✔ Period for chart for 'Todo history' card should be over last month @done(19-11-02 08:54)
                                 ☐ Make chart for 'Todo history' responsive
                                 ☐ Create child component for 'Todo history' card
                             ☐ Change behavior of 'onClearCompleted()' method (all completed todos should be marked as 'cleaned' = true, not delete todo)

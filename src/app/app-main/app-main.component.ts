@@ -551,6 +551,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
             }
         });
 
+        maxWeeklyDayCount = maxWeeklyDayCount === 0 ? 1 : maxWeeklyDayCount;
+
         console.log('%c AppMainComponent onRecentPomosChange() - maxWeeklyDayCount: ', CONSOLE_TEXT_COLOR_COMPONENT, maxWeeklyDayCount);
 
         for (let index = 0; index < tmpWeeklyCumulationChartValues.length; index++) {
@@ -567,58 +569,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // Next -> let's form 'monthlyPomosPolylinePoints' for 'monthly pomos progress'
         this.monthlyPomosPolylinePoints = '';
-        const startMonthTime = new Date();
-        startMonthTime.setTime(startMonthTime.getTime() - (24 * 60 * 60 * 1000) * 31);
-        startMonthTime.setHours(0, 0, 0, 0);
 
-        const tmpMonthlyPomosList = this.recentPomos.filter(pomoItem => {
-            return new Date(pomoItem.end_time) >= startMonthTime;
-        });
+        this.monthlyPomosPolylinePoints = this.generatePolylineChartValues(this.recentPomos, 240, 70, 31);
 
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosList: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosList);
-
-        const tmpCurrentDateOfMonthForPomo = new Date();
-        const tmpMonthlyPomosValues = [];
-        let sumPomos = 0;
-        for (let dayOffset = 1; dayOffset <= 31; dayOffset++) {
-            tmpCurrentDateOfMonthForPomo.setTime(startMonthTime.getTime() + dayOffset * (24 * 60 * 60 * 1000));
-            const tmpDateShort = tmpCurrentDateOfMonthForPomo.toLocaleString('en-US', optionsDate);
-            // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-            const dateOfMonthPomoCount = tmpMonthlyPomosList.filter(pomoItem => {
-                const tmpDateToFilter = new Date(pomoItem.end_time);
-                return tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort;
-            }).length;
-
-            sumPomos += dateOfMonthPomoCount;
-            tmpMonthlyPomosValues.push(sumPomos);
-        }
-
-        const chartPomosMaxValue = tmpMonthlyPomosValues[tmpMonthlyPomosValues.length - 1];
-
-        const stepValuePomosChart = 8;
-        let tmpMonthlyPomosChartData = '';
-        let xValuePomosChart = 0;
-        for (let i = 0; i < tmpMonthlyPomosValues.length; i++) {
-            let yValuePomosChart = 70 - 70 / 100 * (tmpMonthlyPomosValues[i] / chartPomosMaxValue * 100);
-            if (yValuePomosChart === 70) {
-                yValuePomosChart--;
-            } else if (yValuePomosChart === 0) {
-                yValuePomosChart++;
-            }
-            // tslint:disable-next-line: max-line-length
-            // console.log('%c AppMainComponent onRecentPomosChange() - yValuePomosChart: ', CONSOLE_TEXT_COLOR_COMPONENT, yValuePomosChart);
-            tmpMonthlyPomosChartData += xValuePomosChart + ',' + yValuePomosChart + ' ';
-            xValuePomosChart += stepValuePomosChart;    // Increase step for xCoordinate;
-        }
-
-        tmpMonthlyPomosChartData = '0,70 ' + tmpMonthlyPomosChartData + '240,70';
-
-        this.monthlyPomosPolylinePoints = tmpMonthlyPomosChartData;
-
-        // tslint:disable-next-line:max-line-length
-        console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosValues: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosValues);
-        // tslint:disable-next-line:max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - tmpMonthlyPomosChartData: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpMonthlyPomosChartData);
         // tslint:disable-next-line: max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
 
@@ -651,13 +604,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         startMonthTime.setHours(0, 0, 0, 0);
 
         const monthlyItemsArray = itemsArray.filter(item => {
-            // TODO: refactor to ternary operator
-            if (item instanceof ToDo) {
-                return new Date(item.completed_time) >= startMonthTime;
-            }
-            // if (item instanceof Pomo) {
-            //     return new Date(item.end_time) >= startMonthTime;
-            // }
+            return item instanceof ToDo ? new Date(item.completed_time) >= startMonthTime : new Date(item.end_time) >= startMonthTime;
         });
 
         // tslint:disable-next-line: max-line-length
