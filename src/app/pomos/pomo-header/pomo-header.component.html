@@ -7,7 +7,8 @@
 
         <div class='cssProgress'>
             <div class='progress'>
-                <div class='cssProgress-bar cssProgress-active' [class.cssProgress-rest]="currentState === 'rest'" [style.width.%]='progressBarPercent'>
+                <div class='cssProgress-bar cssProgress-active' [class.cssProgress-rest]="currentState === 'rest'"
+                    [style.width.%]='progressBarPercent'>
                     <span class='cssProgress-label noselect'>{{counterView}}</span>
                 </div>
             </div>
@@ -19,7 +20,9 @@
     </div>
 
     <div class='pomo-save-container container-shadow' *ngIf='pomoStatePomoHeader === 2'>
-        <textarea autosize class='pomo-save-field' placeholder='What have you just done?' [(ngModel)]='_pomoTitleService.pomoTitle' (ngModelChange)='pomoTitleManualChange($event)' (keydown.enter)='savePomo($event)' #textAreaElement></textarea>
+        <textarea autosize class='pomo-save-field' placeholder='What have you just done?'
+            [(ngModel)]='_pomoTitleService.pomoTitle' (ngModelChange)='pomoTitleManualChange($event)'
+            (keydown.enter)='savePomo($event)' #textAreaElement></textarea>
         <svg class='icon icon-keyboard_return' (click)='savePomo()'>
             <use xlink:href='#icon-keyboard_return'></use>
         </svg>

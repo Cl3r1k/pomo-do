@@ -258,10 +258,10 @@ export class PomoHeaderComponent implements OnInit, AfterViewChecked {
     }
 
     emitPomoList() {
-        // To handle 'observable' response from service correctly we delay emit event
+        // To handle 'observable' response from service correctly we delay emit event - crutch
         setTimeout(() => {
             this.recentPomosPomoHeaderComponentEmitter.emit(this._pomoStateService.recentPomos);
-        }, 300);
+        }, 500);
     }
 
 }

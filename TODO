@@ -251,24 +251,27 @@ Todos:
                         ☐ For each 'stat' should be separate component
                             ✔ Create chart for 'Stat' card @done(19-10-04 09:28)
                                 ✔ Improve 'weekly-cummulation' Pomo chart when there is no data for last week @done(19-11-02 09:03)
-                                ☐ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) <========================================================= CURRENT TASK
+                                ✔ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) @done(19-11-03 09:11)
                                 ☐ Create child component for 'Goal' card
                             ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
                                 ☐ Create child component for 'Goal' card
                             ☐ Create chart for 'Pomo history' card
                                 ✔ Period for chart for 'Pomo history' card should be over last month @done(19-11-02 08:54)
                                 ✔ Shoudn't count interrupted pomos @done(19-10-12 09:03)
-                                ☐ Fix bug for 'Pomo history' chart/data on first app load (data is empty)
+                                ✔ Fix bug for 'Pomo history' chart/data on first app load (data is empty) @done(19-11-03 09:11)
+                                ☐ Improve 'Pomo history' chart when there is no data for the period <========================================================= CURRENT TASK
                                 ☐ Make chart for 'Pomo history' responsive
                                 ☐ Create child component for 'Pomo history' card
                             ☐ Create chart for 'Todo history' card
                                 ✔ Period for chart for 'Todo history' card should be over last month @done(19-11-02 08:54)
+                                ☐ Improve 'Todo history' chart when there is no data for the period
                                 ☐ Make chart for 'Todo history' responsive
                                 ☐ Create child component for 'Todo history' card
                             ☐ Change behavior of 'onClearCompleted()' method (all completed todos should be marked as 'cleaned' = true, not delete todo)
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 
+            ☐ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`)
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 
             ✔ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused @done(19-07-26 09:37)

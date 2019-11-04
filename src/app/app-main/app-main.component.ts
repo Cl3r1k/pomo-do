@@ -479,6 +479,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onRecentPomosChange(recentPomos: Pomo[]) {
         // console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', CONSOLE_TEXT_COLOR_COMPONENT, recentPomos);
+        if (!recentPomos.length) {
+            console.log('%c AppMainComponent onRecentPomosChange() - recentPomos EMPTY: ', 'color: red;', recentPomos);
+        }
 
         this.recentPomos = [];
         this.recentPomos = recentPomos.filter(pomo => {
