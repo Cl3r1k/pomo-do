@@ -479,9 +479,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     onRecentPomosChange(recentPomos: Pomo[]) {
         // console.log('%c AppMainComponent onRecentPomosChange() - recentPomos: ', CONSOLE_TEXT_COLOR_COMPONENT, recentPomos);
-        if (!recentPomos.length) {
-            console.log('%c AppMainComponent onRecentPomosChange() - recentPomos EMPTY: ', 'color: red;', recentPomos);
-        }
+        // if (!recentPomos.length) {
+        //     console.log('%c AppMainComponent onRecentPomosChange() - recentPomos EMPTY: ', 'color: red;', recentPomos);
+        // }
 
         this.recentPomos = [];
         this.recentPomos = recentPomos.filter(pomo => {
@@ -570,6 +570,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
         // TODO: Do not forget to change value 8 (pomoGoal) to real value from preferences
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
 
+        this.transformViewPomoStats();
+
+        this.transformViewTodoStats();
+    }
+
+    transformViewPomoStats() {
         // Next -> let's form 'monthlyPomosPolylinePoints' for 'monthly pomos progress'
         this.monthlyPomosPolylinePoints = '';
 
@@ -577,8 +583,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // tslint:disable-next-line: max-line-length
         // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
-
-        this.transformViewTodoStats();
     }
 
     transformViewTodoStats() {
@@ -635,7 +639,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // const monthlyChartValues = [];
 
-        const chartMaxValue = monthlyItemsValues[monthlyItemsValues.length - 1];
+        const chartMaxValue = monthlyItemsValues[monthlyItemsValues.length - 1] > 0 ? monthlyItemsValues[monthlyItemsValues.length - 1] : 1;
         const stepValueChart = chartWidth / (monthLength - 1);
         let resultMonthlyChartData = '';
         let xValueChart = 0;
