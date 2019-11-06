@@ -83,6 +83,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
                 this.todos = resolverData.todos;
 
                 this.transformView();
+                this.transformViewTodoStats();
             }
         );
     }
@@ -123,6 +124,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             console.log('%cin onToggleTodoComplete updatedTodos: ', CONSOLE_TEXT_COLOR_COMPONENT, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
+            this.transformViewTodoStats();
         });
     }
 
@@ -162,6 +164,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             this.todos = this.todos.filter((val) => val.id !== todo.id);
             this.updateOrder();
             this.transformView();
+            this.transformViewTodoStats();
         });
     }
 
@@ -229,6 +232,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             console.log('%cin onToggleAll incoming todos:', CONSOLE_TEXT_COLOR_COMPONENT, todos);
             this.todos = todos;
             this.transformView();
+            this.transformViewTodoStats();
         });
     }
 
@@ -265,6 +269,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service
             this.transformView();
+            this.transformViewTodoStats();
             this.onClearHoverSetState(false);
         });
     }
@@ -488,21 +493,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return !pomo.canceled;
         });
 
+        const optionsDate = {
+            month: 'short',
+            day: 'numeric'
+        };
+
         // At first -> let's generate 'dailyGoalList'
-        const tmpDailyGoalCount = this.recentPomos.filter(pomoItem => {
-            // console.log('%c AppMainComponent onRecentPomosChange() - pomo.end_time: ', CONSOLE_TEXT_COLOR_COMPONENT, pomoItem.end_time);
-            const dateOptions = {
-                month: 'short',
-                day: 'numeric'
-            };
-
-            const tmpDateGroup = new Date(pomoItem.end_time).toLocaleString('en-US', dateOptions);
-            const currentDate = new Date().toLocaleString('en-US', dateOptions);
-            return tmpDateGroup === currentDate;
+        this.dailyGoalList = this.recentPomos.filter(pomoItem => {
+            return new Date(pomoItem.end_time).toLocaleString('en-US', optionsDate) === new Date().toLocaleString('en-US', optionsDate);
         });
-
-        // console.log('%c AppMainComponent onRecentPomosChange() - tmpDailyGoalCount: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDailyGoalCount);
-        this.dailyGoalList = tmpDailyGoalCount;
 
         // Next -> let's form 'weeklyCumulationList'
         const startWeekTime = new Date();
@@ -519,11 +518,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.weeklyCumulationList = tmpWeeklyCumulationList;
 
         // Next -> let's form 'weeklyCumulationChartValues'
-        const optionsDate = {
-            month: 'short',
-            day: 'numeric'
-        };
-
         const tmpDateOfWeek = new Date();
         const tmpWeeklyCumulationChartValues = [];
         for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
@@ -571,8 +565,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
 
         this.transformViewPomoStats();
-
-        this.transformViewTodoStats();
     }
 
     transformViewPomoStats() {
