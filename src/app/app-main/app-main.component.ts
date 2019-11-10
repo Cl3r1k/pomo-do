@@ -585,7 +585,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return todoItem.complete;
         });
 
-        this.monthlyTodosPolylinePoints = this.generatePolylineChartValues(this.todosCompleted, 240, 70, 31);
+        // this.monthlyTodosPolylinePoints = this.generatePolylineChartValues(this.todosCompleted, 240, 70, 31);
+
+        this.monthlyTodosPolylinePoints = '0,70 0,69 8,31.1 16,31.1 192,11.6 200,11.6 208,1 216,1 224,1 232,1 240,1 240,70';
 
         // tslint:disable-next-line: max-line-length
         console.log('%c AppMainComponent onRecentPomosChange() - monthlyTodosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyTodosPolylinePoints);
@@ -618,7 +620,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             // tslint:disable-next-line: max-line-length
             // console.log('%c AppMainComponent generatePolylineChartValues() - currentDateOfMonthShort: ', CONSOLE_TEXT_COLOR_COMPONENT, currentDateOfMonthShort);
             const dateOfMonthItemsCount = monthlyItemsArray.filter(item => {
-                const dateToFilter = item instanceof ToDo ? new Date(item.completed_time) : new Date(item.end_time) ;
+                const dateToFilter = item instanceof ToDo ? new Date(item.completed_time) : new Date(item.end_time);
                 return dateToFilter.toLocaleString('en-US', optionsDate) === currentDateOfMonthShort;
             }).length;
 
