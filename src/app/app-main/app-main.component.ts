@@ -574,7 +574,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.monthlyPomosPolylinePoints = this.generatePolylineChartValues(this.recentPomos, 240, 70, 31);
 
         // tslint:disable-next-line: max-line-length
-        // console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
+        console.log('%c AppMainComponent onRecentPomosChange() - monthlyPomosPolylinePoints: ', CONSOLE_TEXT_COLOR_COMPONENT, this.monthlyPomosPolylinePoints);
     }
 
     transformViewTodoStats() {
