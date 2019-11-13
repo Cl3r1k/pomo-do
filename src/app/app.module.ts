@@ -25,6 +25,8 @@ import { PomosComponent } from '@app/pomos/pomos.component';
 import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
 import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.component';
 import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
+import { StatHistoryComponent } from './stat-history/stat-history.component';
+import { StatDetailsComponent } from './stats-details/stat-details.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -61,7 +63,6 @@ import { Utils } from '@app/_common/utils';
 
 // Guards
 import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
-import { StatHistoryComponent } from './stat-history/stat-history.component';
 
 @NgModule({
     declarations: [
@@ -92,7 +93,8 @@ import { StatHistoryComponent } from './stat-history/stat-history.component';
         PomoHeaderComponent,
         DialogCancelComponent,
         PomoListComponent,
-        StatHistoryComponent
+        StatHistoryComponent,
+        StatDetailsComponent
     ],
     imports: [
         AppRoutingModule,

@@ -9,7 +9,15 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
+feat: add 'StatDetailsComponent'
 
+refactor: Update in 'PomosComponent' (code)
+refactor: Update in 'AppMainComponent' (code)
+
+refactor: Update in 'StatHistoryComponent' (template)
+
+refactor: Update in 'PomoHeaderComponent' (code, template, styles, tests)
+refactor: Minor changes
 
 Todos:
     New:
@@ -252,7 +260,10 @@ Todos:
                             ✔ Create chart for 'Stat' card @done(19-10-04 09:28)
                                 ✔ Improve 'weekly-cummulation' Pomo chart when there is no data for last week @done(19-11-02 09:03)
                                 ✔ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) @done(19-11-03 09:11)
-                                ☐ Create child component for 'Goal' card <========================================================= CURRENT TASK
+                                ☐ Create child component for 'Stat' card
+                                    ✔ Create 'StatDetailsComponent' @done(19-11-12 09:03)
+                                        ☐ Complete UI and functionality for 'StatDetailsComponent'  <========================================================= CURRENT TASK
+                                        ☐ Add tests for 'StatDetailsComponent'
                             ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
                                 ☐ Create child component for 'Goal' card
                             ☐ Create chart for 'Pomo history' card

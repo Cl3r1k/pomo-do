@@ -1,5 +1,5 @@
 <div class="stat-history-container">
-    <div class="stats stat-history-item" [class.selected-item]="currentSelectedItem === 1" (click)="setSelectedItem(1)">
+    <div class="stat stat-history-item" [class.selected-item]="currentSelectedItem === 1" (click)="setSelectedItem(1)">
         <h3 class="card-header">Stat</h3>
         <div class="card-info">
             <p class="card-description">Weekly cumulation</p>
@@ -53,4 +53,6 @@
             </div>
         </div>
     </div>
+
+    <app-stat-details></app-stat-details>
 </div>
