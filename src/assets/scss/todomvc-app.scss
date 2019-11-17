@@ -6,7 +6,6 @@
 @import 'todo_header_app';
 @import 'todolist_app';
 @import 'todo_footer_app';
-@import 'sweetalert';
 @import 'tooltip';
 @import 'sign-in';
 @import 'todo_current';
@@ -30,37 +29,12 @@ hr {
     }
 }
 
-button {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background: none;
-    font-size: 100%;
-    vertical-align: baseline;
-    font-family: inherit;
-    font-weight: inherit;
-    color: inherit;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 :focus {
     outline: 0;
 }
 
 .hidden {
     display: none;
-}
-
-.icon {
-    display: inline-block;
-    color: #444444;
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
 }
 
 
