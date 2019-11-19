@@ -21,7 +21,7 @@
                             "src/favicon.ico"
                         ],
                         "styles": [
-                            "src/assets/scss/global.scss",
+                            "src/assets/scss/main.scss",
                             "src/assets/scss/todomvc-app.scss",
                             "src/styles.scss"
                         ],
@@ -93,7 +93,7 @@
                             "node_modules/hammerjs/hammer.min.js"
                         ],
                         "styles": [
-                            "src/assets/scss/global.scss",
+                            "src/assets/scss/main.scss",
                             "src/assets/scss/todomvc-app.scss",
                             "src/styles.scss"
                         ],
