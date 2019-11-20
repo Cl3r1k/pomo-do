@@ -8,13 +8,25 @@
 @import "./base/base";
 @import "./base/fonts";
 
-// 4. Layouts (Layout-related sections)
-@import "./layout/general";
-
-// 5. Components
+// 4. Components
 @import "./components/button";
 @import "./components/icon";
 @import "./components/input_styled";
+
+// 5. Layouts (Layout-related sections)
+@import "./layout/general";
+@import "./layout/sign-in";
+@import "./layout/main_app";
+@import "./layout/title_app";
+@import "./layout/todo_current";
+@import "./layout/pomo_header_app";
+@import "./layout/pomo_list_app";
+@import "./layout/todo_header_app";
+@import "./layout/todo_list_app";
+@import "./layout/todo_footer_app";
+@import "./layout/tooltip";
+@import "./layout/stat_history_app";
+@import "./layout/footer";
 
 // 6. Pages (Page-specific styles)
 

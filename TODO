@@ -276,8 +276,8 @@ Todos:
 
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 
-            ☐ Implement 'Pattern 7-1'  <========================================================= CURRENT TASK
-            ☐ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`)
+            ✔ Implement 'Pattern 7-1' @done(19-11-19 09:05)
+            ☐ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`)  <========================================================= CURRENT TASK
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 
             ✔ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused @done(19-07-26 09:37)
