@@ -18,11 +18,23 @@
         "app": "concurrently \"node json-server.js\" \"node ./replace.build.js\" \"npm run start\"",
         "app-old": "concurrently \"node ./replace.build.js\" \"npm run start\"",
         "app-server": "concurrently \"npm run json-server-old\" \"node ./replace.build.js\" \"npm run start\"",
+        "update-build": "node ./replace.build.js",
         "update-patch": "npm --no-git-tag-version version patch",
         "update-minor": "npm --no-git-tag-version version minor",
         "update-major": "npm --no-git-tag-version version major",
         "deploy-gh": "ng build --prod --base-href 'https://Cl3r1k.github.io/pomo-do/' && ngh --no-silent",
         "sw": "ng build --prod && http-server -c-1 -p 4200 dist/"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*": [
+            "npm run update-build",
+            "git add"
+        ]
     },
     "private": true,
     "dependencies": {
