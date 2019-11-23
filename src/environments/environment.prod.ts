@@ -10,6 +10,6 @@ export const environment = {
     consoleTextColorService: 'color: salmon;',
     consoleTextColorComponent: 'color: cadetblue;',
 
-    // Autoincremented build version variable
-    version: '1.5.0.1133'
+    // Auto incremented build version variable
+    version: '1.5.0.1134'
 };

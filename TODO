@@ -278,6 +278,7 @@ Todos:
 
             ✔ Implement 'Pattern 7-1' @done(19-11-19 09:05)
             ☐ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`)  <========================================================= CURRENT TASK
+            ☐ Consider to improve log messages with currying (`https://learn.javascript.ru/currying-partials`)
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 
             ✔ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused @done(19-07-26 09:37)
