@@ -256,7 +256,7 @@ Todos:
                                 ✔ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) @done(19-11-03 09:11)
                                 ☐ Create child component for 'Stat' card
                                     ✔ Create 'StatDetailsComponent' @done(19-11-12 09:03)
-                                        ☐ Complete UI and functionality for 'StatDetailsComponent'
+                                        ☐ Complete UI and functionality for 'StatDetailsComponent'  <========================================================= CURRENT TASK
                                         ☐ Add tests for 'StatDetailsComponent'
                             ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
                                 ☐ Create child component for 'Goal' card
@@ -277,7 +277,7 @@ Todos:
                 ✔ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms]) @done(19-08-27 08:56)
 
             ✔ Implement 'Pattern 7-1' @done(19-11-19 09:05)
-            ☐ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`)  <========================================================= CURRENT TASK
+            ✘ Use 'Husky' to updated build version before commit (`https://habr.com/ru/company/ruvds/blog/428173/` | `https://github.com/typicode/husky#install`) @cancelled(19-11-23 08:54) (Does not fit to desired aims)
             ☐ Consider to improve log messages with currying (`https://learn.javascript.ru/currying-partials`)
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 

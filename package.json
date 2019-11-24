@@ -25,16 +25,6 @@
         "deploy-gh": "ng build --prod --base-href 'https://Cl3r1k.github.io/pomo-do/' && ngh --no-silent",
         "sw": "ng build --prod && http-server -c-1 -p 4200 dist/"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*": [
-            "git add -A"
-        ]
-    },
     "private": true,
     "dependencies": {
         "@angular/animations": "^7.0.2",
@@ -70,7 +60,6 @@
         "@types/node": "^6.0.96",
         "codelyzer": "^4.1.0",
         "concurrently": "^4.0.1",
-        "husky": "^3.1.0",
         "jasmine-core": "^2.9.1",
         "jasmine-spec-reporter": "~4.2.1",
         "karma": "^3.0.0",
@@ -79,7 +68,6 @@
         "karma-coverage-istanbul-reporter": "^1.4.1",
         "karma-jasmine": "~1.1.1",
         "karma-jasmine-html-reporter": "^0.2.2",
-        "lint-staged": "^9.4.3",
         "protractor": "^5.1.2",
         "replace-in-file": "^3.1.0",
         "ts-node": "~4.1.0",
