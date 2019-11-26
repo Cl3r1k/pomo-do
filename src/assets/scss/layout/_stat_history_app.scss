@@ -163,3 +163,7 @@ $label-font-size-redo: $default-size * 4;
         }
     }
 }
+
+.grid-spanner-16 {
+    grid-column: span 16;
+}
