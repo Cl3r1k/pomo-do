@@ -2,25 +2,31 @@
 // This file contains all styles related to the detailed statistic of the application.
 // -----------------------------------------------------------------------------------
 
-.controls-date-container {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    .button-switcher-list {
-        grid-column: span 3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        .button-switcher {
-            border: 1px solid #c2b7b7;
+.stat-details-container {
+    border: 1px solid red;
+    .controls-date-container {
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        .button-switcher-list {
+            grid-column: span 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            .button-switcher {
+                border: 1px solid #c2b7b7;
+                cursor: pointer;
+            }
+        }
+        .extra-button {
+            grid-column: span 1;
+        }
+        .date-container {
+            grid-column: 5/17;
+            justify-self: end;
         }
     }
-    .extra-button {
-        //
-    }
-    .date-container {
-        //
-    }
 }
+
