@@ -3,10 +3,12 @@
 // -----------------------------------------------------------------------------------
 
 .stat-details-container {
-    border: 1px solid red;
+    border: 1px solid $borderGrayColor;
+    padding: 10px;
     .controls-date-container {
         display: grid;
         grid-template-columns: repeat(16, 1fr);
+        margin-bottom: 10px;
         .button-switcher-list {
             grid-column: span 3;
             display: flex;
@@ -27,6 +29,12 @@
             grid-column: 5/17;
             justify-self: end;
         }
+    }
+    .stat-chart-container {
+        border: 1px solid $borderGrayColor;
+    }
+    .stat-report-container {
+        border: 1px solid $borderGrayColor;
     }
 }
 
