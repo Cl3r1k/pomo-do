@@ -1,6 +1,7 @@
 // -----------------------------------------------------------------------------------
 // This file contains all styles related to the detailed statistic of the application.
 // -----------------------------------------------------------------------------------
+$borderColor: #c2b7b7;
 
 .stat-details-container {
     border: 1px solid $borderGrayColor;
@@ -18,7 +19,7 @@
             margin: 0;
             padding: 0;
             .button-switcher {
-                border: 1px solid #c2b7b7;
+                border: 1px solid $borderColor;
                 cursor: pointer;
             }
         }
@@ -32,6 +33,27 @@
     }
     .stat-chart-container {
         border: 1px solid $borderGrayColor;
+        .start-chart-header {
+            ul {
+                display: grid;
+                grid-template-columns: 33% 34% 33%;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                li {
+                    border: 1px solid $borderColor;
+                    border-right: none;
+                    &:last-child {
+                        border-right: 1px solid $borderColor;
+                    }
+                    .start-chart-header-value {
+                        margin-right: 5px;
+                        font-weight: 700;
+                        font-size: 26px;
+                    }
+                }
+            }
+        }
         .start-chart-block {
             height: 18em;
         }
