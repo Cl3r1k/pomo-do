@@ -40,11 +40,13 @@ $borderColor: #c2b7b7;
                 list-style: none;
                 margin: 0;
                 padding: 0;
+                text-align: center;
                 li {
-                    border: 1px solid $borderColor;
-                    border-right: none;
+                    border-bottom: 1px solid $borderColor;
+                    border-right: 1px solid $borderColor;
+                    padding: 10px 0;
                     &:last-child {
-                        border-right: 1px solid $borderColor;
+                        border-right: none;
                     }
                     .start-chart-header-value {
                         margin-right: 5px;
@@ -56,6 +58,10 @@ $borderColor: #c2b7b7;
         }
         .start-chart-block {
             height: 18em;
+            padding: 20px;
+            svg {
+                border: 1px solid #dbdbdb;
+            }
         }
     }
     .stat-report-container {
