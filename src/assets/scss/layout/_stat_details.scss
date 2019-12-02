@@ -33,6 +33,7 @@ $borderColor: #c2b7b7;
     }
     .stat-chart-container {
         border: 1px solid $borderGrayColor;
+        margin-bottom: 20px;
         .start-chart-header {
             ul {
                 display: grid;
@@ -66,6 +67,18 @@ $borderColor: #c2b7b7;
     }
     .stat-report-container {
         border: 1px solid $borderGrayColor;
+        padding: 20px 10px 20px 20px;
+        .stat-report-card {
+            .card-info {
+                margin: 0;
+            }
+            .card-data {
+                //
+            }
+            .card-details {
+                margin: 0;
+            }
+        }
     }
 }
 
