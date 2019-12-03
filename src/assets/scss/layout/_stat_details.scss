@@ -2,6 +2,7 @@
 // This file contains all styles related to the detailed statistic of the application.
 // -----------------------------------------------------------------------------------
 $borderColor: #c2b7b7;
+$grayedColor: #4d4d4d86;
 
 .stat-details-container {
     border: 1px solid $borderGrayColor;
@@ -68,17 +69,30 @@ $borderColor: #c2b7b7;
     .stat-report-container {
         border: 1px solid $borderGrayColor;
         padding: 20px 10px 20px 20px;
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
         .stat-report-card {
             .card-info {
-                margin: 0;
+                margin: 0 0 7px 0;
             }
             .card-data {
-                //
+                font-weight: 700;
+                font-size: 22px;
             }
             .card-details {
-                margin: 0;
+                margin: 8px 0 0 0;
+                &.grayed {
+                    color: $grayedColor;
+                    width: 80%;
+                }
             }
-        }
+            .weekly-days-chart {
+                //
+                .weekly-days-chart-column {
+                    height: 70px;
+                    background-color: red;
+                }
+            }
+        }        
     }
 }
-

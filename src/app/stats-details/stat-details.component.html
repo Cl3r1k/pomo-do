@@ -30,12 +30,17 @@
             <p class="card-info">Best workday</p>
             <span class="card-data">No data</span>
             <p class="card-details">0% more than average</p>
-            <div class="weekly-days-chart"></div>
+            <!-- <div class="card-chart">
+                <span class="chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col"></span>
+            </div> -->
+            <div class="weekly-days-chart">
+                <span class="weekly-days-chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col"></span>
+            </div>
         </div>            
         <div class="stat-report-card card-tags">
             <p class="card-info">Top tags</p>
             <span class="card-data">No data</span>
-            <p class="card-details">You can add #tag to pomo description to organize your work</p>
+            <p class="card-details grayed">You can add #tag to pomo description to organize your work</p>
         </div>
         <div class="stat-report-card card-worktime">
             <p class="card-info">Best worktime</p>

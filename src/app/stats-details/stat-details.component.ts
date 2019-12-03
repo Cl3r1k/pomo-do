@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatDetailsComponent implements OnInit {
 
+    weeklyCumulationChartValues = [1, 1, 2, 5, 10, 50, 70];
+
     constructor() { }
 
     ngOnInit() {
