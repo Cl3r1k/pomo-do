@@ -20,8 +20,8 @@
         </div>
         <div class="start-chart-block">
             <svg width="100%" height="100%" preserveAspectRatio="none">
-                <polyline points="0,1 2,2 3,3 5,5 10,10" fill="rgba(168, 247, 49, 0.3)"
-                        stroke-width="1" stroke="rgba(252, 103, 77, 0.5)" />
+                <polyline points="0,1 2,2 3,3 5,5 10,10" fill="rgba(168, 247, 49, 0.3)" stroke-width="1"
+                    stroke="rgba(252, 103, 77, 0.5)" />
             </svg>
         </div>
     </div>
@@ -34,9 +34,12 @@
                 <span class="chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col"></span>
             </div> -->
             <div class="weekly-days-chart">
-                <span class="weekly-days-chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col"></span>
+                <span class="weekly-days-chart-column" *ngFor="let col of weeklyCumulationChartValues"
+                    [style.height.%]="col"></span>
+                <span class="weekly-days-label" *ngFor="let dayOfWeek of weekDays"
+                    [style.height.%]="col">{{dayOfWeek}}</span>
             </div>
-        </div>            
+        </div>
         <div class="stat-report-card card-tags">
             <p class="card-info">Top tags</p>
             <span class="card-data">No data</span>
