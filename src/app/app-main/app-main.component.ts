@@ -565,6 +565,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.dailyGoalCountPercent = this.dailyGoalList.length / 8 > 1 ? 100 : Math.round(this.dailyGoalList.length / 8 * 100);
 
         this.transformViewPomoStats();
+
+        this.generateWorkDaysData();
     }
 
     transformViewPomoStats() {
@@ -649,6 +651,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
         }
 
         return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
+    }
+
+    generateWorkDaysData() {
+        // const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const workDaysStats = new Array(7);
+        workDaysStats.fill(0);
+        this.recentPomos.map(pomo => {
+            const pomoEndTime = new Date(pomo.end_time);
+            // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
+            workDaysStats[pomoEndTime.getDay()]++;
+        });
+
+        console.log('workDaysStats', workDaysStats);
+        console.log('%c AppMainComponent generateWorkDaysData() - workDaysStats: ', CONSOLE_TEXT_COLOR_COMPONENT, workDaysStats);
     }
 
 }
