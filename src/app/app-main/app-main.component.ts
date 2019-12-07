@@ -654,6 +654,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     }
 
     generateWorkDaysData() {
+        // TODO: calculate stats for certain period, but not for all time
         // const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const workDaysStats = new Array(7);
         workDaysStats.fill(0);
@@ -663,8 +664,24 @@ export class AppMainComponent implements OnInit, OnDestroy {
             workDaysStats[pomoEndTime.getDay()]++;
         });
 
-        console.log('workDaysStats', workDaysStats);
         console.log('%c AppMainComponent generateWorkDaysData() - workDaysStats: ', CONSOLE_TEXT_COLOR_COMPONENT, workDaysStats);
+
+        let maxValue = 0;
+        let maxValueIndex = 0;
+        let avgValue = 0;
+        workDaysStats.map((item, idx) => {
+            if (item > maxValue) {
+                maxValue = item;
+                maxValueIndex = idx;
+            }
+            avgValue += item;
+        });
+
+        avgValue /= workDaysStats.length;
+
+        console.log('%c AppMainComponent generateWorkDaysData() - maxValue: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValue);
+        console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
+        console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
     }
 
 }
