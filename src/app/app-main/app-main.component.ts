@@ -678,10 +678,19 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
 
         avgValue /= workDaysStats.length;
+        const aboveAveragePercent = ((maxValue - avgValue) / (avgValue / 100)).toFixed(2);
+
+        const workDaysStatsPercents = workDaysStats.map(item => {
+            return item / (maxValue / 100);
+        });
+
+        // tslint:disable-next-line: max-line-length
+        console.log('%c AppMainComponent generateWorkDaysData() - workDaysStatsPercents', CONSOLE_TEXT_COLOR_COMPONENT, workDaysStatsPercents);
 
         console.log('%c AppMainComponent generateWorkDaysData() - maxValue: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValue);
         console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
         console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
+        console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, aboveAveragePercent);
     }
 
 }
