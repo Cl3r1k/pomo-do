@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-stat-details',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./stat-details.component.scss']
 })
 export class StatDetailsComponent implements OnInit {
+
+    @Input() bestWorkDay: string;
+    @Input() aboveAveragePercent: string;
 
     weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
     weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];

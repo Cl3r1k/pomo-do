@@ -59,6 +59,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     monthlyPomosPolylinePoints = '';
     monthlyTodosPolylinePoints = '';
     todosCompleted = [];
+    bestWorkDay = '';
+    aboveAveragePercent = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -655,7 +657,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     generateWorkDaysData() {
         // TODO: calculate stats for certain period, but not for all time
-        // const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const workDaysStats = new Array(7);
         workDaysStats.fill(0);
         this.recentPomos.map(pomo => {
@@ -678,7 +680,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
         });
 
         avgValue /= workDaysStats.length;
-        const aboveAveragePercent = ((maxValue - avgValue) / (avgValue / 100)).toFixed(2);
 
         const workDaysStatsPercents = workDaysStats.map(item => {
             return item / (maxValue / 100);
@@ -690,7 +691,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent generateWorkDaysData() - maxValue: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValue);
         console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
         console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
-        console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, aboveAveragePercent);
+
+        this.bestWorkDay = daysOfWeek[maxValueIndex];
+        this.aboveAveragePercent = ((maxValue - avgValue) / (avgValue / 100)).toFixed(2);
+
+        // tslint:disable-next-line: max-line-length
+        console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);
     }
 
 }
