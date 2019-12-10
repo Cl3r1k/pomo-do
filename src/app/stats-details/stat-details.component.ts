@@ -9,6 +9,7 @@ export class StatDetailsComponent implements OnInit {
 
     @Input() bestWorkDay: string;
     @Input() aboveAveragePercent: string;
+    @Input() workDaysStatsPercents: number[];
 
     weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
     weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];

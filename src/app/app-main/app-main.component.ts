@@ -61,6 +61,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     todosCompleted = [];
     bestWorkDay = '';
     aboveAveragePercent = '';
+    workDaysStatsPercents = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -655,11 +656,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
         return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
     }
 
-    generateWorkDaysData() {
+    generateWorkDaysData(startDate: Date = null, endDate: Date = null) {
         // TODO: calculate stats for certain period, but not for all time
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const workDaysStats = new Array(7);
         workDaysStats.fill(0);
+
+        if (!startDate && !endDate) {
+            endDate = new Date();
+            startDate = new Date();
+            startDate.setMonth(startDate.getMonth() - 1);
+            console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
+            console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
+        }
+
         this.recentPomos.map(pomo => {
             const pomoEndTime = new Date(pomo.end_time);
             // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
@@ -681,12 +691,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         avgValue /= workDaysStats.length;
 
-        const workDaysStatsPercents = workDaysStats.map(item => {
+        this.workDaysStatsPercents = workDaysStats.map(item => {
             return item / (maxValue / 100);
         });
 
         // tslint:disable-next-line: max-line-length
-        console.log('%c AppMainComponent generateWorkDaysData() - workDaysStatsPercents', CONSOLE_TEXT_COLOR_COMPONENT, workDaysStatsPercents);
+        console.log('%c AppMainComponent generateWorkDaysData() - workDaysStatsPercents', CONSOLE_TEXT_COLOR_COMPONENT, this.workDaysStatsPercents);
 
         console.log('%c AppMainComponent generateWorkDaysData() - maxValue: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValue);
         console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
