@@ -662,13 +662,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
         const workDaysStats = new Array(7);
         workDaysStats.fill(0);
 
-        if (!startDate && !endDate) {
+        if (!endDate) {
             endDate = new Date();
-            startDate = new Date();
-            startDate.setMonth(startDate.getMonth() - 1);
-            console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
-            console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
         }
+
+        if (!startDate) {
+            startDate = new Date(endDate);
+            startDate.setMonth(startDate.getMonth() - 1);
+        }
+
+        endDate.setHours(23, 59, 59, 0);
+        startDate.setHours(0, 0, 0, 0);
+
+        console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
+        console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
 
         this.recentPomos.map(pomo => {
             const pomoEndTime = new Date(pomo.end_time);
