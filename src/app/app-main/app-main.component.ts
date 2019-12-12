@@ -674,10 +674,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
         endDate.setHours(23, 59, 59, 0);
         startDate.setHours(0, 0, 0, 0);
 
-        console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
-        console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
+        // console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
+        // console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
 
-        this.recentPomos.map(pomo => {
+        this.recentPomos.filter(pomo => {
+            return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
+        }).map(pomo => {
             const pomoEndTime = new Date(pomo.end_time);
             // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
             workDaysStats[pomoEndTime.getDay()]++;

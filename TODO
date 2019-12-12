@@ -266,11 +266,13 @@ Todos:
                                 ✔ Fix bug for 'Pomo history' chart/data on first app load (data is empty) @done(19-11-03 09:11)
                                 ✔ Improve 'Pomo history' chart when there is no data for the period @done(19-11-04 10:15)
                                 ✔ Make chart for 'Pomo history' responsive @done(19-11-11 08:58)
+                                ☐ Fix view for 'Pomo history' chart (for the chart should be taken data for only last month)
                                 ☐ Create child component for 'Pomo history' card
                             ☐ Create chart for 'Todo history' card
                                 ✔ Period for chart for 'Todo history' card should be over last month @done(19-11-02 08:54)
                                 ✔ Improve 'Todo history' chart when there is no data for the period @done(19-11-04 10:15)
                                 ✔ Make chart for 'Todo history' responsive @done(19-11-11 08:58)
+                                ☐ Fix view for 'Todo history' chart (for the chart should be taken data for only last month)
                                 ☐ Create child component for 'Todo history' card
                             ☐ Change behavior of 'onClearCompleted()' method (all completed todos should be marked as 'cleaned' = true, not delete todo)
 
