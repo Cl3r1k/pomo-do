@@ -256,7 +256,12 @@ Todos:
                                 ✔ Fix bug for 'Weekly cummulation' chart/data on first app load (data is empty) @done(19-11-03 09:11)
                                 ☐ Create child component for 'Stat' card
                                     ✔ Create 'StatDetailsComponent' @done(19-11-12 09:03)
-                                        ☐ Complete UI and functionality for 'StatDetailsComponent'  <========================================================= CURRENT TASK
+                                        ☐ Complete UI and functionality for 'StatDetailsComponent'
+                                            ✔ Complete UI and functionality for 'Best workday' part @done(19-12-12 09:06)
+                                            ☐ Complete UI and functionality for 'Top tags' part   <========================================================= CURRENT TASK
+                                            ☐ Complete UI and functionality for 'Best worktime' part
+                                            ☐ Complete UI and functionality for 'stat-chart-header' part
+                                            ☐ Complete UI and functionality for 'stat-chart-block' part
                                         ☐ Add tests for 'StatDetailsComponent'
                             ✔ Create chart for 'Stat' card @done(19-10-12 08:56)
                                 ☐ Create child component for 'Goal' card

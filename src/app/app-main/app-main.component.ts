@@ -701,7 +701,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         avgValue /= workDaysStats.length;
 
         this.workDaysStatsPercents = workDaysStats.map(item => {
-            return item / (maxValue / 100);
+            return item > 0 ? item / (maxValue / 100) : 2;
         });
 
         // tslint:disable-next-line: max-line-length
@@ -711,8 +711,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
         console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
 
-        this.bestWorkDay = daysOfWeek[maxValueIndex];
-        this.aboveAveragePercent = ((maxValue - avgValue) / (avgValue / 100)).toFixed(2);
+        this.bestWorkDay = maxValue > 0 ? daysOfWeek[maxValueIndex] : 'No data';
+        this.aboveAveragePercent = maxValue > 0 ? ((maxValue - avgValue) / (avgValue / 100)).toFixed(2) : '0';
 
         // tslint:disable-next-line: max-line-length
         console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);

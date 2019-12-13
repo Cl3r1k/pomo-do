@@ -11,14 +11,14 @@
         </div>
     </div>
     <div class="stat-chart-container">
-        <div class="start-chart-header">
+        <div class="stat-chart-header">
             <ul>
-                <li><span class="start-chart-header-value">0</span>Total number</li>
-                <li><span class="start-chart-header-value">0</span>Daily average</li>
-                <li><span class="start-chart-header-value">0.0</span>Monthly change</li>
+                <li><span class="stat-chart-header-value">0</span>Total number</li>
+                <li><span class="stat-chart-header-value">0</span>Daily average</li>
+                <li><span class="stat-chart-header-value">0.0</span>Monthly change</li>
             </ul>
         </div>
-        <div class="start-chart-block">
+        <div class="stat-chart-block">
             <svg width="100%" height="100%" preserveAspectRatio="none">
                 <polyline points="0,1 2,2 3,3 5,5 10,10" fill="rgba(168, 247, 49, 0.3)" stroke-width="1"
                     stroke="rgba(252, 103, 77, 0.5)" />
@@ -30,9 +30,6 @@
             <p class="card-info">Best workday</p>
             <span class="card-data">{{bestWorkDay}}</span>
             <p class="card-details">{{aboveAveragePercent}}% more than average</p>
-            <!-- <div class="card-chart">
-                <span class="chart-column" *ngFor="let col of weeklyCumulationChartValues" [style.height.%]="col"></span>
-            </div> -->
             <div class="weekly-days-chart">
                 <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents"
                     [style.height.%]="col"></span>
