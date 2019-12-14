@@ -394,6 +394,13 @@ export class AppMainComponent implements OnInit, OnDestroy {
         return isPresent;
     }
 
+    private getHashtagsInTitle(title: string): string[] {
+        const hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
+        const hashtagsInTitle: string[] = title.match(hashtagsRegExp);
+
+        return hashtagsInTitle;
+    }
+
     containerClickHandler(event) {
         // FEATURE: Here we should check, if there is some edited item -> cancel edit
         // console.log('%c containerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
@@ -570,6 +577,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         this.transformViewPomoStats();
 
         this.generateWorkDaysData();
+
+        this.generateTopHashtagsData();
     }
 
     transformViewPomoStats() {
@@ -657,7 +666,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
     }
 
     generateWorkDaysData(startDate: Date = null, endDate: Date = null) {
-        // TODO: calculate stats for certain period, but not for all time
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const workDaysStats = new Array(7);
         workDaysStats.fill(0);
@@ -716,6 +724,28 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
         // tslint:disable-next-line: max-line-length
         console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);
+    }
+
+    generateTopHashtagsData(startDate: Date = null, endDate: Date = null) {
+        if (!endDate) {
+            endDate = new Date();
+        }
+
+        if (!startDate) {
+            startDate = new Date(endDate);
+            startDate.setMonth(startDate.getMonth() - 1);
+        }
+
+        endDate.setHours(23, 59, 59, 0);
+        startDate.setHours(0, 0, 0, 0);
+
+        const tagsList = {};
+        this.recentPomos.filter(pomo => {
+            return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
+        }).map(pomo => {
+            const hashtagsInTitle = this.getHashtagsInTitle(pomo.title);
+            console.log('%c AppMainComponent generateTopHashtagsData() - hashtagsInTitle', CONSOLE_TEXT_COLOR_COMPONENT, hashtagsInTitle);
+        });
     }
 
 }
