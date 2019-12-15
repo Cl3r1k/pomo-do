@@ -744,8 +744,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
             return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
         }).map(pomo => {
             const hashtagsInTitle = this.getHashtagsInTitle(pomo.title);
-            console.log('%c AppMainComponent generateTopHashtagsData() - hashtagsInTitle', CONSOLE_TEXT_COLOR_COMPONENT, hashtagsInTitle);
+            console.log('%cAppMainComponent generateTopHashtagsData() - hashtagsInTitle', CONSOLE_TEXT_COLOR_COMPONENT, hashtagsInTitle);
+            if (hashtagsInTitle && hashtagsInTitle.length) {
+                hashtagsInTitle.map(hashtag => {
+                    tagsList[hashtag.trim()] = !tagsList[hashtag.trim()] ? 1 : tagsList[hashtag.trim()] + 1;
+                });
+            }
         });
+        console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
     }
 
 }
