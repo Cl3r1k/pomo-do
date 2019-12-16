@@ -740,6 +740,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         startDate.setHours(0, 0, 0, 0);
 
         const tagsList = {};
+        let maxHashtagCount = 0;
+        let maxHashtagName = '';
         this.recentPomos.filter(pomo => {
             return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
         }).map(pomo => {
@@ -748,9 +750,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
             if (hashtagsInTitle && hashtagsInTitle.length) {
                 hashtagsInTitle.map(hashtag => {
                     tagsList[hashtag.trim()] = !tagsList[hashtag.trim()] ? 1 : tagsList[hashtag.trim()] + 1;
+                    if (tagsList[hashtag.trim()] > maxHashtagCount) {
+                        maxHashtagCount = tagsList[hashtag.trim()];
+                        maxHashtagName = hashtag.trim();
+                    }
                 });
             }
         });
+
+        console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagCount);
+        console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagName);
+
+        // Object.keys(tagsList).map(key => {
+        //     console.log('tagsList[key]', tagsList[key]);
+        // });
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
     }
 
