@@ -761,10 +761,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagCount);
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagName);
 
-        // Object.keys(tagsList).map(key => {
-        //     console.log('tagsList[key]', tagsList[key]);
-        // });
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
+        Object.keys(tagsList).map(key => {
+            // console.log('tagsList[key]', tagsList[key]);
+            tagsList[key] = tagsList[key] / (maxHashtagCount / 100);
+        });
+        console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList, '-%');
     }
 
 }
