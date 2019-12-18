@@ -762,6 +762,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagName);
 
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
+        // Consider to remove Hashtags that amount is lower than 5% of the top Hashtag
         Object.keys(tagsList).map(key => {
             // console.log('tagsList[key]', tagsList[key]);
             tagsList[key] = tagsList[key] / (maxHashtagCount / 100);
