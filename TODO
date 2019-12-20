@@ -11,13 +11,7 @@
 // `7-1 architecture pattern example:` "https://github.com/HugoGiraudel/sass-boilerplate" (info - "https://sass-guidelin.es/#architecture")
 
 Commit message:
-refactor: Update in 'StatHistoryComponent' (code, template)
-refactor: Update in 'StatDetailsComponent' (template)
-refactor: Minor changes
 
-refactor: Update in 'PomosComponent' (code)
-refactor: Update in 'AppMainComponent' (code)
-refactor: Update in 'PomoHeaderComponent' (code, template, styles, tests)
 
 Todos:
     New:
