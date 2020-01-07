@@ -742,6 +742,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         const tagsList = {};
         let maxHashtagCount = 0;
         let maxHashtagName = '';
+        let totalHashtagCount = 0;
         this.recentPomos.filter(pomo => {
             return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
         }).map(pomo => {
@@ -754,20 +755,54 @@ export class AppMainComponent implements OnInit, OnDestroy {
                         maxHashtagCount = tagsList[hashtag.trim()];
                         maxHashtagName = hashtag.trim();
                     }
+                    console.log(`hashtag.trim():${hashtag.trim()}, tagsList[hashtag.trim()]: ${tagsList[hashtag.trim()]}`);
+                    // TODO: Stopped here, first we should count total amount of #hashtags in given pomo-list
                 });
             }
         });
 
+        // TODO: Call of the describeArcExtended() is below
+        // describeArcExtended(150, 150, 100, 0, 270)
+
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagCount);
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagName);
 
-        console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
+        // console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
         // Consider to remove Hashtags that amount is lower than 5% of the top Hashtag
         Object.keys(tagsList).map(key => {
             // console.log('tagsList[key]', tagsList[key]);
-            tagsList[key] = tagsList[key] / (maxHashtagCount / 100);
+            const percentValue = tagsList[key] / (maxHashtagCount / 100);
+            tagsList[key] = percentValue;
         });
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList, '-%');
+    }
+
+    // Calculation the SVG Path for an arc (of a circle) (adopted version)
+    // https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle/18473154#18473154
+    polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+        const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+        return {
+            x: centerX + (radius * Math.cos(angleInRadians)),
+            y: centerY + (radius * Math.sin(angleInRadians))
+        };
+    }
+
+    describeArcExtended(x, y, radius, startAngle, endAngle) {
+
+        const start = this.polarToCartesian(x, y, radius, endAngle);
+        const end = this.polarToCartesian(x, y, radius, startAngle);
+
+        const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+
+        const d = [
+            'M', start.x, start.y,
+            'A', radius, radius, 0, largeArcFlag, 0, end.x, end.y,
+            'L', x, y,
+            'Z'
+        ].join(' ');
+
+        return d;
     }
 
 }
