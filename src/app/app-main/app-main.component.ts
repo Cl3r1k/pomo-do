@@ -742,7 +742,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
         const tagsList = {};
         let maxHashtagCount = 0;
         let maxHashtagName = '';
-        let totalHashtagCount = 0;
         this.recentPomos.filter(pomo => {
             return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
         }).map(pomo => {
@@ -761,20 +760,28 @@ export class AppMainComponent implements OnInit, OnDestroy {
             }
         });
 
-        // TODO: Call of the describeArcExtended() is below
-        // describeArcExtended(150, 150, 100, 0, 270)
-
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagCount);
         console.log('%cAppMainComponent generateTopHashtagsData() - maxHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, maxHashtagName);
 
         // console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
         // Consider to remove Hashtags that amount is lower than 5% of the top Hashtag
+        let totalHashtagCount = 0;
+        Object.keys(tagsList).map(key => {
+            // console.log('tagsList[key]', tagsList[key]);
+            totalHashtagCount += tagsList[key];
+            // const percentValue = tagsList[key] / (maxHashtagCount / 100);
+            // tagsList[key] = percentValue;
+        });
+        console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
+        console.log('%cAppMainComponent generateTopHashtagsData() - totalHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, totalHashtagCount);
+
         Object.keys(tagsList).map(key => {
             // console.log('tagsList[key]', tagsList[key]);
             const percentValue = tagsList[key] / (maxHashtagCount / 100);
-            tagsList[key] = percentValue;
+            const svgPath = this.describeArcExtended(150, 150, 100, 0, percentValue);
+            console.log(`for (${key}) svgPath: ${svgPath}`);
+            // tagsList[key] = percentValue;
         });
-        console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList, '-%');
     }
 
     // Calculation the SVG Path for an arc (of a circle) (adopted version)
