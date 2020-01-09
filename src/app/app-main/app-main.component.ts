@@ -62,6 +62,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     bestWorkDay = '';
     aboveAveragePercent = '';
     workDaysStatsPercents = [];
+    topHashtagName = '';
+    hashtagsChartValues = {};
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -781,7 +783,13 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const svgPath = this.describeArcExtended(150, 150, 100, 0, percentValue);
             console.log(`for (${key}) svgPath: ${svgPath}`);
             // tagsList[key] = percentValue;
+            this.hashtagsChartValues[key] = svgPath;
         });
+
+        this.topHashtagName = maxHashtagName;
+        console.log('%cAppMainComponent generateTopHashtagsData() - topHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, this.topHashtagName);
+        // tslint:disable-next-line: max-line-length
+        console.log('%cAppMainComponent generateTopHashtagsData() - hashtagsChartValues', CONSOLE_TEXT_COLOR_COMPONENT, this.hashtagsChartValues);
     }
 
     // Calculation the SVG Path for an arc (of a circle) (adopted version)
