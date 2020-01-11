@@ -71,7 +71,13 @@
                     </g>
                 </svg>
 
-                <span class="chart-column1" *ngFor="let col of topHashtagName">1</span>
+                <!-- <span class="chart-column1" *ngFor="let hashtagObj of hashtagsChartValues">{{hashtagObj.tagName}} ::: {{hashtagObj.pathD}}</span> -->
+
+                <svg *ngFor="let hashtagObj of hashtagsChartValues" width="300" height="300" style="background-color: #4f4f4f0f;">
+                    <svg:g>
+                        <svg:path [attr.d]="hashtagObj.pathD" fill="green" stroke="red" strokeWidth="1"></svg:path>
+                    </svg:g>
+                </svg>
 
             </div>
         </div>
