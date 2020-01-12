@@ -63,7 +63,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     aboveAveragePercent = '';
     workDaysStatsPercents = [];
     topHashtagName = '';
-    hashtagsChartValues = {};
+    hashtagsChartValues = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -777,13 +777,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
         console.log('%cAppMainComponent generateTopHashtagsData() - totalHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, totalHashtagCount);
 
+        this.hashtagsChartValues = [];
         Object.keys(tagsList).map(key => {
             // console.log('tagsList[key]', tagsList[key]);
             const percentValue = tagsList[key] / (maxHashtagCount / 100);
             const svgPath = this.describeArcExtended(150, 150, 100, 0, percentValue);
             console.log(`for (${key}) svgPath: ${svgPath}`);
             // tagsList[key] = percentValue;
-            this.hashtagsChartValues[key] = svgPath;
+            this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath });
         });
 
         this.topHashtagName = maxHashtagName;

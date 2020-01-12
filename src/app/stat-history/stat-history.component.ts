@@ -29,6 +29,7 @@ export class StatHistoryComponent implements OnInit {
     @Input() aboveAveragePercent: string;
     @Input() workDaysStatsPercents: number[];
     @Input() topHashtagName: string;
+    @Input() hashtagsChartValues: Object[];
 
     weeklyCumulationCount = 0;
     allTodosCount = 0;
