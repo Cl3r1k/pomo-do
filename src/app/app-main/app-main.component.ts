@@ -789,7 +789,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
             angleDelta += angleValue;
             console.log(`for (${key}) svgPath: ${svgPath}`);
             // tagsList[key] = angleValue;
-            this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath });
+            this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath, 'fillColor': 'aqua' });
         });
 
         this.topHashtagName = maxHashtagName;
