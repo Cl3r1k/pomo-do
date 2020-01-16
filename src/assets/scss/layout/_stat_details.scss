@@ -107,7 +107,10 @@ $grayedColor: #4d4d4d86;
                 }
             }
             .tags-pie-chart {
-                // background-color: adjust-hue($color: red, $degrees: 80);
+                background-color: adjust-hue($color: red, $degrees: 80);
+                &:hover {
+                    // background-color: adjust-hue($color: red, $degrees: 80);
+                }
                 .pie-chart {
                     .chart-area {
                         &:hover {
