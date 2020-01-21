@@ -107,15 +107,11 @@ $grayedColor: #4d4d4d86;
                 }
             }
             .tags-pie-chart {
-                // background-color: adjust-hue($color: red, $degrees: 80);
-                &:hover {
-                    // background-color: adjust-hue($color: red, $degrees: 80);
-                }
                 .pie-chart {
                     .chart-area {
                         &:hover {
-                            // transform: translate(10px, 10px);
-                            // opacity: 0.5;
+                            transform: scale(3) translate(3px, 3px);
+                            opacity: 0.5;
                         }
                     }
                 }

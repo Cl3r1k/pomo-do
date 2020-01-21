@@ -786,9 +786,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const angleValue = (tagsList[key] / (totalHashtagCount / 100)) * angleSinglePercent;
             console.log(`key: ${key}, angleValue: ${angleValue}`);
             const svgPath = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue);
+            const translateCoordinates = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue / 2);
+            console.log(`translateCoordinates: ${translateCoordinates}`);
             angleDelta += angleValue;
             console.log(`for (${key}) svgPath: ${svgPath}`);
-            // tagsList[key] = angleValue;
             this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath, 'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)` });
         });
 
