@@ -788,6 +788,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const svgPath = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue);
             const translateCoordinates = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue / 2);
             console.log(`translateCoordinates: ${translateCoordinates}`);
+            const angleVector = angleDelta + angleValue / 2;
+            console.log(`angleVector: ${angleVector}`);
+            const xOffset = Math.cos(angleVector) * 3;
+            const yOffset = xOffset;
+            console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
             angleDelta += angleValue;
             console.log(`for (${key}) svgPath: ${svgPath}`);
             this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath, 'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)` });
