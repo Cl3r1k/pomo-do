@@ -790,12 +790,23 @@ export class AppMainComponent implements OnInit, OnDestroy {
             console.log(`translateCoordinates: ${translateCoordinates}`);
             const angleVector = angleDelta + angleValue / 2;
             console.log(`angleVector: ${angleVector}`);
-            const xOffset = Math.cos(angleVector) * 3;
-            const yOffset = xOffset;
+            const angleInRadians = (angleVector - 90) * Math.PI / 180.0;
+            console.log(`angleInRadians: ${angleInRadians}`);
+            const cosA = Math.cos(angleInRadians);
+            // console.log(`Math.cos(${angleInRadians}): ${cosA}`);
+            const xOffset = cosA * 3;
+            const sinA = Math.sin(angleInRadians);
+            // console.log(`Math.sin(${angleInRadians}): ${sinA}`);
+            const yOffset = sinA * 3;
             console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
             angleDelta += angleValue;
             console.log(`for (${key}) svgPath: ${svgPath}`);
-            this.hashtagsChartValues.push({ 'tagName': key, 'pathD': svgPath, 'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)` });
+            this.hashtagsChartValues.push({
+                'tagName': key,
+                'pathD': svgPath,
+                'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)`,
+                'offset': { 'x': xOffset, 'y': yOffset },
+            });
         });
 
         this.topHashtagName = maxHashtagName;
