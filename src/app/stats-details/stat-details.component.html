@@ -74,8 +74,10 @@
                 <!-- <span class="chart-column1" *ngFor="let hashtagObj of hashtagsChartValues">{{hashtagObj.tagName}} ::: {{hashtagObj.pathD}}</span> -->
 
                 <svg class="pie-chart" width="900" height="900" style="background-color: #4f4f4f0f;">
-                    <svg:g transform="scale(3)" *ngFor="let hashtagObj of hashtagsChartValues" class="chart-area">
-                        <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white" strokeWidth="1"></svg:path>
+                    <svg:g [style.background-color]="'darkorchid'"
+                        *ngFor="let hashtagObj of hashtagsChartValues; let i = index" class="chart-area" (mouseover)="hovered = i" (mouseout)="hovered = -1">
+                        <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white"
+                            strokeWidth="1"></svg:path>
                     </svg:g>
                 </svg>
 
