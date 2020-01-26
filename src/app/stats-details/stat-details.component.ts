@@ -44,4 +44,9 @@ export class StatDetailsComponent implements OnInit {
     ngOnInit() {
     }
 
+    toggleSelectedChartPart(selectedIndex: number) {
+        // (mouseover)="hovered = i" (mouseout)="hovered = -1"
+        this.hovered = selectedIndex !== this.hovered ? selectedIndex : -1;
+    }
+
 }
