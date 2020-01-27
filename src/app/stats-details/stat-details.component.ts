@@ -19,6 +19,8 @@ export class StatDetailsComponent implements OnInit {
     xOffset = 3;
     yOffset = 3;
     hovered = -1;
+    backcolor = 'teal';
+    opLevel = 0.7;
 
     // hashtagsChartValues = [
     //     {
