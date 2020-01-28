@@ -16,9 +16,9 @@ export class StatDetailsComponent implements OnInit {
     weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
     weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
-    xOffset = 3;
-    yOffset = 3;
-    hovered = -1;
+    xOffset = 5;
+    yOffset = 10;
+    selected = -1;
     backcolor = 'teal';
     opLevel = 0.7;
 
@@ -41,14 +41,16 @@ export class StatDetailsComponent implements OnInit {
     //     }
     // ];
 
-    constructor() { }
+    constructor() {
+        this.xOffset = 3;
+    }
 
     ngOnInit() {
     }
 
     toggleSelectedChartPart(selectedIndex: number) {
-        // (mouseover)="hovered = i" (mouseout)="hovered = -1"
-        this.hovered = selectedIndex !== this.hovered ? selectedIndex : -1;
+        // (mouseover)="selected = i" (mouseout)="selected = -1"
+        this.selected = selectedIndex !== this.selected ? selectedIndex : -1;
     }
 
 }
