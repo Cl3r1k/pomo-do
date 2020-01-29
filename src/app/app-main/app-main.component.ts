@@ -793,11 +793,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
             const angleInRadians = (angleVector - 90) * Math.PI / 180.0;
             console.log(`angleInRadians: ${angleInRadians}`);
             const cosA = Math.cos(angleInRadians);
+            const OFFSET_VALUE = 10;
             // console.log(`Math.cos(${angleInRadians}): ${cosA}`);
-            const xOffset = cosA * 3;
+            const xOffset = cosA * OFFSET_VALUE;
             const sinA = Math.sin(angleInRadians);
             // console.log(`Math.sin(${angleInRadians}): ${sinA}`);
-            const yOffset = sinA * 3;
+            const yOffset = sinA * OFFSET_VALUE;
             console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
             angleDelta += angleValue;
             console.log(`for (${key}) svgPath: ${svgPath}`);

@@ -42,7 +42,6 @@ export class StatDetailsComponent implements OnInit {
     // ];
 
     constructor() {
-        this.xOffset = 3;
     }
 
     ngOnInit() {
