@@ -16,11 +16,7 @@ export class StatDetailsComponent implements OnInit {
     weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
     weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
-    xOffset = 5;
-    yOffset = 10;
     selected = -1;
-    backcolor = 'teal';
-    opLevel = 0.7;
 
     // hashtagsChartValues = [
     //     {

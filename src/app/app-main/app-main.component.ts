@@ -785,8 +785,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
             // console.log('tagsList[key]', tagsList[key]);
             const angleValue = (tagsList[key] / (totalHashtagCount / 100)) * angleSinglePercent;
             console.log(`key: ${key}, angleValue: ${angleValue}`);
-            const svgPath = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue);
-            const translateCoordinates = this.describeArcExtended(150, 150, 100, angleDelta, angleDelta + angleValue / 2);
+            const START_X_COORDINATE = 90;
+            const START_Y_COORDINATE = 90;
+            const RADIUS_VALUE = 80;
+            const svgPath = this.describeArcExtended(START_X_COORDINATE, START_Y_COORDINATE, RADIUS_VALUE, angleDelta, angleDelta + angleValue);
+            const translateCoordinates = this.describeArcExtended(START_X_COORDINATE, START_Y_COORDINATE, RADIUS_VALUE, angleDelta, angleDelta + angleValue / 2);
             console.log(`translateCoordinates: ${translateCoordinates}`);
             const angleVector = angleDelta + angleValue / 2;
             console.log(`angleVector: ${angleVector}`);
