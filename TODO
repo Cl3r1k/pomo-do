@@ -291,6 +291,8 @@ Todos:
 
             ☐ To view on console.log message `--->Hashtags updated in IndexedDb!`, on app reload (what is the cause of this message, when there were no changes in hashtags, when app reloaded)
 
+            ☐ Use `Proxy` for search optimization (`https://www.youtube.com/watch?v=mSbyhHfxs04`)
+
             ✔ Current 'active-todo' should be only if there is pinned 'todo' @done(19-07-25 09:09)
 
             ✔ Consider to show 'icon-keyboard_return' for 'pomo'/'todo' when hovered, even if field is not focused @done(19-07-26 09:37)

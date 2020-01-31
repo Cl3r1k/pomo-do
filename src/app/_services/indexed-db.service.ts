@@ -97,8 +97,15 @@ export class IndexedDbService extends Dexie {
         this.pomoTable.mapToClass(Pomo);
         console.log('%c Created/Inited/Opened %s (v%d)', CONSOLE_TEXT_COLOR_SERVICE, this.name, this.baseVersion);
 
+        // TODO: In some cases, when DB in IndexedDb is corrupted, the app is not loaded correctly
+        // this.todoTable.toArray().then(resp => {
+        //     console.log('%c in promise (this.todoTable.toArray()) resp:', CONSOLE_TEXT_COLOR_SERVICE, resp);
+        // });
+
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
+            // console.log('%c in onPopulate() this.todoTable', CONSOLE_TEXT_COLOR_SERVICE, this.todoTable);
+            // console.log('%c in onPopulate() this.tagTable', CONSOLE_TEXT_COLOR_SERVICE, this.tagTable);
             const pinnedTodo = new ToDo({ id: 0, title: '1. Add more todos!', complete: false });
             pinnedTodo.pin = true;
             this.todoTable.add(pinnedTodo);
@@ -121,6 +128,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public openIndexedDb(): Observable<null> {
+        console.log('%c openIndexedDb() called', CONSOLE_TEXT_COLOR_SERVICE);
         return observableFrom(this.open().then(async () => {
             console.log('%c Opened %s successfully (v%d)', CONSOLE_TEXT_COLOR_SERVICE, this.name, 1);
             return null;
