@@ -777,6 +777,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
         console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
         console.log('%cAppMainComponent generateTopHashtagsData() - totalHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, totalHashtagCount);
 
+        // TODO: To implement
+        // Sort tagsList from big to small
+        // const sortedTagsList = ;
+
         this.hashtagsChartValues = [];
         let angleDelta = 0;
         const totalAngle = 360;
