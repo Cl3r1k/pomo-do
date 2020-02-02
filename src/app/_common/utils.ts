@@ -87,15 +87,21 @@ export class Utils {
    * @return {Object} - Returns new sorted object.
    *
    * @example:
-   *   var object = {
-   *     'a': [{ 'b': 2 }, { 'd': 4 }]
-   *   };
+   *   const objectArray = [
+   *   { 'a': 2 },
+   *   { 'b': 1 },
+   *   { 'c': 5 },
+   *   { 'name': 4 },
+   *   { 'id': 3 },
+   *   ];
    *
-   *   var other = {
-   *     'a': [{ 'c': 3 }, { 'e': 5 }]
-   *   };
-   *
-   *   _.merge(object, other); // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+   *   _.sortArrayObjectsByField(objectArray); // => [
+   *     { 'b': 1 },
+   *     { 'a': 2 },
+   *     { 'id': 3 },
+   *     { 'name': 4 },
+   *     { 'c': 5 },
+   *     ]
   */
   public sortArrayObjectsByField(array: Array<Object>, field: string, isDescendingMode = false): Object {
     // TODO: To implement
