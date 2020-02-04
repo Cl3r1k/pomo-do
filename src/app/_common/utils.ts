@@ -79,32 +79,66 @@ export class Utils {
   }
 
   /**
-   * ********* Description *****
+   * Sort array elements with Objects, by given field in ascending (default) or descending mode.
+   * If field param is not given, the objects will be sorted by their first fields.
    *
    * @param {Array<Object>} array - The destination array with objects.
    * @param {String} field - The sorting field.
    * @param {Boolean} [isDescendingMode=false] - Descending mode flag.
-   * @return {Object} - Returns new sorted object.
+   * @return {Array<Object>} - Returns new sorted array with objects.
    *
    * @example:
    *   const objectArray = [
-   *   { 'a': 2 },
-   *   { 'b': 1 },
-   *   { 'c': 5 },
-   *   { 'name': 4 },
-   *   { 'id': 3 },
+   *     { 'a': 2 },
+   *     { 'b': 1 },
+   *     { 'c': 5 },
+   *     { 'name': 4 },
+   *     { 'id': 3 },
    *   ];
    *
-   *   _.sortArrayObjectsByField(objectArray); // => [
+   *   sortArrayObjectsByField(objectArray); // => [
    *     { 'b': 1 },
    *     { 'a': 2 },
    *     { 'id': 3 },
    *     { 'name': 4 },
    *     { 'c': 5 },
-   *     ]
+   *   ]
   */
-  public sortArrayObjectsByField(array: Array<Object>, field: string, isDescendingMode = false): Object {
+  public sortArrayObjectsByField(array: Array<Object>, field = null, isDescendingMode = false): [Object] {
     // TODO: To implement
+    return [new Object()];
+  }
+
+  /**
+   * Sort Object by given field in ascending (default) or descending mode.
+   *
+   * @param {Object} array - The destination array with objects.
+   * @param {String} field - The sorting field.
+   * @param {Boolean} [isDescendingMode=false] - Descending mode flag.
+   * @return {Object} - Returns new sorted object.
+   *
+   * @example:
+   *   const object = {
+   *     'a': 2,
+   *     'b': 1,
+   *     'c': 5,
+   *     'name': 4,
+   *     'id': 3,
+   *   };
+   *
+   *   sortObjectsByField(object); // => {
+   *     'b': 1,
+   *     'a': 2,
+   *     'id': 3,
+   *     'name': 4,
+   *     'c': 5,
+   *   }
+  */
+  public sortObjectByField(object: Object, field = null, isDescendingMode = false): Object {
+    // TODO: To implement
+    // Hint ↓
+    // Object.entries(obj).sort((a, b) => a[0] - b[0]);
+    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
     return new Object();
   }
 
