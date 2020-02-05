@@ -22,6 +22,7 @@ import { DialogMoreComponent } from '@app/dialogs/dialog-more/dialog-more.compon
 import { map } from 'rxjs/operators';
 
 // Modules
+import { Utils } from '@app/_common/utils';
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
@@ -71,7 +72,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
   constructor(private _todoService: TodoService,
     private _route: ActivatedRoute,
     public dialog: MatDialog,
-    private _todoOrderService: TodoOrderService) { }
+    private _todoOrderService: TodoOrderService,
+    private _utils: Utils
+  ) { }
 
   public ngOnInit() {
     this._route.data.pipe(
@@ -780,7 +783,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // TODO: To implement
     // Sort tagsList from big to small
-    // const sortedTagsList = ;
+    const sortedTagsList = this._utils.sortObjectByField(tagsList);
 
     // TODO: Consider to sort 'hashtagsChartValues' after filling, instead sorting 'tagsList'
     this.hashtagsChartValues = [];

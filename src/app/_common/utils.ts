@@ -135,9 +135,17 @@ export class Utils {
    *   }
   */
   public sortObjectByField(object: Object, field = null, isDescendingMode = false): Object {
+    const sortedObject = {...object};
+    console.log('sortedObject', sortedObject);
     // TODO: To implement
     // Hint ↓
     // Object.entries(obj).sort((a, b) => a[0] - b[0]);
+    const resSortedObject = Object.entries(sortedObject).sort((a, b) => {
+      console.log('a', a);
+      console.log('b', b);
+      return +a[0] - +b[0]
+    });
+    console.log('resSortedObject', resSortedObject);
     // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
     return new Object();
   }
