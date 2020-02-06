@@ -113,8 +113,8 @@ export class Utils {
    * Sort Object by given field in ascending (default) or descending mode.
    *
    * @param {Object} array - The destination array with objects.
-   * @param {String} field - The sorting field.
    * @param {Boolean} [isDescendingMode=false] - Descending mode flag.
+   * @param {String} [field=null] - The sorting field.
    * @return {Object} - Returns new sorted object.
    *
    * @example:
@@ -134,18 +134,22 @@ export class Utils {
    *     'c': 5,
    *   }
   */
-  public sortObjectByField(object: Object, field = null, isDescendingMode = false): Object {
+  public sortObjectByField(object: Object, isDescendingMode = false, field = null): Object {
     const sortedObject = {...object};
     console.log('sortedObject', sortedObject);
     // TODO: To implement
     // Hint ↓
     // Object.entries(obj).sort((a, b) => a[0] - b[0]);
+    // console.log('Object.entries(sortedObject)', Object.entries(sortedObject));
+    // console.log('Object.keys(sortedObject)', Object.keys(sortedObject));
     const resSortedObject = Object.entries(sortedObject).sort((a, b) => {
       console.log('a', a);
       console.log('b', b);
-      return +a[0] - +b[0]
+      return isDescendingMode ? +b[1] - +a[1] : +a[1] - +b[1];
     });
     console.log('resSortedObject', resSortedObject);
+
+    // const newObj = Object.fromEntries(resSortedObject);
     // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
     return new Object();
   }

@@ -783,7 +783,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // TODO: To implement
     // Sort tagsList from big to small
-    const sortedTagsList = this._utils.sortObjectByField(tagsList);
+    const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
 
     // TODO: Consider to sort 'hashtagsChartValues' after filling, instead sorting 'tagsList'
     this.hashtagsChartValues = [];
