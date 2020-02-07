@@ -781,11 +781,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
     console.log('%cAppMainComponent generateTopHashtagsData() - totalHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, totalHashtagCount);
 
-    // TODO: To implement
     // Sort tagsList from big to small
-    const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
+    // const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
+    // console.log('%cAppMainComponent generateTopHashtagsData() - sortedTagsList', CONSOLE_TEXT_COLOR_COMPONENT, sortedTagsList);
 
-    // TODO: Consider to sort 'hashtagsChartValues' after filling, instead sorting 'tagsList'
+    // TODO: Consider to sort 'hashtagsChartValues' after filling, instead sorting 'tagsList' - if so -> remove -Sort tagsList- code
     this.hashtagsChartValues = [];
     let angleDelta = 0;
     const totalAngle = 360;

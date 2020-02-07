@@ -135,23 +135,16 @@ export class Utils {
    *   }
   */
   public sortObjectByField(object: Object, isDescendingMode = false, field = null): Object {
-    const sortedObject = {...object};
-    console.log('sortedObject', sortedObject);
-    // TODO: To implement
-    // Hint ↓
-    // Object.entries(obj).sort((a, b) => a[0] - b[0]);
-    // console.log('Object.entries(sortedObject)', Object.entries(sortedObject));
-    // console.log('Object.keys(sortedObject)', Object.keys(sortedObject));
-    const resSortedObject = Object.entries(sortedObject).sort((a, b) => {
-      console.log('a', a);
-      console.log('b', b);
+    const sortedObjectArray = Object.entries(object).sort((a, b) => {
       return isDescendingMode ? +b[1] - +a[1] : +a[1] - +b[1];
     });
-    console.log('resSortedObject', resSortedObject);
 
-    // const newObj = Object.fromEntries(resSortedObject);
-    // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-    return new Object();
+    const sortedObject = {};
+    for (const item of sortedObjectArray) {
+      sortedObject[item[0]] = item[1];
+    }
+
+    return sortedObject;
   }
 
 }
