@@ -104,13 +104,14 @@ export class Utils {
    *     { 'c': 5 },
    *   ]
   */
-  public sortArrayObjectsByField(array: Array<Object>, field = null, isDescendingMode = false): [Object] {
+  public sortArrayObjectsByField(array: Array<Object>, field: string = null, isDescendingMode: boolean = false): [Object] {
     // TODO: To implement
     return [new Object()];
   }
 
   /**
    * Sort Object by given field in ascending (default) or descending mode.
+   * If 'field' param is not given, sort object by first field
    *
    * @param {Object} array - The destination array with objects.
    * @param {Boolean} [isDescendingMode=false] - Descending mode flag.
@@ -134,7 +135,7 @@ export class Utils {
    *     'c': 5,
    *   }
   */
-  public sortObjectByField(object: Object, isDescendingMode = false, field = null): Object {
+  public sortObjectByField(object: Object, isDescendingMode: boolean = false, field: string = null): Object {
     const sortedObjectArray = Object.entries(object).sort((a, b) => {
       return isDescendingMode ? +b[1] - +a[1] : +a[1] - +b[1];
     });

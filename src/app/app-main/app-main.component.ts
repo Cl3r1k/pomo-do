@@ -770,29 +770,22 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
     // Consider to remove Hashtags that amount is lower than 5% of the top Hashtag
-    // TODO: Use '.reduce' or 'for of' for 'tagsList' object to calc 'totalHashtagCount'
-    let totalHashtagCount = 0;
-    Object.keys(tagsList).map(key => {
-      // console.log('tagsList[key]', tagsList[key]);
-      totalHashtagCount += tagsList[key];
-      // const percentValue = tagsList[key] / (maxHashtagCount / 100);
-      // tagsList[key] = percentValue;
-    });
+
+    const totalHashtagCount = Object.entries(tagsList).reduce((acc, curr) => acc += +curr[1], 0);
+
     console.log('%cAppMainComponent generateTopHashtagsData() - tagsList', CONSOLE_TEXT_COLOR_COMPONENT, tagsList);
     console.log('%cAppMainComponent generateTopHashtagsData() - totalHashtagCount', CONSOLE_TEXT_COLOR_COMPONENT, totalHashtagCount);
 
     // Sort tagsList from big to small
-    // const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
-    // console.log('%cAppMainComponent generateTopHashtagsData() - sortedTagsList', CONSOLE_TEXT_COLOR_COMPONENT, sortedTagsList);
+    const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
 
-    // TODO: Consider to sort 'hashtagsChartValues' after filling, instead sorting 'tagsList' - if so -> remove -Sort tagsList- code
     this.hashtagsChartValues = [];
     let angleDelta = 0;
     const totalAngle = 360;
     const angleSinglePercent = totalAngle / 100;
-    Object.keys(tagsList).map(key => {
-      // console.log('tagsList[key]', tagsList[key]);
-      const angleValue = (tagsList[key] / (totalHashtagCount / 100)) * angleSinglePercent;
+    Object.keys(sortedTagsList).map(key => {
+      // console.log('sortedTagsList[key]', sortedTagsList[key]);
+      const angleValue = (sortedTagsList[key] / (totalHashtagCount / 100)) * angleSinglePercent;
       console.log(`key: ${key}, angleValue: ${angleValue}`);
       const START_X_COORDINATE = 90;
       const START_Y_COORDINATE = 90;
