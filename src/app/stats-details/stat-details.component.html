@@ -1,72 +1,75 @@
 <section class="stat-details-container">
-    <div class="controls-date-container">
-        <ul class="button-switcher-list">
-            <li><span class="button-switcher">Pomo stat</span></li>
-            <li><span class="button-switcher">Todo stat</span></li>
-        </ul>
-        <span class="extra-button">Search</span>
-        <div class="date-container">
-            <span>+</span>
-            <span>Calendar date</span>
-        </div>
+  <div class="controls-date-container">
+    <ul class="button-switcher-list">
+      <li><span class="button-switcher">Pomo stat</span></li>
+      <li><span class="button-switcher">Todo stat</span></li>
+    </ul>
+    <span class="extra-button">Search</span>
+    <div class="date-container">
+      <span>+</span>
+      <span>Calendar date</span>
     </div>
-    <div class="stat-chart-container">
-        <div class="stat-chart-header">
-            <ul>
-                <li><span class="stat-chart-header-value">0</span>Total number</li>
-                <li><span class="stat-chart-header-value">0</span>Daily average</li>
-                <li><span class="stat-chart-header-value">0.0</span>Monthly change</li>
-            </ul>
-        </div>
-        <div class="stat-chart-block">
-            <svg width="100%" height="100%" preserveAspectRatio="none">
-                <polyline points="0,1 2,2 3,3 5,5 10,10" fill="rgba(168, 247, 49, 0.3)" stroke-width="1"
-                    stroke="rgba(252, 103, 77, 0.5)" />
-            </svg>
-        </div>
+  </div>
+  <div class="stat-chart-container">
+    <div class="stat-chart-header">
+      <ul>
+        <li><span class="stat-chart-header-value">0</span>Total number</li>
+        <li><span class="stat-chart-header-value">0</span>Daily average</li>
+        <li><span class="stat-chart-header-value">0.0</span>Monthly change</li>
+      </ul>
     </div>
-    <div class="stat-report-container">
-        <div class="stat-report-card card-workday">
-            <p class="card-info">Best workday</p>
-            <span class="card-data">{{bestWorkDay}}</span>
-            <p class="card-details">{{aboveAveragePercent}}% more than average</p>
-            <div class="weekly-days-chart">
-                <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents"
-                    [style.height.%]="col"></span>
-                <span class="weekly-days-label" *ngFor="let dayOfWeek of weekDays"
-                    [style.height.%]="col">{{dayOfWeek}}</span>
-            </div>
-        </div>
-        <div class="stat-report-card card-tags">
-            <p class="card-info">Top tags</p>
-            <span class="card-data">No data</span>
-            <p class="card-details grayed">You can add #tag to pomo description to organize your work</p>
-            <div class="tags-pie-chart">
-                <svg class="pie-chart" width="180" height="180" [style.background-color]="'teal'">
-                    <svg:g
-                        [style.transform]="selected === i ? 'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)' : ''"
-                        *ngFor="let hashtagObj of hashtagsChartValues; let i = index" class="chart-area"
-                        (click)="toggleSelectedChartPart(i)">
-                        <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white"
-                            strokeWidth="1"></svg:path>
-                    </svg:g>
-                </svg>
+    <div class="stat-chart-block">
+      <svg width="100%" height="100%" preserveAspectRatio="none">
+        <polyline points="0,1 2,2 3,3 5,5 10,10" fill="rgba(168, 247, 49, 0.3)" stroke-width="1"
+          stroke="rgba(252, 103, 77, 0.5)" />
+      </svg>
+    </div>
+  </div>
+  <div class="stat-report-container">
+    <div class="stat-report-card card-workday">
+      <p class="card-info">Best workday</p>
+      <span class="card-data">{{bestWorkDay}}</span>
+      <p class="card-details">{{aboveAveragePercent}}% more than average</p>
+      <div class="weekly-days-chart">
+        <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
+        <span class="weekly-days-label" *ngFor="let dayOfWeek of weekDays" [style.height.%]="col">{{dayOfWeek}}</span>
+      </div>
+    </div>
+    <div class="stat-report-card card-tags">
+      <p class="card-info">Top tags</p>
+      <span class="card-data">No data</span>
+      <p class="card-details grayed">You can add #tag to pomo description to organize your work</p>
+      <ul>
+        <li *ngFor="let hashtagObj of hashtagsChartValues; let i = index">
+          {{hashtagObj.tagName}}
+        </li>
+      </ul>
+      <div class="tags-pie-chart">
+        <svg class="pie-chart" width="180" height="180" [style.background-color]="'teal'">
+          <svg:g
+            [style.transform]="selected === i ? 'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)' : ''"
+            *ngFor="let hashtagObj of hashtagsChartValues; let i = index" class="chart-area"
+            (click)="toggleSelectedChartPart(i)">
+            <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white" strokeWidth="1">
+            </svg:path>
+          </svg:g>
+        </svg>
 
-            </div>
-        </div>
-        <div class="stat-report-card card-worktime">
-            <p class="card-info">Best worktime</p>
-            <span class="card-data">No data</span>
-            <p class="card-details">0:00 - 24:00</p>
-            <div class="daily-hours-chart">
-                <div class="hours-labels">
-                    <span class="hour-up">0</span>
-                    <span class="hour-right">6</span>
-                    <span class="hour-down">12</span>
-                    <span class="hour-left">24</span>
-                </div>
-                <canvas></canvas>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="stat-report-card card-worktime">
+      <p class="card-info">Best worktime</p>
+      <span class="card-data">No data</span>
+      <p class="card-details">0:00 - 24:00</p>
+      <div class="daily-hours-chart">
+        <div class="hours-labels">
+          <span class="hour-up">0</span>
+          <span class="hour-right">6</span>
+          <span class="hour-down">12</span>
+          <span class="hour-left">24</span>
+        </div>
+        <canvas></canvas>
+      </div>
+    </div>
+  </div>
 </section>
