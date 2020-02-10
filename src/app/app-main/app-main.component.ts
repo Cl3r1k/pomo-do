@@ -760,7 +760,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
             maxHashtagName = hashtag.trim();
           }
           console.log(`hashtag.trim():${hashtag.trim()}, tagsList[hashtag.trim()]: ${tagsList[hashtag.trim()]}`);
-          // TODO: Stopped here, first we should count total amount of #hashtags in given pomo-list
         });
       }
     });
@@ -778,6 +777,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // Sort tagsList from big to small
     const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
+
+    // TODO: Fix bug, when there is only one hashtag (the char is not correct)
 
     this.hashtagsChartValues = [];
     let angleDelta = 0;

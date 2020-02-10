@@ -5,117 +5,153 @@ $borderColor: #c2b7b7;
 $grayedColor: #4d4d4d86;
 
 .stat-details-container {
-    border: 1px solid $borderGrayColor;
-    padding: 10px;
-    .controls-date-container {
-        display: grid;
-        grid-template-columns: repeat(16, 1fr);
-        margin-bottom: 10px;
-        .button-switcher-list {
-            grid-column: span 3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            .button-switcher {
-                border: 1px solid $borderColor;
-                cursor: pointer;
-            }
-        }
-        .extra-button {
-            grid-column: span 1;
-        }
-        .date-container {
-            grid-column: 5/17;
-            justify-self: end;
-        }
+  border : 1px solid $borderGrayColor;
+  padding: 10px;
+
+  .controls-date-container {
+    display              : grid;
+    grid-template-columns: repeat(16, 1fr);
+    margin-bottom        : 10px;
+
+    .button-switcher-list {
+      grid-column    : span 3;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      list-style     : none;
+      margin         : 0;
+      padding        : 0;
+
+      .button-switcher {
+        border: 1px solid $borderColor;
+        cursor: pointer;
+      }
     }
-    .stat-chart-container {
-        border: 1px solid $borderGrayColor;
-        margin-bottom: 20px;
-        .start-chart-header {
-            ul {
-                display: grid;
-                grid-template-columns: 33% 34% 33%;
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-                li {
-                    border-bottom: 1px solid $borderColor;
-                    border-right: 1px solid $borderColor;
-                    padding: 10px 0;
-                    &:last-child {
-                        border-right: none;
-                    }
-                    .start-chart-header-value {
-                        margin-right: 5px;
-                        font-weight: 700;
-                        font-size: 26px;
-                    }
-                }
-            }
-        }
-        .stat-chart-block {
-            height: 18em;
-            padding: 20px;
-            svg {
-                border: 1px solid #dbdbdb;
-            }
-        }
+
+    .extra-button {
+      grid-column: span 1;
     }
-    .stat-report-container {
-        border: 1px solid $borderGrayColor;
-        padding: 20px 10px 20px 20px;
-        display: grid;
+
+    .date-container {
+      grid-column : 5/17;
+      justify-self: end;
+    }
+  }
+
+  .stat-chart-container {
+    border       : 1px solid $borderGrayColor;
+    margin-bottom: 20px;
+
+    .start-chart-header {
+      ul {
+        display              : grid;
         grid-template-columns: 33% 34% 33%;
-        .stat-report-card {
-            display: grid;
-            grid-template-rows: auto auto auto 1fr;
-            padding-right: 10px;
-            .card-info {
-                margin: 0 0 7px 0;
-            }
-            .card-data {
-                font-weight: 700;
-                font-size: 22px;
-            }
-            .card-details {
-                margin: 8px 0 0 0;
-                &.grayed {
-                    color: $grayedColor;
-                    width: 80%;
-                }
-            }
-            .weekly-days-chart {
-                background-color: #a9e59d; // For Debug
-                margin: 10px 0 0 0;
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                grid-template-rows: auto 20px;
-                align-items: end;
-                grid-gap: 5px 15px;
-                .weekly-days-chart-column {
-                    height: 100%;
-                    background-color: red;
-                    display: block;
-                }
-                .weekly-days-label {
-                    text-align: center;
-                }
-            }
-            .tags-pie-chart {
-                .pie-chart {
-                    .chart-area {
-                        &:hover {
-                            // transform: scale(3) translate(3px, 3px);
-                            opacity: 0.5;
-                        }
-                    }
-                }
-            }
-        }        
+        list-style           : none;
+        margin               : 0;
+        padding              : 0;
+        text-align           : center;
+
+        li {
+          border-bottom: 1px solid $borderColor;
+          border-right : 1px solid $borderColor;
+          padding      : 10px 0;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          .start-chart-header-value {
+            margin-right: 5px;
+            font-weight : 700;
+            font-size   : 26px;
+          }
+        }
+      }
     }
+
+    .stat-chart-block {
+      height : 18em;
+      padding: 20px;
+
+      svg {
+        border: 1px solid #dbdbdb;
+      }
+    }
+  }
+
+  .stat-report-container {
+    border               : 1px solid $borderGrayColor;
+    padding              : 20px 10px 20px 20px;
+    display              : grid;
+    grid-template-columns: 33% 34% 33%;
+
+    .stat-report-card {
+      display           : grid;
+      grid-template-rows: auto auto auto 1fr;
+      padding-right     : 10px;
+
+      .card-info {
+        margin: 0 0 7px 0;
+      }
+
+      .card-data {
+        font-weight: 700;
+        font-size  : 22px;
+      }
+
+      .card-details {
+        margin: 8px 0 0 0;
+
+        &.grayed {
+          color: $grayedColor;
+          width: 80%;
+        }
+      }
+
+      .weekly-days-chart {
+        background-color     : #a9e59d; // For Debug
+        margin               : 10px 0 0 0;
+        display              : grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows   : auto 20px;
+        align-items          : end;
+        grid-gap             : 5px 15px;
+
+        .weekly-days-chart-column {
+          height          : 100%;
+          background-color: red;
+          display         : block;
+        }
+
+        .weekly-days-label {
+          text-align: center;
+        }
+      }
+
+      .chart-data-container {
+        display              : grid;
+        grid-template-columns: auto 1fr;
+        padding-top: 5px;
+
+        .tags-list {
+          list-style: none;
+          padding   : 0;
+          margin    : 0;
+        }
+
+        .tags-pie-chart {
+          justify-self: end;
+
+          .pie-chart {
+            .chart-area {
+              &:hover {
+                // transform: scale(3) translate(3px, 3px);
+                opacity     : 0.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
