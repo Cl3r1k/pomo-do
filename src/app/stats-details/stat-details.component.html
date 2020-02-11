@@ -42,7 +42,8 @@
         organize your work</p>
       <div class="chart-data-container" *ngIf="hashtagsChartValues.length">
         <ul class="tags-list">
-          <li *ngFor="let hashtagObj of hashtagsChartValues; let i = index">
+          <li class="tags-list-item" [style.color]="hashtagObj.fillColor"
+            *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
             {{hashtagObj.tagName}}
           </li>
         </ul>
