@@ -50,4 +50,8 @@ export class StatHistoryComponent implements OnInit {
         }
     }
 
+    onToggleSelectedChartPart(selectedHashtag: string) {
+        console.log('onToggleSelectedChartPart() selectedHashtag: ', selectedHashtag);
+    }
+
 }

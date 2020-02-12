@@ -55,5 +55,7 @@
     </div>
 
     <app-stat-details class="grid-spanner-16" [bestWorkDay]="bestWorkDay" [aboveAveragePercent]="aboveAveragePercent"
-        [workDaysStatsPercents]="workDaysStatsPercents" [topHashtagName]="topHashtagName" [hashtagsChartValues]="hashtagsChartValues"></app-stat-details>
+        [workDaysStatsPercents]="workDaysStatsPercents" [topHashtagName]="topHashtagName"
+        [hashtagsChartValues]="hashtagsChartValues"
+        (selectedHashtaStatDetailsComponentEmitter)="onToggleSelectedChartPart($event)"></app-stat-details>
 </div>
