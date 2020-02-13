@@ -866,4 +866,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     return d;
   }
 
+  onToggleSelectedChartPart(selectedHashtag: string) {
+    console.log('onToggleSelectedChartPart() selectedHashtag: ', selectedHashtag);
+  }
+
 }

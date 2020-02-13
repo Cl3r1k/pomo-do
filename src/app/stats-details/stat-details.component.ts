@@ -7,13 +7,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StatDetailsComponent implements OnInit {
 
+  // *** Inputs ***
   @Input() bestWorkDay: string;
   @Input() aboveAveragePercent: string;
   @Input() workDaysStatsPercents: number[];
   @Input() topHashtagName: string;
   @Input() hashtagsChartValues: Object[];
 
-  @Output() selectedHashtaStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
+  // *** Output emitters ***
+  @Output() selectedHashtagStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
 
   weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
   weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -48,8 +50,8 @@ export class StatDetailsComponent implements OnInit {
   toggleSelectedChartPart(selectedIndex: number) {
     // (mouseover)="selected = i" (mouseout)="selected = -1"
     this.selected = selectedIndex !== this.selected ? selectedIndex : -1;
-    const selectedHashtag = this.selected >= 0 ? this.hashtagsChartValues[this.selected]['tagName'] : undefined;
-    this.selectedHashtaStatDetailsComponentEmitter.emit(selectedHashtag);
+    const selectedHashtag = this.selected >= 0 ? this.hashtagsChartValues[this.selected]['tagName'] : '';
+    this.selectedHashtagStatDetailsComponentEmitter.emit(selectedHashtag);
   }
 
 }

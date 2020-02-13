@@ -1,170 +1,200 @@
 // -- vars
-$bg-color: #cfe4e2;
-$progress-color: #86c5a1;
-$default-size: 1em;
-$label-font-size: $default-size / 4;
+$bg-color            : #cfe4e2;
+$progress-color      : #86c5a1;
+$default-size        : 1em;
+$label-font-size     : $default-size / 4;
 $label-font-size-redo: $default-size * 4;
+
 // -- mixins
 @mixin draw-progress--solid($progress, $color, $bg-color) {
-    background: linear-gradient(to left, $color 50%, $bg-color 50%);
-    &:before {
-        @if $progress < 50 {
-            background: $bg-color;
-            // transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
-            transform: rotate((100 - $progress) / 100 * 360deg * -1);
-        }
-        @else {
-            background: $color;
-            // transform: rotate((100 - $progress) / 100 * 360deg);
-            transform: rotate((100 - (50 - $progress)) / 100 * 360deg);
-        }
+  background: linear-gradient(to left, $color 50%, $bg-color 50%);
+
+  &:before {
+    @if $progress < 50 {
+      background  : $bg-color;
+      // transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+      transform   : rotate((100 - $progress) / 100 * 360deg * -1);
     }
+
+    @else {
+      background  : $color;
+      // transform: rotate((100 - $progress) / 100 * 360deg);
+      transform   : rotate((100 - (50 - $progress)) / 100 * 360deg);
+    }
+  }
 }
 
 .stat-history-container {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    align-items: center;
-    // background-color: #93da97; // For Debug
-    max-width: 960px;
-    margin: 0 auto;
-    .stat-history-item {
-        grid-column: span 4;
-        padding: 10px 0 0 0;
-        cursor: pointer;
-        border: 1px solid #cccccc;
-        border-left: none;
-        height: 100%;
-        box-sizing: border-box;
-        position: relative;
-        background-color: #ffffff;
-        &:first-child {
-            border-left: 1px solid #cccccc;
-        }
-        &.selected-item {
-            background-color: #e9e9e9;
-        }
-        .card-header {
-            font-size: 14px;
-            font-weight: normal;
-            margin: 0 0 3px 0;
-            padding: 0 0 0 10px;
-        }
-        .card-info {
-            padding: 0 0 0 10px;
-            position: absolute;
-            .card-description {
-                font-size: 12px;
-                margin: 0 0 6px 0;
-                padding: 0;
-                color: #777777;
-            }
-            .card-value {
-                margin: 0 0 5px 0;
-                padding: 0;
-                font-size: 30px;
-            }
-        }
-        .card-chart {
-            background-color: #e6c87f; // For Debug
-            height: 70px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            .chart-column {
-                display: inline-block;
-                background-color: rgba(175, 47, 47, 0.3);
-                width: 18px;
-                height: 30px;
-                margin-right: 7px;
-                &:last-child {
-                    margin-right: 5px;
-                }
-            }
-            &.round-progress-container {
-                color: #444;
-                font-family: 'Lato', Tahoma, Geneva, sans-serif;
-                font-size: 16px;
-                .pie-wrapper {
-                    font-size: 4em;
-                    height: $default-size;
-                    width: $default-size;
-                    margin: 0 10px 5px 0;
-                    position: relative;
-                    .label {
-                        background: $bg-color;
-                        border-radius: 50%;
-                        bottom: $label-font-size-redo / 10;
-                        color: #ecf0f1;
-                        display: block;
-                        font-size: $label-font-size;
-                        left: $label-font-size-redo / 10;
-                        line-height: $label-font-size-redo * .70;
-                        position: absolute;
-                        right: $label-font-size-redo / 10;
-                        text-align: center;
-                        top: $label-font-size-redo / 10;
-                        .smaller {
-                            color: #eaedef;
-                            font-size: .45em;
-                            padding-bottom: 20px;
-                            vertical-align: super;
-                        }
-                    }
-                }
-                .pie-wrapper--solid {
-                    border-radius: 50%;
-                    overflow: hidden;
-                    &:before {
-                        border-radius: 0 100% 100% 0 / 50%;
-                        content: '';
-                        display: block;
-                        height: 100%;
-                        margin-left: 50%;
-                        transform-origin: left;
-                    }
-                    .label {
-                        background: transparent;
-                    }
-                    &.progress-0 {
-                        @include draw-progress--solid(0, $progress-color, $bg-color);
-                    }
-                    &.progress-13 {
-                        @include draw-progress--solid(13, $progress-color, $bg-color);
-                    }
-                    &.progress-25 {
-                        @include draw-progress--solid(25, $progress-color, $bg-color);
-                    }
-                    &.progress-38 {
-                        @include draw-progress--solid(38, $progress-color, $bg-color);
-                    }
-                    &.progress-50 {
-                        @include draw-progress--solid(50, $progress-color, $bg-color);
-                    }
-                    &.progress-63 {
-                        @include draw-progress--solid(63, $progress-color, $bg-color);
-                    }
-                    &.progress-75 {
-                        @include draw-progress--solid(75, $progress-color, $bg-color);
-                    }
-                    &.progress-88 {
-                        @include draw-progress--solid(88, $progress-color, $bg-color);
-                    }
-                    &.progress-100 {
-                        @include draw-progress--solid(100, $progress-color, $bg-color);
-                    }
-                }
-            }
-            .card-line {
-                background-color: #b1b1e2;
-                width: 100%;
-                height: 70px;
-            }
-        }
+  display              : grid;
+  grid-template-columns: repeat(16, 1fr);
+  align-items          : center;
+  // background-color  : #93da97; // For Debug
+  max-width            : 960px;
+  margin               : 0 auto;
+
+  .stat-history-item {
+    grid-column     : span 4;
+    padding         : 10px 0 0 0;
+    cursor          : pointer;
+    border          : 1px solid #cccccc;
+    border-left     : none;
+    height          : 100%;
+    box-sizing      : border-box;
+    position        : relative;
+    background-color: #ffffff;
+
+    &:first-child {
+      border-left: 1px solid #cccccc;
     }
+
+    &.selected-item {
+      background-color: #e9e9e9;
+    }
+
+    .card-header {
+      font-size  : 14px;
+      font-weight: normal;
+      margin     : 0 0 3px 0;
+      padding    : 0 0 0 10px;
+    }
+
+    .card-info {
+      padding : 0 0 0 10px;
+      position: absolute;
+
+      .card-description {
+        font-size: 12px;
+        margin   : 0 0 6px 0;
+        padding  : 0;
+        color    : #777777;
+      }
+
+      .card-value {
+        margin   : 0 0 5px 0;
+        padding  : 0;
+        font-size: 30px;
+      }
+    }
+
+    .card-chart {
+      background-color: #e6c87f; // For Debug
+      height          : 70px;
+      display         : flex;
+      align-items     : flex-end;
+      justify-content : flex-end;
+
+      .chart-column {
+        display         : inline-block;
+        background-color: rgba(175, 47, 47, 0.3);
+        width           : 18px;
+        height          : 30px;
+        margin-right    : 7px;
+
+        &:last-child {
+          margin-right: 5px;
+        }
+      }
+
+      &.round-progress-container {
+        color      : #444;
+        font-family: 'Lato', Tahoma, Geneva, sans-serif;
+        font-size  : 16px;
+
+        .pie-wrapper {
+          font-size: 4em;
+          height   : $default-size;
+          width    : $default-size;
+          margin   : 0 10px 5px 0;
+          position : relative;
+
+          .label {
+            background   : $bg-color;
+            border-radius: 50%;
+            bottom       : $label-font-size-redo / 10;
+            color        : #ecf0f1;
+            display      : block;
+            font-size    : $label-font-size;
+            left         : $label-font-size-redo / 10;
+            line-height  : $label-font-size-redo * .70;
+            position     : absolute;
+            right        : $label-font-size-redo / 10;
+            text-align   : center;
+            top          : $label-font-size-redo / 10;
+
+            .smaller {
+              color         : #eaedef;
+              font-size     : .45em;
+              padding-bottom: 20px;
+              vertical-align: super;
+            }
+          }
+        }
+
+        .pie-wrapper--solid {
+          border-radius: 50%;
+          overflow     : hidden;
+
+          &:before {
+            border-radius   : 0 100% 100% 0 / 50%;
+            content         : '';
+            display         : block;
+            height          : 100%;
+            margin-left     : 50%;
+            transform-origin: left;
+          }
+
+          .label {
+            background: transparent;
+          }
+
+          &.progress-0 {
+            @include draw-progress--solid(0, $progress-color, $bg-color);
+          }
+
+          &.progress-13 {
+            @include draw-progress--solid(13, $progress-color, $bg-color);
+          }
+
+          &.progress-25 {
+            @include draw-progress--solid(25, $progress-color, $bg-color);
+          }
+
+          &.progress-38 {
+            @include draw-progress--solid(38, $progress-color, $bg-color);
+          }
+
+          &.progress-50 {
+            @include draw-progress--solid(50, $progress-color, $bg-color);
+          }
+
+          &.progress-63 {
+            @include draw-progress--solid(63, $progress-color, $bg-color);
+          }
+
+          &.progress-75 {
+            @include draw-progress--solid(75, $progress-color, $bg-color);
+          }
+
+          &.progress-88 {
+            @include draw-progress--solid(88, $progress-color, $bg-color);
+          }
+
+          &.progress-100 {
+            @include draw-progress--solid(100, $progress-color, $bg-color);
+          }
+        }
+      }
+
+      .card-line {
+        background-color: #b1b1e2;
+        width           : 100%;
+        height          : 70px;
+      }
+    }
+  }
 }
 
 .grid-spanner-16 {
-    grid-column: span 16;
-    margin-top: 20px;
+  grid-column: span 16;
+  margin-top : 20px;
 }
