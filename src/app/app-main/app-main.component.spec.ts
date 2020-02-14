@@ -166,11 +166,11 @@ describe('Component: AppMainComponent', () => {
     describe(`#view tests:`, () => {
 
         describe(`section.app-grid-container:`, () => {
-            it(`'click' on 'section.app-grid-container' should call method 'containerClickHandler()' (async)`, async(() => {
+            it(`'click' on 'section.app-grid-container' should call method 'onContainerClickHandler()' (async)`, async(() => {
                 // Arrange
 
                 // Act
-                spyOn(component, 'containerClickHandler');
+                spyOn(component, 'onContainerClickHandler');
                 if (sectionEl instanceof HTMLElement) {
                     sectionEl.click();
                 } else {
@@ -179,7 +179,7 @@ describe('Component: AppMainComponent', () => {
 
                 // Assert
                 fixture.whenStable().then(() => {
-                    expect(component.containerClickHandler).toHaveBeenCalled();
+                    expect(component.onContainerClickHandler).toHaveBeenCalled();
                 });
             }));
         });

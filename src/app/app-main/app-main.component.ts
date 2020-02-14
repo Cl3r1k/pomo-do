@@ -406,7 +406,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     return hashtagsInTitle;
   }
 
-  containerClickHandler(event) {
+  onContainerClickHandler(event) {
     // FEATURE: Here we should check, if there is some edited item -> cancel edit
     // console.log('%c containerClick called with event: ', CONSOLE_TEXT_COLOR_COMPONENT, event);
     // console.log('%c containerClick called with event.target: ', CONSOLE_TEXT_COLOR_COMPONENT, event.target);
@@ -731,7 +731,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);
   }
 
-  generateTopHashtagsData(startDate: Date = null, endDate: Date = null) {
+  generateTopHashtagsData(startDate: Date = null, endDate: Date = null, hashtag: string = '') {
     if (!endDate) {
       endDate = new Date();
     }
