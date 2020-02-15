@@ -670,7 +670,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
   }
 
-  generateWorkDaysData(startDate: Date = null, endDate: Date = null) {
+  generateWorkDaysData(startDate: Date = null, endDate: Date = null, hashtag: string = '') {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const workDaysStats = new Array(7);
     workDaysStats.fill(0);
@@ -731,7 +731,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);
   }
 
-  generateTopHashtagsData(startDate: Date = null, endDate: Date = null, hashtag: string = '') {
+  generateTopHashtagsData(startDate: Date = null, endDate: Date = null) {
     if (!endDate) {
       endDate = new Date();
     }
@@ -867,6 +867,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   onToggleSelectedChartPart(selectedHashtag: string) {
+    // this.generateWorkDaysData();
     console.log('onToggleSelectedChartPart() selectedHashtag: ', selectedHashtag);
   }
 
