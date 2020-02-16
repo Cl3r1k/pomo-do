@@ -670,7 +670,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
     return `0,${chartHeight} ` + resultMonthlyChartData + `${chartWidth},${chartHeight}`;
   }
 
-  generateWorkDaysData(startDate: Date = null, endDate: Date = null, hashtag: string = '') {
+  generateWorkDaysData(
+    { startDate = null, endDate = null, hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
+  ) {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const workDaysStats = new Array(7);
     workDaysStats.fill(0);
@@ -867,7 +869,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   onToggleSelectedChartPart(selectedHashtag: string) {
-    // this.generateWorkDaysData();
+    this.generateWorkDaysData();
     console.log('onToggleSelectedChartPart() selectedHashtag: ', selectedHashtag);
   }
 
