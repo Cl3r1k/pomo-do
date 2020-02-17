@@ -27,6 +27,7 @@ import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
 // Constants
+import { constants } from '@app/_constants/constants';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
@@ -673,9 +674,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   generateWorkDaysData(
     { startDate = null, endDate = null, hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
   ) {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const workDaysStats = new Array(7);
-    workDaysStats.fill(0);
+    const workDaysStats = new Array(7).fill(0);
 
     if (!endDate) {
       endDate = new Date();
@@ -726,7 +725,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
     console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
 
-    this.bestWorkDay = maxValue > 0 ? daysOfWeek[maxValueIndex] : 'No data';
+    this.bestWorkDay = maxValue > 0 ? constants.daysOfWeek[maxValueIndex] : 'No data';
     this.aboveAveragePercent = maxValue > 0 ? ((maxValue - avgValue) / (avgValue / 100)).toFixed(2) : '0';
 
     // tslint:disable-next-line: max-line-length
@@ -869,7 +868,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   onToggleSelectedChartPart(selectedHashtag: string) {
-    this.generateWorkDaysData();
+    this.generateWorkDaysData({ hashtag: selectedHashtag });
     console.log('onToggleSelectedChartPart() selectedHashtag: ', selectedHashtag);
   }
 

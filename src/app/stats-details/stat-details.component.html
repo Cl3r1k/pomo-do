@@ -32,7 +32,7 @@
       <p class="card-details">{{aboveAveragePercent}}% more than average</p>
       <div class="weekly-days-chart">
         <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
-        <span class="weekly-days-label" *ngFor="let dayOfWeek of weekDays" [style.height.%]="col">{{dayOfWeek}}</span>
+        <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT" [style.height.%]="col">{{dayOfWeek}}</span>
       </div>
     </div>
     <div class="stat-report-card card-tags">

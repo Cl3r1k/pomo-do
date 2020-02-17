@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+// Constants
+import { constants } from '@app/_constants/constants';
+
 @Component({
   selector: 'app-stat-details',
   templateUrl: './stat-details.component.html',
@@ -17,8 +20,7 @@ export class StatDetailsComponent implements OnInit {
   // *** Output emitters ***
   @Output() selectedHashtagStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
 
-  weeklyCumulationChartValues = [2, 2, 2, 5, 10, 50, 70];
-  weekDays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+  WEEK_DAYS_SHORT = constants.weekDaysShort;
 
   selected = -1;
 
