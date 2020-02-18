@@ -674,7 +674,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
   generateWorkDaysData(
     { startDate = null, endDate = null, hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
   ) {
-    const workDaysStats = new Array(7).fill(0);
+    const workDaysStats = new Array(constants.daysInWeek).fill(0);
+
+    // console.log(`workDaysStats: ${workDaysStats}`);
+    // console.log(`constants.daysInWeek: ${constants.daysInWeek}`);
+
+    // console.log('%c AppMainComponent generateWorkDaysData() - hashtag: ', CONSOLE_TEXT_COLOR_COMPONENT, hashtag);
 
     if (!endDate) {
       endDate = new Date();
@@ -691,12 +696,16 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
     // console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
 
+    // TODO: Split array generation to different variables, for now
     this.recentPomos.filter(pomo => {
-      return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate;
+      // console.log(`pomo.title.includes(${hashtag}) = ${pomo.title.includes(hashtag)}`);
+      return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate && pomo.title.includes(hashtag);
     }).map(pomo => {
       const pomoEndTime = new Date(pomo.end_time);
       // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
+      // console.log(`pomoEndTime (${pomoEndTime.getDay()}) for ${pomo.title}`);
       workDaysStats[pomoEndTime.getDay()]++;
+      // console.log(`workDaysStats ${workDaysStats}`);
     });
 
     console.log('%c AppMainComponent generateWorkDaysData() - workDaysStats: ', CONSOLE_TEXT_COLOR_COMPONENT, workDaysStats);
