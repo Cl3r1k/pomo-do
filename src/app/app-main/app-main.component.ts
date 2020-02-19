@@ -696,11 +696,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
     // console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
 
-    // TODO: Split array generation to different variables, for now
-    this.recentPomos.filter(pomo => {
+    const filteredPomos = this.recentPomos.filter(pomo => {
       // console.log(`pomo.title.includes(${hashtag}) = ${pomo.title.includes(hashtag)}`);
       return new Date(pomo.end_time) >= startDate && new Date(pomo.end_time) <= endDate && pomo.title.includes(hashtag);
-    }).map(pomo => {
+    });
+
+    console.log('%c AppMainComponent generateWorkDaysData() - filteredPomos: ', CONSOLE_TEXT_COLOR_COMPONENT, filteredPomos);
+
+    filteredPomos.forEach(pomo => {
       const pomoEndTime = new Date(pomo.end_time);
       // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
       // console.log(`pomoEndTime (${pomoEndTime.getDay()}) for ${pomo.title}`);
