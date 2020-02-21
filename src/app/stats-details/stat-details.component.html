@@ -32,7 +32,8 @@
       <p class="card-details">{{aboveAveragePercent}}% more than average</p>
       <div class="weekly-days-chart">
         <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
-        <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT" [style.height.%]="col">{{dayOfWeek}}</span>
+        <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT"
+          [style.height.%]="col">{{dayOfWeek}}</span>
       </div>
     </div>
     <div class="stat-report-card card-tags">
@@ -49,19 +50,20 @@
         </ul>
         <div class="tags-pie-chart">
           <svg class="pie-chart" width="180" height="180" [style.background-color]="'teal'">
-            <svg:g
+            <svg:g class="chart-area"
               [style.transform]="selected === i ? 'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)' : ''"
-              *ngFor="let hashtagObj of hashtagsChartValues; let i = index" class="chart-area"
-              (click)="toggleSelectedChartPart(i)">
+              *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
               <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white" strokeWidth="1">
               </svg:path>
             </svg:g>
-            <g class="pie-chart-labels">
-              <text x="20" y="35" class="small">Some Text</text>
-              <!-- <g>
-                <text>Txt</text>
-              </g> -->
-            </g>
+            <svg:g class="pie-chart-labels">
+              <!-- <text x="20" y="35" class="small">Some Text</text> -->
+              <svg:g
+                [style.transform]="'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)'"
+                *ngFor="let hashtagObj of hashtagsChartValues">
+                <text x="80" y="97" class="small">10%</text>
+              </svg:g>
+            </svg:g>
           </svg>
         </div>
       </div>

@@ -791,7 +791,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // Sort tagsList from big to small
     const sortedTagsList = this._utils.sortObjectByField(tagsList, true);
 
-    // TODO: Fix bug, when there is only one hashtag (the char is not correct)
+    // TODO: Fix bug, when there is only one hashtag (the chart is not correct)
 
     this.hashtagsChartValues = [];
     let angleDelta = 0;
@@ -813,15 +813,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
         angleDelta + angleValue
       );
 
-      // const translateCoordinates = this.describeArcExtended(
-      //   START_X_COORDINATE,
-      //   START_Y_COORDINATE,
-      //   RADIUS_VALUE,
-      //   angleDelta,
-      //   angleDelta + angleValue / 2
-      // );
-
-      // console.log(`translateCoordinates: ${translateCoordinates}`);
       const angleVector = angleDelta + angleValue / 2;
       console.log(`angleVector: ${angleVector}`);
       const angleInRadians = (angleVector - 90) * Math.PI / 180.0;
@@ -830,9 +821,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const OFFSET_VALUE = 10;
       // console.log(`Math.cos(${angleInRadians}): ${cosA}`);
       const xOffset = cosA * OFFSET_VALUE;
-      const sinA = Math.sin(angleInRadians);
-      // console.log(`Math.sin(${angleInRadians}): ${sinA}`);
-      const yOffset = sinA * OFFSET_VALUE;
+      const yOffset = Math.sin(angleInRadians) * OFFSET_VALUE;
       console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
       angleDelta += angleValue;
       console.log(`for (${key}) svgPath: ${svgPath}`);
