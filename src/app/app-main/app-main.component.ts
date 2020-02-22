@@ -27,8 +27,9 @@ import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
 // Constants
-import { constants } from '@app/_constants/constants';
+import { WORK_DAYS } from '@app/_constants/constants';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
+
 
 @Component({
   selector: 'app-main',
@@ -674,10 +675,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
   generateWorkDaysData(
     { startDate = null, endDate = null, hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
   ) {
-    const workDaysStats = new Array(constants.daysInWeek).fill(0);
+    const workDaysStats = new Array(WORK_DAYS.daysInWeek).fill(0);
 
     // console.log(`workDaysStats: ${workDaysStats}`);
-    // console.log(`constants.daysInWeek: ${constants.daysInWeek}`);
+    // console.log(`WORK_DAYS.daysInWeek: ${WORK_DAYS.daysInWeek}`);
 
     // console.log('%c AppMainComponent generateWorkDaysData() - hashtag: ', CONSOLE_TEXT_COLOR_COMPONENT, hashtag);
 
@@ -737,7 +738,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
     console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
 
-    this.bestWorkDay = maxValue > 0 ? constants.daysOfWeek[maxValueIndex] : 'No data';
+    this.bestWorkDay = maxValue > 0 ? WORK_DAYS.daysOfWeek[maxValueIndex] : 'No data';
     this.aboveAveragePercent = maxValue > 0 ? ((maxValue - avgValue) / (avgValue / 100)).toFixed(2) : '0';
 
     // tslint:disable-next-line: max-line-length
@@ -795,20 +796,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     this.hashtagsChartValues = [];
     let angleDelta = 0;
-    const totalAngle = 360;
-    const angleSinglePercent = totalAngle / 100;
     Object.keys(sortedTagsList).map(key => {
       // console.log('sortedTagsList[key]', sortedTagsList[key]);
-      const angleValue = (sortedTagsList[key] / (totalHashtagCount / 100)) * angleSinglePercent;
-      console.log(`key: ${key}, angleValue: ${angleValue}`);
-      const START_X_COORDINATE = 90;
-      const START_Y_COORDINATE = 90;
-      const RADIUS_VALUE = 80;
+      const angleValue = (sortedTagsList[key] / (totalHashtagCount / 100)) * WORK_DAYS.ANGLE_SINGLE_PERCENT;
+      // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
       const svgPath = this.describeArcExtended(
-        START_X_COORDINATE,
-        START_Y_COORDINATE,
-        RADIUS_VALUE,
+        WORK_DAYS.START_X_COORDINATE,
+        WORK_DAYS.START_Y_COORDINATE,
+        WORK_DAYS.RADIUS_VALUE,
         angleDelta,
         angleDelta + angleValue
       );
@@ -817,11 +813,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       console.log(`angleVector: ${angleVector}`);
       const angleInRadians = (angleVector - 90) * Math.PI / 180.0;
       console.log(`angleInRadians: ${angleInRadians}`);
-      const cosA = Math.cos(angleInRadians);
-      const OFFSET_VALUE = 10;
-      // console.log(`Math.cos(${angleInRadians}): ${cosA}`);
-      const xOffset = cosA * OFFSET_VALUE;
-      const yOffset = Math.sin(angleInRadians) * OFFSET_VALUE;
+      const xOffset = Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
+      const yOffset = Math.sin(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
       console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
       angleDelta += angleValue;
       console.log(`for (${key}) svgPath: ${svgPath}`);
