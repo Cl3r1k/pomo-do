@@ -738,7 +738,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - maxValueIndex: ', CONSOLE_TEXT_COLOR_COMPONENT, maxValueIndex);
     console.log('%c AppMainComponent generateWorkDaysData() - avgValue: ', CONSOLE_TEXT_COLOR_COMPONENT, avgValue);
 
-    this.bestWorkDay = maxValue > 0 ? WORK_DAYS.daysOfWeek[maxValueIndex] : 'No data';
+    this.bestWorkDay = maxValue > 0 ? WORK_DAYS.daysOfWeek[maxValueIndex] : WORK_DAYS.EMPTY_DATA_MESSAGE;
     this.aboveAveragePercent = maxValue > 0 ? ((maxValue - avgValue) / (avgValue / 100)).toFixed(2) : '0';
 
     // tslint:disable-next-line: max-line-length
@@ -815,6 +815,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       console.log(`angleInRadians: ${angleInRadians}`);
       const xOffset = Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
       const yOffset = Math.sin(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
+      const xOffsetText = Math.cos(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
+      const yOffsetText = Math.sin(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
       console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
       angleDelta += angleValue;
       console.log(`for (${key}) svgPath: ${svgPath}`);
@@ -823,6 +825,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         'pathD': svgPath,
         'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)`,
         'offset': { 'x': xOffset, 'y': yOffset },
+        'offsetText': { 'x': xOffsetText, 'y': yOffsetText },
         'percent': angleValue,
       });
     });

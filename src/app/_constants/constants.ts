@@ -8,4 +8,5 @@ export const WORK_DAYS = {
   CHART_PART_OFFSET_VALUE: 10,  // In Pixels
   CHART_TEXT_OFFSET_VALUE: 30,  // In Pixels
   ANGLE_SINGLE_PERCENT: 360 / 100,
+  EMPTY_DATA_MESSAGE: 'No data',
 };
