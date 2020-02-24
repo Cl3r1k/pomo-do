@@ -798,7 +798,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     let angleDelta = 0;
     Object.keys(sortedTagsList).map(key => {
       // console.log('sortedTagsList[key]', sortedTagsList[key]);
-      const angleValue = (sortedTagsList[key] / (totalHashtagCount / 100)) * WORK_DAYS.ANGLE_SINGLE_PERCENT;
+      const chartPercent = sortedTagsList[key] / (totalHashtagCount / 100);
+      const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
       // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
       const svgPath = this.describeArcExtended(
@@ -815,8 +816,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
       console.log(`angleInRadians: ${angleInRadians}`);
       const xOffset = Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
       const yOffset = Math.sin(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
+      const offsetTextValue = WORK_DAYS.CHART_TEXT_OFFSET_VALUE + (angleVector > 225 && 10);
       const xOffsetText = Math.cos(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
       const yOffsetText = Math.sin(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
+      // console.log(`angleVector: ${angleVector}, offsetValue: ${offsetTextValue}`);
       console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
       angleDelta += angleValue;
       console.log(`for (${key}) svgPath: ${svgPath}`);
@@ -826,7 +829,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)`,
         'offset': { 'x': xOffset, 'y': yOffset },
         'offsetText': { 'x': xOffsetText, 'y': yOffsetText },
-        'percent': angleValue,
+        'percent': Math.floor(chartPercent),
       });
     });
 
