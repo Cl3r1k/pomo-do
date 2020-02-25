@@ -817,8 +817,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const xOffset = Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
       const yOffset = Math.sin(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
       const offsetTextValue = WORK_DAYS.CHART_TEXT_OFFSET_VALUE + (angleVector > 225 && 10);
-      const xOffsetText = Math.cos(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
-      const yOffsetText = Math.sin(angleInRadians) * WORK_DAYS.CHART_TEXT_OFFSET_VALUE;
+      const xOffsetText = Math.cos(angleInRadians) * offsetTextValue;
+      const yOffsetText = Math.sin(angleInRadians) * offsetTextValue;
       // console.log(`angleVector: ${angleVector}, offsetValue: ${offsetTextValue}`);
       console.log(`xOffset: ${xOffset}, yOffset: ${yOffset}`);
       angleDelta += angleValue;

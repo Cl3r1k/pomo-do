@@ -146,6 +146,11 @@ $grayedColor: #4d4d4d86;
             width        : 110px;
             white-space  : nowrap;
             text-overflow: ellipsis;
+            &::before {
+              content: '#';
+              display: inline-block;
+              background-color: red;
+            }
           }
         }
 
@@ -158,6 +163,11 @@ $grayedColor: #4d4d4d86;
                 // transform: scale(3) translate(3px, 3px);
                 opacity     : 0.5;
               }
+            }
+
+            .pie-chart-labels {
+              fill: #ffffff;
+              font-size: 12px;
             }
           }
         }

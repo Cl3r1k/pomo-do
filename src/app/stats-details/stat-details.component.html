@@ -60,7 +60,7 @@
               <!-- <text x="20" y="35" class="small">Some Text</text> -->
               <svg:g
                 [style.transform]="'translate(' + hashtagObj.offsetText.x + 'px, ' + hashtagObj.offsetText.y + 'px)'"
-                *ngFor="let hashtagObj of hashtagsChartValues">
+                *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
                 <text x="80" y="97" class="small">{{hashtagObj.percent}}%</text>
               </svg:g>
             </svg:g>
