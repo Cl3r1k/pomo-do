@@ -824,7 +824,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       angleDelta += angleValue;
       console.log(`for (${key}) svgPath: ${svgPath}`);
       this.hashtagsChartValues.push({
-        'tagName': key,
+        'tagName': key.substr(1),
         'pathD': svgPath,
         'fillColor': `hsla(${angleDelta}, 80%, 70%, 1)`,
         'offset': { 'x': xOffset, 'y': yOffset },
