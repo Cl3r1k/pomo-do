@@ -90,6 +90,10 @@ $grayedColor: #4d4d4d86;
       grid-template-rows: auto auto auto 1fr;
       padding-right     : 10px;
 
+      &.card-tags {
+        padding-left: 15px;
+      }
+
       .card-info {
         margin: 0 0 7px 0;
       }
@@ -139,17 +143,25 @@ $grayedColor: #4d4d4d86;
           margin    : 0;
 
           .tags-list-item {
-            font-size    : 1.2rem;
-            margin       : 0.3rem 0;
-            cursor       : pointer;
-            overflow     : hidden;
-            width        : 110px;
-            white-space  : nowrap;
-            text-overflow: ellipsis;
-            &::before {
-              content: '#';
-              display: inline-block;
-              background-color: red;
+            position : relative;
+            font-size: 1.2rem;
+            margin   : 0.3rem 0;
+            cursor   : pointer;
+
+            &.selected {
+              &::before {
+                content : '#';
+                display : inline-block;
+                position: absolute;
+                left    : -0.8rem;
+                top     : 0.1rem;
+              }
+            }
+
+            .tags-list-item-text {
+              overflow     : hidden;
+              white-space  : nowrap;
+              text-overflow: ellipsis;
             }
           }
         }
@@ -166,7 +178,7 @@ $grayedColor: #4d4d4d86;
             }
 
             .pie-chart-labels {
-              fill: #ffffff;
+              fill     : #ffffff;
               font-size: 12px;
             }
           }

@@ -43,9 +43,9 @@
         organize your work</p>
       <div class="chart-data-container" *ngIf="hashtagsChartValues.length">
         <ul class="tags-list">
-          <li class="tags-list-item" [style.color]="hashtagObj.fillColor"
+          <li class="tags-list-item" [class.selected]="selected === i" [style.color]="hashtagObj.fillColor"
             *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
-            {{hashtagObj.tagName}}
+            <span class="tags-list-item-text">{{hashtagObj.tagName}}</span>
           </li>
         </ul>
         <div class="tags-pie-chart">
