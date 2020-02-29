@@ -49,7 +49,7 @@
           </li>
         </ul>
         <div class="tags-pie-chart">
-          <svg class="pie-chart" width="180" height="180" [style.background-color]="'#138e8e'">
+          <svg class="pie-chart" width="180" height="180" [style.background-color]="'#138e81'">
             <svg:g class="chart-area"
               [style.transform]="selected === i ? 'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)' : ''"
               *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
