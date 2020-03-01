@@ -1,4 +1,5 @@
 <section class="stat-details-container">
+
   <div class="controls-date-container">
     <ul class="button-switcher-list">
       <li><span class="button-switcher">Pomo stat</span></li>
@@ -10,6 +11,7 @@
       <span>Calendar date</span>
     </div>
   </div>
+
   <div class="stat-chart-container">
     <div class="stat-chart-header">
       <ul>
@@ -25,22 +27,30 @@
       </svg>
     </div>
   </div>
+
   <div class="stat-report-container">
     <div class="stat-report-card card-workday">
-      <p class="card-info">Best workday</p>
-      <span class="card-data">{{bestWorkDay}}</span>
-      <p class="card-details">{{aboveAveragePercent}}% more than average</p>
+      <div class="card-text-container">
+        <p class="card-info">Best workday</p>
+        <span class="card-data">{{bestWorkDay}}</span>
+        <p class="card-details">{{aboveAveragePercent}}% more than average</p>
+      </div>
+
       <div class="weekly-days-chart">
         <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
         <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT"
           [style.height.%]="col">{{dayOfWeek}}</span>
       </div>
     </div>
+
     <div class="stat-report-card card-tags">
-      <p class="card-info">Top tags</p>
-      <span class="card-data" *ngIf="!hashtagsChartValues.length">No data</span>
-      <p class="card-details grayed" *ngIf="!hashtagsChartValues.length">You can add #tag to pomo description to
-        organize your work</p>
+      <div class="card-text-container">
+        <p class="card-info">Top tags</p>
+        <span class="card-data" *ngIf="!hashtagsChartValues.length">No data</span>
+        <p class="card-details grayed" *ngIf="!hashtagsChartValues.length">You can add #tag to pomo description to
+          organize your work</p>
+      </div>
+
       <div class="chart-data-container" *ngIf="hashtagsChartValues.length">
         <ul class="tags-list">
           <li class="tags-list-item" [class.selected]="selected === i" [style.color]="hashtagObj.fillColor"
@@ -68,10 +78,14 @@
         </div>
       </div>
     </div>
+
     <div class="stat-report-card card-worktime">
-      <p class="card-info">Best worktime</p>
-      <span class="card-data">No data</span>
-      <p class="card-details">0:00 - 24:00</p>
+      <div class="card-text-container">
+        <p class="card-info">Best worktime</p>
+        <span class="card-data">No data</span>
+        <p class="card-details">0:00 - 24:00</p>
+      </div>
+
       <div class="daily-hours-chart">
         <div class="hours-labels">
           <span class="hour-up">0</span>
@@ -82,5 +96,6 @@
         <canvas></canvas>
       </div>
     </div>
+
   </div>
 </section>

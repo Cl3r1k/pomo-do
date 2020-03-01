@@ -87,7 +87,7 @@ $grayedColor: #4d4d4d86;
 
     .stat-report-card {
       display           : grid;
-      grid-template-rows: auto auto auto 1fr;
+      grid-template-rows: auto 1fr;
       padding-right     : 10px;
 
       &.card-tags {
