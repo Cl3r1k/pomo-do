@@ -158,7 +158,9 @@ $grayedColor: #4d4d4d86;
               }
             }
 
-            .tags-list-item-text {
+            .tags-list-item-text {              
+              display: inline-block;
+              width: 100px;
               overflow     : hidden;
               white-space  : nowrap;
               text-overflow: ellipsis;
@@ -167,7 +169,9 @@ $grayedColor: #4d4d4d86;
         }
 
         .tags-pie-chart {
-          justify-self: end;
+          display      : grid;
+          align-content: end;
+          justify-content: end;
 
           .pie-chart {
             .chart-area {
