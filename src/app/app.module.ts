@@ -27,6 +27,7 @@ import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.
 import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
 import { StatHistoryComponent } from './stat-history/stat-history.component';
 import { StatDetailsComponent } from './stats-details/stat-details.component';
+import { StatReportCardComponent } from './stat-report-card/stat-report-card.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -94,7 +95,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         DialogCancelComponent,
         PomoListComponent,
         StatHistoryComponent,
-        StatDetailsComponent
+        StatDetailsComponent,
+        StatReportCardComponent
     ],
     imports: [
         AppRoutingModule,

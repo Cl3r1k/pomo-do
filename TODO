@@ -258,8 +258,8 @@ Todos:
                                     ✔ Create 'StatDetailsComponent' @done(19-11-12 09:03)
                                         ☐ Complete UI and functionality for 'StatDetailsComponent'
                                             ✔ Complete UI and functionality for 'Best workday' part @done(19-12-12 09:06)
-                                            ☐ Complete UI and functionality for 'Top tags' part   <========================================================= CURRENT TASK
-                                            ☐ Complete UI and functionality for 'Best worktime' part
+                                            ✔ Complete UI and functionality for 'Top tags' part @done(20-03-03 08:56)
+                                            ☐ Complete UI and functionality for 'Best worktime' part   <========================================================= CURRENT TASK
                                             ☐ Complete UI and functionality for 'stat-chart-header' part
                                             ☐ Complete UI and functionality for 'stat-chart-block' part
                                         ☐ Add tests for 'StatDetailsComponent'
