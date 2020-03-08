@@ -25,10 +25,13 @@ import { PomosComponent } from '@app/pomos/pomos.component';
 import { PomoHeaderComponent } from '@app/pomos/pomo-header/pomo-header.component';
 import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.component';
 import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
-import { StatHistoryComponent } from './stat-history/stat-history.component';
-import { StatDetailsComponent } from './stats-details/stat-details.component';
-import { StatReportCardComponent } from './stat-report-card/stat-report-card.component';
-import { HoursChartComponent } from './hours-chart/hours-chart.component';
+import { StatHistoryComponent } from '@app/stat-history/stat-history.component';
+import { StatDetailsComponent } from '@app/stats-details/stat-details.component';
+import { StatReportCardComponent } from '@app/stat-report-card/stat-report-card.component';
+import { HoursChartComponent } from '@app/hours-chart/hours-chart.component';
+import { StatCardComponent } from '@app/stat-card/stat-card.component';
+import { StatCardDescriptionComponent } from '@app/stat-card-description/stat-card-description.component';
+import { StatCardDetailsComponent } from '@app/stat-card-details/stat-card-details.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -98,7 +101,10 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         StatHistoryComponent,
         StatDetailsComponent,
         StatReportCardComponent,
-        HoursChartComponent
+        HoursChartComponent,
+        StatCardComponent,
+        StatCardDescriptionComponent,
+        StatCardDetailsComponent
     ],
     imports: [
         AppRoutingModule,
