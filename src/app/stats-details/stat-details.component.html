@@ -29,7 +29,7 @@
   </div>
 
   <div class="stat-report-container">
-    <div class="stat-report-card card-workday">
+    <app-stat-card>
       <div class="card-text-container">
         <p class="card-info">Best workday</p>
         <span class="card-data">{{bestWorkDay}}</span>
@@ -41,7 +41,21 @@
         <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT"
           [style.height.%]="col">{{dayOfWeek}}</span>
       </div>
-    </div>
+    </app-stat-card>   
+
+    <!-- <div class="stat-report-card card-workday">
+      <div class="card-text-container">
+        <p class="card-info">Best workday</p>
+        <span class="card-data">{{bestWorkDay}}</span>
+        <p class="card-details">{{aboveAveragePercent}}% more than average</p>
+      </div>
+
+      <div class="weekly-days-chart">
+        <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
+        <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT"
+          [style.height.%]="col">{{dayOfWeek}}</span>
+      </div>
+    </div> -->
 
     <div class="stat-report-card card-tags">
       <div class="card-text-container">

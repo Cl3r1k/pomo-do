@@ -1,0 +1,9 @@
+.stat-report-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding-right: 10px;
+
+  &.card-tags {
+    padding-left: 15px;
+  }      
+}
