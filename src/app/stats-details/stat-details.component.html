@@ -29,20 +29,10 @@
   </div>
 
   <div class="stat-report-container">
-    <!-- Next, we should pass the data to inner components -->
     <app-stat-card>
-      <!-- <div class="card-text-container">
-        <p class="card-info">Best workday</p>
-        <span class="card-data">{{bestWorkDay}}</span>
-        <p class="card-details">{{aboveAveragePercent}}% more than average</p>
-      </div> -->
       <app-stat-card-description [cardInfo]="'Best workday'" [cardData]="bestWorkDay" [cardDetails]="aboveAveragePercent + '% more than average'"></app-stat-card-description>
 
-      <div class="weekly-days-chart">
-        <span class="weekly-days-chart-column" *ngFor="let col of workDaysStatsPercents" [style.height.%]="col"></span>
-        <span class="weekly-days-label" *ngFor="let dayOfWeek of WEEK_DAYS_SHORT"
-          [style.height.%]="col">{{dayOfWeek}}</span>
-      </div>
+      <app-weekly-days-chart [workDaysStatsPercents]="workDaysStatsPercents"></app-weekly-days-chart>
     </app-stat-card>   
 
     <!-- <div class="stat-report-card card-workday">
@@ -96,11 +86,6 @@
     </div>
 
     <app-stat-report-card></app-stat-report-card>
-
-    <app-stat-card>
-      <app-stat-card-description></app-stat-card-description>
-      <app-stat-card-details></app-stat-card-details>
-    </app-stat-card>    
 
   </div>
 </section>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatCardDetailsComponent } from './stat-card-details.component';
+import { WeeklyDaysChartComponent } from './weekly-days-chart.component';
 
-describe('StatCardDetailsComponent', () => {
-  let component: StatCardDetailsComponent;
-  let fixture: ComponentFixture<StatCardDetailsComponent>;
+describe('WeeklyDaysChartComponent', () => {
+  let component: WeeklyDaysChartComponent;
+  let fixture: ComponentFixture<WeeklyDaysChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatCardDetailsComponent ]
+      declarations: [ WeeklyDaysChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatCardDetailsComponent);
+    fixture = TestBed.createComponent(WeeklyDaysChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

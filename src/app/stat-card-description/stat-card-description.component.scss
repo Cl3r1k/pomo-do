@@ -1,0 +1,21 @@
+$grayedColor: #4d4d4d86;
+
+.card-text-container {
+  .card-info {
+    margin: 0 0 7px 0;
+  }
+
+  .card-data {
+    font-weight: 700;
+    font-size: 22px;
+  }
+
+  .card-details {
+    margin: 8px 0 0 0;
+
+    &.grayed {
+      color: $grayedColor;
+      width: 80%;
+    }
+  }
+}

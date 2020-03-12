@@ -31,7 +31,7 @@ import { StatReportCardComponent } from '@app/stat-report-card/stat-report-card.
 import { HoursChartComponent } from '@app/hours-chart/hours-chart.component';
 import { StatCardComponent } from '@app/stat-card/stat-card.component';
 import { StatCardDescriptionComponent } from '@app/stat-card-description/stat-card-description.component';
-import { StatCardDetailsComponent } from '@app/stat-card-details/stat-card-details.component';
+import { WeeklyDaysChartComponent } from './weekly-days-chart/weekly-days-chart.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -104,7 +104,7 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         HoursChartComponent,
         StatCardComponent,
         StatCardDescriptionComponent,
-        StatCardDetailsComponent
+        WeeklyDaysChartComponent
     ],
     imports: [
         AppRoutingModule,

@@ -2,7 +2,6 @@
 // This file contains all styles related to the detailed statistic of the application.
 // -----------------------------------------------------------------------------------
 $borderColor: #c2b7b7;
-$grayedColor: #4d4d4d86;
 
 .stat-details-container {
   border: 1px solid $borderGrayColor;
@@ -84,48 +83,6 @@ $grayedColor: #4d4d4d86;
     padding: 20px 10px 20px 20px;
     display: grid;
     grid-template-columns: 33% 34% 33%;
-
-
-
-    .card-text-container {
-      .card-info {
-        margin: 0 0 7px 0;
-      }
-
-      .card-data {
-        font-weight: 700;
-        font-size: 22px;
-      }
-
-      .card-details {
-        margin: 8px 0 0 0;
-
-        &.grayed {
-          color: $grayedColor;
-          width: 80%;
-        }
-      }
-    }
-
-    .weekly-days-chart {
-      background-color: #a9e59d; // For Debug
-      margin: 10px 0 0 0;
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: auto 20px;
-      align-items: end;
-      grid-gap: 5px 15px;
-
-      .weekly-days-chart-column {
-        height: 100%;
-        background-color: #f39090;
-        display: block;
-      }
-
-      .weekly-days-label {
-        text-align: center;
-      }
-    }
 
     .chart-data-container {
       display: grid;
