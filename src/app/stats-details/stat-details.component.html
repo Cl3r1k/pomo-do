@@ -51,41 +51,11 @@
     </div> -->
 
     <app-stat-card>
-      <div class="card-text-container">
-        <p class="card-info">Top tags</p>
-        <span class="card-data" *ngIf="!hashtagsChartValues.length">No data</span>
-        <p class="card-details grayed" *ngIf="!hashtagsChartValues.length">You can add #tag to pomo description to
-          organize your work</p>
-      </div>
-      <!-- <app-stat-card-description [cardInfo]="'Top tags'" [cardData]="bestWorkDay"
-        [cardDetails]="aboveAveragePercent + '% more than average'"></app-stat-card-description> -->
+      <app-stat-card-description [cardInfo]="'Top tags'" [cardData]="'No data'"
+        [cardDetails]="'You can add #tag to pomo description to
+        organize your work'" [isHidden]="hashtagsChartValues.length"></app-stat-card-description>
 
-      <div class="chart-data-container" *ngIf="hashtagsChartValues.length">
-        <ul class="tags-list">
-          <li class="tags-list-item" [class.selected]="selected === i" [style.color]="hashtagObj.fillColor"
-            *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
-            <span class="tags-list-item-text">{{hashtagObj.tagName}}</span>
-          </li>
-        </ul>
-        <div class="tags-pie-chart">
-          <svg class="pie-chart" width="180" height="180" [style.background-color]="'#238e81'">
-            <svg:g class="chart-area"
-              [style.transform]="selected === i ? 'translate(' + hashtagObj.offset.x + 'px, ' + hashtagObj.offset.y + 'px)' : ''"
-              *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
-              <svg:path [attr.d]="hashtagObj.pathD" [style.fill]="hashtagObj.fillColor" stroke="white" strokeWidth="1">
-              </svg:path>
-            </svg:g>
-            <svg:g class="pie-chart-labels">
-              <!-- <text x="20" y="35" class="small">Some Text</text> -->
-              <svg:g
-                [style.transform]="'translate(' + hashtagObj.offsetText.x + 'px, ' + hashtagObj.offsetText.y + 'px)'"
-                *ngFor="let hashtagObj of hashtagsChartValues; let i = index" (click)="toggleSelectedChartPart(i)">
-                <text x="80" y="97" class="small">{{hashtagObj.percent}}%</text>
-              </svg:g>
-            </svg:g>
-          </svg>
-        </div>
-      </div>
+      <app-tags-pie-chart [hashtagsChartValues]="hashtagsChartValues" (selectedHashtagTagsPieChartComponentEmitter)="onToggleSelectedChartPart($event)"></app-tags-pie-chart>
     </app-stat-card>
 
     <!-- <div class="stat-report-card card-tags">

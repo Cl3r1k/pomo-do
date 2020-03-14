@@ -84,63 +84,6 @@ $borderColor: #c2b7b7;
     display: grid;
     grid-template-columns: 33% 34% 33%;
 
-    .chart-data-container {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      padding-top: 5px;
-
-      .tags-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        .tags-list-item {
-          position: relative;
-          font-size: 1.2rem;
-          margin: 0.3rem 0;
-          cursor: pointer;
-
-          &.selected {
-            &::before {
-              content: "#";
-              display: inline-block;
-              position: absolute;
-              left: -0.8rem;
-              top: 0.1rem;
-            }
-          }
-
-          .tags-list-item-text {
-            display: inline-block;
-            width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-        }
-      }
-
-      .tags-pie-chart {
-        display: grid;
-        align-content: end;
-        justify-content: end;
-
-        .pie-chart {
-          .chart-area {
-            &:hover {
-              // transform: scale(3) translate(3px, 3px);
-              opacity: 0.5;
-            }
-          }
-
-          .pie-chart-labels {
-            fill: #ffffff;
-            font-size: 12px;
-          }
-        }
-      }
-    }
-
     .daily-hours-chart {
       .hours-labels {
         //

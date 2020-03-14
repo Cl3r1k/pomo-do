@@ -11,6 +11,7 @@ export class StatCardDescriptionComponent implements OnInit {
   @Input() cardInfo: string;
   @Input() cardData: string;
   @Input() cardDetails: string;
+  @Input() isHidden = false;
 
   constructor() { }
 

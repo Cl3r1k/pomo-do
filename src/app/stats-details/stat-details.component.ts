@@ -17,8 +17,6 @@ export class StatDetailsComponent implements OnInit {
   // *** Output emitters ***
   @Output() selectedHashtagStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
 
-  selected = -1;
-
   // hashtagsChartValues = [
   //     {
   //         'tagName': '#dev',
@@ -44,10 +42,7 @@ export class StatDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleSelectedChartPart(selectedIndex: number) {
-    // (mouseover)="selected = i" (mouseout)="selected = -1"
-    this.selected = selectedIndex !== this.selected ? selectedIndex : -1;
-    const selectedHashtag = this.selected >= 0 ? this.hashtagsChartValues[this.selected]['tagName'] : '';
+  onToggleSelectedChartPart(selectedHashtag: string) {
     this.selectedHashtagStatDetailsComponentEmitter.emit(selectedHashtag);
   }
 

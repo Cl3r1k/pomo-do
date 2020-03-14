@@ -32,6 +32,7 @@ import { HoursChartComponent } from '@app/hours-chart/hours-chart.component';
 import { StatCardComponent } from '@app/stat-card/stat-card.component';
 import { StatCardDescriptionComponent } from '@app/stat-card-description/stat-card-description.component';
 import { WeeklyDaysChartComponent } from './weekly-days-chart/weekly-days-chart.component';
+import { TagsPieChartComponent } from './tags-pie-chart/tags-pie-chart.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -104,7 +105,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         HoursChartComponent,
         StatCardComponent,
         StatCardDescriptionComponent,
-        WeeklyDaysChartComponent
+        WeeklyDaysChartComponent,
+        TagsPieChartComponent
     ],
     imports: [
         AppRoutingModule,
