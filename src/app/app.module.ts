@@ -27,7 +27,6 @@ import { DialogCancelComponent } from '@app/dialogs/dialog-cancel/dialog-cancel.
 import { PomoListComponent } from '@app/pomos/pomo-list/pomo-list.component';
 import { StatHistoryComponent } from '@app/stat-history/stat-history.component';
 import { StatDetailsComponent } from '@app/stats-details/stat-details.component';
-import { StatReportCardComponent } from '@app/stat-report-card/stat-report-card.component';
 import { HoursChartComponent } from '@app/hours-chart/hours-chart.component';
 import { StatCardComponent } from '@app/stat-card/stat-card.component';
 import { StatCardDescriptionComponent } from '@app/stat-card-description/stat-card-description.component';
@@ -101,7 +100,6 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         PomoListComponent,
         StatHistoryComponent,
         StatDetailsComponent,
-        StatReportCardComponent,
         HoursChartComponent,
         StatCardComponent,
         StatCardDescriptionComponent,
