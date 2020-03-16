@@ -15,7 +15,11 @@ export class WeeklyDaysChartComponent implements OnInit {
 
   WEEK_DAYS_SHORT = WORK_DAYS.weekDaysShort;
 
-  constructor() {}
+  constructor() {
+    console.log('%c WeeklyDaysChartComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('%c WeeklyDaysChartComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
+  }
 }

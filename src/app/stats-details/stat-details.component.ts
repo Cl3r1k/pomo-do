@@ -37,9 +37,11 @@ export class StatDetailsComponent implements OnInit {
   // ];
 
   constructor() {
+    console.log('%c StatDetailsComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
   }
 
   ngOnInit() {
+    console.log('%c StatDetailsComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
   }
 
   onToggleSelectedChartPart(selectedHashtag: string) {
