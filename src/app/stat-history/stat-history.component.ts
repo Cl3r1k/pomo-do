@@ -41,13 +41,9 @@ export class StatHistoryComponent implements OnInit {
   // TODO: Don't forget to change value below to real value from prefs
   dailyGoalCountPrefs = 8;
 
-  constructor() {
-    console.log('%c StatHistoryComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
-  }
+  constructor() { }
 
-  ngOnInit() {
-    console.log('%c StatHistoryComponent in workDaysStatsPercents:', 'color: red;', this.workDaysStatsPercents);
-  }
+  ngOnInit() { }
 
   setSelectedItem(currentSelectedItemValue) {
     if (this.currentSelectedItem === currentSelectedItemValue) {
