@@ -80,9 +80,9 @@ $borderColor: #c2b7b7;
 
   .stat-report-container {
     border: 1px solid $borderGrayColor;
-    padding: 20px 10px 20px 20px;
+    padding: 20px;
     display: grid;
-    grid-template-columns: 33% 34% 33%;
+    grid-template-columns: repeat(3, 1fr);
 
     .daily-hours-chart {
       .hours-labels {
