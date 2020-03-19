@@ -83,15 +83,5 @@ $borderColor: #c2b7b7;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-    .daily-hours-chart {
-      .hours-labels {
-        //
-      }
-
-      .canvas-clock {
-        background-color: aqua;
-      }
-    }
   }
 }
