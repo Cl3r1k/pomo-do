@@ -1,0 +1,89 @@
+// -----------------------------------------------------------------------------------
+// This file contains all styles related to the detailed statistic of the application.
+// -----------------------------------------------------------------------------------
+@import "../../assets/scss/abstracts/variables";
+
+$borderColor: #c2b7b7;
+
+.stat-details-container {
+  border: 1px solid $borderGrayColor;
+  padding: 10px;
+
+  .controls-date-container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    margin-bottom: 10px;
+
+    .button-switcher-list {
+      grid-column: span 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .button-switcher {
+        border: 1px solid $borderColor;
+        cursor: pointer;
+      }
+    }
+
+    .extra-button {
+      grid-column: span 1;
+    }
+
+    .date-container {
+      grid-column: 5/17;
+      justify-self: end;
+    }
+  }
+
+  .stat-chart-container {
+    border: 1px solid $borderGrayColor;
+    margin-bottom: 20px;
+
+    .start-chart-header {
+      ul {
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        li {
+          border-bottom: 1px solid $borderColor;
+          border-right: 1px solid $borderColor;
+          padding: 10px 0;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          .start-chart-header-value {
+            margin-right: 5px;
+            font-weight: 700;
+            font-size: 26px;
+          }
+        }
+      }
+    }
+
+    .stat-chart-block {
+      height: 18em;
+      padding: 20px;
+
+      svg {
+        border: 1px solid #dbdbdb;
+      }
+    }
+  }
+
+  .stat-report-container {
+    border: 1px solid $borderGrayColor;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
