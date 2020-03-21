@@ -586,6 +586,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     this.generateWorkDaysData();
 
     this.generateTopHashtagsData();
+
+    this.generateWorkTimeData();
   }
 
   transformViewPomoStats() {
@@ -673,7 +675,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   generateWorkDaysData(
-    { startDate = null, endDate = null, hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
+    { startDate = null, endDate = new Date(), hashtag = '' }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}
   ) {
     const workDaysStats = new Array(WORK_DAYS.daysInWeek).fill(0);
 
@@ -681,10 +683,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // console.log(`WORK_DAYS.daysInWeek: ${WORK_DAYS.daysInWeek}`);
 
     // console.log('%c AppMainComponent generateWorkDaysData() - hashtag: ', CONSOLE_TEXT_COLOR_COMPONENT, hashtag);
-
-    if (!endDate) {
-      endDate = new Date();
-    }
 
     if (!startDate) {
       startDate = new Date(endDate);
@@ -745,11 +743,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c AppMainComponent generateWorkDaysData() - aboveAveragePercent', CONSOLE_TEXT_COLOR_COMPONENT, this.aboveAveragePercent);
   }
 
-  generateTopHashtagsData(startDate: Date = null, endDate: Date = null) {
-    if (!endDate) {
-      endDate = new Date();
-    }
-
+  generateTopHashtagsData(startDate: Date = null, endDate: Date = new Date()) {
     if (!startDate) {
       startDate = new Date(endDate);
       startDate.setMonth(startDate.getMonth() - 1);
@@ -837,6 +831,13 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%cAppMainComponent generateTopHashtagsData() - topHashtagName', CONSOLE_TEXT_COLOR_COMPONENT, this.topHashtagName);
     // tslint:disable-next-line: max-line-length
     console.log('%cAppMainComponent generateTopHashtagsData() - hashtagsChartValues', CONSOLE_TEXT_COLOR_COMPONENT, this.hashtagsChartValues);
+  }
+
+  generateWorkTimeData(startDate: Date = null, endDate: Date = new Date()) {
+    if (!startDate) {
+      startDate = new Date(endDate);
+      startDate.setMonth(startDate.getMonth() - 1);
+    }
   }
 
   // Calculation the SVG Path for an arc (of a circle) (adopted version)
