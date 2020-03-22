@@ -27,7 +27,7 @@ import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
 // Constants
-import { WORK_DAYS } from '@app/_constants/constants';
+import { WORK_DAYS, START_DAY_TIME, END_DAY_TIME } from '@app/_constants/constants';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 
@@ -689,8 +689,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       startDate.setMonth(startDate.getMonth() - 1);
     }
 
-    endDate.setHours(23, 59, 59, 0);
-    startDate.setHours(0, 0, 0, 0);
+    startDate.setHours(START_DAY_TIME[0], START_DAY_TIME[1], START_DAY_TIME[2], START_DAY_TIME[3]);
+    endDate.setHours(END_DAY_TIME[0], END_DAY_TIME[1], END_DAY_TIME[2], END_DAY_TIME[3]);
 
     // console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
     // console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
@@ -749,8 +749,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       startDate.setMonth(startDate.getMonth() - 1);
     }
 
-    endDate.setHours(23, 59, 59, 0);
-    startDate.setHours(0, 0, 0, 0);
+    startDate.setHours(START_DAY_TIME[0], START_DAY_TIME[1], START_DAY_TIME[2], START_DAY_TIME[3]);
+    endDate.setHours(END_DAY_TIME[0], END_DAY_TIME[1], END_DAY_TIME[2], END_DAY_TIME[3]);
 
     const tagsList = {};
     let maxHashtagCount = 0;
@@ -838,6 +838,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
       startDate = new Date(endDate);
       startDate.setMonth(startDate.getMonth() - 1);
     }
+
+    startDate.setHours(START_DAY_TIME[0], START_DAY_TIME[1], START_DAY_TIME[2], START_DAY_TIME[3]);
+    endDate.setHours(END_DAY_TIME[0], END_DAY_TIME[1], END_DAY_TIME[2], END_DAY_TIME[3]);
+
+    const hoursData = this.recentPomos.filter(pomo => {
+      const startTime = new Date(pomo.start_time);
+      const endTime = new Date();
+      console.log('%cAppMainComponent generateWorkTimeData() - startTime', CONSOLE_TEXT_COLOR_COMPONENT, startTime);
+      console.log('%cAppMainComponent generateWorkTimeData() - startDate', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
+      console.log('%cAppMainComponent generateWorkTimeData() - endTime', CONSOLE_TEXT_COLOR_COMPONENT, endTime);
+      console.log('%cAppMainComponent generateWorkTimeData() - endDate', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
+      return startTime >= startDate && endTime <= endDate;
+    });
+
+    console.log('%cAppMainComponent generateWorkTimeData() - hoursData', CONSOLE_TEXT_COLOR_COMPONENT, hoursData);
   }
 
   // Calculation the SVG Path for an arc (of a circle) (adopted version)

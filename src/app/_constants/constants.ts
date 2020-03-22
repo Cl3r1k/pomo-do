@@ -10,3 +10,6 @@ export const WORK_DAYS = {
   ANGLE_SINGLE_PERCENT: 360 / 100,
   EMPTY_DATA_MESSAGE: 'No data',
 };
+
+export const START_DAY_TIME = [0, 0, 0, 0];
+export const END_DAY_TIME = [23, 59, 59, 0];
