@@ -842,7 +842,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
     startDate.setHours(START_DAY_TIME[0], START_DAY_TIME[1], START_DAY_TIME[2], START_DAY_TIME[3]);
     endDate.setHours(END_DAY_TIME[0], END_DAY_TIME[1], END_DAY_TIME[2], END_DAY_TIME[3]);
 
-    const hoursData = this.recentPomos.filter(pomo => {
+    // TODO: Consider to filter pomos before calling 'generateWorkTimeData' and other related methods
+    const filteredPomos = this.recentPomos.filter(pomo => {
       const startTime = new Date(pomo.start_time);
       const endTime = new Date();
       console.log('%cAppMainComponent generateWorkTimeData() - startTime', CONSOLE_TEXT_COLOR_COMPONENT, startTime);
@@ -850,6 +851,19 @@ export class AppMainComponent implements OnInit, OnDestroy {
       console.log('%cAppMainComponent generateWorkTimeData() - endTime', CONSOLE_TEXT_COLOR_COMPONENT, endTime);
       console.log('%cAppMainComponent generateWorkTimeData() - endDate', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
       return startTime >= startDate && endTime <= endDate;
+    });
+
+    console.log('%cAppMainComponent generateWorkTimeData() - filteredPomos', CONSOLE_TEXT_COLOR_COMPONENT, filteredPomos);
+
+    const hoursData = filteredPomos.map(pomo => {
+      const startTime = new Date(pomo.start_time);
+      const endTime = new Date(pomo.end_time);
+      return {
+        startHours: startTime.getHours(),
+        startMinutes: startTime.getMinutes(),
+        entHours: endTime.getHours(),
+        endMinutes: endTime.getMinutes(),
+      };
     });
 
     console.log('%cAppMainComponent generateWorkTimeData() - hoursData', CONSOLE_TEXT_COLOR_COMPONENT, hoursData);
