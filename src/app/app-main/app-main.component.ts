@@ -31,7 +31,8 @@ import {
   WORK_DAYS,
   START_DAY_TIME,
   END_DAY_TIME,
-  HOURS_IN_DAY
+  HOURS_IN_DAY,
+  EFFECTIVE_POMO_PERCENT
 } from '@app/_constants/constants';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
@@ -1186,7 +1187,32 @@ export class AppMainComponent implements OnInit, OnDestroy {
       { maxValue: 0, maxIndex: 0 }
     );
 
-    // * Next, we should find a range of pomos, which about more than 90% percents of 'top'
+    const hoursRange = [];
+    let isRange = false;
+    hoursArray.map((pomosCount, index) => {
+      if (
+        pomosCount >=
+        (maxPomosInHour.maxValue / 100) * EFFECTIVE_POMO_PERCENT
+      ) {
+        if (isRange) {
+          hoursRange[hoursRange.length - 1] = {
+            ...hoursRange[hoursRange.length - 1],
+            endHour: index
+          };
+        } else {
+          isRange = true;
+          hoursRange.push({
+            startHour: index,
+            endHour: (index + 1) % HOURS_IN_DAY
+          });
+        }
+      } else {
+        isRange = false;
+      }
+    });
+
+    // * Next, we should find most long range of pomos
+    // * Consider to add new method to fill pomos base with some fake data
 
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
@@ -1202,6 +1228,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
       '%cAppMainComponent generateWorkTimeData() - maxPomosInHour',
       CONSOLE_TEXT_COLOR_COMPONENT,
       maxPomosInHour
+    );
+    console.log(
+      '%cAppMainComponent generateWorkTimeData() - hoursRange',
+      CONSOLE_TEXT_COLOR_COMPONENT,
+      hoursRange
     );
   }
 

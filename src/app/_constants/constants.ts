@@ -14,3 +14,4 @@ export const WORK_DAYS = {
 export const START_DAY_TIME = [0, 0, 0, 0];
 export const END_DAY_TIME = [23, 59, 59, 0];
 export const HOURS_IN_DAY = 24;
+export const EFFECTIVE_POMO_PERCENT = 90;
