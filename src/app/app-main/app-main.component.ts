@@ -1189,7 +1189,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     const hoursRange = [];
     let isRange = false;
-    hoursArray.map((pomosCount, index) => {
+    hoursArray.forEach((pomosCount, index) => {
       if (
         pomosCount >=
         (maxPomosInHour.maxValue / 100) * EFFECTIVE_POMO_PERCENT
@@ -1211,8 +1211,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
+    const longestRange = hoursRange.reduce((curr, next) => {
+      console.log('generateWorkTimeData() hoursRange.reduce...');
+      console.log('generateWorkTimeData() next', next);
+      console.log('generateWorkTimeData() curr', curr);
+      const nextAmount = next.endHour - next.startHour;
+      const currAmount = curr.endHour - curr.startHour;
+      console.log('generateWorkTimeData() nextAmount:', nextAmount);
+      console.log('generateWorkTimeData() currAmount:', currAmount);
+      return nextAmount >= currAmount ? next : curr;
+    }, { startHour: 0, endHour: 0 });
+
     // * Next, we should find most long range of pomos
     // * Consider to add new method to fill pomos base with some fake data
+
+    // * Consider to add additional field (hoursAmount) to 'hoursRange' object
 
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
@@ -1233,6 +1246,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
       '%cAppMainComponent generateWorkTimeData() - hoursRange',
       CONSOLE_TEXT_COLOR_COMPONENT,
       hoursRange
+    );
+    console.log(
+      '%cAppMainComponent generateWorkTimeData() - longestRange',
+      CONSOLE_TEXT_COLOR_COMPONENT,
+      longestRange
     );
   }
 
