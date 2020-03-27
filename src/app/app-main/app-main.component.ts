@@ -1194,16 +1194,21 @@ export class AppMainComponent implements OnInit, OnDestroy {
         pomosCount >=
         (maxPomosInHour.maxValue / 100) * EFFECTIVE_POMO_PERCENT
       ) {
+        // TODO: Stopped here, -> improve calculation for completed hours
         if (isRange) {
+          const startHour = hoursRange[hoursRange.length - 1].startHour;
+          const hoursAmount = index > startHour ? index - startHour : HOURS_IN_DAY - (index - startHour);
           hoursRange[hoursRange.length - 1] = {
             ...hoursRange[hoursRange.length - 1],
-            endHour: index
+            endHour: (index + 1) % HOURS_IN_DAY,
+            hoursAmount,
           };
         } else {
           isRange = true;
           hoursRange.push({
             startHour: index,
-            endHour: (index + 1) % HOURS_IN_DAY
+            endHour: (index + 1) % HOURS_IN_DAY,
+            hoursAmount: 1,
           });
         }
       } else {
@@ -1212,15 +1217,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
     });
 
     const longestRange = hoursRange.reduce((curr, next) => {
-      console.log('generateWorkTimeData() hoursRange.reduce...');
-      console.log('generateWorkTimeData() next', next);
-      console.log('generateWorkTimeData() curr', curr);
-      const nextAmount = next.endHour - next.startHour;
-      const currAmount = curr.endHour - curr.startHour;
-      console.log('generateWorkTimeData() nextAmount:', nextAmount);
-      console.log('generateWorkTimeData() currAmount:', currAmount);
-      return nextAmount >= currAmount ? next : curr;
-    }, { startHour: 0, endHour: 0 });
+      // const nextAmount = next.endHour - next.startHour;
+      // const currAmount = curr.endHour - curr.startHour;
+      return next.hoursAmount > curr.hoursAmount ? next : curr;
+    }, { startHour: 0, endHour: 0, hoursAmount: 0 });
 
     // * Next, we should find most long range of pomos
     // * Consider to add new method to fill pomos base with some fake data
