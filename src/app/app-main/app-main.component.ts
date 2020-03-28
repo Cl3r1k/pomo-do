@@ -1190,25 +1190,28 @@ export class AppMainComponent implements OnInit, OnDestroy {
     const hoursRange = [];
     let isRange = false;
     hoursArray.forEach((pomosCount, index) => {
+      // console.log(`pomosCount: ${pomosCount}, index: ${index}`);
       if (
         pomosCount >=
         (maxPomosInHour.maxValue / 100) * EFFECTIVE_POMO_PERCENT
       ) {
-        // TODO: Stopped here, -> improve calculation for completed hours
         if (isRange) {
           const startHour = hoursRange[hoursRange.length - 1].startHour;
-          const hoursAmount = index > startHour ? index - startHour : HOURS_IN_DAY - (index - startHour);
+          const hoursAmount =
+            index > startHour
+              ? (index + 1) - startHour
+              : HOURS_IN_DAY - (index - startHour);
           hoursRange[hoursRange.length - 1] = {
             ...hoursRange[hoursRange.length - 1],
             endHour: (index + 1) % HOURS_IN_DAY,
-            hoursAmount,
+            hoursAmount
           };
         } else {
           isRange = true;
           hoursRange.push({
             startHour: index,
-            endHour: (index + 1) % HOURS_IN_DAY,
-            hoursAmount: 1,
+            endHour: undefined,
+            hoursAmount: 0
           });
         }
       } else {
@@ -1216,16 +1219,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
-    const longestRange = hoursRange.reduce((curr, next) => {
-      // const nextAmount = next.endHour - next.startHour;
-      // const currAmount = curr.endHour - curr.startHour;
-      return next.hoursAmount > curr.hoursAmount ? next : curr;
-    }, { startHour: 0, endHour: 0, hoursAmount: 0 });
+    // TODO: Process the situation, when there is series with only one hour range
 
     // * Next, we should find most long range of pomos
-    // * Consider to add new method to fill pomos base with some fake data
+    const longestRange = hoursRange.reduce(
+      (curr, next) => (next.hoursAmount > curr.hoursAmount ? next : curr),
+      { startHour: 0, endHour: 0, hoursAmount: 0 }
+    );
 
-    // * Consider to add additional field (hoursAmount) to 'hoursRange' object
+    // * Consider to add new method to fill pomos base with some fake data
 
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
