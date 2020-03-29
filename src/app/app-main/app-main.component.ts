@@ -1199,7 +1199,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
           const startHour = hoursRange[hoursRange.length - 1].startHour;
           const hoursAmount =
             index > startHour
-              ? (index + 1) - startHour
+              ? index + 1 - startHour
               : HOURS_IN_DAY - (index - startHour);
           hoursRange[hoursRange.length - 1] = {
             ...hoursRange[hoursRange.length - 1],
@@ -1219,10 +1219,19 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
-    // TODO: Process the situation, when there is series with only one hour range
+    const updatedHoursRange = hoursRange.map(range => {
+      if (range.endHour === undefined) {
+        return {
+          ...range,
+          endHour: range.startHour + 1,
+          hoursAmount: 1
+        };
+      }
+      return range;
+    });
 
     // * Next, we should find most long range of pomos
-    const longestRange = hoursRange.reduce(
+    const longestRange = updatedHoursRange.reduce(
       (curr, next) => (next.hoursAmount > curr.hoursAmount ? next : curr),
       { startHour: 0, endHour: 0, hoursAmount: 0 }
     );
@@ -1248,6 +1257,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
       '%cAppMainComponent generateWorkTimeData() - hoursRange',
       CONSOLE_TEXT_COLOR_COMPONENT,
       hoursRange
+    );
+    console.log(
+      '%cAppMainComponent generateWorkTimeData() - updatedHoursRange',
+      CONSOLE_TEXT_COLOR_COMPONENT,
+      updatedHoursRange
     );
     console.log(
       '%cAppMainComponent generateWorkTimeData() - longestRange',
