@@ -25,6 +25,7 @@ import { map } from 'rxjs/operators';
 import { Utils } from '@app/_common/utils';
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
+import { padLeftWithString } from '@app/utils/padUtils';
 
 // Constants
 import {
@@ -1238,6 +1239,13 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // * Consider to add new method to fill pomos base with some fake data
 
+    // Check prettifier behavior in other app, how this part will be formatted
+    const bestWorkHours = `${padLeftWithString(
+      longestRange.startHour,
+      '0',
+      2
+    )} - ${padLeftWithString(longestRange.endHour, '0', 2)}`;
+
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
       CONSOLE_TEXT_COLOR_COMPONENT,
@@ -1268,8 +1276,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
       CONSOLE_TEXT_COLOR_COMPONENT,
       longestRange
     );
+    console.log(
+      '%cAppMainComponent generateWorkTimeData() - bestWorkHours',
+      CONSOLE_TEXT_COLOR_COMPONENT,
+      bestWorkHours
+    );
   }
 
+  // TODO: Move methods to 'utils'
   // Calculation the SVG Path for an arc (of a circle) (adopted version)
   // https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle/18473154#18473154
   polarToCartesian(centerX, centerY, radius, angleInDegrees) {
