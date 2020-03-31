@@ -37,7 +37,7 @@
     </app-stat-card>
 
     <app-stat-card>
-      <app-stat-card-description [cardInfo]="'Top tags'" [cardData]="'No data'"
+      <app-stat-card-description [cardInfo]="'Top tags'" [cardData]="WORK_DAYS.EMPTY_DATA_MESSAGE"
         [cardDetails]="'You can add #tag to pomo description to
         organize your work'" [isHidden]="hashtagsChartValues.length"></app-stat-card-description>
 
@@ -45,8 +45,8 @@
     </app-stat-card>
 
     <app-stat-card>
-      <app-stat-card-description [cardInfo]="'Best worktime'" [cardData]="'No data'"
-        [cardDetails]="'0:00 - 24:00'"></app-stat-card-description>
+      <app-stat-card-description [cardInfo]="'Best worktime'" [cardData]="bestWorkHours"
+        [cardDetails]="bestWorkHours"></app-stat-card-description>
     
       <app-hours-chart></app-hours-chart>
     </app-stat-card>

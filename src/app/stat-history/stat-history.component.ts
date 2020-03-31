@@ -31,6 +31,7 @@ export class StatHistoryComponent implements OnInit {
   @Input() workDaysStatsPercents: number[];
   @Input() topHashtagName: string;
   @Input() hashtagsChartValues: Object[];
+  @Input() bestWorkHours: string;
 
   // *** Output emitters ***
   @Output() selectedHashtagStatHistoryComponentEmitter: EventEmitter<string> = new EventEmitter();

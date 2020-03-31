@@ -67,11 +67,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
   monthlyPomosPolylinePoints = '';
   monthlyTodosPolylinePoints = '';
   todosCompleted = [];
-  bestWorkDay = '';
+  bestWorkDay = WORK_DAYS.EMPTY_DATA_MESSAGE;
   aboveAveragePercent = '';
   workDaysStatsPercents = [];
   topHashtagName = '';
   hashtagsChartValues = [];
+  bestWorkHours = WORK_DAYS.EMPTY_DATA_MESSAGE ;
 
   // Ask Angular DI system to inject the dependency
   // associated with the dependency injection token 'TodoDataService'
@@ -1239,8 +1240,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     // * Consider to add new method to fill pomos base with some fake data
 
-    // Check prettifier behavior in other app, how this part will be formatted
-    const bestWorkHours = `${padLeftWithString(
+    this.bestWorkHours = `${padLeftWithString(
       longestRange.startHour,
       '0',
       2
@@ -1277,9 +1277,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
       longestRange
     );
     console.log(
-      '%cAppMainComponent generateWorkTimeData() - bestWorkHours',
+      '%cAppMainComponent generateWorkTimeData() - this.bestWorkHours',
       CONSOLE_TEXT_COLOR_COMPONENT,
-      bestWorkHours
+      this.bestWorkHours
     );
   }
 

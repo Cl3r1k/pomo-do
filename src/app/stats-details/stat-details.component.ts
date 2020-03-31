@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+// Constants
+import { WORK_DAYS } from '@app/_constants/constants';
+
 @Component({
   selector: 'app-stat-details',
   templateUrl: './stat-details.component.html',
@@ -13,9 +16,12 @@ export class StatDetailsComponent implements OnInit {
   @Input() workDaysStatsPercents: number[];
   @Input() topHashtagName: string;
   @Input() hashtagsChartValues: Object[];
+  @Input() bestWorkHours: string;
 
   // *** Output emitters ***
   @Output() selectedHashtagStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
+
+  readonly WORK_DAYS = WORK_DAYS;
 
   constructor() { }
 
