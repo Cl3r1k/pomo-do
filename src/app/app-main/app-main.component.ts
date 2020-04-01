@@ -35,6 +35,7 @@ import {
   HOURS_IN_DAY,
   EFFECTIVE_POMO_PERCENT
 } from '@app/_constants/constants';
+import { getDayTimeLabel } from '@app/utils/dateTimeUtils';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
@@ -1246,6 +1247,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       2
     )} - ${padLeftWithString(longestRange.endHour, '0', 2)}`;
 
+    const dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
+
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
       CONSOLE_TEXT_COLOR_COMPONENT,
@@ -1280,6 +1283,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
       '%cAppMainComponent generateWorkTimeData() - this.bestWorkHours',
       CONSOLE_TEXT_COLOR_COMPONENT,
       this.bestWorkHours
+    );
+    console.log(
+      '%cAppMainComponent generateWorkTimeData() - dayTimeLabel',
+      CONSOLE_TEXT_COLOR_COMPONENT,
+      dayTimeLabel
     );
   }
 
