@@ -74,6 +74,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   topHashtagName = '';
   hashtagsChartValues = [];
   bestWorkHours = WORK_DAYS.EMPTY_DATA_MESSAGE ;
+  dayTimeLabel = '';
 
   // Ask Angular DI system to inject the dependency
   // associated with the dependency injection token 'TodoDataService'
@@ -1247,7 +1248,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       2
     )} - ${padLeftWithString(longestRange.endHour, '0', 2)}`;
 
-    const dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
+    this.dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
 
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
@@ -1285,9 +1286,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
       this.bestWorkHours
     );
     console.log(
-      '%cAppMainComponent generateWorkTimeData() - dayTimeLabel',
+      '%cAppMainComponent generateWorkTimeData() - this.dayTimeLabel',
       CONSOLE_TEXT_COLOR_COMPONENT,
-      dayTimeLabel
+      this.dayTimeLabel
     );
   }
 

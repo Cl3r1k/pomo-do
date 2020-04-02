@@ -17,6 +17,7 @@ export class StatDetailsComponent implements OnInit {
   @Input() topHashtagName: string;
   @Input() hashtagsChartValues: Object[];
   @Input() bestWorkHours: string;
+  @Input() dayTimeLabel: string;
 
   // *** Output emitters ***
   @Output() selectedHashtagStatDetailsComponentEmitter: EventEmitter<string> = new EventEmitter();
