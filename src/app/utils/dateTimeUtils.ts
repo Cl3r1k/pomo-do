@@ -17,5 +17,5 @@ export const getDayTimeLabel = (startTime: number, endTime: number) => {
     return 'Evening';
   }
 
-  // TODO: Check for averageTime === 22
+  return 'Night';
 };

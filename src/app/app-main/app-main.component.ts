@@ -36,6 +36,7 @@ import {
   EFFECTIVE_POMO_PERCENT
 } from '@app/_constants/constants';
 import { getDayTimeLabel } from '@app/utils/dateTimeUtils';
+import { describeArcExtended } from '@app/utils/chartUtils';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
@@ -1072,7 +1073,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
       // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
-      const svgPath = this.describeArcExtended(
+      const svgPath = describeArcExtended(
         WORK_DAYS.START_X_COORDINATE,
         WORK_DAYS.START_Y_COORDINATE,
         WORK_DAYS.RADIUS_VALUE,
@@ -1250,6 +1251,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     this.dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
 
+    // * Next, we should generate array of triangles with arcs for canvas
+
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
       CONSOLE_TEXT_COLOR_COMPONENT,
@@ -1290,45 +1293,6 @@ export class AppMainComponent implements OnInit, OnDestroy {
       CONSOLE_TEXT_COLOR_COMPONENT,
       this.dayTimeLabel
     );
-  }
-
-  // TODO: Move methods to 'utils'
-  // Calculation the SVG Path for an arc (of a circle) (adopted version)
-  // https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle/18473154#18473154
-  polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-    const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
-
-    return {
-      x: centerX + radius * Math.cos(angleInRadians),
-      y: centerY + radius * Math.sin(angleInRadians)
-    };
-  }
-
-  describeArcExtended(x, y, radius, startAngle, endAngle) {
-    const start = this.polarToCartesian(x, y, radius, endAngle);
-    const end = this.polarToCartesian(x, y, radius, startAngle);
-
-    const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
-
-    const d = [
-      'M',
-      start.x,
-      start.y,
-      'A',
-      radius,
-      radius,
-      0,
-      largeArcFlag,
-      0,
-      end.x,
-      end.y,
-      'L',
-      x,
-      y,
-      'Z'
-    ].join(' ');
-
-    return d;
   }
 
   onToggleSelectedChartPart(selectedHashtag: string) {
