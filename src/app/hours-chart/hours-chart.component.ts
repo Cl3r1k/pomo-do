@@ -9,4 +9,6 @@ export class HoursChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  // * Here we first draw basic canvas image
 }
