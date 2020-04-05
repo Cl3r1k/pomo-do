@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-hours-chart',
@@ -6,9 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hours-chart.component.scss']
 })
 export class HoursChartComponent implements OnInit {
-  constructor() {}
+  @ViewChild('canvas')
+  canvas: ElementRef<HTMLCanvasElement>;
 
-  ngOnInit() {}
+  private ctx: CanvasRenderingContext2D;
+
+  ngOnInit() {
+    this.ctx = this.canvas.nativeElement.getContext('2d');
+  }
 
   // * Here we first draw basic canvas image
+  drawCanvas() {
+    console.log('drawCanvas() called');
+  }
 }
