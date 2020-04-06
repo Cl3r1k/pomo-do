@@ -13,10 +13,19 @@ export class HoursChartComponent implements OnInit {
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+    this.drawCanvas();
+    this.draw(1, 1, 20);
   }
 
   // * Here we first draw basic canvas image
   drawCanvas() {
     console.log('drawCanvas() called');
+    this.ctx.fillStyle = 'teal';
+    this.ctx.fillRect(10, 10, 20, 20);
+  }
+
+  draw(x: number, y: number, z: number) {
+    this.ctx.fillStyle = 'blue';
+    this.ctx.fillRect(z * x, z * y, z, z);
   }
 }
