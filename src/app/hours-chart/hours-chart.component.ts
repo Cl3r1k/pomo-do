@@ -21,7 +21,7 @@ export class HoursChartComponent implements OnInit {
   drawCanvas() {
     console.log('drawCanvas() called');
     this.ctx.fillStyle = 'teal';
-    this.ctx.fillRect(10, 10, 20, 20);
+    this.ctx.fillRect(10, 10, 30, 30);
   }
 
   draw(x: number, y: number, z: number) {
