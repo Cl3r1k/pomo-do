@@ -17,7 +17,7 @@ export class HoursChartComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.drawCanvas();
     // this.draw(1, 1, 20);
-    this.drawCircle(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE * 0.4, 0, 360);
+    this.drawClocks();
   }
 
   // * Here we first draw basic canvas image
@@ -31,6 +31,19 @@ export class HoursChartComponent implements OnInit {
   //   this.ctx.fillStyle = 'blue';
   //   this.ctx.fillRect(z * x, z * y, z, z);
   // }
+
+  drawClocks() {
+    this.drawCircle(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE * 0.4, 0, 360);
+    this.drawLine(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE, CANVAS_SIZE);
+  }
+
+  drawLine(x1: number, y1: number, x2: number, y2: number) {
+    // this.ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
+    this.ctx.beginPath();
+    this.ctx.moveTo(x1, y1);
+    this.ctx.lineTo(x2, y2);
+    this.ctx.stroke();
+  }
 
   drawCircle(
     x: number,
