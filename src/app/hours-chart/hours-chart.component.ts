@@ -29,6 +29,10 @@ export class HoursChartComponent implements OnInit {
     this.drawLine(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE, CANVAS_SIZE);
   }
 
+  drawTriangle() {
+    //
+  }
+
   drawLine(x1: number, y1: number, x2: number, y2: number) {
     // this.ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
     this.ctx.beginPath();
