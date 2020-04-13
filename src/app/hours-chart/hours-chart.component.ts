@@ -29,7 +29,7 @@ export class HoursChartComponent implements OnInit {
     this.drawLine(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE, CANVAS_SIZE);
   }
 
-  drawTriangle() {
+  drawTriangle(x1: number) {
     //
   }
 
