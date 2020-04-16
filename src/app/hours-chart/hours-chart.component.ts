@@ -34,9 +34,10 @@ export class HoursChartComponent implements OnInit {
     // * where AB = AC = 90
     // * angle for height A = 30°
     // * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
-    // * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.58742
+    // * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
+    // * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
 
-    // * Coordinates: A = (0, 0), B = (0, 90), C = (???)
+    // * Coordinates: A = (0, 0), B = (90, 0), C = (???)
   }
 
   drawLine(x1: number, y1: number, x2: number, y2: number) {
