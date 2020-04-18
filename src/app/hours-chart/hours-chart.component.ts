@@ -17,7 +17,7 @@ export class HoursChartComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.drawRect(1, 1, 20);
     this.drawClocks();
-    this.drawTriangle(0, 0, 90, 30);
+    this.drawDivision(90, 90, 90, 5, 30);
   }
 
   drawRect(x: number, y: number, z: number) {
@@ -30,31 +30,40 @@ export class HoursChartComponent implements OnInit {
     this.drawLine(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE, CANVAS_SIZE);
   }
 
-  drawTriangle(x1: number, y1: number, length: number, angle: number) {
-    // * For example we have Triangle ◺ABC
-    // * where AB = AC = 90
-    // * angle for height A = 30°
-    // * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
-    // * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
-    // * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
+  drawTriangle(x1: number, y1: number, x2: number, y2: number) {
+    /*
+    * For example we have Triangle ◺ABC
+    * where AB = AC = 90
+    * angle for height A = 30°
+    * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
+    * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
+    * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
+    */
+  }
 
+  drawDivision(x1: number, y1: number, length: number, lineLength: number, angle: number) {
     // * Coordinates: A = (0, 0), B = (90, 0), C = (???)
     // * Common formula:
     // * xC=x(A)+b*sin(alfa)
     // * yC=y(A)+b*cos(alfa)
     // * xC = 0 + 90 * sin(30°) = 0 + 90 * 0.5 = 45
     // * yC = 0 + 90 * cos(30°) = 0 + 90 * 0.866 = 77.94
-    for (let i = 0; i <= 180; i += angle) {
+    for (let i = 0; i <= 360; i += angle) {
       const angleRad = this.getAngleInRad(i);
       // const sin = Math.sin(i);
       const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
       const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
       // console.log(`sin(${i}°) = ${sin}`);
-      console.log(`sinRad(${i}°) = ${sinRad}`);
-      console.log(`cosRad(${i}°) = ${cosRad}`);
-      const xC = x1 + length * sinRad;
-      const yC = y1 + length * cosRad;
-      console.log(`with angle ${i} C(${xC}, ${yC})`);
+      // console.log(`sinRad(${i}°) = ${sinRad}`);
+      // console.log(`cosRad(${i}°) = ${cosRad}`);
+      const xCStart = x1 + (length - lineLength) * sinRad;
+      const yCStart = y1 + (length - lineLength) * cosRad;
+      const xCEnd = x1 + length * sinRad;
+      const yCEnd = y1 + length * cosRad;
+      console.log(`with angle ${i} CEnd(${xCStart}, ${yCStart})`);
+      console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
+      this.drawLine(xCStart, yCStart, xCEnd, yCEnd);
+      // const x3 =
     }
   }
 
