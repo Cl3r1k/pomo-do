@@ -15,9 +15,8 @@ export class HoursChartComponent implements OnInit {
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.drawRect(1, 1, 20);
+    this.drawRect(0, 0, 20);
     this.drawClocks();
-    this.drawDivision(90, 90, 90, 5, 30);
   }
 
   drawRect(x: number, y: number, z: number) {
@@ -26,8 +25,18 @@ export class HoursChartComponent implements OnInit {
   }
 
   drawClocks() {
-    this.drawCircle(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE * 0.4, 0, 360);
-    this.drawLine(CANVAS_SIZE / 2, CANVAS_SIZE / 2, CANVAS_SIZE, CANVAS_SIZE);
+    const canvasCenter = CANVAS_SIZE / 2;
+    const divisionStart = CANVAS_SIZE * 0.43;
+    const divisionLength = 5;
+    const divisionAngle = 15;
+
+    this.drawCircle(canvasCenter, canvasCenter, CANVAS_SIZE * 0.4, 0, 360);
+    // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
+    this.drawDivision(canvasCenter, canvasCenter, divisionStart, divisionLength, divisionAngle);
+
+    const startX = canvasCenter - (divisionStart + divisionLength * 2);
+    const endX = canvasCenter + divisionStart + divisionLength * 2;
+    this.drawLine(startX, canvasCenter, endX , canvasCenter);
   }
 
   drawTriangle(x1: number, y1: number, x2: number, y2: number) {
@@ -56,14 +65,20 @@ export class HoursChartComponent implements OnInit {
       // console.log(`sin(${i}°) = ${sin}`);
       // console.log(`sinRad(${i}°) = ${sinRad}`);
       // console.log(`cosRad(${i}°) = ${cosRad}`);
-      const xCStart = x1 + (length - lineLength) * sinRad;
-      const yCStart = y1 + (length - lineLength) * cosRad;
-      const xCEnd = x1 + length * sinRad;
-      const yCEnd = y1 + length * cosRad;
-      console.log(`with angle ${i} CEnd(${xCStart}, ${yCStart})`);
+
+      const verticalCorrection = (x1 + length * sinRad) === x1 ? lineLength : 0;
+
+      const xCStart = x1 + length * sinRad;
+      const yCStart = y1 + length * cosRad;
+      const xCEnd = x1 + (length + lineLength) * sinRad;
+      const yCEnd = y1 + (length + lineLength + verticalCorrection) * cosRad;
+      console.log(`with angle ${i} CStart(${xCStart}, ${yCStart})`);
       console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
-      this.drawLine(xCStart, yCStart, xCEnd, yCEnd);
-      // const x3 =
+      console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
+
+      if (i !== 90 && i !== 270) {
+        this.drawLine(xCStart, yCStart, xCEnd, yCEnd);
+      }
     }
   }
 
