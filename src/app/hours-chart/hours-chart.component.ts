@@ -26,16 +26,16 @@ export class HoursChartComponent implements OnInit {
 
   drawClocks() {
     const canvasCenter = CANVAS_SIZE / 2;
-    const divisionStart = CANVAS_SIZE * 0.43;
-    const divisionLength = 5;
-    const divisionAngle = 15;
+    const markStart = CANVAS_SIZE * 0.43;
+    const markLength = 5;
+    const markAngle = 15;
 
     this.drawCircle(canvasCenter, canvasCenter, CANVAS_SIZE * 0.4, 0, 360);
     // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
-    this.drawDivision(canvasCenter, canvasCenter, divisionStart, divisionLength, divisionAngle);
+    this.drawMark(canvasCenter, canvasCenter, markStart, markLength, markAngle);
 
-    const startX = canvasCenter - (divisionStart + divisionLength * 2);
-    const endX = canvasCenter + divisionStart + divisionLength * 2;
+    const startX = canvasCenter - (markStart + markLength * 2);
+    const endX = canvasCenter + markStart + markLength * 2;
     this.drawLine(startX, canvasCenter, endX , canvasCenter);
   }
 
@@ -50,7 +50,7 @@ export class HoursChartComponent implements OnInit {
     */
   }
 
-  drawDivision(x1: number, y1: number, length: number, lineLength: number, angle: number) {
+  drawMark(x1: number, y1: number, length: number, lineLength: number, angle: number) {
     // * Coordinates: A = (0, 0), B = (90, 0), C = (???)
     // * Common formula:
     // * xC=x(A)+b*sin(alfa)
@@ -59,12 +59,8 @@ export class HoursChartComponent implements OnInit {
     // * yC = 0 + 90 * cos(30°) = 0 + 90 * 0.866 = 77.94
     for (let i = 0; i <= 360; i += angle) {
       const angleRad = this.getAngleInRad(i);
-      // const sin = Math.sin(i);
       const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
       const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
-      // console.log(`sin(${i}°) = ${sin}`);
-      // console.log(`sinRad(${i}°) = ${sinRad}`);
-      // console.log(`cosRad(${i}°) = ${cosRad}`);
 
       const verticalCorrection = (x1 + length * sinRad) === x1 ? lineLength : 0;
 
