@@ -5,21 +5,22 @@
     position: relative;
     .hour-value {
       position: absolute;
+      font-size: 12px;
       &.hour-up {
-        top: 0;
-        left: 45%;
+        top: -5px;
+        left: 46%;
       }
       &.hour-right {
-        top: 44%;
-        left: 0;
+        top: 43%;
+        left: -4px;
       }
       &.hour-down {
-        bottom: 0;
-        left: 45%;
+        bottom: -1px;
+        left: 46%;
       }
       &.hour-left {
-        top: 44%;
-        right: 0;
+        top: 43%;
+        right: -4px;
       }
     }
     .canvas-clock {

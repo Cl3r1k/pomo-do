@@ -15,7 +15,7 @@ export class HoursChartComponent implements OnInit {
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.drawRect(0, 0, 20);
+    // this.drawRect(0, 0, 20);
     this.drawClocks();
   }
 
@@ -26,11 +26,12 @@ export class HoursChartComponent implements OnInit {
 
   drawClocks() {
     const canvasCenter = CANVAS_SIZE / 2;
-    const markStart = CANVAS_SIZE * 0.43;
+    const circleRadius = CANVAS_SIZE * 0.35;
+    const markStart = CANVAS_SIZE * 0.37;
     const markLength = 5;
     const markAngle = 15;
 
-    this.drawCircle(canvasCenter, canvasCenter, CANVAS_SIZE * 0.4, 0, 360);
+    this.drawCircle(canvasCenter, canvasCenter, circleRadius, 0, 360);
     // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
     this.drawMark(canvasCenter, canvasCenter, markStart, markLength, markAngle);
 
