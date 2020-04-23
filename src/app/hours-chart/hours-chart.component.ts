@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 // Constants
-import { CANVAS_SIZE, CANVAS_CLOCK_STROKE_COLOR } from '@app/_constants/constants';
+import {
+  CANVAS_SIZE,
+  CANVAS_CLOCK_STROKE_COLOR,
+  HOURS_IN_DAY,
+} from '@app/_constants/constants';
 
 @Component({
   selector: 'app-hours-chart',
@@ -29,7 +33,18 @@ export class HoursChartComponent implements OnInit {
     const circleRadius = CANVAS_SIZE * 0.35;
     const markStart = CANVAS_SIZE * 0.37;
     const markLength = 5;
-    const markAngle = 15;
+    const markAngle = 360 / HOURS_IN_DAY;
+
+    // * `hoursData` mockup
+    const hoursData = [
+      { startHours: 8, startMinutes: 0, entHours: 8, endMinutes: 25 },
+      { startHours: 8, startMinutes: 10, entHours: 8, endMinutes: 35 },
+      { startHours: 8, startMinutes: 20, entHours: 8, endMinutes: 45 },
+      { startHours: 8, startMinutes: 30, entHours: 8, endMinutes: 55 },
+      { startHours: 9, startMinutes: 0, entHours: 8, endMinutes: 25 },
+      { startHours: 9, startMinutes: 21, entHours: 8, endMinutes: 46 },
+      { startHours: 9, startMinutes: 30, entHours: 8, endMinutes: 55 },
+    ];
 
     this.drawCircle(canvasCenter, canvasCenter, circleRadius, 0, 360);
     // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
@@ -37,21 +52,27 @@ export class HoursChartComponent implements OnInit {
 
     const startX = canvasCenter - (markStart + markLength * 2);
     const endX = canvasCenter + markStart + markLength * 2;
-    this.drawLine(startX, canvasCenter, endX , canvasCenter);
+    this.drawLine(startX, canvasCenter, endX, canvasCenter);
   }
 
   drawTriangle(x1: number, y1: number, x2: number, y2: number) {
     /*
-    * For example we have Triangle ◺ABC
-    * where AB = AC = 90
-    * angle for height A = 30°
-    * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
-    * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
-    * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
-    */
+     * For example we have Triangle ◺ABC
+     * where AB = AC = 90
+     * angle for height A = 30°
+     * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
+     * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
+     * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
+     */
   }
 
-  drawMark(x1: number, y1: number, length: number, lineLength: number, angle: number) {
+  drawMark(
+    x1: number,
+    y1: number,
+    length: number,
+    lineLength: number,
+    angle: number
+  ) {
     // * Coordinates: A = (0, 0), B = (90, 0), C = (???)
     // * Common formula:
     // * xC=x(A)+b*sin(alfa)
@@ -63,7 +84,7 @@ export class HoursChartComponent implements OnInit {
       const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
       const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
 
-      const verticalCorrection = (x1 + length * sinRad) === x1 ? lineLength : 0;
+      const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
 
       const xCStart = x1 + length * sinRad;
       const yCStart = y1 + length * cosRad;

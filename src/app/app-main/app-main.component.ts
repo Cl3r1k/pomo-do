@@ -1252,6 +1252,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     this.dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
 
     // * Next, we should generate array of triangles with arcs for canvas
+    // * Actually we should generate array with object fields - { startTime, endTime } or use `hoursData` ???
 
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursData',
