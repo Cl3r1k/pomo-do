@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
+// Utils
+import { getAngleInRad } from '@app/_utils/canvasUtils';
+
 // Constants
 import {
   CANVAS_SIZE,
   CANVAS_CLOCK_STROKE_COLOR,
   HOURS_IN_DAY,
+  MINUTES_IN_HOUR,
 } from '@app/_constants/constants';
 
 @Component({
@@ -21,6 +25,7 @@ export class HoursChartComponent implements OnInit {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     // this.drawRect(0, 0, 20);
     this.drawClocks();
+    this.drawArcTriangle();
   }
 
   drawRect(x: number, y: number, z: number) {
@@ -35,6 +40,19 @@ export class HoursChartComponent implements OnInit {
     const markLength = 5;
     const markAngle = 360 / HOURS_IN_DAY;
 
+    this.drawCircle(canvasCenter, canvasCenter, circleRadius, 0, 360);
+    // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
+    this.drawMark(canvasCenter, canvasCenter, markStart, markLength, markAngle);
+
+    const startX = canvasCenter - (markStart + markLength * 2);
+    const endX = canvasCenter + markStart + markLength * 2;
+    this.drawLine(startX, canvasCenter, endX, canvasCenter);
+  }
+
+  drawArcTriangle() {
+    const canvasCenter = CANVAS_SIZE / 2;
+    const triangleRadius = CANVAS_SIZE * 0.34;
+
     // * `hoursData` mockup
     const hoursData = [
       { startHours: 8, startMinutes: 0, entHours: 8, endMinutes: 25 },
@@ -46,13 +64,23 @@ export class HoursChartComponent implements OnInit {
       { startHours: 9, startMinutes: 30, entHours: 8, endMinutes: 55 },
     ];
 
-    this.drawCircle(canvasCenter, canvasCenter, circleRadius, 0, 360);
-    // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
-    this.drawMark(canvasCenter, canvasCenter, markStart, markLength, markAngle);
+    const singleTriangle = hoursData[0];
+    const startAngle = 360 / HOURS_IN_DAY * (singleTriangle.startHours + singleTriangle.startHours / MINUTES_IN_HOUR);
+    const endAngle = 360 / HOURS_IN_DAY * (singleTriangle.startHours + singleTriangle.startHours / MINUTES_IN_HOUR);
 
-    const startX = canvasCenter - (markStart + markLength * 2);
-    const endX = canvasCenter + markStart + markLength * 2;
-    this.drawLine(startX, canvasCenter, endX, canvasCenter);
+    const startAngleRad = getAngleInRad(startAngle);
+    const endAngleRad = getAngleInRad(endAngle);
+    const sinStartRad = Math.floor(Math.sin(startAngleRad) * 10000) / 10000;
+    const cosStartRad = Math.floor(Math.cos(endAngleRad) * 10000) / 10000;
+
+    // const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
+
+    // const xCStart = x1 + length * sinRad;
+    // const yCStart = y1 + length * cosRad;
+
+    // this.drawMark(canvasCenter, canvasCenter, 0, triangleRadius, startAngle);
+    // this.drawCircle();
+    // this.drawLine();
   }
 
   drawTriangle(x1: number, y1: number, x2: number, y2: number) {
@@ -80,7 +108,7 @@ export class HoursChartComponent implements OnInit {
     // * xC = 0 + 90 * sin(30°) = 0 + 90 * 0.5 = 45
     // * yC = 0 + 90 * cos(30°) = 0 + 90 * 0.866 = 77.94
     for (let i = 0; i <= 360; i += angle) {
-      const angleRad = this.getAngleInRad(i);
+      const angleRad = getAngleInRad(i);
       const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
       const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
 
@@ -98,10 +126,6 @@ export class HoursChartComponent implements OnInit {
         this.drawLine(xCStart, yCStart, xCEnd, yCEnd);
       }
     }
-  }
-
-  getAngleInRad(angle) {
-    return (Math.PI / 180) * angle;
   }
 
   drawLine(x1: number, y1: number, x2: number, y2: number) {

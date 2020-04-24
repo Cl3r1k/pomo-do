@@ -1,3 +1,5 @@
+// TODO: Refactor file and split to multiple
+
 export class Utils {
 
   public randomRangeInteger(min: number, max: number): number {
