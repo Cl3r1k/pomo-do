@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 // Utils
-import { getAngleInRad } from '@app/_utils/canvasUtils';
+import { getAngleInRad, getClockAngle } from '@app/_utils/canvasUtils';
 
 // Constants
 import {
@@ -65,8 +65,8 @@ export class HoursChartComponent implements OnInit {
     ];
 
     const singleTriangle = hoursData[0];
-    const startAngle = 360 / HOURS_IN_DAY * (singleTriangle.startHours + singleTriangle.startHours / MINUTES_IN_HOUR);
-    const endAngle = 360 / HOURS_IN_DAY * (singleTriangle.startHours + singleTriangle.startHours / MINUTES_IN_HOUR);
+    const startAngle = getClockAngle(singleTriangle.startHours, singleTriangle.startMinutes);
+    const endAngle = getClockAngle(singleTriangle.entHours, singleTriangle.endMinutes);
 
     const startAngleRad = getAngleInRad(startAngle);
     const endAngleRad = getAngleInRad(endAngle);
