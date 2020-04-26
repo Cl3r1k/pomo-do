@@ -55,23 +55,25 @@ export class HoursChartComponent implements OnInit {
 
     // * `hoursData` mockup
     const hoursData = [
-      { startHours: 8, startMinutes: 0, entHours: 8, endMinutes: 25 },
-      { startHours: 8, startMinutes: 10, entHours: 8, endMinutes: 35 },
-      { startHours: 8, startMinutes: 20, entHours: 8, endMinutes: 45 },
-      { startHours: 8, startMinutes: 30, entHours: 8, endMinutes: 55 },
-      { startHours: 9, startMinutes: 0, entHours: 8, endMinutes: 25 },
-      { startHours: 9, startMinutes: 21, entHours: 8, endMinutes: 46 },
-      { startHours: 9, startMinutes: 30, entHours: 8, endMinutes: 55 },
+      { startHour: 8, startMinute: 0, endHour: 8, endMinute: 25 },
+      { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
+      { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
+      { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
+      { startHour: 9, startMinute: 0, endHour: 8, endMinute: 25 },
+      { startHour: 9, startMinute: 21, endHour: 8, endMinute: 46 },
+      { startHour: 9, startMinute: 30, endHour: 8, endMinute: 55 },
     ];
 
     const singleTriangle = hoursData[0];
-    const startAngle = getClockAngle(singleTriangle.startHours, singleTriangle.startMinutes);
-    const endAngle = getClockAngle(singleTriangle.entHours, singleTriangle.endMinutes);
 
-    const startAngleRad = getAngleInRad(startAngle);
-    const endAngleRad = getAngleInRad(endAngle);
-    const sinStartRad = Math.floor(Math.sin(startAngleRad) * 10000) / 10000;
-    const cosStartRad = Math.floor(Math.cos(endAngleRad) * 10000) / 10000;
+    // calculateClockArcedTriangle();
+    // const startAngle = getClockAngle(singleTriangle.startHour, singleTriangle.startMinute);
+    // const endAngle = getClockAngle(singleTriangle.endHour, singleTriangle.endMinute);
+
+    // const startAngleRad = getAngleInRad(startAngle);
+    // const endAngleRad = getAngleInRad(endAngle);
+    // const sinStartRad = Math.floor(Math.sin(startAngleRad) * 10000) / 10000;
+    // const cosStartRad = Math.floor(Math.cos(endAngleRad) * 10000) / 10000;
 
     // const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
 

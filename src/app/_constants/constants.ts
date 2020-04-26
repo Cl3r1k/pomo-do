@@ -17,6 +17,7 @@ export const HOURS_IN_DAY = 24;
 export const MINUTES_IN_HOUR = 60;
 export const EFFECTIVE_POMO_PERCENT = 90;
 export const TOTAL_ANGLE = 360;
+export const COORDINATE_ROUNDING = 10000;
 
 export const CANVAS_SIZE = 180;
 export const CANVAS_CLOCK_STROKE_COLOR = 'green'; // '#cccccc';
