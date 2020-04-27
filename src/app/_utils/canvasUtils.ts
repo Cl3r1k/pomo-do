@@ -33,7 +33,7 @@ export const calculateClockArcedTriangle = ({
   endMinute,
 }): number => {
   const startAngle = getClockAngle(startHour, startMinute);
-  const endAngle = getClockAngle(endHour.entHours, endMinute);
+  const endAngle = getClockAngle(endHour, endMinute);
 
   const startAngleRad = getAngleInRad(startAngle);
   const endAngleRad = getAngleInRad(endAngle);
@@ -51,3 +51,11 @@ export const calculateClockArcedTriangle = ({
   // Return object
   return 1;
 };
+
+export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
+  const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
+
+  console.log('ctx: ', ctx);
+
+  // this.drawLine(xCStart, yCStart, xCEnd, yCEnd);
+}
