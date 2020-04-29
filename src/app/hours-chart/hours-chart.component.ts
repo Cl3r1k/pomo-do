@@ -21,38 +21,23 @@ export class HoursChartComponent implements OnInit {
   private ctx: CanvasRenderingContext2D;
 
   ngOnInit() {
-    this.ctx = this.canvas.nativeElement.getContext('2d');
-    // this.drawRect(0, 0, 20);
-    this.drawClocks();
-    this.drawArcTriangles();
-  }
-
-  drawRect(x: number, y: number, z: number) {
-    this.ctx.fillStyle = 'blue';
-    this.ctx.fillRect(z * x, z * y, z, z);
-  }
-
-  drawClocks() {
-    const canvasCenter = CANVAS_SIZE / 2;
+    const centerPoint = CANVAS_SIZE / 2;
     const circleRadius = CANVAS_SIZE * 0.35;
     const markStart = CANVAS_SIZE * 0.37;
     const markLength = 5;
     const markAngle = 360 / HOURS_IN_DAY;
 
-    canvasUtils.drawCircle(
-      canvasCenter,
-      canvasCenter,
+    this.ctx = this.canvas.nativeElement.getContext('2d');
+    // canvasUtils.drawRect(0, 0, 20, this.ctx);
+    canvasUtils.drawClocks(
+      centerPoint,
       circleRadius,
-      0,
-      360,
+      markStart,
+      markLength,
+      markAngle,
       this.ctx
     );
-    // this.drawLine(canvasCenter, canvasCenter, CANVAS_SIZE, CANVAS_SIZE);
-    this.drawMark(canvasCenter, canvasCenter, markStart, markLength, markAngle);
-
-    const startX = canvasCenter - (markStart + markLength * 2);
-    const endX = canvasCenter + markStart + markLength * 2;
-    canvasUtils.drawLine(startX, canvasCenter, endX, canvasCenter, this.ctx);
+    this.drawArcTriangles();
   }
 
   drawArcTriangles() {
@@ -102,39 +87,5 @@ export class HoursChartComponent implements OnInit {
      * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
      * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
      */
-  }
-
-  drawMark(
-    x1: number,
-    y1: number,
-    length: number,
-    lineLength: number,
-    angle: number
-  ) {
-    // * Coordinates: A = (0, 0), B = (90, 0), C = (???)
-    // * Common formula:
-    // * xC=x(A)+b*sin(alfa)
-    // * yC=y(A)+b*cos(alfa)
-    // * xC = 0 + 90 * sin(30°) = 0 + 90 * 0.5 = 45
-    // * yC = 0 + 90 * cos(30°) = 0 + 90 * 0.866 = 77.94
-    for (let i = 0; i <= 360; i += angle) {
-      const angleRad = canvasUtils.getAngleInRad(i);
-      const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
-      const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
-
-      const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
-
-      const xCStart = x1 + length * sinRad;
-      const yCStart = y1 + length * cosRad;
-      const xCEnd = x1 + (length + lineLength) * sinRad;
-      const yCEnd = y1 + (length + lineLength + verticalCorrection) * cosRad;
-      console.log(`with angle ${i} CStart(${xCStart}, ${yCStart})`);
-      console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
-      console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
-
-      if (i !== 90 && i !== 270) {
-        canvasUtils.drawLine(xCStart, yCStart, xCEnd, yCEnd, this.ctx);
-      }
-    }
   }
 }

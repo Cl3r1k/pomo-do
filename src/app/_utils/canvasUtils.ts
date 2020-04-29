@@ -4,7 +4,7 @@ import {
   MINUTES_IN_HOUR,
   TOTAL_ANGLE,
   COORDINATE_ROUNDING,
-  CANVAS_CLOCK_STROKE_COLOR
+  CANVAS_CLOCK_STROKE_COLOR,
 } from '@app/_constants/constants';
 
 /**
@@ -61,20 +61,16 @@ export const calculateClockArcedTriangle = ({
   return { xA, yA, xB, yB, xC, yC };
 };
 
-export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
-  const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
-
-  console.log('ctx: ', ctx);
-
-  this.drawLine(
-    arcedTrianglePoints['xA'],
-    arcedTrianglePoints['yA'],
-    arcedTrianglePoints['xB'],
-    arcedTrianglePoints['yB']
-  );
-};
-
-export const drawLine = (x1: number, y1: number, x2: number, y2: number, ctx): void => {
+/**
+ * name
+ */
+export const drawLine = (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  ctx
+): void => {
   // ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
   ctx.beginPath();
   ctx.moveTo(x1, y1);
@@ -82,6 +78,9 @@ export const drawLine = (x1: number, y1: number, x2: number, y2: number, ctx): v
   ctx.stroke();
 };
 
+/**
+ * name
+ */
 export const drawCircle = (
   x: number,
   y: number,
@@ -89,7 +88,7 @@ export const drawCircle = (
   startAngle: number,
   endAngle: number,
   ctx,
-  anticlockwise: boolean = false,
+  anticlockwise: boolean = false
 ): void => {
   ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
   const startAngleRad = (Math.PI / 180) * startAngle;
@@ -97,4 +96,88 @@ export const drawCircle = (
   ctx.beginPath();
   ctx.arc(x, y, radius, startAngleRad, endAngleRad, anticlockwise);
   ctx.stroke();
+};
+
+/**
+ * name
+ */
+export const drawRect = (x: number, y: number, z: number, ctx): void => {
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(z * x, z * y, z, z);
+};
+
+/**
+ * name
+ * @example
+ * * Coordinates: A = (0, 0), B = (90, 0), C = (???)
+ * * Common formula:
+ * * xC=x(A)+b*sin(alfa)
+ * * yC=y(A)+b*cos(alfa)
+ * * xC = 0 + 90 * sin(30°) = 0 + 90 * 0.5 = 45
+ * * yC = 0 + 90 * cos(30°) = 0 + 90 * 0.866 = 77.94
+ */
+export const drawMark = (
+  x1: number,
+  y1: number,
+  length: number,
+  lineLength: number,
+  angle: number,
+  ctx
+): void => {
+  for (let i = 0; i <= 360; i += angle) {
+    const angleRad = getAngleInRad(i);
+    const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
+    const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
+
+    const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
+
+    const xCStart = x1 + length * sinRad;
+    const yCStart = y1 + length * cosRad;
+    const xCEnd = x1 + (length + lineLength) * sinRad;
+    const yCEnd = y1 + (length + lineLength + verticalCorrection) * cosRad;
+    console.log(`with angle ${i} CStart(${xCStart}, ${yCStart})`);
+    console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
+    console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
+
+    if (i !== 90 && i !== 270) {
+      drawLine(xCStart, yCStart, xCEnd, yCEnd, ctx);
+    }
+  }
+};
+
+/**
+ * name
+ */
+export const drawClocks = (
+  centerPoint: number,
+  circleRadius: number,
+  markStart: number,
+  markLength: number,
+  markAngle: number,
+  ctx
+): void => {
+  drawCircle(centerPoint, centerPoint, circleRadius, 0, 360, ctx);
+  // drawLine(centerPoint, centerPoint, CANVAS_SIZE, CANVAS_SIZE);
+  drawMark(centerPoint, centerPoint, markStart, markLength, markAngle, ctx);
+
+  const startX = centerPoint - (markStart + markLength * 2);
+  const endX = centerPoint + markStart + markLength * 2;
+  drawLine(startX, centerPoint, endX, centerPoint, ctx);
+};
+
+/**
+ * name
+ */
+export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
+  const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
+
+  console.log('ctx: ', ctx);
+
+  drawLine(
+    arcedTrianglePoints['xA'],
+    arcedTrianglePoints['yA'],
+    arcedTrianglePoints['xB'],
+    arcedTrianglePoints['yB'],
+    ctx
+  );
 };
