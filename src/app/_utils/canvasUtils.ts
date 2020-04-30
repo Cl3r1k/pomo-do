@@ -24,46 +24,6 @@ export const getClockAngle = (hour: number, minute: number): number => {
 /**
  * name
  */
-export const calculateClockArcedTriangle = ({
-  xA,
-  yA,
-  length,
-  startHour,
-  startMinute,
-  endHour,
-  endMinute,
-}): Object => {
-  const startAngle = getClockAngle(startHour, startMinute);
-  const endAngle = getClockAngle(endHour, endMinute);
-
-  const startAngleRad = getAngleInRad(startAngle);
-  const endAngleRad = getAngleInRad(endAngle);
-
-  const sinStartAngleRad =
-    Math.floor(Math.sin(startAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const cosStartAngleRad =
-    Math.floor(Math.cos(startAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const sinEndAngleRad =
-    Math.floor(Math.sin(endAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const cosEndAngleRad =
-    Math.floor(Math.cos(endAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-
-  const xB = xA + length * sinStartAngleRad;
-  const yB = yA + length * cosStartAngleRad;
-  const xC = xA + length * sinEndAngleRad;
-  const yC = yA + length * cosEndAngleRad;
-
-  // Return object
-  return { xA, yA, xB, yB, xC, yC };
-};
-
-/**
- * name
- */
 export const drawLine = (
   x1: number,
   y1: number,
@@ -104,6 +64,20 @@ export const drawCircle = (
 export const drawRect = (x: number, y: number, z: number, ctx): void => {
   ctx.fillStyle = 'blue';
   ctx.fillRect(z * x, z * y, z, z);
+};
+
+/**
+ * name
+ */
+export const drawTriangle = (x1: number, y1: number, x2: number, y2: number): void => {
+  /*
+   * For example we have Triangle ◺ABC
+   * where AB = AC = 90
+   * angle for height A = 30°
+   * angle for B and C = (180 - A) / 2 = (180 - 30) / 2 = 75°
+   * BC = 2 * AB * Cos(B) = 2 * 90 * 0.258819 = 46.587
+   * h = AB * sin (angle B) = 90 * sin(75°) = 86.933
+   */
 };
 
 /**
@@ -168,6 +142,46 @@ export const drawClocks = (
 /**
  * name
  */
+export const calculateClockArcedTriangle = ({
+  xA,
+  yA,
+  length,
+  startHour,
+  startMinute,
+  endHour,
+  endMinute,
+}): Object => {
+  const startAngle = getClockAngle(startHour, startMinute);
+  const endAngle = getClockAngle(endHour, endMinute);
+
+  const startAngleRad = getAngleInRad(startAngle);
+  const endAngleRad = getAngleInRad(endAngle);
+
+  const sinStartAngleRad =
+    Math.floor(Math.sin(startAngleRad) * COORDINATE_ROUNDING) /
+    COORDINATE_ROUNDING;
+  const cosStartAngleRad =
+    Math.floor(Math.cos(startAngleRad) * COORDINATE_ROUNDING) /
+    COORDINATE_ROUNDING;
+  const sinEndAngleRad =
+    Math.floor(Math.sin(endAngleRad) * COORDINATE_ROUNDING) /
+    COORDINATE_ROUNDING;
+  const cosEndAngleRad =
+    Math.floor(Math.cos(endAngleRad) * COORDINATE_ROUNDING) /
+    COORDINATE_ROUNDING;
+
+  const xB = xA + length * sinStartAngleRad;
+  const yB = yA + length * cosStartAngleRad;
+  const xC = xA + length * sinEndAngleRad;
+  const yC = yA + length * cosEndAngleRad;
+
+  // Return object
+  return { xA, yA, xB, yB, xC, yC };
+};
+
+/**
+ * name
+ */
 export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
   const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
 
@@ -180,4 +194,33 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
     arcedTrianglePoints['yB'],
     ctx
   );
+};
+
+/**
+ * name
+ */
+export const drawArcedTriangles = (ctx, centerPoint: number, triangleRadius: number, hoursData: Object[]): void => {
+
+  const singleTriangle = hoursData[0];
+
+  // drawClockArcedTriangle(ctx, singleTriangle); <----- Stopped here
+
+  // calculateClockArcedTriangle();
+
+  // const startAngle = getClockAngle(singleTriangle.startHour, singleTriangle.startMinute);
+  // const endAngle = getClockAngle(singleTriangle.endHour, singleTriangle.endMinute);
+
+  // const startAngleRad = getAngleInRad(startAngle);
+  // const endAngleRad = getAngleInRad(endAngle);
+  // const sinStartRad = Math.floor(Math.sin(startAngleRad) * 10000) / 10000;
+  // const cosStartRad = Math.floor(Math.cos(endAngleRad) * 10000) / 10000;
+
+  // const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
+
+  // const xCStart = x1 + length * sinRad;
+  // const yCStart = y1 + length * cosRad;
+
+  // this.drawMark(canvasCenter, canvasCenter, 0, triangleRadius, startAngle);
+  // canvasUtils.drawCircle();
+  // this.drawLine();
 };
