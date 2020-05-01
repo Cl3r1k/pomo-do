@@ -203,7 +203,8 @@ export const drawArcedTriangles = (ctx, centerPoint: number, triangleRadius: num
 
   const singleTriangle = hoursData[0];
 
-  // drawClockArcedTriangle(ctx, singleTriangle); <----- Stopped here
+  const triangleSettings = { xA: triangleRadius, yA: triangleRadius, length: triangleRadius, ...singleTriangle };
+  // drawClockArcedTriangle(ctx, triangleSettings);  // <--- stopped here
 
   // calculateClockArcedTriangle();
 
