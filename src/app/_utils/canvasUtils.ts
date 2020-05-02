@@ -10,6 +10,15 @@ import {
 /**
  * name
  */
+export const floorBy = (num: number, coefficient: number) =>
+  Math.floor(num * coefficient) / coefficient;
+
+export const floorByCoordinateRounding = (num) =>
+  floorBy(num, COORDINATE_ROUNDING);
+
+/**
+ * name
+ */
 export const getAngleInRad = (angle): number => {
   return (Math.PI / 180) * angle;
 };
@@ -69,7 +78,12 @@ export const drawRect = (x: number, y: number, z: number, ctx): void => {
 /**
  * name
  */
-export const drawTriangle = (x1: number, y1: number, x2: number, y2: number): void => {
+export const drawTriangle = (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number
+): void => {
   /*
    * For example we have Triangle ◺ABC
    * where AB = AC = 90
@@ -100,8 +114,8 @@ export const drawMark = (
 ): void => {
   for (let i = 0; i <= 360; i += angle) {
     const angleRad = getAngleInRad(i);
-    const sinRad = Math.floor(Math.sin(angleRad) * 10000) / 10000;
-    const cosRad = Math.floor(Math.cos(angleRad) * 10000) / 10000;
+    const sinRad = floorByCoordinateRounding(Math.sin(angleRad));
+    const cosRad = floorByCoordinateRounding(Math.cos(angleRad));
 
     const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
 
@@ -114,6 +128,11 @@ export const drawMark = (
     console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
 
     if (i !== 90 && i !== 270) {
+      if (i === 0) {
+        ctx.strokeStyle = 'red';
+      } else {
+        ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
+      }
       drawLine(xCStart, yCStart, xCEnd, yCEnd, ctx);
     }
   }
@@ -157,23 +176,15 @@ export const calculateClockArcedTriangle = ({
   const startAngleRad = getAngleInRad(startAngle);
   const endAngleRad = getAngleInRad(endAngle);
 
-  const sinStartAngleRad =
-    Math.floor(Math.sin(startAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const cosStartAngleRad =
-    Math.floor(Math.cos(startAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const sinEndAngleRad =
-    Math.floor(Math.sin(endAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
-  const cosEndAngleRad =
-    Math.floor(Math.cos(endAngleRad) * COORDINATE_ROUNDING) /
-    COORDINATE_ROUNDING;
+  const sinStartAngleRad = floorByCoordinateRounding(Math.sin(startAngleRad));
+  const cosStartAngleRad = floorByCoordinateRounding(Math.cos(startAngleRad));
+  const sinEndAngleRad = floorByCoordinateRounding(Math.sin(endAngleRad));
+  const cosEndAngleRad = floorByCoordinateRounding(Math.cos(endAngleRad));
 
-  const xB = xA + length * sinStartAngleRad;
-  const yB = yA + length * cosStartAngleRad;
-  const xC = xA + length * sinEndAngleRad;
-  const yC = yA + length * cosEndAngleRad;
+  const xB = floorByCoordinateRounding(xA + length * sinStartAngleRad);
+  const yB = floorByCoordinateRounding(yA + length * cosStartAngleRad);
+  const xC = floorByCoordinateRounding(xA + length * sinEndAngleRad);
+  const yC = floorByCoordinateRounding(yA + length * cosEndAngleRad);
 
   // Return object
   return { xA, yA, xB, yB, xC, yC };
@@ -185,26 +196,40 @@ export const calculateClockArcedTriangle = ({
 export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
   const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
 
-  console.log('ctx: ', ctx);
-
-  drawLine(
-    arcedTrianglePoints['xA'],
-    arcedTrianglePoints['yA'],
-    arcedTrianglePoints['xB'],
-    arcedTrianglePoints['yB'],
-    ctx
+  console.log('drawClockArcedTriangle() ctx: ', ctx);
+  console.log('drawClockArcedTriangle() triangleSettings: ', triangleSettings);
+  console.log(
+    'drawClockArcedTriangle() arcedTrianglePoints: ',
+    arcedTrianglePoints
   );
+
+  // drawLine(
+  //   arcedTrianglePoints['xA'],
+  //   arcedTrianglePoints['yA'],
+  //   arcedTrianglePoints['xB'],
+  //   arcedTrianglePoints['yB'],
+  //   ctx
+  // );
 };
 
 /**
  * name
  */
-export const drawArcedTriangles = (ctx, centerPoint: number, triangleRadius: number, hoursData: Object[]): void => {
-
+export const drawArcedTriangles = (
+  ctx,
+  centerPoint: number,
+  triangleRadius: number,
+  hoursData: Object[]
+): void => {
   const singleTriangle = hoursData[0];
 
-  const triangleSettings = { xA: triangleRadius, yA: triangleRadius, length: triangleRadius, ...singleTriangle };
-  // drawClockArcedTriangle(ctx, triangleSettings);  // <--- stopped here
+  const triangleSettings = {
+    xA: triangleRadius,
+    yA: triangleRadius,
+    length: triangleRadius,
+    ...singleTriangle,
+  };
+  drawClockArcedTriangle(ctx, triangleSettings); // <--- stopped here
 
   // calculateClockArcedTriangle();
 
