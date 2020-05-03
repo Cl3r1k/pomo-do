@@ -112,7 +112,7 @@ export const drawMark = (
   angle: number,
   ctx
 ): void => {
-  for (let i = 0; i <= 360; i += angle) {
+  for (let i = 0; i <= TOTAL_ANGLE; i += angle) {
     const angleRad = getAngleInRad(i);
     const sinRad = floorByCoordinateRounding(Math.sin(angleRad));
     const cosRad = floorByCoordinateRounding(Math.cos(angleRad));
@@ -127,12 +127,7 @@ export const drawMark = (
     console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
     console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
 
-    if (i !== 90 && i !== 270) {
-      if (i === 0) {
-        ctx.strokeStyle = 'red';
-      } else {
-        ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
-      }
+    if (i !== 90 && i !== 270 && i !== 360) {
       drawLine(xCStart, yCStart, xCEnd, yCEnd, ctx);
     }
   }
@@ -149,7 +144,7 @@ export const drawClocks = (
   markAngle: number,
   ctx
 ): void => {
-  drawCircle(centerPoint, centerPoint, circleRadius, 0, 360, ctx);
+  drawCircle(centerPoint, centerPoint, circleRadius, 0, TOTAL_ANGLE, ctx);
   // drawLine(centerPoint, centerPoint, CANVAS_SIZE, CANVAS_SIZE);
   drawMark(centerPoint, centerPoint, markStart, markLength, markAngle, ctx);
 
@@ -172,6 +167,8 @@ export const calculateClockArcedTriangle = ({
 }): Object => {
   const startAngle = getClockAngle(startHour, startMinute);
   const endAngle = getClockAngle(endHour, endMinute);
+  console.log(`calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`);
+  // console.log(`calculateClockArcedTriangle() endHour(${endHour}), endMinute(${endMinute}), endAngle(${endAngle})`);
 
   const startAngleRad = getAngleInRad(startAngle);
   const endAngleRad = getAngleInRad(endAngle);
@@ -196,20 +193,27 @@ export const calculateClockArcedTriangle = ({
 export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
   const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
 
-  console.log('drawClockArcedTriangle() ctx: ', ctx);
+  // console.log('drawClockArcedTriangle() ctx: ', ctx);
   console.log('drawClockArcedTriangle() triangleSettings: ', triangleSettings);
   console.log(
     'drawClockArcedTriangle() arcedTrianglePoints: ',
     arcedTrianglePoints
   );
 
-  // drawLine(
-  //   arcedTrianglePoints['xA'],
-  //   arcedTrianglePoints['yA'],
-  //   arcedTrianglePoints['xB'],
-  //   arcedTrianglePoints['yB'],
-  //   ctx
-  // );
+  drawLine(
+    arcedTrianglePoints['xA'],
+    arcedTrianglePoints['yA'],
+    arcedTrianglePoints['xB'],
+    arcedTrianglePoints['yB'],
+    ctx
+  );
+  drawLine(
+    arcedTrianglePoints['xC'],
+    arcedTrianglePoints['yC'],
+    arcedTrianglePoints['xA'],
+    arcedTrianglePoints['yA'],
+    ctx
+  );
 };
 
 /**
@@ -224,8 +228,8 @@ export const drawArcedTriangles = (
   const singleTriangle = hoursData[0];
 
   const triangleSettings = {
-    xA: triangleRadius,
-    yA: triangleRadius,
+    xA: centerPoint,
+    yA: centerPoint,
     length: triangleRadius,
     ...singleTriangle,
   };
