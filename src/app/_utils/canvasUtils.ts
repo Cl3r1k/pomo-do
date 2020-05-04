@@ -3,6 +3,7 @@ import {
   HOURS_IN_DAY,
   MINUTES_IN_HOUR,
   TOTAL_ANGLE,
+  ANGLE_CORRECTION,
   COORDINATE_ROUNDING,
   CANVAS_CLOCK_STROKE_COLOR,
 } from '@app/_constants/constants';
@@ -27,7 +28,10 @@ export const getAngleInRad = (angle): number => {
  * name
  */
 export const getClockAngle = (hour: number, minute: number): number => {
-  return (TOTAL_ANGLE / HOURS_IN_DAY) * (hour + minute / MINUTES_IN_HOUR);
+  return (
+    (TOTAL_ANGLE / HOURS_IN_DAY) * (hour + minute / MINUTES_IN_HOUR) -
+    ANGLE_CORRECTION
+  );
 };
 
 /**
@@ -165,10 +169,14 @@ export const calculateClockArcedTriangle = ({
   endHour,
   endMinute,
 }): Object => {
-  const startAngle = getClockAngle(startHour, startMinute);
-  const endAngle = getClockAngle(endHour, endMinute);
-  console.log(`calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`);
-  // console.log(`calculateClockArcedTriangle() endHour(${endHour}), endMinute(${endMinute}), endAngle(${endAngle})`);
+  const startAngle = 0;  // getClockAngle(startHour, startMinute);
+  const endAngle = 15;  // getClockAngle(endHour, endMinute);
+  console.log(
+    `calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`
+  );
+  console.log(
+    `calculateClockArcedTriangle() endHour(${endHour}), endMinute(${endMinute}), endAngle(${endAngle})`
+  );
 
   const startAngleRad = getAngleInRad(startAngle);
   const endAngleRad = getAngleInRad(endAngle);
@@ -208,10 +216,10 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
     ctx
   );
   drawLine(
-    arcedTrianglePoints['xC'],
-    arcedTrianglePoints['yC'],
     arcedTrianglePoints['xA'],
     arcedTrianglePoints['yA'],
+    arcedTrianglePoints['xC'],
+    arcedTrianglePoints['yC'],
     ctx
   );
 };
