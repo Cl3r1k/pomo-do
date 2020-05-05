@@ -54,13 +54,13 @@ export const drawLine = (
 /**
  * name
  */
-export const drawCircle = (
+export const drawArc = (
+  ctx,
   x: number,
   y: number,
   radius: number,
   startAngle: number,
   endAngle: number,
-  ctx,
   anticlockwise: boolean = false
 ): void => {
   ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
@@ -148,7 +148,7 @@ export const drawClocks = (
   markAngle: number,
   ctx
 ): void => {
-  drawCircle(centerPoint, centerPoint, circleRadius, 0, TOTAL_ANGLE, ctx);
+  drawArc(ctx, centerPoint, centerPoint, circleRadius, 0, TOTAL_ANGLE);
   // drawLine(centerPoint, centerPoint, CANVAS_SIZE, CANVAS_SIZE);
   drawMark(centerPoint, centerPoint, markStart, markLength, markAngle, ctx);
 
@@ -169,8 +169,8 @@ export const calculateClockArcedTriangle = ({
   endHour,
   endMinute,
 }): Object => {
-  const startAngle = 0;  // getClockAngle(startHour, startMinute);
-  const endAngle = 15;  // getClockAngle(endHour, endMinute);
+  const startAngle = getClockAngle(startHour, startMinute);
+  const endAngle = getClockAngle(endHour, endMinute);
   console.log(
     `calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`
   );
@@ -186,13 +186,14 @@ export const calculateClockArcedTriangle = ({
   const sinEndAngleRad = floorByCoordinateRounding(Math.sin(endAngleRad));
   const cosEndAngleRad = floorByCoordinateRounding(Math.cos(endAngleRad));
 
-  const xB = floorByCoordinateRounding(xA + length * sinStartAngleRad);
-  const yB = floorByCoordinateRounding(yA + length * cosStartAngleRad);
-  const xC = floorByCoordinateRounding(xA + length * sinEndAngleRad);
-  const yC = floorByCoordinateRounding(yA + length * cosEndAngleRad);
+  // Rearranges x <-> y coordinates, because we need to move in clockwise
+  const xB = floorByCoordinateRounding(yA + length * cosStartAngleRad);
+  const yB = floorByCoordinateRounding(xA + length * sinStartAngleRad);
+  const xC = floorByCoordinateRounding(yA + length * cosEndAngleRad);
+  const yC = floorByCoordinateRounding(xA + length * sinEndAngleRad);
 
   // Return object
-  return { xA, yA, xB, yB, xC, yC };
+  return { xA, yA, xB, yB, xC, yC, length, startAngle, endAngle };
 };
 
 /**
@@ -214,6 +215,14 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
     arcedTrianglePoints['xB'],
     arcedTrianglePoints['yB'],
     ctx
+  );
+  drawArc(
+    ctx,
+    arcedTrianglePoints['xA'],
+    arcedTrianglePoints['yA'],
+    arcedTrianglePoints['length'],
+    arcedTrianglePoints['startAngle'],
+    arcedTrianglePoints['endAngle']
   );
   drawLine(
     arcedTrianglePoints['xA'],
@@ -259,6 +268,6 @@ export const drawArcedTriangles = (
   // const yCStart = y1 + length * cosRad;
 
   // this.drawMark(canvasCenter, canvasCenter, 0, triangleRadius, startAngle);
-  // canvasUtils.drawCircle();
+  // canvasUtils.drawArc();
   // this.drawLine();
 };
