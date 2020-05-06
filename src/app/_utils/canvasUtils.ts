@@ -200,6 +200,10 @@ export const calculateClockArcedTriangle = ({
  * name
  */
 export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
+  const TRIANGLE_COLOR = 'rgba(236, 57, 66, 0.1)';
+  ctx.fillStyle = 'red';
+  // ctx.strokeStyle = TRIANGLE_COLOR;
+
   const arcedTrianglePoints = calculateClockArcedTriangle(triangleSettings);
 
   // console.log('drawClockArcedTriangle() ctx: ', ctx);
@@ -208,6 +212,20 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
     'drawClockArcedTriangle() arcedTrianglePoints: ',
     arcedTrianglePoints
   );
+
+  ctx.beginPath();
+  ctx.moveTo(arcedTrianglePoints['xA'], arcedTrianglePoints['yA']);  // Move to clock center
+  ctx.lineTo(arcedTrianglePoints['xB'], arcedTrianglePoints['yB']);  // Line to Start_time
+  ctx.arc(
+    arcedTrianglePoints['xA'],
+    arcedTrianglePoints['yA'],
+    arcedTrianglePoints['length'],
+    arcedTrianglePoints['startAngle'],
+    arcedTrianglePoints['endAngle'],
+    false
+  );  // Arc from Start_time to End_time
+  ctx.moveTo(arcedTrianglePoints['xA'], arcedTrianglePoints['yA']);  // Move back to clock center
+  ctx.fill();
 
   drawLine(
     arcedTrianglePoints['xA'],
@@ -231,6 +249,12 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
     arcedTrianglePoints['yC'],
     ctx
   );
+
+  // ctx.beginPath();
+  // ctx.moveTo(90, 90);
+  // ctx.lineTo(120, 80);
+  // ctx.lineTo(150, 100);
+  // ctx.fill();
 };
 
 /**

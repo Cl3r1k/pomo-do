@@ -22,8 +22,8 @@ export class HoursChartComponent implements OnInit {
   ngOnInit() {
     const centerPoint = CANVAS_SIZE / 2;
     const circleRadius = CANVAS_SIZE * 0.35;
-    const markStart = CANVAS_SIZE * 0.37;
-    const markLength = 5;
+    const markStart = CANVAS_SIZE * 0.38;
+    const markLength = 4;
     const markAngle = 360 / HOURS_IN_DAY;
 
     this.ctx = this.canvas.nativeElement.getContext('2d');
