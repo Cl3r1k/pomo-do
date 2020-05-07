@@ -4,10 +4,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as canvasUtils from '@app/_utils/canvasUtils';
 
 // Constants
-import {
-  CANVAS_SIZE,
-  HOURS_IN_DAY,
-} from '@app/_constants/constants';
+import { CANVAS_SIZE, HOURS_IN_DAY } from '@app/_constants/constants';
 
 @Component({
   selector: 'app-hours-chart',
@@ -39,16 +36,21 @@ export class HoursChartComponent implements OnInit {
 
     const triangleRadius = CANVAS_SIZE * 0.34;
     // * `hoursData` mockup
-  const hoursData = [
-    { startHour: 8, startMinute: 0, endHour: 8, endMinute: 25 },
-    { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
-    { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
-    { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
-    { startHour: 9, startMinute: 0, endHour: 8, endMinute: 25 },
-    { startHour: 9, startMinute: 21, endHour: 8, endMinute: 46 },
-    { startHour: 9, startMinute: 30, endHour: 8, endMinute: 55 },
-  ];
+    const hoursData = [
+      { startHour: 8, startMinute: 0, endHour: 8, endMinute: 25 },
+      { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
+      { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
+      { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
+      { startHour: 9, startMinute: 0, endHour: 8, endMinute: 25 },
+      { startHour: 9, startMinute: 21, endHour: 8, endMinute: 46 },
+      { startHour: 9, startMinute: 30, endHour: 8, endMinute: 55 },
+    ];
 
-    canvasUtils.drawArcedTriangles(this.ctx, centerPoint, triangleRadius, hoursData);
+    canvasUtils.drawArcedTriangles(
+      this.ctx,
+      centerPoint,
+      triangleRadius,
+      hoursData
+    );
   }
 }
