@@ -215,9 +215,9 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
 
   ctx.beginPath();
   // ctx.moveTo(arcedTrianglePoints['xA'], arcedTrianglePoints['yA']);  // Move to clock center
-  ctx.moveTo(90, 90);  // Move to clock center
+  ctx.moveTo(90, 90); // Move to clock center
   // ctx.lineTo(arcedTrianglePoints['xB'], arcedTrianglePoints['yB']);  // Line to Start_time
-  ctx.lineTo(140, 60);  // Line to Start_time
+  ctx.lineTo(140, 60); // Line to Start_time
   // ctx.arc(
   //   arcedTrianglePoints['xA'],
   //   arcedTrianglePoints['yA'],
@@ -233,20 +233,23 @@ export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
   //   arcedTrianglePoints['startAngle'],
   //   arcedTrianglePoints['endAngle'],
   //   false
-  // );  // Arc from Start_time to End_time
+  // ); // Arc from Start_time to End_time
   // ctx.moveTo(arcedTrianglePoints['xA'], arcedTrianglePoints['yA']);  // Move back to clock center
-  ctx.arcTo(140, 60, 140, 120, 90);
-  ctx.lineTo(120, 90);  // Move back to clock center
+  // ctx.arcTo(140, 60, 140, 120, 90);
+  ctx.lineTo(120, 90); // Move back to clock center
   // ctx.lineTo(140, 120);  // Move back to clock center
   // ctx.fill();
   ctx.stroke();
 
   ctx.beginPath();
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 5;
-  ctx.moveTo(100, 70);
-  ctx.arcTo(100, 130, 50, 70, 40);
+  ctx.strokeStyle = 'blue';
+  ctx.lineWidth = 3;
+  ctx.moveTo(90, 90);
+  ctx.arc(90, 90, 50, getAngleInRad(0 - 90), getAngleInRad(15 - 90), false); // Mouse (by clock-wise)
+  // ctx.arc(90, 90, 50, getAngleInRad(30), getAngleInRad(36.25), false); // Mouse (by clock-wise)
+  ctx.lineTo(90, 90);
   ctx.stroke();
+  // ctx.fill();
 
   // drawLine(
   //   arcedTrianglePoints['xA'],
