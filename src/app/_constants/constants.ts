@@ -22,3 +22,4 @@ export const COORDINATE_ROUNDING = 10000;
 
 export const CANVAS_SIZE = 180;
 export const CANVAS_CLOCK_STROKE_COLOR = 'green'; // '#cccccc';
+export const TRIANGLE_COLOR = 'rgba(236, 57, 66, 0.1)';

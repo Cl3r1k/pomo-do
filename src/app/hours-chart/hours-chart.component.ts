@@ -41,9 +41,9 @@ export class HoursChartComponent implements OnInit {
       { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
       { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
       { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
-      { startHour: 9, startMinute: 0, endHour: 8, endMinute: 25 },
-      { startHour: 9, startMinute: 21, endHour: 8, endMinute: 46 },
-      { startHour: 9, startMinute: 30, endHour: 8, endMinute: 55 },
+      { startHour: 9, startMinute: 0, endHour: 9, endMinute: 25 },
+      { startHour: 9, startMinute: 21, endHour: 9, endMinute: 46 },
+      { startHour: 9, startMinute: 30, endHour: 9, endMinute: 55 },
     ];
 
     canvasUtils.drawArcedTriangles(
