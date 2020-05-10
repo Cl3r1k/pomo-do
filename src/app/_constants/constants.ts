@@ -21,5 +21,5 @@ export const ANGLE_CORRECTION = 90;
 export const COORDINATE_ROUNDING = 10000;
 
 export const CANVAS_SIZE = 180;
-export const CANVAS_CLOCK_STROKE_COLOR = 'green'; // '#cccccc';
-export const TRIANGLE_COLOR = 'rgba(236, 57, 66, 0.1)';
+export const CANVAS_CLOCK_STROKE_COLOR = '#cccccc';
+export const TRIANGLE_COLOR = 'rgba(38, 86, 146, 0.15)';
