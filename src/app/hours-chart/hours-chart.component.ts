@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 
 // Utils
 import * as canvasUtils from '@app/_utils/canvasUtils';
@@ -12,8 +12,11 @@ import { CANVAS_SIZE, HOURS_IN_DAY } from '@app/_constants/constants';
   styleUrls: ['./hours-chart.component.scss'],
 })
 export class HoursChartComponent implements OnInit {
-  @ViewChild('canvas')
-  canvas: ElementRef<HTMLCanvasElement>;
+
+  // *** Inputs ***
+  @Input() hoursData: Object[];
+
+  @ViewChild('canvas') canvas: ElementRef<HTMLCanvasElement>;
   private ctx: CanvasRenderingContext2D;
 
   ngOnInit() {
@@ -61,6 +64,11 @@ export class HoursChartComponent implements OnInit {
       centerPoint,
       triangleRadius,
       hoursData
+    );
+
+    console.log(
+      '<HoursChartComponent> ngOnInit this.hoursData: ',
+      this.hoursData
     );
   }
 }

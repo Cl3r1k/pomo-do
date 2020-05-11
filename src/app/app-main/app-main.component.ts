@@ -33,7 +33,7 @@ import {
   START_DAY_TIME,
   END_DAY_TIME,
   HOURS_IN_DAY,
-  EFFECTIVE_POMO_PERCENT
+  EFFECTIVE_POMO_PERCENT,
 } from '@app/_constants/constants';
 import { getDayTimeLabel } from '@app/utils/dateTimeUtils';
 import { describeArcExtended } from '@app/utils/chartUtils';
@@ -42,7 +42,7 @@ const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 @Component({
   selector: 'app-main',
   templateUrl: './app-main.component.html',
-  styleUrls: ['./app-main.component.scss']
+  styleUrls: ['./app-main.component.scss'],
 })
 export class AppMainComponent implements OnInit, OnDestroy {
   todos: ToDo[] = [];
@@ -74,8 +74,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
   workDaysStatsPercents = [];
   topHashtagName = '';
   hashtagsChartValues = [];
-  bestWorkHours = WORK_DAYS.EMPTY_DATA_MESSAGE ;
+  bestWorkHours = WORK_DAYS.EMPTY_DATA_MESSAGE;
   dayTimeLabel = '';
+  hoursData: Object[] = [];
 
   // Ask Angular DI system to inject the dependency
   // associated with the dependency injection token 'TodoDataService'
@@ -90,8 +91,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this._route.data
-      .pipe(map(data => data['resolverData']))
-      .subscribe(resolverData => {
+      .pipe(map((data) => data['resolverData']))
+      .subscribe((resolverData) => {
         // console.log(`%c 'TodosComponent' _route.params: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.params);
         // console.log(`%c 'TodosComponent' _route.queryParams: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.queryParams);
         // console.log(`%c 'TodosComponent' routeConfig.path: `, CONSOLE_TEXT_COLOR_COMPONENT, this._route.routeConfig.path);
@@ -117,7 +118,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
   // Method to handle event emitted by TodoListHeaderComponent
   onAddTodo(todo: ToDo) {
-    this._todoService.addTodo(todo, this.todos).subscribe(updatedTodos => {
+    this._todoService.addTodo(todo, this.todos).subscribe((updatedTodos) => {
       console.log(
         '%cin onAddTodo() updatedTodos: ',
         CONSOLE_TEXT_COLOR_COMPONENT,
@@ -147,7 +148,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     this._todoService
       .toggleTodoComplete(todo, this.todos)
-      .subscribe(updatedTodos => {
+      .subscribe((updatedTodos) => {
         console.log(
           '%cin onToggleTodoComplete updatedTodos: ',
           CONSOLE_TEXT_COLOR_COMPONENT,
@@ -167,17 +168,17 @@ export class AppMainComponent implements OnInit, OnDestroy {
       dialogTitle: 'Delete Todo',
       contentTitle: 'Are you sure want to delete todo with name:',
       contentData: todo.title,
-      isClearCompleted: false
+      isClearCompleted: false,
     };
 
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
       width: '600px',
       data: {
-        data: dataForDialog
-      }
+        data: dataForDialog,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === 'Confirm') {
         this.removeTodo(todo); // User confirmed action, call 'removeTodo()'
       } else {
@@ -195,9 +196,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
       todo.title,
       todo.id
     );
-    this._todoService.deleteTodoById(todo.id).subscribe(_ => {
+    this._todoService.deleteTodoById(todo.id).subscribe((_) => {
       this.todo = _;
-      this.todos = this.todos.filter(val => val.id !== todo.id);
+      this.todos = this.todos.filter((val) => val.id !== todo.id);
       this.updateOrder();
       this.transformView();
       this.transformViewTodoStats();
@@ -205,7 +206,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   onUpdateTodo(todo: ToDo) {
-    this._todoService.updateTodo(todo).subscribe(updatedTodo => {
+    this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
       // todo = updatedTodo;        // We even do not need to update inner todo
       this.getTopMostTodo();
     });
@@ -221,17 +222,17 @@ export class AppMainComponent implements OnInit, OnDestroy {
       estimatedPomos: todo.estimated_pomos,
       remind: todo.remind_me,
       remindTime: todo.remind_time,
-      note: todo.note
+      note: todo.note,
     };
 
     const dialogRef = this.dialog.open(DialogMoreComponent, {
       width: '400px',
       data: {
-        data: dataForDialog
-      }
+        data: dataForDialog,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (
         result &&
         (result['dialogResult'] === 'ConfirmSave' ||
@@ -262,7 +263,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   onPinTodo(todo: ToDo) {
-    this._todoService.pinTodo(todo, this.todos).subscribe(updatedTodos => {
+    this._todoService.pinTodo(todo, this.todos).subscribe((updatedTodos) => {
       // todo = updatedTodo;        // We even do not need to update inner todo
       console.log(
         '%cin onPinTodo updatedTodos: ',
@@ -278,7 +279,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     console.log('%c toggleState() called', CONSOLE_TEXT_COLOR_COMPONENT);
     this._todoService
       .toggleAll(toggleState, this.activeRouteState)
-      .subscribe(todos => {
+      .subscribe((todos) => {
         console.log(
           '%cin onToggleAll incoming todos:',
           CONSOLE_TEXT_COLOR_COMPONENT,
@@ -296,18 +297,18 @@ export class AppMainComponent implements OnInit, OnDestroy {
     const dataForDialog = {
       dialogTitle: 'Delete Todos',
       contentTitle: 'Are you sure want to delete todos amount: ',
-      contentData: this.todos.filter(todo => todo.complete === true).length,
-      isClearCompleted: true
+      contentData: this.todos.filter((todo) => todo.complete === true).length,
+      isClearCompleted: true,
     };
 
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
       width: '600px',
       data: {
-        data: dataForDialog
-      }
+        data: dataForDialog,
+      },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === 'Confirm') {
         this.clearCompleted(clearState); // User confirmed action, call 'clearCompleted()'
       } else {
@@ -323,13 +324,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
       CONSOLE_TEXT_COLOR_COMPONENT,
       clearState
     );
-    this._todoService.clearCompleted(this.activeRouteState).subscribe(todos => {
-      this.todos = todos;
-      // this.updateOrder();    // Order was updated previously in service
-      this.transformView();
-      this.transformViewTodoStats();
-      this.onClearHoverSetState(false);
-    });
+    this._todoService
+      .clearCompleted(this.activeRouteState)
+      .subscribe((todos) => {
+        this.todos = todos;
+        // this.updateOrder();    // Order was updated previously in service
+        this.transformView();
+        this.transformViewTodoStats();
+        this.onClearHoverSetState(false);
+      });
   }
 
   onClearHoverSetState(clearCompletedHoverState: boolean) {
@@ -362,7 +365,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   }
 
   updateOrder() {
-    const todoOrderList = this.todos.map(todo => {
+    const todoOrderList = this.todos.map((todo) => {
       return todo.inner_id;
     });
 
@@ -374,7 +377,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     let unpinnedTodos: ToDo[];
     let completedTodos: ToDo[];
 
-    pinnedTodos = this.todos.filter(todo => {
+    pinnedTodos = this.todos.filter((todo) => {
       if (this.activeRouteState === 3) {
         return (
           !todo.complete &&
@@ -386,7 +389,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
-    unpinnedTodos = this.todos.filter(todo => {
+    unpinnedTodos = this.todos.filter((todo) => {
       if (this.activeRouteState === 3) {
         // console.log('%cin TodosComponent todo.complete: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.complete);
         // console.log('%cin TodosComponent todo.pin: ', CONSOLE_TEXT_COLOR_COMPONENT, todo.pin);
@@ -403,7 +406,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
-    completedTodos = this.todos.filter(todo => {
+    completedTodos = this.todos.filter((todo) => {
       if (this.activeRouteState === 3) {
         return (
           todo.complete &&
@@ -457,7 +460,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
   private setAllCompletedState() {
     this.allCompleted =
-      this.todos.length === this.todos.filter(todo => todo.complete).length;
+      this.todos.length === this.todos.filter((todo) => todo.complete).length;
   }
 
   private hashtagIsPresent(title: string, hashTagToFilter: string): boolean {
@@ -467,7 +470,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     if (title.match(hashtagsRegExp)) {
       const hashtagsInTitle = title.match(hashtagsRegExp);
 
-      hashtagsInTitle.map(hashtag => {
+      hashtagsInTitle.map((hashtag) => {
         if (hashtag.trim() === hashTagToFilter) {
           isPresent = true;
         }
@@ -589,17 +592,17 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // }
 
     this.recentPomos = [];
-    this.recentPomos = recentPomos.filter(pomo => {
+    this.recentPomos = recentPomos.filter((pomo) => {
       return !pomo.canceled;
     });
 
     const optionsDate = {
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     };
 
     // At first -> let's generate 'dailyGoalList'
-    this.dailyGoalList = this.recentPomos.filter(pomoItem => {
+    this.dailyGoalList = this.recentPomos.filter((pomoItem) => {
       return (
         new Date(pomoItem.end_time).toLocaleString('en-US', optionsDate) ===
         new Date().toLocaleString('en-US', optionsDate)
@@ -612,7 +615,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     startWeekTime.setTime(startWeekTime.getTime() - timeOffset);
     startWeekTime.setHours(0, 0, 0, 0);
 
-    const tmpWeeklyCumulationList = this.recentPomos.filter(pomoItem => {
+    const tmpWeeklyCumulationList = this.recentPomos.filter((pomoItem) => {
       return new Date(pomoItem.end_time) >= startWeekTime;
     });
 
@@ -633,7 +636,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       );
       const tmpDateShort = tmpDateOfWeek.toLocaleString('en-US', optionsDate);
       // console.log('%c AppMainComponent onRecentPomosChange() - tmpDateShort: ', CONSOLE_TEXT_COLOR_COMPONENT, tmpDateShort);
-      const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter(pomoItem => {
+      const dateOfWeekPomoCount = tmpWeeklyCumulationList.filter((pomoItem) => {
         const tmpDateToFilter = new Date(pomoItem.end_time);
         if (
           tmpDateToFilter.toLocaleString('en-US', optionsDate) === tmpDateShort
@@ -671,7 +674,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
 
     let maxWeeklyDayCount = 0;
-    tmpWeeklyCumulationChartValues.map(item => {
+    tmpWeeklyCumulationChartValues.map((item) => {
       if (item > maxWeeklyDayCount) {
         maxWeeklyDayCount = item;
       }
@@ -742,7 +745,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // let's form 'todosCompleted' and 'monthlyTodosPolylinePoints' for 'todos stats'
     this.monthlyTodosPolylinePoints = '';
 
-    this.todosCompleted = this.todos.filter(todoItem => {
+    this.todosCompleted = this.todos.filter((todoItem) => {
       return todoItem.complete;
     });
 
@@ -769,7 +772,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   ): string {
     const optionsDate = {
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     };
 
     const startMonthTime = new Date();
@@ -778,7 +781,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
     startMonthTime.setHours(0, 0, 0, 0);
 
-    const monthlyItemsArray = itemsArray.filter(item => {
+    const monthlyItemsArray = itemsArray.filter((item) => {
       return item instanceof ToDo
         ? new Date(item.completed_time) >= startMonthTime
         : new Date(item.end_time) >= startMonthTime;
@@ -804,7 +807,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       );
       // tslint:disable-next-line: max-line-length
       // console.log('%c AppMainComponent generatePolylineChartValues() - currentDateOfMonthShort: ', CONSOLE_TEXT_COLOR_COMPONENT, currentDateOfMonthShort);
-      const dateOfMonthItemsCount = monthlyItemsArray.filter(item => {
+      const dateOfMonthItemsCount = monthlyItemsArray.filter((item) => {
         const dateToFilter =
           item instanceof ToDo
             ? new Date(item.completed_time)
@@ -860,7 +863,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
   generateWorkDaysData({
     startDate = null,
     endDate = new Date(),
-    hashtag = ''
+    hashtag = '',
   }: { startDate?: Date; endDate?: Date; hashtag?: string } = {}) {
     const workDaysStats = new Array(WORK_DAYS.daysInWeek).fill(0);
 
@@ -890,7 +893,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     // console.log('%c AppMainComponent generateWorkDaysData() - startDate: ', CONSOLE_TEXT_COLOR_COMPONENT, startDate);
     // console.log('%c AppMainComponent generateWorkDaysData() - endDate: ', CONSOLE_TEXT_COLOR_COMPONENT, endDate);
 
-    const filteredPomos = this.recentPomos.filter(pomo => {
+    const filteredPomos = this.recentPomos.filter((pomo) => {
       // console.log(`pomo.title.includes(${hashtag}) = ${pomo.title.includes(hashtag)}`);
       return (
         new Date(pomo.end_time) >= startDate &&
@@ -905,7 +908,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       filteredPomos
     );
 
-    filteredPomos.forEach(pomo => {
+    filteredPomos.forEach((pomo) => {
       const pomoEndTime = new Date(pomo.end_time);
       // const dayOfWeek =  pomoEndTime.toLocaleDateString('en-us', { weekday: 'long' });
       // console.log(`pomoEndTime (${pomoEndTime.getDay()}) for ${pomo.title}`);
@@ -932,7 +935,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     avgValue /= workDaysStats.length;
 
-    this.workDaysStatsPercents = workDaysStats.map(item => {
+    this.workDaysStatsPercents = workDaysStats.map((item) => {
       return item > 0 ? item / (maxValue / 100) : 2;
     });
 
@@ -999,13 +1002,13 @@ export class AppMainComponent implements OnInit, OnDestroy {
     let maxHashtagCount = 0;
     let maxHashtagName = '';
     this.recentPomos
-      .filter(pomo => {
+      .filter((pomo) => {
         return (
           new Date(pomo.end_time) >= startDate &&
           new Date(pomo.end_time) <= endDate
         );
       })
-      .map(pomo => {
+      .map((pomo) => {
         const hashtagsInTitle = this.getHashtagsInTitle(pomo.title);
         console.log(
           '%cAppMainComponent generateTopHashtagsData() - hashtagsInTitle',
@@ -1013,7 +1016,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
           hashtagsInTitle
         );
         if (hashtagsInTitle && hashtagsInTitle.length) {
-          hashtagsInTitle.map(hashtag => {
+          hashtagsInTitle.map((hashtag) => {
             tagsList[hashtag.trim()] = !tagsList[hashtag.trim()]
               ? 1
               : tagsList[hashtag.trim()] + 1;
@@ -1067,7 +1070,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
     this.hashtagsChartValues = [];
     let angleDelta = 0;
-    Object.keys(sortedTagsList).map(key => {
+    Object.keys(sortedTagsList).map((key) => {
       // console.log('sortedTagsList[key]', sortedTagsList[key]);
       const chartPercent = sortedTagsList[key] / (totalHashtagCount / 100);
       const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
@@ -1103,7 +1106,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
         fillColor: `hsla(${angleDelta}, 80%, 70%, 1)`,
         offset: { x: xOffset, y: yOffset },
         offsetText: { x: xOffsetText, y: yOffsetText },
-        percent: Math.floor(chartPercent)
+        percent: Math.floor(chartPercent),
       });
     });
 
@@ -1141,7 +1144,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
 
     // TODO: Consider to filter pomos before calling 'generateWorkTimeData' and other related methods
-    const filteredPomos = this.recentPomos.filter(pomo => {
+    const filteredPomos = this.recentPomos.filter((pomo) => {
       const startTime = new Date(pomo.start_time);
       const endTime = new Date();
       console.log(
@@ -1174,15 +1177,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
 
     const hoursArray = new Array(HOURS_IN_DAY).fill(0);
-    const hoursData = filteredPomos.map(pomo => {
+    this.hoursData = filteredPomos.map((pomo) => {
       const startTime = new Date(pomo.start_time);
       const endTime = new Date(pomo.end_time);
       hoursArray[startTime.getHours()]++;
       return {
-        startHours: startTime.getHours(),
-        startMinutes: startTime.getMinutes(),
-        entHours: endTime.getHours(),
-        endMinutes: endTime.getMinutes()
+        startHour: startTime.getHours(),
+        startMinute: startTime.getMinutes(),
+        endHour: endTime.getHours(),
+        endMinute: endTime.getMinutes(),
       };
     });
 
@@ -1209,14 +1212,14 @@ export class AppMainComponent implements OnInit, OnDestroy {
           hoursRange[hoursRange.length - 1] = {
             ...hoursRange[hoursRange.length - 1],
             endHour: (index + 1) % HOURS_IN_DAY,
-            hoursAmount
+            hoursAmount,
           };
         } else {
           isRange = true;
           hoursRange.push({
             startHour: index,
             endHour: undefined,
-            hoursAmount: 0
+            hoursAmount: 0,
           });
         }
       } else {
@@ -1224,12 +1227,12 @@ export class AppMainComponent implements OnInit, OnDestroy {
       }
     });
 
-    const updatedHoursRange = hoursRange.map(range => {
+    const updatedHoursRange = hoursRange.map((range) => {
       if (range.endHour === undefined) {
         return {
           ...range,
           endHour: range.startHour + 1,
-          hoursAmount: 1
+          hoursAmount: 1,
         };
       }
       return range;
@@ -1249,15 +1252,17 @@ export class AppMainComponent implements OnInit, OnDestroy {
       2
     )} - ${padLeftWithString(longestRange.endHour, '0', 2)}`;
 
-    this.dayTimeLabel = getDayTimeLabel(+longestRange.startHour, longestRange.endHour);
+    this.dayTimeLabel = getDayTimeLabel(
+      +longestRange.startHour,
+      longestRange.endHour
+    );
 
     // * Next, we should generate array of triangles with arcs for canvas
-    // * Actually we should generate array with object fields - { startTime, endTime } or use `hoursData` ???
 
     console.log(
-      '%cAppMainComponent generateWorkTimeData() - hoursData',
+      '%cAppMainComponent generateWorkTimeData() - this.hoursData',
       CONSOLE_TEXT_COLOR_COMPONENT,
-      hoursData
+      this.hoursData
     );
     console.log(
       '%cAppMainComponent generateWorkTimeData() - hoursArray',

@@ -33,6 +33,7 @@ export class StatHistoryComponent implements OnInit {
   @Input() hashtagsChartValues: Object[];
   @Input() bestWorkHours: string;
   @Input() dayTimeLabel: string;
+  @Input() hoursData: Object[];
 
   // *** Output emitters ***
   @Output() selectedHashtagStatHistoryComponentEmitter: EventEmitter<string> = new EventEmitter();
@@ -43,7 +44,9 @@ export class StatHistoryComponent implements OnInit {
   // TODO: Don't forget to change value below to real value from prefs
   dailyGoalCountPrefs = 8;
 
-  constructor() { }
+  constructor() {
+    console.log('this.hoursData: ', this.hoursData);
+  }
 
   ngOnInit() { }
 

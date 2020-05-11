@@ -227,16 +227,6 @@ export const drawArcedTriangles = (
   triangleRadius: number,
   hoursData: Object[]
 ): void => {
-  // const singleTriangle = hoursData[0];
-
-  // const triangleSettings = {
-  //   xA: centerPoint,
-  //   yA: centerPoint,
-  //   length: triangleRadius,
-  //   ...singleTriangle,
-  // };
-  // drawClockArcedTriangle(ctx, triangleSettings); // <--- stopped here
-
   hoursData.forEach((hour) => {
     const triangleSettings = {
       xA: centerPoint,
@@ -246,23 +236,4 @@ export const drawArcedTriangles = (
     };
     drawClockArcedTriangle(ctx, triangleSettings); // <--- stopped here
   });
-
-  // calculateClockArcedTriangle();
-
-  // const startAngle = getClockAngle(singleTriangle.startHour, singleTriangle.startMinute);
-  // const endAngle = getClockAngle(singleTriangle.endHour, singleTriangle.endMinute);
-
-  // const startAngleRad = getAngleInRad(startAngle);
-  // const endAngleRad = getAngleInRad(endAngle);
-  // const sinStartRad = Math.floor(Math.sin(startAngleRad) * 10000) / 10000;
-  // const cosStartRad = Math.floor(Math.cos(endAngleRad) * 10000) / 10000;
-
-  // const verticalCorrection = x1 + length * sinRad === x1 ? lineLength : 0;
-
-  // const xCStart = x1 + length * sinRad;
-  // const yCStart = y1 + length * cosRad;
-
-  // this.drawMark(canvasCenter, canvasCenter, 0, triangleRadius, startAngle);
-  // canvasUtils.drawArc();
-  // this.drawLine();
 };

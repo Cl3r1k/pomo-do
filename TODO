@@ -291,6 +291,8 @@ Todos:
 
             ☐ To view on console.log message `--->Hashtags updated in IndexedDb!`, on app reload (what is the cause of this message, when there were no changes in hashtags, when app reloaded)
 
+            ☐ Fix `Top tags` chart when only one pomo with #hashtag completed
+
             ☐ Consider to change 'Utils' class and make it as a simple file with functions
 
             ☐ Use `Proxy` for search optimization (`https://www.youtube.com/watch?v=mSbyhHfxs04`)
