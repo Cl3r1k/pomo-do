@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, ElementRef, Input, SimpleChanges } from '@angular/core';
 
 // Utils
 import * as canvasUtils from '@app/_utils/canvasUtils';
@@ -11,7 +11,7 @@ import { CANVAS_SIZE, HOURS_IN_DAY } from '@app/_constants/constants';
   templateUrl: './hours-chart.component.html',
   styleUrls: ['./hours-chart.component.scss'],
 })
-export class HoursChartComponent implements OnInit {
+export class HoursChartComponent implements OnInit, OnChanges {
 
   // *** Inputs ***
   @Input() hoursData: Object[];
@@ -70,5 +70,9 @@ export class HoursChartComponent implements OnInit {
       '<HoursChartComponent> ngOnInit this.hoursData: ',
       this.hoursData
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('<HoursChartComponent> ngOnChanges() changes: ', changes);
   }
 }

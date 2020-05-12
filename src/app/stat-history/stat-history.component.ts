@@ -44,9 +44,7 @@ export class StatHistoryComponent implements OnInit {
   // TODO: Don't forget to change value below to real value from prefs
   dailyGoalCountPrefs = 8;
 
-  constructor() {
-    console.log('this.hoursData: ', this.hoursData);
-  }
+  constructor() { }
 
   ngOnInit() { }
 
