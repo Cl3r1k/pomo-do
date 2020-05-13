@@ -2,11 +2,7 @@
 import {
   HOURS_IN_DAY,
   MINUTES_IN_HOUR,
-  TOTAL_ANGLE,
-  ANGLE_CORRECTION,
-  COORDINATE_ROUNDING,
-  CANVAS_CLOCK_STROKE_COLOR,
-  TRIANGLE_COLOR,
+  CANVAS_SETTINGS,
 } from '@app/_constants/constants';
 
 /**
@@ -16,7 +12,7 @@ export const floorBy = (num: number, coefficient: number) =>
   Math.floor(num * coefficient) / coefficient;
 
 export const floorByCoordinateRounding = (num) =>
-  floorBy(num, COORDINATE_ROUNDING);
+  floorBy(num, CANVAS_SETTINGS.COORDINATE_ROUNDING);
 
 /**
  * name
@@ -30,8 +26,8 @@ export const getAngleInRad = (angle): number => {
  */
 export const getClockAngle = (hour: number, minute: number): number => {
   return (
-    (TOTAL_ANGLE / HOURS_IN_DAY) * (hour + minute / MINUTES_IN_HOUR) -
-    ANGLE_CORRECTION
+    (CANVAS_SETTINGS.TOTAL_ANGLE / HOURS_IN_DAY) * (hour + minute / MINUTES_IN_HOUR) -
+    CANVAS_SETTINGS.ANGLE_CORRECTION
   );
 };
 
@@ -45,6 +41,9 @@ export const drawLine = (
   y2: number,
   ctx
 ): void => {
+  if (!ctx) {
+    return;
+  }
   // ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
   ctx.beginPath();
   ctx.moveTo(x1, y1);
@@ -64,7 +63,11 @@ export const drawArc = (
   endAngle: number,
   anticlockwise: boolean = false
 ): void => {
-  ctx.strokeStyle = CANVAS_CLOCK_STROKE_COLOR;
+  if (!ctx) {
+    return;
+  }
+
+  ctx.strokeStyle = CANVAS_SETTINGS.CANVAS_CLOCK_STROKE_COLOR;
   const startAngleRad = (Math.PI / 180) * startAngle;
   const endAngleRad = (Math.PI / 180) * endAngle;
   ctx.beginPath();
@@ -76,6 +79,10 @@ export const drawArc = (
  * name
  */
 export const drawRect = (x: number, y: number, z: number, ctx): void => {
+  if (!ctx) {
+    return;
+  }
+
   ctx.fillStyle = 'blue';
   ctx.fillRect(z * x, z * y, z, z);
 };
@@ -117,7 +124,11 @@ export const drawMark = (
   angle: number,
   ctx
 ): void => {
-  for (let i = 0; i <= TOTAL_ANGLE; i += angle) {
+  if (!ctx) {
+    return;
+  }
+
+  for (let i = 0; i <= CANVAS_SETTINGS.TOTAL_ANGLE; i += angle) {
     const angleRad = getAngleInRad(i);
     const sinRad = floorByCoordinateRounding(Math.sin(angleRad));
     const cosRad = floorByCoordinateRounding(Math.cos(angleRad));
@@ -149,7 +160,11 @@ export const drawClocks = (
   markAngle: number,
   ctx
 ): void => {
-  drawArc(ctx, centerPoint, centerPoint, circleRadius, 0, TOTAL_ANGLE);
+  if (!ctx) {
+    return;
+  }
+
+  drawArc(ctx, centerPoint, centerPoint, circleRadius, 0, CANVAS_SETTINGS.TOTAL_ANGLE);
   // drawLine(centerPoint, centerPoint, CANVAS_SIZE, CANVAS_SIZE);
   drawMark(centerPoint, centerPoint, markStart, markLength, markAngle, ctx);
 
@@ -201,7 +216,11 @@ export const calculateClockArcedTriangle = ({
  * name
  */
 export const drawClockArcedTriangle = (ctx, triangleSettings): void => {
-  ctx.fillStyle = TRIANGLE_COLOR;
+  if (!ctx) {
+    return;
+  }
+
+  ctx.fillStyle = CANVAS_SETTINGS.TRIANGLE_COLOR;
 
   const { xA, yA, startHour, startMinute, endHour, endMinute, length } = triangleSettings;
 
@@ -227,6 +246,12 @@ export const drawArcedTriangles = (
   triangleRadius: number,
   hoursData: Object[]
 ): void => {
+  // console.log('!canvasUtils.ts! drawArcedTriangles() ctx:', ctx);
+  // console.log('!canvasUtils.ts! drawArcedTriangles() hoursData:', hoursData);
+  if (!ctx) {
+    return;
+  }
+
   hoursData.forEach((hour) => {
     const triangleSettings = {
       xA: centerPoint,

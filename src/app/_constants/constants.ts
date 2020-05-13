@@ -16,10 +16,19 @@ export const END_DAY_TIME = [23, 59, 59, 0];
 export const HOURS_IN_DAY = 24;
 export const MINUTES_IN_HOUR = 60;
 export const EFFECTIVE_POMO_PERCENT = 90;
-export const TOTAL_ANGLE = 360;
-export const ANGLE_CORRECTION = 90;
-export const COORDINATE_ROUNDING = 10000;
 
-export const CANVAS_SIZE = 180;
-export const CANVAS_CLOCK_STROKE_COLOR = '#cccccc';
-export const TRIANGLE_COLOR = 'rgba(38, 86, 146, 0.15)';
+export const CANVAS_SETTINGS = {
+  CANVAS_SIZE: 180,
+  CANVAS_CLOCK_STROKE_COLOR: '#cccccc',
+  TRIANGLE_COLOR: 'rgba(38, 86, 146, 0.15)',
+  CENTER_POINT: 180 / 2,
+  CIRCLE_RADIUS: 180 * 0.35,
+  MARK_START: 180 * 0.38,
+  MARK_LENGTH: 4,
+  MARK_ANGLE: 360 / HOURS_IN_DAY,
+  TRIANGLE_RADIUS: 180 * 0.34,
+  TOTAL_ANGLE: 360,
+  ANGLE_CORRECTION: 90,
+  COORDINATE_ROUNDING: 10000,
+};
+

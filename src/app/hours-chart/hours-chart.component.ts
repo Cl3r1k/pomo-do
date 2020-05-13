@@ -4,7 +4,7 @@ import { Component, OnInit, OnChanges, ViewChild, ElementRef, Input, SimpleChang
 import * as canvasUtils from '@app/_utils/canvasUtils';
 
 // Constants
-import { CANVAS_SIZE, HOURS_IN_DAY } from '@app/_constants/constants';
+import { CANVAS_SETTINGS } from '@app/_constants/constants';
 
 @Component({
   selector: 'app-hours-chart',
@@ -20,24 +20,23 @@ export class HoursChartComponent implements OnInit, OnChanges {
   private ctx: CanvasRenderingContext2D;
 
   ngOnInit() {
-    const centerPoint = CANVAS_SIZE / 2;
-    const circleRadius = CANVAS_SIZE * 0.35;
-    const markStart = CANVAS_SIZE * 0.38;
-    const markLength = 4;
-    const markAngle = 360 / HOURS_IN_DAY;
-
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    // canvasUtils.drawRect(0, 0, 20, this.ctx);
+
+    // Draw Clock's template on the canvas
     canvasUtils.drawClocks(
-      centerPoint,
-      circleRadius,
-      markStart,
-      markLength,
-      markAngle,
+      CANVAS_SETTINGS.CENTER_POINT,
+      CANVAS_SETTINGS.CIRCLE_RADIUS,
+      CANVAS_SETTINGS.MARK_START,
+      CANVAS_SETTINGS.MARK_LENGTH,
+      CANVAS_SETTINGS.MARK_ANGLE,
       this.ctx
     );
+  }
 
-    const triangleRadius = CANVAS_SIZE * 0.34;
+  ngOnChanges(changes: SimpleChanges) {
+    // TODO: Consider to clear canvas and repaint all view with new data (the issue: new chart is painted over previous paint)
+    // console.log('<HoursChartComponent> ngOnChanges() changes: ', changes);
+    console.log('<HoursChartComponent> ngOnChanges() changes: ', changes.hoursData.currentValue);
     // * `hoursData` mockup
     const hoursData = [
       { startHour: 6, startMinute: 0, endHour: 6, endMinute: 25 },
@@ -61,18 +60,9 @@ export class HoursChartComponent implements OnInit, OnChanges {
 
     canvasUtils.drawArcedTriangles(
       this.ctx,
-      centerPoint,
-      triangleRadius,
+      CANVAS_SETTINGS.CENTER_POINT,
+      CANVAS_SETTINGS.TRIANGLE_RADIUS,
       hoursData
     );
-
-    console.log(
-      '<HoursChartComponent> ngOnInit this.hoursData: ',
-      this.hoursData
-    );
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('<HoursChartComponent> ngOnChanges() changes: ', changes);
   }
 }
