@@ -21,6 +21,13 @@ export class HoursChartComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.ctx = this.canvas.nativeElement.getContext('2d');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log('<HoursChartComponent> ngOnChanges() changes: ', changes.hoursData.currentValue);
+
+    // Clear previous draw on the Canvas
+    canvasUtils.clearCanvas(this.ctx, 0, 0, CANVAS_SETTINGS.CANVAS_SIZE, CANVAS_SETTINGS.CANVAS_SIZE);
 
     // Draw Clock's template on the canvas
     canvasUtils.drawClocks(
@@ -31,38 +38,33 @@ export class HoursChartComponent implements OnInit, OnChanges {
       CANVAS_SETTINGS.MARK_ANGLE,
       this.ctx
     );
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // TODO: Consider to clear canvas and repaint all view with new data (the issue: new chart is painted over previous paint)
-    // console.log('<HoursChartComponent> ngOnChanges() changes: ', changes);
-    console.log('<HoursChartComponent> ngOnChanges() changes: ', changes.hoursData.currentValue);
     // * `hoursData` mockup
-    const hoursData = [
-      { startHour: 6, startMinute: 0, endHour: 6, endMinute: 25 },
-      { startHour: 8, startMinute: 0, endHour: 8, endMinute: 25 },
-      { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
-      { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
-      { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
-      { startHour: 9, startMinute: 0, endHour: 9, endMinute: 25 },
-      { startHour: 9, startMinute: 21, endHour: 9, endMinute: 46 },
-      { startHour: 9, startMinute: 30, endHour: 9, endMinute: 55 },
-      { startHour: 10, startMinute: 0, endHour: 10, endMinute: 25 },
-      { startHour: 10, startMinute: 0, endHour: 10, endMinute: 25 },
-      { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
-      { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
-      { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
-      { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
-      { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
-      { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
-      { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
-    ];
+    // const hoursData = [
+    //   { startHour: 6, startMinute: 0, endHour: 6, endMinute: 25 },
+    //   { startHour: 8, startMinute: 0, endHour: 8, endMinute: 25 },
+    //   { startHour: 8, startMinute: 10, endHour: 8, endMinute: 35 },
+    //   { startHour: 8, startMinute: 20, endHour: 8, endMinute: 45 },
+    //   { startHour: 8, startMinute: 30, endHour: 8, endMinute: 55 },
+    //   { startHour: 9, startMinute: 0, endHour: 9, endMinute: 25 },
+    //   { startHour: 9, startMinute: 21, endHour: 9, endMinute: 46 },
+    //   { startHour: 9, startMinute: 30, endHour: 9, endMinute: 55 },
+    //   { startHour: 10, startMinute: 0, endHour: 10, endMinute: 25 },
+    //   { startHour: 10, startMinute: 0, endHour: 10, endMinute: 25 },
+    //   { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
+    //   { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
+    //   { startHour: 10, startMinute: 30, endHour: 10, endMinute: 55 },
+    //   { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
+    //   { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
+    //   { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
+    //   { startHour: 11, startMinute: 0, endHour: 11, endMinute: 25 },
+    // ];
 
     canvasUtils.drawArcedTriangles(
       this.ctx,
       CANVAS_SETTINGS.CENTER_POINT,
       CANVAS_SETTINGS.TRIANGLE_RADIUS,
-      hoursData
+      changes.hoursData.currentValue
     );
   }
 }

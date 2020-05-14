@@ -259,6 +259,17 @@ export const drawArcedTriangles = (
       length: triangleRadius,
       ...hour,
     };
-    drawClockArcedTriangle(ctx, triangleSettings); // <--- stopped here
+    drawClockArcedTriangle(ctx, triangleSettings);
   });
 };
+
+/**
+ * name
+ */
+export const clearCanvas = (ctx, x, y, width, height): void => {
+  if (!ctx) {
+    return;
+  }
+
+  ctx.clearRect(x, y, width, height);
+}

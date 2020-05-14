@@ -1,7 +1,10 @@
 .daily-hours-chart {
   display: flex;
   justify-content: flex-end;
+  height: 100%;
   .clock-container {
+    display: flex;
+    align-items: flex-end;
     position: relative;
     .hour-value {
       position: absolute;

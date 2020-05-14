@@ -1,7 +1,9 @@
 .chart-data-container {
   display: grid;
   grid-template-columns: auto 1fr;
+  height: 100%;
   padding-top: 5px;
+  box-sizing: border-box;
 
   .tags-list {
     list-style: none;
@@ -16,7 +18,7 @@
 
       &.selected {
         &::before {
-          content: "#";
+          content: '#';
           display: inline-block;
           position: absolute;
           left: -0.8rem;
