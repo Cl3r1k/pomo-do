@@ -272,4 +272,4 @@ export const clearCanvas = (ctx, x, y, width, height): void => {
   }
 
   ctx.clearRect(x, y, width, height);
-}
+};
