@@ -1076,6 +1076,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
       // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
+      console.log(`angleDelta: ${angleDelta}, angleDelta: ${angleDelta} totalAngle: ${angleDelta + angleValue}`);
+
       const svgPath = describeArcExtended(
         WORK_DAYS.START_X_COORDINATE,
         WORK_DAYS.START_Y_COORDINATE,
