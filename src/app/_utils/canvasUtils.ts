@@ -139,9 +139,9 @@ export const drawMark = (
     const yCStart = y1 + length * cosRad;
     const xCEnd = x1 + (length + lineLength) * sinRad;
     const yCEnd = y1 + (length + lineLength + verticalCorrection) * cosRad;
-    console.log(`with angle ${i} CStart(${xCStart}, ${yCStart})`);
-    console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
-    console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
+    // console.log(`with angle ${i} CStart(${xCStart}, ${yCStart})`);
+    // console.log(`with angle ${i} CEnd(${xCEnd}, ${yCEnd})`);
+    // console.log(`with angle ${i} verticalCorrection(${verticalCorrection})`);
 
     if (i !== 90 && i !== 270 && i !== 360) {
       drawLine(xCStart, yCStart, xCEnd, yCEnd, ctx);
@@ -187,12 +187,12 @@ export const calculateClockArcedTriangle = ({
 }): Object => {
   const startAngle = getClockAngle(startHour, startMinute);
   const endAngle = getClockAngle(endHour, endMinute);
-  console.log(
-    `calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`
-  );
-  console.log(
-    `calculateClockArcedTriangle() endHour(${endHour}), endMinute(${endMinute}), endAngle(${endAngle})`
-  );
+  // console.log(
+  //   `calculateClockArcedTriangle() startHour(${startHour}), startMinute(${startMinute}), startAngle(${startAngle})`
+  // );
+  // console.log(
+  //   `calculateClockArcedTriangle() endHour(${endHour}), endMinute(${endMinute}), endAngle(${endAngle})`
+  // );
 
   const startAngleRad = getAngleInRad(startAngle);
   const endAngleRad = getAngleInRad(endAngle);

@@ -1074,19 +1074,20 @@ export class AppMainComponent implements OnInit, OnDestroy {
       // console.log('sortedTagsList[key]', sortedTagsList[key]);
       const chartPercent = sortedTagsList[key] / (totalHashtagCount / 100);
       const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
+      const endAngle = angleDelta + angleValue - angleDelta === 360 ? angleDelta + angleValue - 0.1 : angleDelta + angleValue;
       // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
-      console.log(`angleDelta: ${angleDelta}, angleDelta: ${angleDelta} totalAngle: ${angleDelta + angleValue}`);
+      console.log(`angleDelta: ${angleDelta}, angleDelta: ${angleDelta} endAngle: ${endAngle}`);
 
       const svgPath = describeArcExtended(
         WORK_DAYS.START_X_COORDINATE,
         WORK_DAYS.START_Y_COORDINATE,
         WORK_DAYS.RADIUS_VALUE,
         angleDelta,
-        angleDelta + angleValue
+        endAngle
       );
 
-      const angleVector = angleDelta + angleValue / 2;
+      const angleVector = endAngle / 2;
       console.log(`angleVector: ${angleVector}`);
       const angleInRadians = ((angleVector - 90) * Math.PI) / 180.0;
       console.log(`angleInRadians: ${angleInRadians}`);
