@@ -1087,7 +1087,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
         endAngle
       );
 
-      const angleVector = endAngle / 2;
+      const angleVector = endAngle - angleValue / 2;
+      // console.log(`angleValue: ${angleValue}, angleVector: ${angleVector}, endAngle: ${endAngle}`);
       console.log(`angleVector: ${angleVector}`);
       const angleInRadians = ((angleVector - 90) * Math.PI) / 180.0;
       console.log(`angleInRadians: ${angleInRadians}`);
