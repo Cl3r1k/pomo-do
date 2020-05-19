@@ -260,7 +260,7 @@ Todos:
                                             ✔ Complete UI and functionality for 'Best workday' part @done(19-12-12 09:06)
                                             ✔ Complete UI and functionality for 'Top tags' part @done(20-03-03 08:56)
                                             ✔ Complete UI and functionality for 'Best worktime' part @done(20-05-14 08:59)
-                                                ☐ 'Best worktime' chart should be updated with selected #hasttag   <========================================================= CURRENT TASK
+                                                ☐ 'Best worktime' chart should be updated with selected #hashtag   <========================================================= CURRENT TASK
                                             ☐ Complete UI and functionality for 'stat-chart-header' part
                                             ☐ Complete UI and functionality for 'stat-chart-block' part
                                         ☐ Add tests for 'StatDetailsComponent'

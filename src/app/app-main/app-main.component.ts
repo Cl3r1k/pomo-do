@@ -26,6 +26,9 @@ import { Utils } from '@app/_common/utils';
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
 import { padLeftWithString } from '@app/utils/padUtils';
+import { getDayTimeLabel } from '@app/utils/dateTimeUtils';
+import { describeArcExtended } from '@app/utils/chartUtils';
+import { getAngleInRad } from '@app/_utils/canvasUtils';
 
 // Constants
 import {
@@ -34,9 +37,8 @@ import {
   END_DAY_TIME,
   HOURS_IN_DAY,
   EFFECTIVE_POMO_PERCENT,
+  CANVAS_SETTINGS,
 } from '@app/_constants/constants';
-import { getDayTimeLabel } from '@app/utils/dateTimeUtils';
-import { describeArcExtended } from '@app/utils/chartUtils';
 const CONSOLE_TEXT_COLOR_COMPONENT = environmentProd.consoleTextColorComponent;
 
 @Component({
@@ -1090,7 +1092,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const angleVector = endAngle - angleValue / 2;
       // console.log(`angleValue: ${angleValue}, angleVector: ${angleVector}, endAngle: ${endAngle}`);
       console.log(`angleVector: ${angleVector}`);
-      const angleInRadians = ((angleVector - 90) * Math.PI) / 180.0;
+      const angleInRadians = getAngleInRad(angleVector - CANVAS_SETTINGS.ANGLE_CORRECTION);
       console.log(`angleInRadians: ${angleInRadians}`);
       const xOffset =
         Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
