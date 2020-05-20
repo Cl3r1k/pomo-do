@@ -1076,10 +1076,15 @@ export class AppMainComponent implements OnInit, OnDestroy {
       // console.log('sortedTagsList[key]', sortedTagsList[key]);
       const chartPercent = sortedTagsList[key] / (totalHashtagCount / 100);
       const angleValue = chartPercent * WORK_DAYS.ANGLE_SINGLE_PERCENT;
-      const endAngle = angleDelta + angleValue - angleDelta === 360 ? angleDelta + angleValue - 0.1 : angleDelta + angleValue;
+      const endAngle =
+        angleDelta + angleValue - angleDelta === 360
+          ? angleDelta + angleValue - 0.1
+          : angleDelta + angleValue;
       // console.log(`key: ${key}, angleValue: ${angleValue}`);
 
-      console.log(`angleDelta: ${angleDelta}, angleDelta: ${angleDelta} endAngle: ${endAngle}`);
+      console.log(
+        `angleDelta: ${angleDelta}, angleDelta: ${angleDelta} endAngle: ${endAngle}`
+      );
 
       const svgPath = describeArcExtended(
         WORK_DAYS.START_X_COORDINATE,
@@ -1092,7 +1097,9 @@ export class AppMainComponent implements OnInit, OnDestroy {
       const angleVector = endAngle - angleValue / 2;
       // console.log(`angleValue: ${angleValue}, angleVector: ${angleVector}, endAngle: ${endAngle}`);
       console.log(`angleVector: ${angleVector}`);
-      const angleInRadians = getAngleInRad(angleVector - CANVAS_SETTINGS.ANGLE_CORRECTION);
+      const angleInRadians = getAngleInRad(
+        angleVector - CANVAS_SETTINGS.ANGLE_CORRECTION
+      );
       console.log(`angleInRadians: ${angleInRadians}`);
       const xOffset =
         Math.cos(angleInRadians) * WORK_DAYS.CHART_PART_OFFSET_VALUE;
@@ -1130,7 +1137,11 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
   }
 
-  generateWorkTimeData(startDate: Date = null, endDate: Date = new Date()) {
+  generateWorkTimeData({
+    startDate = null,
+    endDate = new Date(),
+    hashtag = '',
+  }: { startDate?: Date; endDate?: Date; hashtag?: string } = {}) {
     if (!startDate) {
       startDate = new Date(endDate);
       startDate.setMonth(startDate.getMonth() - 1);
@@ -1153,27 +1164,31 @@ export class AppMainComponent implements OnInit, OnDestroy {
     const filteredPomos = this.recentPomos.filter((pomo) => {
       const startTime = new Date(pomo.start_time);
       const endTime = new Date();
-      console.log(
-        '%cAppMainComponent generateWorkTimeData() - startTime',
-        CONSOLE_TEXT_COLOR_COMPONENT,
-        startTime
+      // console.log(
+      //   '%cAppMainComponent generateWorkTimeData() - startTime',
+      //   CONSOLE_TEXT_COLOR_COMPONENT,
+      //   startTime
+      // );
+      // console.log(
+      //   '%cAppMainComponent generateWorkTimeData() - startDate',
+      //   CONSOLE_TEXT_COLOR_COMPONENT,
+      //   startDate
+      // );
+      // console.log(
+      //   '%cAppMainComponent generateWorkTimeData() - endTime',
+      //   CONSOLE_TEXT_COLOR_COMPONENT,
+      //   endTime
+      // );
+      // console.log(
+      //   '%cAppMainComponent generateWorkTimeData() - endDate',
+      //   CONSOLE_TEXT_COLOR_COMPONENT,
+      //   endDate
+      // );
+      return (
+        startTime >= startDate &&
+        endTime <= endDate &&
+        pomo.title.includes(hashtag)
       );
-      console.log(
-        '%cAppMainComponent generateWorkTimeData() - startDate',
-        CONSOLE_TEXT_COLOR_COMPONENT,
-        startDate
-      );
-      console.log(
-        '%cAppMainComponent generateWorkTimeData() - endTime',
-        CONSOLE_TEXT_COLOR_COMPONENT,
-        endTime
-      );
-      console.log(
-        '%cAppMainComponent generateWorkTimeData() - endDate',
-        CONSOLE_TEXT_COLOR_COMPONENT,
-        endDate
-      );
-      return startTime >= startDate && endTime <= endDate;
     });
 
     console.log(
