@@ -866,7 +866,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     startDate = null,
     endDate = new Date(),
     hashtag = '',
-  }: { startDate?: Date; endDate?: Date; hashtag?: string } = {}) {
+  }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}) {
     const workDaysStats = new Array(WORK_DAYS.daysInWeek).fill(0);
 
     // console.log(`workDaysStats: ${workDaysStats}`);
@@ -981,7 +981,10 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
   }
 
-  generateTopHashtagsData(startDate: Date = null, endDate: Date = new Date()) {
+  generateTopHashtagsData({
+    startDate = null,
+    endDate = new Date(),
+  }: { startDate?: Date, endDate?: Date } = {}) {
     if (!startDate) {
       startDate = new Date(endDate);
       startDate.setMonth(startDate.getMonth() - 1);
@@ -1141,7 +1144,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     startDate = null,
     endDate = new Date(),
     hashtag = '',
-  }: { startDate?: Date; endDate?: Date; hashtag?: string } = {}) {
+  }: { startDate?: Date, endDate?: Date, hashtag?: string } = {}) {
     if (!startDate) {
       startDate = new Date(endDate);
       startDate.setMonth(startDate.getMonth() - 1);
@@ -1161,6 +1164,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
     );
 
     // TODO: Consider to filter pomos before calling 'generateWorkTimeData' and other related methods
+    // * <- because generateWorkDaysData(), generateTopHashtagsData(), generateWorkTimeData() in some ways uses filtered data
     const filteredPomos = this.recentPomos.filter((pomo) => {
       const startTime = new Date(pomo.start_time);
       const endTime = new Date();
@@ -1324,6 +1328,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
 
   onToggleSelectedChartPart(selectedHashtag: string) {
     this.generateWorkDaysData({ hashtag: selectedHashtag });
+    this.generateWorkTimeData({ hashtag: selectedHashtag });
     console.log(
       'onToggleSelectedChartPart() selectedHashtag: ',
       selectedHashtag

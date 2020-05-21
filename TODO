@@ -260,7 +260,7 @@ Todos:
                                             ✔ Complete UI and functionality for 'Best workday' part @done(19-12-12 09:06)
                                             ✔ Complete UI and functionality for 'Top tags' part @done(20-03-03 08:56)
                                             ✔ Complete UI and functionality for 'Best worktime' part @done(20-05-14 08:59)
-                                                ☐ 'Best worktime' chart should be updated with selected #hashtag   <========================================================= CURRENT TASK
+                                                ✔ 'Best worktime' chart should be updated with selected #hashtag @done(20-05-20 08:58)
                                             ☐ Complete UI and functionality for 'stat-chart-header' part
                                             ☐ Complete UI and functionality for 'stat-chart-block' part
                                         ☐ Add tests for 'StatDetailsComponent'
@@ -295,6 +295,8 @@ Todos:
             ✔ Fix `Top tags` chart when only one pomo with #hashtag completed @done(20-05-16 09:08)
 
             ✔ Fix `Top tags` 'percent labels' positions @done(20-05-17 09:08)
+
+            ☐ Implement ESLint, with Prettier, Husky and lint-staged   <========================================================= CURRENT TASK
 
             ☐ Improve `dataBase` creation -> populate some amount of pomos with #hashtags and proper pomo time
 
