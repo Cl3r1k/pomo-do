@@ -1163,6 +1163,8 @@ export class AppMainComponent implements OnInit, OnDestroy {
       END_DAY_TIME[3]
     );
 
+    // TODO: Stopped here -> Implementing eslint+++
+
     // TODO: Consider to filter pomos before calling 'generateWorkTimeData' and other related methods
     // * <- because generateWorkDaysData(), generateTopHashtagsData(), generateWorkTimeData() in some ways uses filtered data
     const filteredPomos = this.recentPomos.filter((pomo) => {
