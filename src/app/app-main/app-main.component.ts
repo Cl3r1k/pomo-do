@@ -1163,7 +1163,7 @@ export class AppMainComponent implements OnInit, OnDestroy {
       END_DAY_TIME[3]
     );
 
-    // TODO: Stopped here -> Implementing eslint + prettier +
+    // TODO: Stopped here -> Implementing eslint + prettier + husky
 
     // TODO: Consider to filter pomos before calling 'generateWorkTimeData' and other related methods
     // * <- because generateWorkDaysData(), generateTopHashtagsData(), generateWorkTimeData() in some ways uses filtered data
