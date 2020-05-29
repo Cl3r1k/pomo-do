@@ -25,6 +25,14 @@
     "deploy-gh": "ng build --prod --base-href 'https://Cl3r1k.github.io/pomo-do/' && ngh --no-silent",
     "sw": "ng build --prod && http-server -c-1 -p 4200 dist/"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": []
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.0.2",

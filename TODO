@@ -11,7 +11,15 @@
 // `7-1 architecture pattern example:` "https://github.com/HugoGiraudel/sass-boilerplate" (info - "https://sass-guidelin.es/#architecture")
 
 Commit message:
-
+feat: Migration project to React
+feat: Update 'canvasUtils.ts' file
+feat: Update 'constants.ts' file
+feat: Update in 'AppMainComponent' (code, template, styles, test)
+feat: Update in 'HoursChartComponent' (code, template, styles, test)
+feat: Update in 'StatHistoryComponent' (code, template, styles, test)
+feat: Update in 'StatDetailsComponent' (code, template, styles, test)
+feat: Update in 'TagsPieChartComponent' (code, template, styles, test)
+refactor: Minor changes
 
 Todos:
     New:
