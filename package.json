@@ -48,7 +48,7 @@
     "@angular/platform-server": "^7.0.2",
     "@angular/router": "^7.0.2",
     "@beyerleinf/ngx-dnd": "^6.0.0-preview3",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "core-js": "^2.5.3",
     "dexie": "^2.0.1",
     "g": "^2.0.1",
